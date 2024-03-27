@@ -89,6 +89,7 @@
     /* height: 60px;
     width: 260px; */
     border-radius: 5%/20%;
+    color: white;
 }
 
 .card img {
@@ -115,4 +116,3 @@
     height: 100%;
     object-fit: cover; 
 }
-
