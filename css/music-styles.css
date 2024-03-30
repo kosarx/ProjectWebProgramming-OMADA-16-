@@ -1,0 +1,22 @@
+.event-header {
+    color: #996580;
+    letter-spacing: 0.2rem;
+}
+
+
+#carousel-slide {
+    margin: 0% 10%; 
+}
+
+.card.event-card {
+    background-color: #f9f9f9;
+    width: 50vw;
+    height: 40%;
+    margin: 0% 10%; 
+}
+
+.card.event-card .event-img {
+    max-height: 100%;
+    width: auto;
+}
+
