@@ -69,3 +69,7 @@ body {
 .profile-image a:hover::after {
     opacity: 1;
 }
+
+.page-container {
+    padding-top: 4em;
+}
