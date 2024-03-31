@@ -51,7 +51,7 @@
 }
 
 .inter-children-cards .card:hover {
-    /* box-shadow: 0 8px 10px rgba(201, 173, 188,0.8); */
+    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); */
     box-shadow: 0 8px 20px rgb(133, 88, 111, 0.7);
     transform: translateY(-4px);
     /* background-color:#b58ea3; */
@@ -60,6 +60,25 @@
 
 .inter-children-cards .card {
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hide the default radio button */
+input[type="radio"] {
+    display: none;
+}
+
+/* Style the custom radio icon */
+.review-star {
+    display: inline-block;
+    width: 20px; /* Adjust width and height */
+    height: 20px;
+    background-image: url('svgs/Star.svg');
+    background-size: cover;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + .review-star {
+    background-image: url('svgs/ClickedStar.svg');
 }
 
 #tickets-col .card {
