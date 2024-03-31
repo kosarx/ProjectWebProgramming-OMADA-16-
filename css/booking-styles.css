@@ -1,7 +1,10 @@
 .event-image {
-    background-image: url('https://picsum.photos/seed/12/1500/550'); /* Specify the path */
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the image */
+    background-image: url('https://picsum.photos/seed/12/1500/550');
+    /* Specify the path */
+    background-size: cover;
+    /* Cover the entire container */
+    background-position: center;
+    /* Center the image */
     width: 100%;
     height: 70vh;
 
@@ -9,14 +12,17 @@
 }
 
 .divider-bottom {
-    box-shadow: 0px 4px 2px 1px rgba(175, 177, 182, 1); /* Shadow-dividing effect */
+    box-shadow: 0px 4px 2px 1px rgba(175, 177, 182, 1);
+    /* Shadow-dividing effect */
     margin-bottom: 20px;
-  }
+}
 
 .image-overlay {
     position: absolute;
-    bottom: 1em; /* Stick the title to the bottom */
-    left: 3em; /* Align the title to the left */
+    bottom: 1em;
+    /* Stick the title to the bottom */
+    left: 3em;
+    /* Align the title to the left */
 }
 
 .text-overlay {
@@ -25,7 +31,7 @@
     letter-spacing: 2px;
 }
 
-.date-overlay{
+.date-overlay {
     position: absolute;
     bottom: 0.5em;
     right: 3em;
@@ -33,9 +39,9 @@
     font-weight: 600;
 }
 
-.bookings-container{
+.bookings-container {
     padding-left: 3em;
-    padding-right:3em;
+    padding-right: 3em;
 }
 
 .card {
@@ -43,29 +49,28 @@
 }
 
 .shadowed-text {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect for text in span*/
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* Shadow effect for text in span*/
 }
 
 .shadowed-review-card {
-    box-shadow: 0px 4px 2px 1px rgba(175, 177, 182, 1); /* Add shadow effect */
+    box-shadow: 0px 4px 2px 1px rgba(175, 177, 182, 1);
 }
 
 .inter-children-cards .card:hover {
-    /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); */
     box-shadow: 0 8px 20px rgb(133, 88, 111, 0.7);
     transform: translateY(-4px);
-    /* background-color:#b58ea3; */
-    /* cursor: pointer; */
 }
 
 #tickets-col .card:active {
-    background-color:#85586F;
+    background-color: #85586F;
     color: #fff;
 }
 
 
 .inter-children-cards .card {
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    /* Smooth transitions */
 }
 
 /* Hide the default radio button */
@@ -73,26 +78,24 @@ input[type="radio"] {
     display: none;
 }
 
-/* Style the custom radio icon */
 .review-star {
     display: inline-block;
-    width: 20px; /* Adjust width and height */
+    width: 20px;
     height: 20px;
-    background-image: url('svgs/Star.svg');
     background-size: cover;
     cursor: pointer;
 }
 
-input[type="radio"]:checked + .review-star {
-    background-image: url('svgs/ClickedStar.svg');
-}
+/* input[type="radio"]:checked + .review-star {
+
+} */
 
 #tickets-col .card {
     background-color: #F9F9F9;
     cursor: pointer;
 }
 
-#tickets-col .card-title{
+#tickets-col .card-title {
     font-size: large;
     font-weight: 550;
     letter-spacing: 1px;

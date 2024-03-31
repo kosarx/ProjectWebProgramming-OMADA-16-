@@ -5,7 +5,7 @@
 
 
 #carousel-slide {
-    margin: 0% 10%; 
+    margin: 0% 10%;
 }
 
 .c-img {
@@ -16,7 +16,7 @@
     background-color: #f9f9f9;
     width: 60vw;
     height: 40%;
-    margin: 0% 10%; 
+    margin: 0% 10%;
     color: #000;
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
@@ -25,10 +25,10 @@
     margin: 0% 12%;
     width: 100%;
     height: auto;
-    border-radius: 4% 
+    border-radius: 4%
 }
 
-.event-img-cols{
+.event-img-cols {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +53,7 @@
 .event-card-location {
     padding-top: 1%;
     font-size: 0.7em;
-    color:#666;
+    color: #666;
 }
 
 
@@ -69,7 +69,7 @@
 .event-card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-4px);
-    background-color:#b58ea3;
+    background-color: #b58ea3;
     cursor: pointer;
 }
 
@@ -80,7 +80,6 @@
 .event-card:hover .event-card-body {
     opacity: 0.9;
 }
-
 
 .event-card:last-of-type {
     margin-bottom: 2%;
