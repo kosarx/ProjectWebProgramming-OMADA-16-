@@ -58,6 +58,12 @@
     /* cursor: pointer; */
 }
 
+#tickets-col .card:active {
+    background-color:#85586F;
+    color: #fff;
+}
+
+
 .inter-children-cards .card {
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
 }
