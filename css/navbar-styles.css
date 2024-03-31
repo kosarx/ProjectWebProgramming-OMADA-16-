@@ -17,6 +17,12 @@ body {
     font-weight: 550;
 }
 
+.navbar-light .navbar-brand {
+    font-family:Verdana;
+    letter-spacing: 0.1em; 
+    font-weight: 700;
+}
+
 .navbar-light .navbar-brand:visited {
     color: #85586F;
     
