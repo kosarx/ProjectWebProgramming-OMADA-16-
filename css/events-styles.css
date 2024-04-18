@@ -25,7 +25,8 @@
     margin: 0% 12%;
     width: 100%;
     height: auto;
-    border-radius: 4%
+    border-radius: 10px;
+
 }
 
 .event-img-cols {
@@ -71,8 +72,47 @@
     transform: translateY(-4px);
     background-color: #b58ea3;
     cursor: pointer;
+
+
 }
 
+/* .event-card:hover img.arrow {
+    content: url(svgs/Fill9.svg); 
+} */
+.image-container {
+    position: relative;
+}
+
+.arrow1,.arrow2 {
+    position: absolute;
+    /* Position the second image absolutely within the container */
+    top: 0;
+    /* Align the top edge of the second image with the container */
+    left: 0;
+    /* Align the left edge of the second image with the container */
+    transition: opacity 0.3s ease;
+    /* Add a transition effect */
+}
+
+.arrow2 {
+    opacity: 0;
+
+}
+
+.event-card:hover .arrow1 {
+    opacity: 0;
+    /* Make the first image transparent when hovering over the card */
+}
+
+.event-card:hover .arrow2 {
+    opacity: 1;
+    /* Make the second image opaque when hovering over the card */
+}
+
+
+/* img:hover {
+    content: url(svgs/Fill8.svg); 
+} */
 .event-card-body {
     transition: opacity 0.3s ease-in-out;
 }

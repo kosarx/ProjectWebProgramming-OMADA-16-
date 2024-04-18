@@ -67,6 +67,13 @@
     color: #fff;
 }
 
+#tickets-col .card:active *{
+    color: #fff;
+}
+
+.card-subtitle.location, .card-subtitle.title {
+    color: #666; /* Change to your desired color */
+}
 
 .inter-children-cards .card {
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
@@ -100,3 +107,10 @@ input[type="radio"] {
     font-weight: 550;
     letter-spacing: 1px;
 }
+
+/* .view-reviews {
+    color: #666;
+    font-size: small;
+    letter-spacing: 0;
+    cursor: pointer;
+} */

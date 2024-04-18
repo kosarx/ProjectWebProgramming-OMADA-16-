@@ -1,6 +1,8 @@
 #mainMenuImage {
     margin-top: 3em;
-    border-radius: 1.5%;
+    /* border-radius: 1.5%; */
+    border-radius: 10px;
+
     box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -10,7 +12,7 @@
 }
 
 #cardCont .card {
-    border-radius: 4%/3%;
+    border-radius: 10px;
     margin: 0 10%;
     background-color: #D9D9D9;
     justify-content: center;
@@ -24,7 +26,7 @@
     padding: 4% 0%;
     margin: 4% 0%;
     width: 89%;
-    border-radius: 5%/20%;
+    border-radius: 10px;
     color: white;
 
 }
