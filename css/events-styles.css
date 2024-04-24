@@ -69,7 +69,8 @@
 
 .event-card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-4px);
+    transform: translate(4px, -4px);
+    /* transform: translateX(10px); */
     background-color: #b58ea3;
     cursor: pointer;
 
