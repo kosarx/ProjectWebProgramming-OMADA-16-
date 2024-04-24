@@ -1,0 +1,440 @@
+/* -------COLOR PALETTE------- */
+:root {
+    --dark-purple: #643843;
+    --medium-purple: #85586F; 
+    --light-purple: #AC7D88;
+    
+    --card-background-color: #F9F9F9;
+
+    --main-page-color: #D9D9D9;
+
+    --review-card-and-divider-shadow:  #afb1b6;
+
+    --muted-text-color: #666;
+
+    --review-card-color: #EFEFF0;
+
+    --hover-event-card: #b58ea3; 
+
+    --white: #fff;
+    --black: #000;
+
+    --footer-background-color: #F3F3F3;
+    --footer-text-color: #808080;
+  }
+
+/* -------NAVBAR------- */
+
+body {
+    background-color: var(--white);
+    z-index: 999;
+}
+
+.navbar {
+    background-color:var(--main-page-color);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-light .navbar-brand {
+    color: var(--medium-purple);
+    margin-left: 3em;
+    font-size: 1.5rem;
+    font-weight: 550;
+}
+
+.navbar-light .navbar-brand {
+    font-family: Verdana;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.navbar-light .navbar-brand:visited {
+    color: var(--medium-purple);
+
+}
+
+.navbar-light .navbar-brand:hover {
+    color: var(--dark-purple);
+
+}
+
+#navbarNav {
+    justify-content: right;
+}
+
+#navbarHeader {
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item {
+    margin-right: 3em;
+}
+
+.nav-item .nav-link {
+    color: var(--light-purple);
+}
+
+.profile-image {
+    margin-right: 3em;
+}
+
+.profile-image a {
+    display: inline-block;
+    position: relative;
+}
+
+.profile-image a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 5px 3px var(--medium-purple);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image a:hover::after {
+    opacity: 1;
+}
+
+.page-container {
+    padding-top: 4em;
+}
+
+
+/* -------FOOTER------- */
+
+.col.footer-names {
+    text-align: center;
+}
+
+.col.copyrights {
+    text-align: end;
+}
+
+footer {
+    padding: 1% 1%;
+}
+
+footer {
+    background-color:var(--footer-background-color);
+    color: var(--footer-text-color);
+}
+
+
+/* -------INDEX------- */
+
+#mainMenuImage {
+    margin-top: 3em;
+    /* border-radius: 1.5%; */
+    border-radius: 10px;
+
+    box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-custom:focus,
+.btn-custom.focus {
+    box-shadow: inset 0 0 10px var(--medium-purple);
+}
+
+#cardCont .card {
+    border-radius: 10px;
+    margin: 0 10%;
+    background-color: var(--main-page-color);
+    justify-content: center;
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 4%;
+}
+
+
+#cardCont .card .btn {
+    background-color: var(--dark-purple);
+    padding: 4% 0%;
+    margin: 4% 0%;
+    width: 89%;
+    border-radius: 10px;
+    color: var(--white);
+
+}
+
+#cardCont .card img {
+    border-radius: 3%;
+    max-width: 100%;
+    width: 80%;
+    height: 16.6em;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10%;
+}
+
+#cardCont .card:hover {
+    box-shadow: 4px 10px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+#cardCont .card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+#cardCont a {
+    letter-spacing: 0.1em;
+}
+
+
+
+/* -------EVENTS------- */
+
+.event-header {
+    color: var(--medium-purple);
+    letter-spacing: 0.2rem;
+}
+
+
+#carousel-slide {
+    margin: 0% 10%;
+}
+
+.c-img {
+    height: 30em;
+}
+
+.event-card {
+    background-color: var(--card-background-color);
+    width: 60vw;
+    height: 40%;
+    margin: 0% 10%;
+    color:var(--black);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.card.event-card .event-img {
+    margin: 0% 12%;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+
+}
+
+.event-img-cols {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-card-title {
+    display: inline;
+    font-size: 1.2em;
+    letter-spacing: 0.2em;
+}
+
+
+.event-card-date {
+    display: inline;
+    float: right;
+    font-size: 0.7em;
+    padding-right: 2%;
+    padding-top: 2%;
+    color: var(--muted-text-color);
+}
+
+.event-card-location {
+    padding-top: 1%;
+    font-size: 0.7em;
+    color: var(--muted-text-color);
+}
+
+
+.event-card-description {
+    font-size: 0.8em;
+}
+
+.event-card:hover * {
+    color:var(--white);
+
+}
+
+.event-card:hover {
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+    transform: translate(4px, -4px);
+    /* transform: translateX(10px); */
+    background-color:var(--hover-event-card);
+    cursor: pointer;
+
+
+}
+
+/* .event-card:hover img.arrow {
+    content: url(svgs/Fill9.svg); 
+} */
+.image-container {
+    position: relative;
+}
+
+.arrow1,.arrow2 {
+    position: absolute;
+    /* Position the second image absolutely within the container */
+    top: 0;
+    /* Align the top edge of the second image with the container */
+    left: 0;
+    /* Align the left edge of the second image with the container */
+    transition: opacity 0.3s ease;
+    /* Add a transition effect */
+}
+
+.arrow2 {
+    opacity: 0;
+
+}
+
+.event-card:hover .arrow1 {
+    opacity: 0;
+    /* Make the first image transparent when hovering over the card */
+}
+
+.event-card:hover .arrow2 {
+    opacity: 1;
+    /* Make the second image opaque when hovering over the card */
+}
+
+
+/* img:hover {
+    content: url(svgs/Fill8.svg); 
+} */
+.event-card-body {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.event-card:hover .event-card-body {
+    opacity: 0.9;
+}
+
+.event-card:last-of-type {
+    margin-bottom: 2%;
+}
+
+
+
+/* -------BOOKING------- */
+
+.event-image {
+    background-image: url('https://picsum.photos/seed/12/1500/550');
+    /* Specify the path */
+    background-size: cover;
+    /* Cover the entire container */
+    background-position: center;
+    /* Center the image */
+    width: 100%;
+    height: 70vh;
+
+    position: relative;
+}
+
+.divider-bottom {
+    box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
+    /* Shadow-dividing effect */
+    margin-bottom: 20px;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 1em;
+    /* Stick the title to the bottom */
+    left: 3em;
+    /* Align the title to the left */
+}
+
+.text-overlay {
+    margin-top: 1em;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.date-overlay {
+    position: absolute;
+    bottom: 0.5em;
+    right: 3em;
+
+    font-weight: 600;
+}
+
+.bookings-container {
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+#review-row .card {
+    background-color:var(--review-card-color);
+}
+
+.shadowed-text {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* Shadow effect for text in span*/
+}
+
+.shadowed-review-card {
+    box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
+}
+
+.inter-children-cards .card:hover {
+    box-shadow: 0 8px 20px rgba(133, 88, 111, 0.7);
+    transform: translateY(-4px);
+}
+
+#tickets-col .card:active {
+    background-color:var(--medium-purple);
+    color: var(--white);
+}
+
+#tickets-col .card:active *{
+    color: var(--white);
+}
+
+.card-subtitle.location, .card-subtitle.title {
+    color:var(--muted-text-color); 
+}
+
+.inter-children-cards .card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    /* Smooth transitions */
+}
+
+/* Hide the default radio button */
+input[type="radio"] {
+    display: none;
+}
+
+.review-star {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    cursor: pointer;
+}
+
+/* input[type="radio"]:checked + .review-star {
+
+} */
+
+#tickets-col .card {
+    background-color: var(--card-background-color);
+    cursor: pointer;
+}
+
+#tickets-col .card-title {
+    font-size: large;
+    font-weight: 550;
+    letter-spacing: 1px;
+}
+
+/* .view-reviews {
+    color: #666;
+    font-size: small;
+    letter-spacing: 0;
+    cursor: pointer;
+} */
