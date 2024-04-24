@@ -261,8 +261,8 @@ footer {
 
 .event-card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-    transform: translate(4px, -4px);
-    /* transform: translateX(10px); */
+    /* transform: translate(4px, -4px); */
+    transform: translateY(-4px);
     background-color:var(--hover-event-card);
     cursor: pointer;
 
