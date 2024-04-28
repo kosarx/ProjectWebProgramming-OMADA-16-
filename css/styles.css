@@ -479,3 +479,10 @@ input[type="radio"] {
     padding-left: 2em;
     padding-right: 2em;
 }
+
+.seating-category-select-rows .seating-category-row {
+    background-color: var(--main-page-color);
+    border-radius: 3px;
+    padding: 0.5em;
+    margin: 0.5em 0;
+}
