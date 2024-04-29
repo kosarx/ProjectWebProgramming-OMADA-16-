@@ -453,7 +453,8 @@ footer {
 }
 
 .shadowed-text {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     /* Shadow effect for text in span*/
 }
 
@@ -725,3 +726,29 @@ input[type="radio"] {
 
 
 
+/* -------PROFILE------- */
+
+
+
+
+.user-info .fixed-height-container {
+    height: 300px; /* Adjust the height as needed */
+}
+
+.user-info .btn-log-out {
+    background-color: var(--dark-purple);
+    border-radius: 8px;
+    color: var(--light);
+}
+
+.user-info .btn-log-out:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-info .member-since, .user-info .email{
+    color: var(--muted-text-color);
+}
+
+.user-info .reviews, .user-info .tickets {
+    letter-spacing: 0.2rem;
+}
