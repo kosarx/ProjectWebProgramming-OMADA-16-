@@ -707,3 +707,17 @@ input[type="radio"] {
 .auth-container.reset-pwd a {
     font-size: 1.1em;
 }
+
+/* Add separator in the "OR" text*/
+.or-separator .col::before,
+.or-separator .col::after {
+  content: '';
+  display: inline-block;
+  width: 32%; 
+  border-top: 0.05em solid rgba(0, 0, 0, 0.2); 
+  margin-bottom: 0.25em;
+}
+
+
+
+
