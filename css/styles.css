@@ -541,6 +541,10 @@ input[type="radio"] {
 
 /* -------REVIEWS------- */
 
+.ratings-wrapper .close-encaps .x-close0 {
+    margin-top: 1.4em;
+}
+
 #review-input {
     /* width: auto; */
     width: 56vw;

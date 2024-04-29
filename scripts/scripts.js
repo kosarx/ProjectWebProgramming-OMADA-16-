@@ -170,3 +170,19 @@ document.querySelectorAll('#review-input').forEach(item => {
         }
     });
 });
+
+document.querySelectorAll('.ratings-wrapper .close-encaps .x-close0').forEach(item => {
+    item.addEventListener('click', event => {
+        const ratingsElement = item.parentElement.parentElement;
+        for (let star of ratingsElement.children) {
+            star.removeAttribute('data-clicked');
+        }
+    });
+    // Change the color of the close button when hovered
+    item.addEventListener('mouseover', event => {
+        item.src = "svgs/BlackX.svg";
+    });
+    item.addEventListener('mouseout', event => {
+        item.src = "svgs/GrayX.svg";
+    });
+});
