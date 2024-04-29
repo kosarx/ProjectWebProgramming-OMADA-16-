@@ -372,6 +372,14 @@ footer {
     padding-right: 3em;
 }
 
+.bookings-reviews-title a {
+    text-decoration: none;
+}
+
+.bookings-reviews-title a:hover {
+    color: var(--medium-purple);
+}
+
 #review-row .card, #reviews-column .card {
     background-color:var(--review-card-color);
 }
@@ -383,6 +391,15 @@ footer {
 
 .shadowed-review-card {
     box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
+}
+
+.view-reviews-link{
+    transition: color 0.2s ease;
+}
+
+.view-reviews-link:hover {
+    color: var(--medium-purple);
+    font-weight: bold;
 }
 
 .inter-children-cards .card:hover {
