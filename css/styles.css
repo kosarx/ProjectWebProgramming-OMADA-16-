@@ -1,37 +1,37 @@
 /* -------COLOR PALETTE------- */
 :root {
     --dark-purple: #643843;
-    --medium-purple: #85586F; 
+    --medium-purple: #85586F;
     --light-purple: #AC7D88;
-    
+
     --card-background-color: #F9F9F9;
 
     --main-page-color: #D9D9D9;
 
-    --review-card-and-divider-shadow:  #afb1b6;
+    --review-card-and-divider-shadow: #afb1b6;
 
     --muted-text-color: #666;
 
     --review-card-color: #EFEFF0;
 
-    --hover-event-card: #b58ea3; 
+    --hover-event-card: #b58ea3;
 
-    --white: #fff;
-    --black: #000;
+    --light: #fff;
+    --dark: #000;
 
     --footer-background-color: #F3F3F3;
     --footer-text-color: #808080;
-  }
+}
 
 /* -------NAVBAR------- */
 
 body {
-    background-color: var(--white);
+    background-color: var(--light);
     z-index: 999;
 }
 
 .navbar {
-    background-color:var(--main-page-color);
+    background-color: var(--main-page-color);
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -109,6 +109,17 @@ body {
 
 
 /* -------FOOTER------- */
+body {
+    /* margin: 0; */
+    /* Remove default margin */
+    /* padding: 0; */
+    /* Remove default padding */
+    /* min-height: 100vh; */
+    /* Ensure body covers viewport height */
+    /* position: relative; */
+    /* Required for footer positioning */
+}
+
 
 .col.footer-names {
     text-align: center;
@@ -119,24 +130,63 @@ body {
 }
 
 footer {
+    /* position: absolute; */
+    /* Position the footer relative to the body */
+    /* bottom: 0; */
+    /* Align the footer to the bottom */
+    /* width: 100%; */
+    /* Full width */
     padding: 1% 1%;
-}
-
-footer {
-    background-color:var(--footer-background-color);
+    background-color: var(--footer-background-color);
     color: var(--footer-text-color);
 }
 
-
 /* -------INDEX------- */
+/* NEW CSS */
+.page-container.index{
+    height: 70vh;
+    /* 60% of viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/images/main_menu_image.jpg');
+    /* Set your image path here */
+    background-size: cover;
+    background-position: center;
+    /* border-radius: 20px; */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+    /* box-shadow: 0 3px 10px rgba(133, 88, 111, 0.8); */
+    /* box-shadow: 0 3px 10px rgba(100, 56, 67, 0.8); */
 
-#mainMenuImage {
-    margin-top: 3em;
-    /* border-radius: 1.5%; */
+}
+
+/* Optional: adjust styles to your liking */
+.search-bar-container {
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    /* Adjust opacity if needed */
+    /* padding: 20px; */
     border-radius: 10px;
+    margin: 0 auto;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+/* Optional: adjust styles to your liking */
+.main-menu-search-bar input[type="search"] {
+    width: 30vw;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+/* END OF NEW CSS */
+/* #mainMenuImage {
+    margin-top: 3em; */
+    /* border-radius: 1.5%; */
+    /* border-radius: 10px;
 
     box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
-}
+} */
 
 .btn-custom:focus,
 .btn-custom.focus {
@@ -159,7 +209,7 @@ footer {
     margin: 4% 0%;
     width: 89%;
     border-radius: 10px;
-    color: var(--white);
+    color: var(--light);
 
 }
 
@@ -195,6 +245,14 @@ footer {
     letter-spacing: 0.2rem;
 }
 
+.search-bar input[type="search"] {
+    width: 30vw;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+}
+
 
 #carousel-slide {
     margin: 0% 10%;
@@ -209,7 +267,7 @@ footer {
     width: 60vw;
     height: 40%;
     margin: 0% 10%;
-    color:var(--black);
+    color: var(--dark);
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
@@ -255,7 +313,7 @@ footer {
 }
 
 .event-card:hover * {
-    color:var(--white);
+    color: var(--light);
 
 }
 
@@ -263,7 +321,7 @@ footer {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
     /* transform: translate(4px, -4px); */
     transform: translateY(-4px);
-    background-color:var(--hover-event-card);
+    background-color: var(--hover-event-card);
     cursor: pointer;
 
 
@@ -276,7 +334,8 @@ footer {
     position: relative;
 }
 
-.arrow1,.arrow2 {
+.arrow1,
+.arrow2 {
     position: absolute;
     /* Position the second image absolutely within the container */
     top: 0;
@@ -335,7 +394,7 @@ footer {
     position: relative;
 }
 
-.divider{
+.divider {
     margin: 0 16em;
 }
 
@@ -372,8 +431,9 @@ footer {
     padding-right: 3em;
 }
 
-#review-row .card, #reviews-column .card {
-    background-color:var(--review-card-color);
+#review-row .card,
+#reviews-column .card {
+    background-color: var(--review-card-color);
 }
 
 .shadowed-text {
@@ -391,16 +451,17 @@ footer {
 }
 
 #tickets-col .card:active {
-    background-color:var(--medium-purple);
-    color: var(--white);
+    background-color: var(--medium-purple);
+    color: var(--light);
 }
 
-#tickets-col .card:active *{
-    color: var(--white);
+#tickets-col .card:active * {
+    color: var(--light);
 }
 
-.card-subtitle.location, .card-subtitle.title {
-    color:var(--muted-text-color); 
+.card-subtitle.location,
+.card-subtitle.title {
+    color: var(--muted-text-color);
 }
 
 .inter-children-cards .card {
@@ -440,8 +501,9 @@ input[type="radio"] {
     margin: 0.5em 1em 0.5em 0;
     padding: 0.5em 0em 0.5em 0;
     height: 100%;
-    border-radius: 10px; /* Need to fix the rounded corners */
-    
+    border-radius: 10px;
+    /* Need to fix the rounded corners */
+
 }
 
 .middle-centered-container {
@@ -460,19 +522,20 @@ input[type="radio"] {
     /* margin: 8px 0; */
     box-sizing: border-box;
     border: 2px solid #ccc;
-    border-radius: 4px; /* This makes the corners rounded */
+    border-radius: 4px;
+    /* This makes the corners rounded */
     resize: none;
 }
 
 #review-input:focus {
     outline: none;
-    border:2px solid var(--dark-purple);
+    border: 2px solid var(--dark-purple);
     box-shadow: 0 0 6px var(--dark-purple);
 }
 
 .btn-small {
     background-color: var(--dark-purple);
-    color: var(--white);
+    color: var(--light);
     /* margin-left: 800px; */
     position: absolute;
     right: 23%;
@@ -485,4 +548,75 @@ input[type="radio"] {
     border-radius: 3px;
     padding: 0.5em;
     margin: 0.5em 0;
+}
+
+
+/* -------LOG IN SIGN UP------- */
+
+.auth-container {
+    padding-top: 4em;
+    background-image: url('/images/main_menu_image.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    /* filter: blur(5px); */
+    display: flex;
+    /* Use flexbox layout */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    text-align: center;
+    /* Center text horizontally */
+}
+
+.auth-container .form-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* margin: 0 auto;
+    text-align: center; */
+    width: 30vw;
+    height: 36vh;
+    background-color: rgba(243, 243, 243, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.auth-container .row .col, .auth-container .row .col * {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.auth-container .row .col a {
+    color: var(--medium-purple);
+    text-decoration: none;
+}
+
+.auth-container .row .col .btn {
+    background-color: var(--dark-purple);
+    width: 65%;
+    border-radius: 8px;
+    color: var(--light);
+    letter-spacing: 0.2em;
+}
+
+.auth-container .row .col:has(small) {
+    text-align: end;
+}
+
+.auth-container .title {
+    font-size: 1.3em;
+    letter-spacing: 0.05em;
+    color: var(--medium-purple);
+    font-weight: 700;
+}
+
+.auth-container .form-container.sign-up {
+    height: 57vh;
+}
+.auth-container .form-container.reset-pwd {
+    height: 30vh;
 }
