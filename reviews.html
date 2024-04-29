@@ -82,23 +82,9 @@
             <div class="row">
                 <div class="col-md-5 offset-md-2 d-flex align-items-center">
                     <div class="text-overlay ps-4">Score:</div>
-                    <div class="rating mt-3 ms-md-3">
-                        <!-- <input type="radio" id="star5-1" name="rating-1" value="5">
-                        <label for="star5-1"><img src="svgs/Star.svg"></label>
-
-                        <input type="radio" id="star4-1" name="rating-1" value="4">
-                        <label for="star4-1"><img src="svgs/Star.svg"></label>
-
-                        <input type="radio" id="star3-1" name="rating-1" value="3">
-                        <label for="star3-1"><img src="svgs/Star.svg"></label>
-
-                        <input type="radio" id="star2-1" name="rating-1" value="2">
-                        <label for="star2-1"><img src="svgs/Star.svg"></label>
-
-                        <input type="radio" id="star1-1" name="rating-1" value="1">
-                        <label for="star1-1"><img src="svgs/Star.svg"></label> -->
+                    <div class="mt-3 ms-md-3">
                         <div class="ratings-wrapper">
-                            <div data-productid="39" class="ratings">
+                            <div id="userRating" class="ratings ratings-interactable">
                                 <div class="close-encaps">
                                     <img src="svgs/GrayX.svg" class="x-close0 no-fixed-position x-small ms-md-3" alt="X">
                                 </div>
@@ -109,10 +95,6 @@
                                <span data-rating="1">★</span>
                             </div>
                          </div>
-                         <!-- <div class="close-encaps">
-                            <img src="svgs/GrayX.svg" class="x-close0 no-fixed-position x-small ms-md-2" alt="X">
-                        </div> -->
-                        
                     </div>
                 </div>
             </div>
@@ -151,22 +133,20 @@
                     <div class="col-md-8 offset-md-0 mb-3 mx-auto" id="reviews-column">
                         <div class="highligthed-card"><!-- {{selected_review}}--></div>
                         <div class="card divider-bottom">
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-center pt-3">
                                         <h5 class="card-title"><strong>3/5</strong> </h5>
                                     </div>
                                     <div class="col-11">
-                                        <div class="rating">
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/Star.svg"></label>
-
-                                            <label><img src="svgs/Star.svg"></label>
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                               <span data-rating="5">★</span>
+                                               <span data-rating="4">★</span>
+                                               <span data-rating="3" data-clicked="true">★</span>
+                                               <span data-rating="2">★</span>
+                                               <span data-rating="1">★</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -191,22 +171,20 @@
                             </div>
                         </div>
                         <div class="card divider-bottom">
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title"><strong>4/5</strong> </h5>
+                                    <div class="col text-center pt-3">
+                                        <h5 class="card-title"><strong>5/5</strong> </h5>
                                     </div>
                                     <div class="col-11">
-                                        <div class="rating">
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/Star.svg"></label>
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                               <span data-rating="5" data-clicked="true">★</span>
+                                               <span data-rating="4">★</span>
+                                               <span data-rating="3">★</span>
+                                               <span data-rating="2">★</span>
+                                               <span data-rating="1">★</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -227,22 +205,20 @@
                             </div>
                         </div>
                         <div class="card divider-bottom">
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title"><strong>5/5</strong> </h5>
+                                    <div class="col text-center pt-3">
+                                        <h5 class="card-title"><strong>4/5</strong> </h5>
                                     </div>
                                     <div class="col-11">
-                                        <div class="rating">
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                               <span data-rating="5">★</span>
+                                               <span data-rating="4" data-clicked="true">★</span>
+                                               <span data-rating="3">★</span>
+                                               <span data-rating="2">★</span>
+                                               <span data-rating="1">★</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -261,22 +237,20 @@
                             </div>
                         </div>
                         <div class="card divider-bottom">
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-center pt-3">
                                         <h5 class="card-title"><strong>4/5</strong> </h5>
                                     </div>
                                     <div class="col-11">
-                                        <div class="rating">
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/Star.svg"></label>
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                               <span data-rating="5">★</span>
+                                               <span data-rating="4" data-clicked="true">★</span>
+                                               <span data-rating="3">★</span>
+                                               <span data-rating="2">★</span>
+                                               <span data-rating="1">★</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -298,22 +272,20 @@
                             </div>
                         </div>
                         <div class="card divider-bottom">
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                                 <div class="row">
-                                    <div class="col col-auto">
+                                    <div class="col text-center pt-3">
                                         <h5 class="card-title"><strong>3/5</strong> </h5>
                                     </div>
-                                    <div class="col-md-11">
-                                        <div class="rating">
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/ClickedStar.svg"></label>
-
-                                            <label><img src="svgs/Star.svg"></label>
-
-                                            <label><img src="svgs/Star.svg"></label>
+                                    <div class="col-11">
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                               <span data-rating="5">★</span>
+                                               <span data-rating="4">★</span>
+                                               <span data-rating="3" data-clicked="true">★</span>
+                                               <span data-rating="2">★</span>
+                                               <span data-rating="1">★</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

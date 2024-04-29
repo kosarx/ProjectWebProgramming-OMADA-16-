@@ -9,12 +9,12 @@
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <!-- bootstrap inclusion-->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/rating-system.css">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <title>Booking</title>
 </head>
 
 <body>
-
   <div id="navbar-placeholder"></div>
 
   <div class="container-fluid page-container">
@@ -68,27 +68,20 @@
     <div class="row m-4">
       <div class="col-md-4 mb-3">
         <div class="card divider-bottom">
-          <div class="card-body">
+          <div class="card-body pt-0">
             <div class="row">
-              <div class="col">
+              <div class="col text-center pt-3">
                 <h5 class="card-title"><strong>5/5</strong> </h5>
               </div>
               <div class="col-10">
-                <div class="rating">
-                  <input type="radio" id="star5-1" name="rating-1" value="5">
-                  <label for="star5-1"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star4-1" name="rating-1" value="4" disabled>
-                  <label for="star4-1"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star3-1" name="rating-1" value="3" disabled>
-                  <label for="star3-1"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star2-1" name="rating-1" value="2" disabled>
-                  <label for="star2-1"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star1-1" name="rating-1" value="1" disabled>
-                  <label for="star1-1"><img src="svgs/ClickedStar.svg"></label>
+                  <div class="ratings-wrapper">
+                    <div class="ratings">
+                       <span data-rating="5" data-clicked="true">★</span>
+                       <span data-rating="4">★</span>
+                       <span data-rating="3">★</span>
+                       <span data-rating="2">★</span>
+                       <span data-rating="1">★</span>
+                    </div>
                 </div>
               </div>
             </div>
@@ -103,28 +96,21 @@
       </div>
       <div class="col-md-4 mb-3">
         <div class="card divider-bottom">
-          <div class="card-body">
+          <div class="card-body pt-0">
             <div class="row">
-              <div class="col">
+              <div class="col text-center pt-3">
                 <h5 class="card-title"><strong>4/5</strong> </h5>
               </div>
               <div class="col-10">
-                <div class="rating">
-                  <input type="radio" id="star5-2" name="rating-2" value="5">
-                  <label for="star5-2"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star4-2" name="rating-2" value="4" disabled>
-                  <label for="star4-2"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star3-2" name="rating-2" value="3" disabled>
-                  <label for="star3-2"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star2-2" name="rating-2" value="2" disabled>
-                  <label for="star2-2"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star1-2" name="rating-2" value="1" disabled>
-                  <label for="star1-2"><img src="svgs/Star.svg"></label>
-                </div>
+                <div class="ratings-wrapper">
+                  <div class="ratings">
+                     <span data-rating="5">★</span>
+                     <span data-rating="4" data-clicked="true">★</span>
+                     <span data-rating="3">★</span>
+                     <span data-rating="2">★</span>
+                     <span data-rating="1">★</span>
+                  </div>
+              </div>
               </div>
             </div>
             <h6 class="card-subtitle my-2 ">USER</h6>
@@ -138,28 +124,21 @@
       </div>
       <div class="col-md-4 mb-3">
         <div class="card divider-bottom">
-          <div class="card-body">
+          <div class="card-body pt-0">
             <div class="row">
-              <div class="col">
+              <div class="col text-center pt-3">
                 <h5 class="card-title"><strong>2/5</strong> </h5>
               </div>
               <div class="col-10">
-                <div class="rating">
-                  <input type="radio" id="star5-3" name="rating-3" value="5">
-                  <label for="star5-3"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star4-3" name="rating-3" value="4" disabled>
-                  <label for="star4-3"><img src="svgs/ClickedStar.svg"></label>
-
-                  <input type="radio" id="star3-3" name="rating-3" value="3" disabled>
-                  <label for="star3-3"><img src="svgs/Star.svg"></label>
-
-                  <input type="radio" id="star2-3" name="rating-3" value="2" disabled>
-                  <label for="star2-3"><img src="svgs/Star.svg"></label>
-
-                  <input type="radio" id="star1-3" name="rating-3" value="1" disabled>
-                  <label for="star1-3"><img src="svgs/Star.svg"></label>
-                </div>
+                <div class="ratings-wrapper">
+                  <div class="ratings">
+                     <span data-rating="5">★</span>
+                     <span data-rating="4">★</span>
+                     <span data-rating="3">★</span>
+                     <span data-rating="2" data-clicked="true">★</span>
+                     <span data-rating="1">★</span>
+                  </div>
+              </div>
               </div>
             </div>
             <h6 class="card-subtitle my-2 ">USER</h6>

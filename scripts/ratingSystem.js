@@ -1,9 +1,9 @@
 ratingSystem();
 
 function ratingSystem() {
-    let stars = document.querySelectorAll(".ratings span");
-	let products = document.querySelectorAll(".ratings");
-	let ratings = [];
+    let stars = document.querySelector("#userRating").childNodes;
+	// let products = document.querySelectorAll(".ratings");
+	// let ratings = [];
 
     for (let star of stars){
         star.addEventListener("click", function(){
@@ -18,14 +18,24 @@ function ratingSystem() {
             
             this.setAttribute("data-clicked", "true");
             let rating = this.dataset.rating;
-            let productId = this.parentElement.dataset.productid;
-            let data = {
-                "rating" : rating,
-                "product-id" : productId,
-            }
+            localStorage.setItem("ratings", rating);
 
-            ratings.push(data);
-            // localStorage.setItem("ratings", JSON.stringify(ratings));
+            const button = document.querySelector('.post-review-btn-pos');
+            if (button) {
+                let hasComment = false;
+                if (document.querySelector('#review-input').value.trim() == '') {
+                    hasComment = false;
+                }
+                else {
+                    hasComment = true;
+                }
+                if (rating && hasComment) {
+                    button.disabled = false;
+                }
+                else {
+                    button.disabled = true;
+                }
+            }
         });       
     }
 }

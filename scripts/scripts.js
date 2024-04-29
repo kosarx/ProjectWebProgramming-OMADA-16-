@@ -162,11 +162,27 @@ document.querySelectorAll('.buy-btn').forEach(item => {
 document.querySelectorAll('#review-input').forEach(item => {
     item.addEventListener('input', event => {
         const postButton = document.querySelector('.post-review-btn-pos');
+        postButton.disabled = true;
+        let hasComment = false;
         if (event.target.value.trim() == '') {
-            postButton.disabled = true;
+            // postButton.disabled = true;
+            hasComment = false;
         }
         else {
+            // postButton.disabled = false;
+            hasComment = true;
+        }
+
+        rating = localStorage.getItem('ratings');
+        // rating is a string, so we need to convert it
+        if (rating === 'undefined') {
+            rating = undefined;
+        }
+        if (rating && hasComment) {
             postButton.disabled = false;
+        }
+        else {
+            postButton.disabled = true;
         }
     });
 });
@@ -176,6 +192,7 @@ document.querySelectorAll('.ratings-wrapper .close-encaps .x-close0').forEach(it
         const ratingsElement = item.parentElement.parentElement;
         for (let star of ratingsElement.children) {
             star.removeAttribute('data-clicked');
+            document.querySelector('.post-review-btn-pos').disabled = true;
         }
     });
     // Change the color of the close button when hovered
