@@ -143,7 +143,7 @@ footer {
 
 /* -------INDEX------- */
 /* NEW CSS */
-.page-container.index{
+.page-container.index {
     height: 70vh;
     /* 60% of viewport height */
     display: flex;
@@ -182,8 +182,8 @@ footer {
 /* END OF NEW CSS */
 /* #mainMenuImage {
     margin-top: 3em; */
-    /* border-radius: 1.5%; */
-    /* border-radius: 10px;
+/* border-radius: 1.5%; */
+/* border-radius: 10px;
 
     box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
 } */
@@ -461,7 +461,7 @@ footer {
     box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
 }
 
-.view-reviews-link{
+.view-reviews-link {
     transition: color 0.2s ease;
 }
 
@@ -589,7 +589,8 @@ input[type="radio"] {
 }
 
 /* === To make X interactable in modal */
-.x-close0, .x-close1 {
+.x-close0,
+.x-close1 {
     position: absolute;
     top: 17px;
     right: 16px;
@@ -607,6 +608,7 @@ input[type="radio"] {
 .close-encaps:hover .x-close1 {
     opacity: 1;
 }
+
 /* === End */
 
 .no-fixed-position {
@@ -628,7 +630,7 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-.seating-category-row div{
+.seating-category-row div {
     margin-top: 0;
 }
 
@@ -656,23 +658,25 @@ input[type="radio"] {
     /* Center text horizontally */
 }
 
-.auth-container .form-container {
-    position: absolute;
-    top: 40%;
+.auth-container .card {
+    width: 350px;
+}
+
+.auth-container .card {
+
+    /* position: absolute; */
+    /* make the card a bit higher than the middle of the screen */
+    /* top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* margin: 0 auto;
-    text-align: center; */
-    width: 30vw;
-    height: 36vh;
+    transform: translate(-50%, -50%); */
     background-color: rgba(243, 243, 243, 0.8);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-
-.auth-container .row .col, .auth-container .row .col * {
-    width: 65%;
+.auth-container .row .col,
+.auth-container .row .col * {
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -683,26 +687,41 @@ input[type="radio"] {
 
 .auth-container .row .col .btn {
     background-color: var(--dark-purple);
-    width: 65%;
     border-radius: 8px;
     color: var(--light);
     letter-spacing: 0.2em;
 }
 
-.auth-container .row .col:has(small) {
-    text-align: end;
-}
-
-.auth-container .title {
-    font-size: 1.3em;
-    letter-spacing: 0.05em;
+.auth-container .card-title {
+    font-size: 1.2em;
+    /* letter-spacing: 0.1em; */
     color: var(--medium-purple);
     font-weight: 700;
 }
 
-.auth-container .form-container.sign-up {
-    height: 57vh;
+.auth-container .row:has(small):last-of-type {
+    text-align: end;
 }
-.auth-container .form-container.reset-pwd {
-    height: 30vh;
+
+.auth-container .card-footer a{
+    color: var(--dark);
+    text-decoration: none;
 }
+
+.auth-container.reset-pwd a {
+    font-size: 1.1em;
+}
+
+/* Add separator in the "OR" text*/
+.or-separator .col::before,
+.or-separator .col::after {
+  content: '';
+  display: inline-block;
+  width: 32%; 
+  border-top: 0.05em solid rgba(0, 0, 0, 0.2); 
+  margin-bottom: 0.25em;
+}
+
+
+
+

@@ -20,34 +20,39 @@
   </header>
   <div id="navbar-placeholder"></div>
 
-  <div class="container-fluid auth-container">
-    <div class="container-fluid form-container">
-      <div class="row mt-3 mb-3">
-        <div class="col title">Log in to your account</div>
-      </div>
-      <div class="row mb-2">
-        <div class="col ">
-          <input type="text" class="form-control" placeholder="Username or Email" required>
+
+
+  <div class="container-fluid auth-container log-in">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Log in to your account</h5>
+        <form>
+          <div class="form-group row mb-2">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Username or Email" required>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <div class="col">
+              <input type="password" class="form-control" placeholder="Password" required>
+              <small><a href="reset_password.html">Forgot password?</a></small>
+            </div>
+          </div>
+          <div class="form-group row mb-3">
+            <div class="col">
+              <button type="submit" class="btn ">LOG IN</button>
+            </div>
+          </div>       
+        <div class="row mb-1">
+          <div class="col">
+            <small>Don’t have an account yet? <a href="/sign_up.html">Sign up.</a></small>
+          </div>
         </div>
-      </div>
-      <div class="row mb-2 ">
-        <div class="col text-center">
-          <input type="text" class="form-control" placeholder="Password" required>
-          <small><a href="reset_password.html">Forgot password?</a></small>
-        </div>
-      </div>
-      <div class="row mb-1">
-        <div class="col">
-          <button type="button" class="btn">LOG IN</button>
-        </div>
-      </div>
-      <div class="row mb-1">
-        <div class="col">
-          <small>Don’t have an account yet? <a href="/sign_up.html">Sign up.</a></small>
-        </div>
+      </form>
       </div>
     </div>
   </div>
+
 
   <div id="footer-placeholder"></div>
 
