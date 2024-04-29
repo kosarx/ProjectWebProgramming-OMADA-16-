@@ -431,6 +431,22 @@ footer {
     padding-right: 3em;
 }
 
+.bookings-reviews-title a {
+    text-decoration: none;
+}
+
+.bookings-reviews-title a:hover {
+    color: var(--medium-purple);
+}
+
+.bookings-reviews-title a {
+    text-decoration: none;
+}
+
+.bookings-reviews-title a:hover {
+    color: var(--medium-purple);
+}
+
 #review-row .card,
 #reviews-column .card {
     background-color: var(--review-card-color);
@@ -443,6 +459,15 @@ footer {
 
 .shadowed-review-card {
     box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
+}
+
+.view-reviews-link{
+    transition: color 0.2s ease;
+}
+
+.view-reviews-link:hover {
+    color: var(--medium-purple);
+    font-weight: bold;
 }
 
 .inter-children-cards .card:hover {
@@ -514,6 +539,8 @@ input[type="radio"] {
     /* width: 70%; */
 }
 
+/* -------REVIEWS------- */
+
 #review-input {
     /* width: auto; */
     width: 56vw;
@@ -536,18 +563,73 @@ input[type="radio"] {
 .btn-small {
     background-color: var(--dark-purple);
     color: var(--light);
-    /* margin-left: 800px; */
-    position: absolute;
-    right: 23%;
     padding-left: 2em;
     padding-right: 2em;
 }
 
+.post-review-btn-pos {
+    position: absolute;
+    right: 23%;
+}
+
+/* -------MODALs------- */
 .seating-category-select-rows .seating-category-row {
     background-color: var(--main-page-color);
     border-radius: 3px;
     padding: 0.5em;
     margin: 0.5em 0;
+}
+
+.close-encaps {
+    cursor: pointer;
+}
+
+/* === To make X interactable in modal */
+.x-close0, .x-close1 {
+    position: absolute;
+    top: 17px;
+    right: 16px;
+    transition: opacity 0.3s ease;
+}
+
+.x-close0 {
+    opacity: 1;
+}
+
+.x-close1 {
+    opacity: 0;
+}
+
+.close-encaps:hover .x-close1 {
+    opacity: 1;
+}
+/* === End */
+
+.no-fixed-position {
+    position: static;
+    top: auto;
+    right: auto;
+}
+
+.x-small {
+    width: 1em;
+    height: 1em;
+
+    margin-top: 1.1em;
+
+    /* padding-right: 0;     */
+}
+
+.plus-icon {
+    cursor: pointer;
+}
+
+.seating-category-row div{
+    margin-top: 0;
+}
+
+.tickets-selected {
+    background-color: var(--card-background-color);
 }
 
 
