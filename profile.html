@@ -22,12 +22,28 @@
 
     <div class="container-fluid page-container user-info">
         <div class="row mt-5">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-3 text-center">
-                <img src="svgs/profile_page_Avatar.svg" class="rounded-circle float-right" alt="User Profile">
-            </div>
+            <div class="col-1 col-md-2"></div>
+            <div class="col-5 col-lg-3 text-center">
+                <div class="row">
+                    <div class="col">
+                        <img src="svgs/profile_page_Avatar.svg" class="rounded-circle float-right img-fluid"
+                            alt="User Profile">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col">
+                        <div>
+                            <input type="file" id="profilePhoto" accept="image/*" name="profilePhoto"
+                                style="opacity: 0;">
+                        </div>
+                        <div>
+                            <label for="profilePhoto" class="btn">+ Upload Photo</label>
+                        </div>
 
-            <div class="col-lg-5">
+                    </div>
+                </div>
+            </div>
+            <div class="col-5 col-lg-4">
                 <div class="row username mt-3">
                     <div class="col">
                         <h4>Username</h4>
@@ -43,23 +59,23 @@
                         email@domain.com
                     </div>
                 </div>
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col text-end">
                         <button type="button" class="btn btn-log-out">Edit Profile</button>
                     </div>
-                </div> --> <!-- MAYBE we'll add an edit profile option-->
+                </div> <!-- MAYBE we'll add an edit profile option-->
                 <div class="row mt-2"></div>
-                <div class="row member-since mt-5">
-                <!-- <div class="row member-since mt-3"> -->  <!--If we use the edit profile button-->
-                    <div class="col-8">
+                <!-- <div class="row member-since mt-5"> -->
+                <div class="row member-since mt-3"> <!--If we use the edit profile button-->
+                    <div class="col-6">
                         Member since: 10/10/2024
                     </div>
-                    <div class="col-4 text-end">
+                    <div class="col-6 text-end">
                         <button type="button" class="btn btn-log-out">Sign out</button>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-1 col-md-2"></div>
         </div>
         <div class="row mt-3">
             <div class="col-md-2"></div>
@@ -84,31 +100,269 @@
             <div class="col-1 col-md-3"></div>
             <div class="col">
                 <div class="fixed-height-container overflow-auto">
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
+                    <div class="container-fluid tickets-booked-container">
+                        <div class="row">
+                            <div class="col inter-children-cards" id="booked-tickets-col">
+                                <div class="row scheduled" onmouseover="showMessage(this)"
+                                    onmouseout="hideMessage(this)">
+                                    <div class="col-9">
+                                        <div id="event-show-1" class="card mt-3 mb-4 pt-1 pb-0"
+                                            data-target="#selectTickets">
+                                            <div class="card-body">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <h5 class="card-title"><span
+                                                                class="event-date">25/08/2024</span>, <span
+                                                                class="event-day">Thursday</span>,
+                                                            <span class="event-hour"> 18:00 </span>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                                class="event-venue">VENUE</span>,
+                                                            <span class="event-venue-address">ADDRESS</span>
+                                                        </h6>
+                                                        <h6 class="card-subtitle mt-2 title"><span
+                                                                class="event-title">TITLE</span> - <span
+                                                                class="event-artists">ARTIST</span>
+                                                            <!-- <span class="hover-message">This show has been
+                                                                cancelled</span> -->
+                                                            <div class="hover-message"></div>
+                                                        </h6>
+
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <div class="card-title">
+                                                            <span name="price">17.00€</span>
+                                                            <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
+                                        padding: 0;">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Cancel Ticket</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row cancelled-by-user" onmouseover="showMessage(this)"
+                                    onmouseout="hideMessage(this)">
+                                    <div class="col-9">
+                                        <div id="event-show-2" class="card mt-3 mb-4 pt-1 pb-0"
+                                            data-target="#selectTickets">
+                                            <div class="card-body">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <h5 class="card-title"><span
+                                                                class="event-date">25/08/2024</span>, <span
+                                                                class="event-day">Thursday</span>,
+                                                            <span class="event-hour"> 19:00 </span>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                                class="event-venue">VENUE</span>,
+                                                            <span class="event-venue-address">ADDRESS</span>
+                                                        </h6>
+                                                        <h6 class="card-subtitle mt-2 title"><span
+                                                                class="event-title">TITLE</span> - <span
+                                                                class="event-artists">ARTIST</span>
+                                                            <div class="hover-message"></div>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <div class="card-title">
+                                                            <span name="price">17.00€</span>
+                                                            <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
+                                        padding: 0;">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Cancel Ticket</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row cancelled-show" onmouseover="showMessage(this)"
+                                    onmouseout="hideMessage(this)">
+                                    <div class="col-9">
+                                        <div id="event-show-3" class="card mt-3 mb-4 w-l pt-1 pb-0"
+                                            data-target="#selectTickets">
+                                            <div class="card-body">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <h5 class="card-title"><span
+                                                                class="event-date">25/08/2024</span>, <span
+                                                                class="event-day">Thursday</span>,
+                                                            <span class="event-hour"> 21:00 </span>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                                class="event-venue">VENUE</span>,
+                                                            <span class="event-venue-address">ADDRESS</span>
+                                                        </h6>
+                                                        <h6 class="card-subtitle mt-2 title"><span
+                                                                class="event-title">TITLE</span> - <span
+                                                                class="event-artists">ARTIST</span>
+                                                            <div class="hover-message"></div>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <div class="card-title">
+                                                            <span name="price">17.00€</span>
+                                                            <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
+                                        padding: 0;">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Cancel Ticket</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row cancelled-show" onmouseover="showMessage(this)"
+                                    onmouseout="hideMessage(this)">
+                                    <div class="col-9">
+                                        <div id="event-show-4" class="card mt-3 mb-4 pt-1 pb-0"
+                                            data-target="#selectTickets">
+                                            <div class="card-body">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <h5 class="card-title"><span
+                                                                class="event-date">26/08/2024</span>, <span
+                                                                class="event-day">Thursday</span>,
+                                                            <span class="event-hour"> 18:00 </span>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                                class="event-venue">VENUE</span>,
+                                                            <span class="event-venue-address">ADDRESS</span>
+                                                        </h6>
+                                                        <h6 class="card-subtitle mt-2 title"><span
+                                                                class="event-title">TITLE</span> - <span
+                                                                class="event-artists">ARTIST</span>
+                                                            <div class="hover-message"></div>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <div class="card-title">
+                                                            <span name="price">17.00€</span>
+                                                            <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
+                                        padding: 0;">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Cancel Ticket</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row cancelled-by-user" onmouseover="showMessage(this)"
+                                    onmouseout="hideMessage(this)">
+                                    <div class="col-10 col-md-9">
+                                        <div id="event-show-5" class="card mt-3 mb-4 pt-1 pb-0"
+                                            data-target="#selectTickets">
+                                            <div class="card-body">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <h5 class="card-title"><span
+                                                                class="event-date">27/08/2024</span>, <span
+                                                                class="event-day">Thursday</span>,
+                                                            <span class="event-hour"> 18:00 </span>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                                class="event-venue">VENUE</span>,
+                                                            <span class="event-venue-address">ADDRESS</span>
+                                                        </h6>
+                                                        <h6 class="card-subtitle mt-2 title"><span
+                                                                class="event-title">TITLE</span> - <span
+                                                                class="event-artists">ARTIST</span>
+                                                            <div class="hover-message"></div>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <div class="card-title">
+                                                            <span name="price">17.00€</span>
+                                                            <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-md-3  d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
+                                        padding: 0;">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Cancel Ticket</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row completed" onmouseover="showMessage(this)"
+                                    onmouseout="hideMessage(this)">
+                                    <div class="col-9">
+                                        <div id="event-show-6" class="card mt-3 mb-4 pt-1 pb-0"
+                                            data-target="#selectTickets">
+                                            <div class="card-body">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <h5 class="card-title"><span
+                                                                class="event-date">29/08/2024</span>, <span
+                                                                class="event-day">Thursday</span>,
+                                                            <span class="event-hour"> 18:00 </span>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                                class="event-venue">VENUE</span>,
+                                                            <span class="event-venue-address">ADDRESS</span>
+                                                        </h6>
+                                                        <h6 class="card-subtitle mt-2 title"><span
+                                                                class="event-title">TITLE</span> - <span
+                                                                class="event-artists">ARTIST</span>
+                                                            <div class="hover-message"></div>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <div class="card-title">
+                                                            <span name="price">17.00€</span>
+                                                            <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
+                                        padding: 0;">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Cancel Ticket</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+            <div class="col-1 col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+            <div class="col-10 col-md-6 divider-bottom">
             </div>
             <div class="col-1 col-md-3"></div>
         </div>
@@ -135,36 +389,21 @@
             <div class="col-1 col-md-3"></div>
             <div class="col">
                 <div class="fixed-height-container overflow-auto">
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                    This is an example of using .overflow-auto on an element with set width and height dimensions.
-                    By design, this content will vertically scroll.
-                </div>
-            </div>
-            <div class="col-1 col-md-3"></div>
-        </div>
 
+                </div>
+                <div class="col-1 col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-1 col-md-3"></div>
+                <div class="col-10 col-md-6 divider-bottom">
+                </div>
+                <div class="col-1 col-md-3"></div>
+            </div>
+
+        </div>
     </div>
+
+
 
 
     <div id="footer-placeholder"></div>
@@ -174,6 +413,35 @@
         crossorigin="anonymous"></script>
     <!-- Script to load the navbar and footer -->
     <script src="scripts/scripts.js"> </script>
+    <script>
+        // Function to show the message
+        function showMessage(row) {
+            let hoverMessage = row.querySelector('.hover-message');
+            if (row.classList.contains("cancelled-by-user")) {
+                hoverMessage.textContent = "This ticket was cancelled by you.";
+            }
+            else if (row.classList.contains("cancelled-show")) {
+                hoverMessage.textContent = "This show has been cancelled.";
+            }
+            else if (row.classList.contains("completed")) {
+                hoverMessage.textContent = "This show is over. ";
+            }
+        }
+
+        // Function to hide the message
+        function hideMessage(row) {
+            let hoverMessage = element.querySelector('.hover-message');
+            hoverMessage.textContent = "";
+        }
+
+        window.onload = function () {
+            var images = document.querySelectorAll('.tickets-booked-container .cancelled-by-user img.x-cancel, .tickets-booked-container .cancelled-show img.x-cancel, .tickets-booked-container .completed img.x-cancel ');
+            console.log(images);
+            images.forEach(function (img) {
+                img.src = '/svgs/GrayX.svg';
+            });
+        }
+    </script>
 </body>
 
 </html>

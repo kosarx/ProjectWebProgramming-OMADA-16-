@@ -19,6 +19,13 @@
     --light: #fff;
     --dark: #000;
 
+    --scheduled: #5DC51D;
+    --completed: #000;
+    --cancelled-show: #E53720;
+    --cancelled-by-user: #1E88E5;
+
+    --cancel-ticket: #E53720;
+
     --footer-background-color: #F3F3F3;
     --footer-text-color: #808080;
 }
@@ -471,7 +478,7 @@ footer {
     font-weight: bold;
 }
 
-.inter-children-cards .card:hover {
+.bookings-container .inter-children-cards .card:hover {
     box-shadow: 0 8px 20px rgba(133, 88, 111, 0.7);
     transform: translateY(-4px);
 }
@@ -490,7 +497,7 @@ footer {
     color: var(--muted-text-color);
 }
 
-.inter-children-cards .card {
+.bookings-container .inter-children-cards .card {
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
     /* Smooth transitions */
 }
@@ -704,7 +711,7 @@ input[type="radio"] {
     text-align: end;
 }
 
-.auth-container .card-footer a{
+.auth-container .card-footer a {
     color: var(--dark);
     text-decoration: none;
 }
@@ -716,11 +723,11 @@ input[type="radio"] {
 /* Add separator in the "OR" text*/
 .or-separator .col::before,
 .or-separator .col::after {
-  content: '';
-  display: inline-block;
-  width: 32%; 
-  border-top: 0.05em solid rgba(0, 0, 0, 0.2); 
-  margin-bottom: 0.25em;
+    content: '';
+    display: inline-block;
+    width: 32%;
+    border-top: 0.05em solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.25em;
 }
 
 
@@ -728,27 +735,110 @@ input[type="radio"] {
 
 /* -------PROFILE------- */
 
-
-
-
 .user-info .fixed-height-container {
-    height: 300px; /* Adjust the height as needed */
+    height: 500px;
 }
 
-.user-info .btn-log-out {
+.user-info .btn-log-out,
+.user-info label {
     background-color: var(--dark-purple);
     border-radius: 8px;
     color: var(--light);
+}
+
+.user-info .btn-log-out:hover {
+    color: var(--dark);
 }
 
 .user-info .btn-log-out:focus {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
-.user-info .member-since, .user-info .email{
+.user-info .member-since,
+.user-info .email {
     color: var(--muted-text-color);
 }
 
-.user-info .reviews, .user-info .tickets {
+.user-info .reviews,
+.user-info .tickets {
     letter-spacing: 0.2rem;
+}
+
+
+.tickets-booked-container {
+    /* width: 90%; */
+    align-items: start;
+    padding: 0 1em;
+}
+
+.tickets-booked-container .card-title {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    font-weight: 550;
+
+}
+
+.tickets-booked-container .card-subtitle {
+    font-size: 0.7em;
+}
+
+.tickets-booked-container .card {
+    border-radius: 0 8px 8px 0;
+    background-color: var(--card-background-color);
+}
+
+.tickets-booked-container .cancelled-by-user span.cancel-text,
+.tickets-booked-container .cancelled-show span.cancel-text,
+.tickets-booked-container .completed span.cancel-text {
+    color: var(--muted-text-color);
+}
+
+.tickets-booked-container .scheduled span.cancel-text {
+    color: var(--cancel-ticket);
+}
+
+.tickets-booked-container .completed .card {
+    border-right: 0.5em solid var(--completed);
+    /* title:  */
+}
+
+.tickets-booked-container .cancelled-show .card {
+    border-right: 0.5em solid var(--cancelled-show);
+}
+
+.tickets-booked-container .cancelled-by-user .card {
+    border-right: 0.5em solid var(--cancelled-by-user);
+}
+
+.tickets-booked-container .scheduled .card {
+    border-right: 0.5em solid var(--scheduled);
+
+}
+
+.tickets-booked-container .scheduled .cancel-col .x-cancel,
+.tickets-booked-container .scheduled .cancel-col span.cancel-text {
+    cursor: pointer;
+}
+
+
+.tickets-booked-container .scheduled .cancel-col .x-cancel:hover,
+.tickets-booked-container .scheduled .cancel-col span.cancel-text:hover {
+    color: darkred;
+}
+
+/* #tickets-col .card {
+    cursor: pointer;
+} */
+
+.hover-message {
+    display: none;
+}
+
+/* Show the message when hovering over the card */
+.card:hover .hover-message {
+    display: block;
+}
+
+.reviews-by-user .card {
+    background-color: var(--review-card-color);
 }
