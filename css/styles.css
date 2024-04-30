@@ -265,8 +265,8 @@ footer {
     margin: 0% 10%;
 }
 
-.c-img {
-    height: 30em;
+.carousel-img {
+    max-height: 30em;
 }
 
 .event-card {
@@ -740,7 +740,7 @@ input[type="radio"] {
 }
 
 .user-info .btn-log-out,
-.user-info label {
+.user-info label.btn{
     background-color: var(--dark-purple);
     border-radius: 8px;
     color: var(--light);
@@ -752,6 +752,16 @@ input[type="radio"] {
 
 .user-info .btn-log-out:focus {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-info #uploadProfilePhoto {
+    opacity: 0%;
+}
+
+.user-info #profilePhoto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 .user-info .member-since,
@@ -841,4 +851,14 @@ input[type="radio"] {
 
 .reviews-by-user .card {
     background-color: var(--review-card-color);
+}
+
+.tickets-booked-container .cancel-col a {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.user-info #profilePhoto {
+    cursor: pointer;
 }

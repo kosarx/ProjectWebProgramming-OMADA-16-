@@ -23,21 +23,23 @@
     <div class="container-fluid page-container user-info">
         <div class="row mt-5">
             <div class="col-1 col-md-2"></div>
-            <div class="col-5 col-lg-3 text-center">
+            <div class="col-6 col-md-5 col-lg-3 text-center">
                 <div class="row">
                     <div class="col">
-                        <img src="svgs/profile_page_Avatar.svg" class="rounded-circle float-right img-fluid"
-                            alt="User Profile">
+                        <label for="uploadProfilePhoto">
+                            <img id="profilePhoto" src="svgs/profile_page_Avatar.svg"
+                                class="rounded-circle float-right img-fluid" alt="User Profile">
+                        </label>
+
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col">
                         <div>
-                            <input type="file" id="profilePhoto" accept="image/*" name="profilePhoto"
-                                style="opacity: 0;">
+                            <input type="file" id="uploadProfilePhoto" accept="image/*" name="profilePhoto">
                         </div>
                         <div>
-                            <label for="profilePhoto" class="btn">+ Upload Photo</label>
+                            <label for="uploadProfilePhoto" class="btn">+ Upload Photo</label>
                         </div>
 
                     </div>
@@ -140,8 +142,7 @@
                                         </div>
                                     </div>
                                     <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
-                                        padding: 0;">
+                                        <a href="#" class="btn btn-primary">
                                             <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                             <span class="cancel-text">Cancel Ticket</span>
                                         </a>
@@ -181,8 +182,7 @@
                                         </div>
                                     </div>
                                     <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
-                                        padding: 0;">
+                                        <a href="#" class="btn btn-primary">
                                             <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                             <span class="cancel-text">Cancel Ticket</span>
                                         </a>
@@ -222,8 +222,7 @@
                                         </div>
                                     </div>
                                     <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
-                                        padding: 0;">
+                                        <a href="#" class="btn btn-primary">
                                             <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                             <span class="cancel-text">Cancel Ticket</span>
                                         </a>
@@ -263,8 +262,7 @@
                                         </div>
                                     </div>
                                     <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
-                                        padding: 0;">
+                                        <a href="#" class="btn btn-primary">
                                             <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                             <span class="cancel-text">Cancel Ticket</span>
                                         </a>
@@ -304,8 +302,7 @@
                                         </div>
                                     </div>
                                     <div class="col-2 col-md-3  d-flex align-items-center text-center cancel-col">
-                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
-                                        padding: 0;">
+                                        <a href="#" class="btn btn-primary">
                                             <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                             <span class="cancel-text">Cancel Ticket</span>
                                         </a>
@@ -345,8 +342,7 @@
                                         </div>
                                     </div>
                                     <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                        <a href="#" class="btn btn-primary" style="background-color: transparent; border: none;
-                                        padding: 0;">
+                                        <a href="#" class="btn btn-primary">
                                             <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                             <span class="cancel-text">Cancel Ticket</span>
                                         </a>
@@ -441,6 +437,16 @@
                 img.src = '/svgs/GrayX.svg';
             });
         }
+
+        // change the profile picture when user uploads one
+        document.querySelector('#uploadProfilePhoto').addEventListener('change', function () {
+            let profilePic = document.querySelector('#profilePhoto');
+            let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
+
+            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        });
+
+
     </script>
 </body>
 
