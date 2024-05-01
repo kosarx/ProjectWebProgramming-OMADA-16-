@@ -2,7 +2,7 @@
 fetch('navbar.html')
     .then(response => response.text())
     .then(data => {
-    document.getElementById('navbar-placeholder').innerHTML = data;
+        document.getElementById('navbar-placeholder').innerHTML = data;
     });
 
 // Fetch and insert the footer
@@ -14,7 +14,7 @@ fetch('footer.html')
 
 function ticketNavigation() {
     location.href = "booking.html"
-    }
+}
 
 
 // ----------------- Modal - Ticket Selection -----------------
@@ -39,16 +39,16 @@ document.querySelectorAll('.seating-category-row .plus-icon').forEach(item => {
 
         // Load the content of the modal
         const content = await fetch('ticketsModal.html').then(response => response.text())
-                            .then(data => {return data; });      
+            .then(data => { return data; });
         // Add it to the category row              
         categoryRow.insertAdjacentHTML('beforeend', content);
 
         // Set the ticket id, ticket number and price
         categoryRow.querySelector('.tickets-selected:last-child').id = `ticket${ticketsClicked}`;
         const ticketElement = document.querySelector(`#ticket${ticketsClicked}`);
-        ticketElement.querySelector('.ticket-number').textContent = `TICKET #${ticketsClicked}`; 
+        ticketElement.querySelector('.ticket-number').textContent = `TICKET #${ticketsClicked}`;
         ticketElement.querySelector('.ticket-price').textContent = `${parseFloat(categoryRow.querySelector('.base-category-price').textContent).toFixed(2)}€`;
-        
+
         // Add the event listener for the close button
         document.querySelectorAll('.tickets-selected .close-encaps .x-close0').forEach(item => {
             item.addEventListener('click', event => {
@@ -91,11 +91,11 @@ function addDiscountListener(ticketElement) {
 
         // Get the discount percentage from the selected option
         const discount = parseInt(selectedOption.textContent.split(',')[1]);
-        
+
         const parentElement = ticketElement.parentElement;
         const baseCategoryPrice = parseFloat(parentElement.querySelector('.base-category-price').textContent);
         if (discount) {
-            ticketElement.querySelector('.ticket-price').textContent = `${(baseCategoryPrice - discount/100 * baseCategoryPrice).toFixed(2)}€`;
+            ticketElement.querySelector('.ticket-price').textContent = `${(baseCategoryPrice - discount / 100 * baseCategoryPrice).toFixed(2)}€`;
         }
         else {
             ticketElement.querySelector('.ticket-price').textContent = `${baseCategoryPrice.toFixed(2)}€`;
@@ -105,13 +105,13 @@ function addDiscountListener(ticketElement) {
 }
 
 // Set ticket information in the modal
-document.querySelectorAll('#tickets-col .card-body').forEach(item => { 
+document.querySelectorAll('#tickets-col .card-body').forEach(item => {
     item.addEventListener('click', event => {
         let cardClickedElement = event.target;
         while (!(cardClickedElement.id.includes('event-show'))) {
             cardClickedElement = cardClickedElement.parentElement;
-            }
-            
+        }
+
         // Get the information from the card
         const eventDate = cardClickedElement.querySelector('.event-date').textContent;
         const eventDay = cardClickedElement.querySelector('.event-day').textContent;
@@ -121,7 +121,7 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
         const eventVenue = cardClickedElement.querySelector('.event-venue').textContent;
         const eventVenueAddress = cardClickedElement.querySelector('.event-venue-address').textContent;
         // const eventBasePrice = parseFloat(cardClickedElement.querySelector('span[name="price"]').textContent);
-        
+
         // Set the information in the modal
         const modalInfoElement = document.querySelector('#modal-info');
         modalInfoElement.querySelector('.event-date').textContent = eventDate;
@@ -134,9 +134,9 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
 
         // Set the ticket price in the modal
         modalInfoElement.querySelector('.modal #final-price').textContent = `${Number(0).toFixed(2)}€`;
-        });
-    
     });
+
+});
 
 function calculateFinalPrice() {
     let finalPrice = 0;
@@ -203,3 +203,41 @@ document.querySelectorAll('.ratings-wrapper .close-encaps .x-close0').forEach(it
         item.src = "svgs/GrayX.svg";
     });
 });
+
+
+// Function to show the message
+function showMessage(row) {
+    let hoverMessage = row.querySelector('.hover-message');
+    if (row.classList.contains("cancelled-by-user")) {
+        hoverMessage.textContent = "This ticket was cancelled by you.";
+    }
+    else if (row.classList.contains("cancelled-show")) {
+        hoverMessage.textContent = "This show has been cancelled.";
+    }
+    else if (row.classList.contains("completed")) {
+        hoverMessage.textContent = "This show is over. ";
+    }
+}
+
+// Function to hide the message
+function hideMessage(row) {
+    let hoverMessage = element.querySelector('.hover-message');
+    hoverMessage.textContent = "";
+}
+
+window.onload = function () {
+    var images = document.querySelectorAll('.tickets-booked-container .cancelled-by-user img.x-cancel, .tickets-booked-container .cancelled-show img.x-cancel, .tickets-booked-container .completed img.x-cancel ');
+    console.log(images);
+    images.forEach(function (img) {
+        img.src = '/svgs/GrayX.svg';
+    });
+}
+
+// change the profile picture when user uploads one
+document.querySelector('#uploadProfilePhoto').addEventListener('change', function () {
+    let profilePic = document.querySelector('#profilePhoto');
+    let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
+
+    profilePic.src = URL.createObjectURL(inputFile.files[0]);
+});
+

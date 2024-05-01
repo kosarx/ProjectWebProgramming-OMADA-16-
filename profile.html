@@ -9,6 +9,7 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- bootstrap inclusion-->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rating-system.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <title>User Profile</title>
 </head>
@@ -381,21 +382,307 @@
             </div>
             <div class="col-1 col-md-3"></div>
         </div>
-        <div class="row mb-5">
+        <div class="row">
             <div class="col-1 col-md-3"></div>
             <div class="col">
                 <div class="fixed-height-container overflow-auto">
+                    <div class="container-fluid reviews-by-user-container">
+                        <div class="row">
+                            <!-- <div class="col-md-8 offset-md-0 mb-3 mx-auto" id="user-reviews-col"> -->
+                            <div class="col inter-children-cards" id="user-reviews-col">
+                                <div class="highligthed-card"><!-- {{selected_review}}--></div>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="card divider-bottom">
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <!-- <div class="col text-center pt-3"> -->
+                                                    <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                        <h5 class="card-title"><strong>3/5</strong> </h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="ratings-wrapper">
+                                                            <div class="ratings">
+                                                                <span data-rating="5">★</span>
+                                                                <span data-rating="4">★</span>
+                                                                <span data-rating="3" data-clicked="true">★</span>
+                                                                <span data-rating="2">★</span>
+                                                                <span data-rating="1">★</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <!-- <div class="col-sm-1 text-left"> -->
+                                                    <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                        <h6 class="card-subtitle my-2">USER</h6>
+                                                    </div>
+                                                    <!-- <div class="col-md-auto text-left"> -->
+                                                    <div class="col text-left">
+                                                        <h6 class="card-subtitle my-2">
+                                                            <date class="small">2024-02-22</date>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text card-description">Lorem ipsum dolor sit amet
+                                                    consectetur,
+                                                    adipisicing elit. Maiores
+                                                    porro
+                                                    accusamus ullam
+                                                    itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum
+                                                    dolor sit
+                                                    amet.
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fuga
+                                                    impedit
+                                                    soluta
+                                                    architecto voluptate officia quod quisquam libero laudantium
+                                                    tempore!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Delete Review</span>
+                                        </a>
+                                    </div>
 
+                                </div>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="card divider-bottom">
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <!-- <div class="col text-center pt-3"> -->
+                                                    <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                        <h5 class="card-title"><strong>5/5</strong> </h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="ratings-wrapper">
+                                                            <div class="ratings">
+                                                                <span data-rating="5" data-clicked="true">★</span>
+                                                                <span data-rating="4">★</span>
+                                                                <span data-rating="3">★</span>
+                                                                <span data-rating="2">★</span>
+                                                                <span data-rating="1">★</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                        <h6 class="card-subtitle my-2">USER</h6>
+                                                    </div>
+                                                    <!-- <div class="col-md-auto text-left"> -->
+                                                    <div class="col text-left">
+                                                        <h6 class="card-subtitle my-2">
+                                                            <date class="small">2024-02-22</date>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit.
+                                                    Maiores
+                                                    porro
+                                                    accusamus ullam.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Delete Review</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="card divider-bottom">
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <!-- <div class="col text-center pt-3"> -->
+                                                    <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                        <h5 class="card-title"><strong>4/5</strong> </h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="ratings-wrapper">
+                                                            <div class="ratings">
+                                                                <span data-rating="5">★</span>
+                                                                <span data-rating="4" data-clicked="true">★</span>
+                                                                <span data-rating="3">★</span>
+                                                                <span data-rating="2">★</span>
+                                                                <span data-rating="1">★</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <!-- <div class="col-sm-1 text-left"> -->
+                                                    <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                        <h6 class="card-subtitle my-2">USER</h6>
+                                                    </div>
+                                                    <div class="col text-left">
+                                                        <h6 class="card-subtitle my-2">
+                                                            <date class="small">2024-02-22</date>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                    elit.
+                                                    Laborum
+                                                    eius
+                                                    esse ea, maxime facere vitae voluptates voluptas quibusdam explicabo
+                                                    nobis
+                                                    cum!
+                                                    Quisquam, reiciendis ea explicabo cumque laboriosam illum voluptate
+                                                    fugit
+                                                    molestias
+                                                    aspernatur dignissimos tempore tempora maiores, minus, praesentium
+                                                    optio
+                                                    quibusdam
+                                                    quasi
+                                                    quis amet! Voluptatibus, eaque! Eius vitae sapiente similique quae
+                                                    expedita
+                                                    illum
+                                                    labore
+                                                    animi, veritatis nemo autem sint necessitatibus nihil perspiciatis,
+                                                    vero
+                                                    placeat
+                                                    optio
+                                                    corrupti iure magni? Delectus nulla autem quae nisi quasi corrupti
+                                                    ad, ipsum
+                                                    et
+                                                    expedita, quod odio itaque vero quos suscipit vitae a doloremque
+                                                    distinctio
+                                                    ipsam.
+                                                    Harum
+                                                    molestiae quo ex voluptas id nam libero eius, quasi accusantium?
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Delete Review</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="card divider-bottom">
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <!-- <div class="col text-center pt-3"> -->
+                                                    <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                        <h5 class="card-title"><strong>4/5</strong> </h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="ratings-wrapper">
+                                                            <div class="ratings">
+                                                                <span data-rating="5">★</span>
+                                                                <span data-rating="4" data-clicked="true">★</span>
+                                                                <span data-rating="3">★</span>
+                                                                <span data-rating="2">★</span>
+                                                                <span data-rating="1">★</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                        <h6 class="card-subtitle my-2">USER</h6>
+                                                    </div>
+                                                    <div class="col text-left">
+                                                        <h6 class="card-subtitle my-2">
+                                                            <date class="small">2024-02-22</date>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit.
+                                                    Maiores
+                                                    porro
+                                                    accusamus ullam
+                                                    itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum
+                                                    dolor sit
+                                                    amet...
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Delete Review</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="card divider-bottom">
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                        <h5 class="card-title"><strong>3/5</strong> </h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="ratings-wrapper">
+                                                            <div class="ratings">
+                                                                <span data-rating="5">★</span>
+                                                                <span data-rating="4">★</span>
+                                                                <span data-rating="3" data-clicked="true">★</span>
+                                                                <span data-rating="2">★</span>
+                                                                <span data-rating="1">★</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <!-- <div class="col-sm-1 text-left"> -->
+                                                    <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                        <h6 class="card-subtitle my-2">USER</h6>
+                                                    </div>
+                                                    <!-- <div class="col-md-auto text-left"> -->
+                                                    <div class="col text-left">
+                                                        <h6 class="card-subtitle my-2">
+                                                            <date class="small">2024-02-22</date>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                    elit.
+                                                    Maiores
+                                                    porro
+                                                    accusamus ullam
+                                                    itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum
+                                                    dolor sit
+                                                    amet...
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                        <a href="#" class="btn btn-primary">
+                                            <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                            <span class="cancel-text">Delete Review</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-1 col-md-3"></div>
             </div>
-            <div class="row">
-                <div class="col-1 col-md-3"></div>
-                <div class="col-10 col-md-6 divider-bottom">
-                </div>
-                <div class="col-1 col-md-3"></div>
+            <div class="col-1 col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+            <div class="col-10 col-md-6 divider-bottom">
             </div>
-
+            <div class="col-1 col-md-3"></div>
         </div>
     </div>
 
@@ -404,50 +691,12 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- Script to load the navbar and footer -->
     <script src="scripts/scripts.js"> </script>
-    <script>
-        // Function to show the message
-        function showMessage(row) {
-            let hoverMessage = row.querySelector('.hover-message');
-            if (row.classList.contains("cancelled-by-user")) {
-                hoverMessage.textContent = "This ticket was cancelled by you.";
-            }
-            else if (row.classList.contains("cancelled-show")) {
-                hoverMessage.textContent = "This show has been cancelled.";
-            }
-            else if (row.classList.contains("completed")) {
-                hoverMessage.textContent = "This show is over. ";
-            }
-        }
-
-        // Function to hide the message
-        function hideMessage(row) {
-            let hoverMessage = element.querySelector('.hover-message');
-            hoverMessage.textContent = "";
-        }
-
-        window.onload = function () {
-            var images = document.querySelectorAll('.tickets-booked-container .cancelled-by-user img.x-cancel, .tickets-booked-container .cancelled-show img.x-cancel, .tickets-booked-container .completed img.x-cancel ');
-            console.log(images);
-            images.forEach(function (img) {
-                img.src = '/svgs/GrayX.svg';
-            });
-        }
-
-        // change the profile picture when user uploads one
-        document.querySelector('#uploadProfilePhoto').addEventListener('change', function () {
-            let profilePic = document.querySelector('#profilePhoto');
-            let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
-
-            profilePic.src = URL.createObjectURL(inputFile.files[0]);
-        });
-
-
-    </script>
+    <script src="scripts/ratingSystem.js"></script>
 </body>
 
 </html>

@@ -149,55 +149,89 @@ footer {
 }
 
 /* -------INDEX------- */
-/* NEW CSS */
+
 .page-container.index {
     height: 70vh;
-    /* 60% of viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
     background-image: url('/images/main_menu_image.jpg');
-    /* Set your image path here */
     background-size: cover;
     background-position: center;
-    /* border-radius: 20px; */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
-    /* box-shadow: 0 3px 10px rgba(133, 88, 111, 0.8); */
-    /* box-shadow: 0 3px 10px rgba(100, 56, 67, 0.8); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 
 }
 
-/* Optional: adjust styles to your liking */
+
 .search-bar-container {
-    /* background-color: rgba(255, 255, 255, 0.7); */
-    /* Adjust opacity if needed */
-    /* padding: 20px; */
     border-radius: 10px;
+    /* position: relative; */
     margin: 0 auto;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
-/* Optional: adjust styles to your liking */
 .main-menu-search-bar input[type="search"] {
-    width: 30vw;
-    padding: 10px;
-    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25vw;
+
+    height: 44px;
+    border: 1px solid var(--review-card-color);
     border-radius: 50px;
     font-size: 16px;
 }
 
-/* END OF NEW CSS */
-/* #mainMenuImage {
-    margin-top: 3em; */
-/* border-radius: 1.5%; */
-/* border-radius: 10px;
 
-    box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
-} */
+/* SEARCH BAR AND BUTTON CSS */
 
-.btn-custom:focus,
-.btn-custom.focus {
-    box-shadow: inset 0 0 10px var(--medium-purple);
+.index .search-container,
+.events .search-container,
+.reviews .search-container {
+    display: inline-flex;
+    /* Display items inline */
+    align-items: center;
+    /* Align items vertically */
+}
+
+.index .circular-div,
+.events .circular-div,
+.reviews .circular-div {
+    width: 44px;
+    /* Set width and height to create a circular shape */
+    height: 44px;
+    border-radius: 50%;
+    /* Makes the div circular */
+    background-image: url('/svgs/ArrowButton.svg');
+    /* Set the background image */
+    background-size: cover;
+    /* Ensure the background image covers the entire div */
+    background-position: center;
+    /* Center the background image */
+    cursor: pointer;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); */
+    transition: transform 0.3s ease;
+
+    /* Change cursor to indicate interaction */
+    margin-left: 10px;
+    /* Adjust spacing between search input and button */
+
+
+}
+
+.index .main-menu-search-bar form,
+.events .search-bar form,
+.reviews .search-bar form {
+    display: flex;
+    /* Ensure form elements are displayed inline */
+    align-items: center;
+    /* Align form elements vertically */
+}
+
+
+.index .circular-div:active,
+.events .circular-div:active,
+.reviews .circular-div:active {
+    /* box-shadow: 4px 10px 8px rgba(0, 0, 0, 0.2); */
+    transform: translateX(10px);
+    /* box-shadow: 0 0 10px var(--dark-purple); */
 }
 
 #cardCont .card {
@@ -221,7 +255,13 @@ footer {
 }
 
 #cardCont .card img {
-    border-radius: 3%;
+    /* border-radius: 6px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; */
+
+    border-radius: 6px;
     max-width: 100%;
     width: 80%;
     height: 16.6em;
@@ -740,7 +780,7 @@ input[type="radio"] {
 }
 
 .user-info .btn-log-out,
-.user-info label.btn{
+.user-info label.btn {
     background-color: var(--dark-purple);
     border-radius: 8px;
     color: var(--light);
@@ -781,7 +821,8 @@ input[type="radio"] {
     padding: 0 1em;
 }
 
-.tickets-booked-container .card-title {
+.tickets-booked-container .card-title,
+.reviews-by-user-container .card-title  {
     font-size: 0.9em;
     letter-spacing: 1px;
     font-weight: 550;
@@ -803,13 +844,13 @@ input[type="radio"] {
     color: var(--muted-text-color);
 }
 
-.tickets-booked-container .scheduled span.cancel-text {
+.tickets-booked-container .scheduled span.cancel-text,
+ span.cancel-text{
     color: var(--cancel-ticket);
 }
 
 .tickets-booked-container .completed .card {
     border-right: 0.5em solid var(--completed);
-    /* title:  */
 }
 
 .tickets-booked-container .cancelled-show .card {
@@ -822,7 +863,6 @@ input[type="radio"] {
 
 .tickets-booked-container .scheduled .card {
     border-right: 0.5em solid var(--scheduled);
-
 }
 
 .tickets-booked-container .scheduled .cancel-col .x-cancel,
@@ -832,7 +872,8 @@ input[type="radio"] {
 
 
 .tickets-booked-container .scheduled .cancel-col .x-cancel:hover,
-.tickets-booked-container .scheduled .cancel-col span.cancel-text:hover {
+.tickets-booked-container .scheduled .cancel-col span.cancel-text:hover,
+.reviews-by-user-container .cancel-col span.cancel-text:hover{
     color: darkred;
 }
 
@@ -849,11 +890,9 @@ input[type="radio"] {
     display: block;
 }
 
-.reviews-by-user .card {
-    background-color: var(--review-card-color);
-}
 
-.tickets-booked-container .cancel-col a {
+.tickets-booked-container .cancel-col a,
+.reviews-by-user-container .cancel-col a {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -861,4 +900,26 @@ input[type="radio"] {
 
 .user-info #profilePhoto {
     cursor: pointer;
+}
+
+
+/* .user-info #user-reviews-col .card{
+    background-color: var(--review-card-color);
+} */
+
+.user-info .reviews-by-user-container .card {
+    background-color: var(--review-card-color);
+}
+
+
+.reviews-by-user-container .card-subtitle {
+    font-size: 0.8em;
+}
+
+.reviews-by-user-container .card-text {
+    font-size: 0.8em;
+}
+
+.reviews-by-user-container .ratings {
+    font-size: 0.8em;
 }
