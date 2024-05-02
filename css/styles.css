@@ -234,69 +234,6 @@ footer {
     /* box-shadow: 0 0 10px var(--dark-purple); */
 }
 
-/* #cardCont .card {
-    border-radius: 10px;
-    margin: 0 10%;
-    background-color: var(--main-page-color);
-    justify-content: center;
-    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 4%;
-} */
-
-/* 
-#cardCont .card .btn {
-    background-color: var(--dark-purple);
-    padding: 4% 0%;
-    margin: 4% 0%;
-    width: 89%;
-    border-radius: 10px;
-    color: var(--light);
-} */
-
-/* #cardCont .card {
-    height: 420px;
-    width: 360px;
-    background-color: var(--main-page-color);
-    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
-    justify-content: center;
-    margin: 0 auto;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-}
-
-#cardCont .card .btn {
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    width: 70%;
-    height: 14%;
-    color: var(--light);
-    background-color: var(--dark-purple);
-    margin: auto;
-    margin-top: 33px;
-    margin-bottom: 33px;
-}
-
-#cardCont .card-body {
-    padding: 0;
-}
-
-#cardCont a span {
-    font-size: 1.1em;
-    letter-spacing: 0.2em;
-    margin: auto;
-}
-
-#cardCont .card img {
-    border-radius: 8px;
-    object-fit: cover;
-    width: 70%;
-    height: 60%;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 34px;
-} */
-
 #cardCont .col {
     margin-bottom: 10px;
 }
@@ -676,6 +613,22 @@ input[type="radio"] {
     font-weight: 550;
     letter-spacing: 1px;
 }
+/* TESTING */
+#tickets-col .card {
+    width: 50%;
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    #tickets-col .card {
+      width: 70%; /* Set width to 70% for medium-sized screens */
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    #tickets-col .card {
+      width: 100%; /* Set width to 100% for smaller screens */
+    }
+  }
 
 #review-of-event-img {
     margin: 0.5em 1em 0.5em 0;
