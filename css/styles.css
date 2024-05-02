@@ -101,7 +101,9 @@ body {
     height: 100%;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0);
-    box-shadow: 0 0 5px 3px var(--medium-purple);
+    /* box-shadow: 0 0 5px 3px var(--medium-purple); */
+    box-shadow: 0 0 10px rgba(133, 88, 111, 0.8);
+
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -613,6 +615,7 @@ input[type="radio"] {
     font-weight: 550;
     letter-spacing: 1px;
 }
+
 /* TESTING */
 #tickets-col .card {
     width: 50%;
@@ -620,15 +623,17 @@ input[type="radio"] {
 
 @media (min-width: 576px) and (max-width: 991.98px) {
     #tickets-col .card {
-      width: 70%; /* Set width to 70% for medium-sized screens */
+        width: 70%;
+        /* Set width to 70% for medium-sized screens */
     }
-  }
-  
-  @media (max-width: 575.98px) {
+}
+
+@media (max-width: 575.98px) {
     #tickets-col .card {
-      width: 100%; /* Set width to 100% for smaller screens */
+        width: 100%;
+        /* Set width to 100% for smaller screens */
     }
-  }
+}
 
 #review-of-event-img {
     margin: 0.5em 1em 0.5em 0;
@@ -974,4 +979,72 @@ span.cancel-text {
 
 .reviews-by-user-container .ratings {
     font-size: 0.8em;
+}
+
+
+/* -------ABOUT US------- */
+
+.about-us .about-us-description {
+    font-size: 0.9em;
+
+}
+
+#person1 .name,
+#person2 .name {
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+#person1 .email,
+#person2 .email {
+    color: var(--muted-text-color);
+    font-size: 0.9em;
+}
+
+#person1 .description,
+#person2 .description {
+    font-size: 0.9em;
+}
+
+.about-us .photo {
+    max-width: 200px;
+    width: 100%;
+    max-height: 200px;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.about-us #person1,
+.about-us #person2 {
+    /* margin: 10px 0; */
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 991.98px) {
+
+    .about-us .about-us-description {
+        font-size: 0.8em;
+
+    }
+
+    #person1 .name,
+    #person2 .name {
+        font-size: 1em;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+    }
+
+    #person1 .email,
+    #person2 .email {
+        font-size: 0.7em;
+    }
+
+    #person1 .description,
+    #person2 .description {
+        font-size: 0.7em;
+    }
+
+
 }
