@@ -171,7 +171,7 @@ footer {
 
 .main-menu-search-bar input[type="search"] {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 25vw;
+    width: 30vw;
 
     height: 44px;
     border: 1px solid var(--review-card-color);
@@ -234,16 +234,16 @@ footer {
     /* box-shadow: 0 0 10px var(--dark-purple); */
 }
 
-#cardCont .card {
+/* #cardCont .card {
     border-radius: 10px;
     margin: 0 10%;
     background-color: var(--main-page-color);
     justify-content: center;
     box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 4%;
-}
+} */
 
-
+/* 
 #cardCont .card .btn {
     background-color: var(--dark-purple);
     padding: 4% 0%;
@@ -251,8 +251,122 @@ footer {
     width: 89%;
     border-radius: 10px;
     color: var(--light);
+} */
+
+/* #cardCont .card {
+    height: 420px;
+    width: 360px;
+    background-color: var(--main-page-color);
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+#cardCont .card .btn {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: 70%;
+    height: 14%;
+    color: var(--light);
+    background-color: var(--dark-purple);
+    margin: auto;
+    margin-top: 33px;
+    margin-bottom: 33px;
+}
+
+#cardCont .card-body {
+    padding: 0;
+}
+
+#cardCont a span {
+    font-size: 1.1em;
+    letter-spacing: 0.2em;
+    margin: auto;
+}
+
+#cardCont .card img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 70%;
+    height: 60%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 34px;
+} */
+
+#cardCont .col {
+    margin-bottom: 10px;
+}
+
+#cardCont .card {
+    max-width: 360px;
+    background-color: var(--main-page-color);
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    aspect-ratio: 9 / 10;
+    /* Set aspect ratio to 9:10 */
+}
+
+#cardCont .card .btn {
+    border-radius: 10px;
+    width: 70%;
+    /* Set button width as a percentage of the card width */
+    max-width: 260px;
+    /* Limit maximum button width */
+    height: 45%;
+    /* Set button height as a percentage of the card height */
+    max-height: 60px;
+    /* Limit maximum button height */
+    color: var(--light);
+    background-color: var(--dark-purple);
+    margin-top: 7%;
+    /* Set margin top as a percentage of the card height */
+    margin-bottom: 7%;
+    /* Set margin bottom as a percentage of the card height */
+    padding: 0;
+    display: flex;
+    /* Use flexbox */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+}
+
+#cardCont .card-body {
+    padding: 0;
 
 }
+
+#cardCont a span {
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    /* margin: 0; */
+    padding: 10% 18%;
+}
+
+#cardCont .card img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 70%;
+    /* Set image width as a percentage of the card width */
+    max-width: 260px;
+    /* Limit maximum image width */
+    height: 80%;
+    /* Set image height as a percentage of the card height */
+    max-height: 260px;
+    /* Limit maximum image height */
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10%;
+    /* Set margin bottom as a percentage of the card height */
+}
+
+
 
 #cardCont .card img {
     /* border-radius: 6px;
@@ -261,28 +375,20 @@ footer {
     height: auto;
     object-fit: cover; */
 
-    border-radius: 6px;
+    /* border-radius: 6px;
     max-width: 100%;
     width: 80%;
     height: 16.6em;
     display: block;
     margin: 0 auto;
-    margin-bottom: 10%;
+    margin-bottom: 10%; */
 }
+
 
 #cardCont .card:hover {
     box-shadow: 4px 10px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-4px);
 }
-
-#cardCont .card {
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-}
-
-#cardCont a {
-    letter-spacing: 0.1em;
-}
-
 
 
 /* -------EVENTS------- */
@@ -822,7 +928,7 @@ input[type="radio"] {
 }
 
 .tickets-booked-container .card-title,
-.reviews-by-user-container .card-title  {
+.reviews-by-user-container .card-title {
     font-size: 0.9em;
     letter-spacing: 1px;
     font-weight: 550;
@@ -845,7 +951,7 @@ input[type="radio"] {
 }
 
 .tickets-booked-container .scheduled span.cancel-text,
- span.cancel-text{
+span.cancel-text {
     color: var(--cancel-ticket);
 }
 
@@ -873,13 +979,10 @@ input[type="radio"] {
 
 .tickets-booked-container .scheduled .cancel-col .x-cancel:hover,
 .tickets-booked-container .scheduled .cancel-col span.cancel-text:hover,
-.reviews-by-user-container .cancel-col span.cancel-text:hover{
+.reviews-by-user-container .cancel-col span.cancel-text:hover {
     color: darkred;
 }
 
-/* #tickets-col .card {
-    cursor: pointer;
-} */
 
 .hover-message {
     display: none;
@@ -901,11 +1004,6 @@ input[type="radio"] {
 .user-info #profilePhoto {
     cursor: pointer;
 }
-
-
-/* .user-info #user-reviews-col .card{
-    background-color: var(--review-card-color);
-} */
 
 .user-info .reviews-by-user-container .card {
     background-color: var(--review-card-color);
