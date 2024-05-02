@@ -470,6 +470,7 @@ footer {
 
 }
 
+
 .event-card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
     /* transform: translate(4px, -4px); */
@@ -483,23 +484,23 @@ footer {
 /* .event-card:hover img.arrow {
     content: url(svgs/Fill9.svg); 
 } */
-.image-container {
+.events .event-card-body {
     position: relative;
 }
 
-.arrow1,
-.arrow2 {
+.events .arrow1,
+.events .arrow2 {
     position: absolute;
-    /* Position the second image absolutely within the container */
-    top: 0;
-    /* Align the top edge of the second image with the container */
-    left: 0;
-    /* Align the left edge of the second image with the container */
+    top: 50%;
+    /* Align the top edge of the arrows at the center */
+    transform: translateY(-50%);
+    /* Move the arrows up by half of their own height */
+    right: 10px;
+    /* Adjust the distance from the right edge of the card */
     transition: opacity 0.3s ease;
-    /* Add a transition effect */
 }
 
-.arrow2 {
+.events .arrow2 {
     opacity: 0;
 
 }
