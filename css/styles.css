@@ -25,6 +25,8 @@
     --cancelled-by-user: #1E88E5;
 
     --cancel-ticket: #E53720;
+    --booked: #5DC51D;
+
 
     --footer-background-color: #F3F3F3;
     --footer-text-color: #808080;
@@ -427,8 +429,8 @@ footer {
     position: relative;
 }
 
-.events .arrow1,
-.events .arrow2 {
+.event-card .dark-arrow,
+.event-card .light-arrow {
     position: absolute;
     top: 50%;
     /* Align the top edge of the arrows at the center */
@@ -439,17 +441,17 @@ footer {
     transition: opacity 0.3s ease;
 }
 
-.events .arrow2 {
+.event-card .light-arrow {
     opacity: 0;
 
 }
 
-.event-card:hover .arrow1 {
+.event-card:hover .dark-arrow {
     opacity: 0;
     /* Make the first image transparent when hovering over the card */
 }
 
-.event-card:hover .arrow2 {
+.event-card:hover .light-arrow {
     opacity: 1;
     /* Make the second image opaque when hovering over the card */
 }
@@ -1047,4 +1049,29 @@ span.cancel-text {
     }
 
 
+}
+
+
+/* ------- BOOKING COMPLETE ------- */
+
+.booking-complete .booked-successfully {
+    font-weight: 700;
+    color: var(--booked);
+    font-size: 1.3em;
+}
+
+.booking-complete .details-header, .booking-complete .download-tickets-header {
+    font-size: 1.2em;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+}
+
+
+.booking-complete .ticket-details {
+    /* font-size: 0.9em; */
+    letter-spacing: 0.2px;
+}
+.booking-complete .ticket-details .index {
+    font-size: 1.2em;
+    font-weight: 500;
 }

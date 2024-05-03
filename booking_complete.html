@@ -9,13 +9,120 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- bootstrap inclusion-->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <title>About Us</title>
+    <title>Booking Complete</title>
 </head>
 
 <body>
     <div id="navbar-placeholder"></div>
 
+    <div class="container-fluid booking-complete page-container">
+        <div class="row">
+            <div onclick="ticketNavigation()" class="card mt-3 mx-auto event-card divider-bottom">
+                <div class="row gx-2">
+                    <div class="col-md-4 col-xl-3 event-img-cols">
+                        <img src="https://picsum.photos/seed/e1/200/100" class="card-img rounded event-img" alt="...">
+                    </div>
+                    <div class="col-md-8 col-xl-9">
+                        <div class="event-card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="event-card-title">TITLE</h5>
+                                    <p class="event-card-date">DATE(S)</p>
+                                    <p class="event-card-location  ">CITY</p>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-11">
+                                    <p class="event-card-description">DESCRIPTION Lorem ipsum dolor sit amet,
+                                        consectetur adipiscing elit, sed
+                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat pellentesque
+                                        adipiscing commodo elit
+                                        at. Vitae suscipit tellus mauris a diam maecenas sed. At consectetur lorem donec
+                                        massa sapien. Cursus
+                                        euismod quis viverra nibh cras pulvinar mattis. </p>
+                                </div>
+                                <div class="col-1 arrow-container ">
+                                    <img src="svgs/dark_arrow.svg" class="dark-arrow img-fluid" alt="">
+                                    <img src="svgs/light_arrow.svg" class="light-arrow img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 col-md-8 offset-1 offset-md-2 divider-bottom">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 col-md-8 my-3 offset-1 offset-md-2 text-center">
+                <img src="/svgs/Tick_Square.svg" alt="">
+                <span class="booked-successfully">BOOKED SUCCESSFULLY</span>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 shadowed-text">
+                <div class="shadowed-text details-header">DETAILS</div>
+                <!-- <div class="divider-bottom"> </div> -->
+            </div>
+            <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 divider-bottom">
+            </div>
+            <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3">
+                <div class="ticket-details mt-3">
+                    <div class="index">Ticket #1</div>
+                    <div class="number">Ticket Number:&nbsp;&nbsp;&nbsp;1234567</div>
+                    <div class="location">Location:&nbsp;&nbsp;&nbsp;Venue, City, Address</div>
+                    <div class="date">Date:&nbsp;&nbsp;&nbsp;2024-02-01</div>
+                    <div class="time">Time:&nbsp;&nbsp;&nbsp;16:00</div>
+                    <div class="seating-zone">Seating Zone:&nbsp;&nbsp;&nbsp;Balcony</div>
+                    <div class="discount">Applied Discount:&nbsp;&nbsp;&nbsp;Student, 25%</div>
+                    <div class="final-ticket-price">Final Amount:&nbsp;&nbsp;&nbsp;12.75€</div>
+                </div>
+                <div class="ticket-details mt-3">
+                    <div class="index">TICKET #2</div>
+                    <div class="number">TICKET NUMBER:&nbsp;&nbsp;&nbsp;1234567</div>
+                    <div class="location">LOCATION:&nbsp;&nbsp;&nbsp;Venue, City, Address</div>
+                    <div class="date">DATE:&nbsp;&nbsp;&nbsp;2024-02-01</div>
+                    <div class="time">TIME:&nbsp;&nbsp;&nbsp;16:00</div>
+                    <div class="seating-zone">SEATING ZONE:&nbsp;&nbsp;&nbsp;Balcony</div>
+                    <div class="discount">APPLIED DISCOUNT:&nbsp;&nbsp;&nbsp;Student, 25%</div>
+                    <div class="final-ticket-price">FINAL AMOUNT:&nbsp;&nbsp;&nbsp;12.75€</div>
+                </div>
+                <div class="ticket-details mt-3">
+                    <div class="index">TICKET #3</div>
+                    <div class="number">TICKET NUMBER:&nbsp;&nbsp;&nbsp;1234567</div>
+                    <div class="location">LOCATION:&nbsp;&nbsp;&nbsp;Venue, City, Address</div>
+                    <div class="date">DATE:&nbsp;&nbsp;&nbsp;2024-02-01</div>
+                    <div class="time">TIME:&nbsp;&nbsp;&nbsp;16:00</div>
+                    <div class="seating-zone">SEATING ZONE:&nbsp;&nbsp;&nbsp;Balcony</div>
+                    <div class="discount">APPLIED DISCOUNT:&nbsp;&nbsp;&nbsp;Student, 25%</div>
+                    <div class="final-ticket-price">FINAL AMOUNT:&nbsp;&nbsp;&nbsp;12.75€</div>
+                </div>
+            </div>
+            <div class="col-10 col-md-8 my-5 offset-1 offset-md-2 divider-bottom">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 shadowed-text">
+                <div class="shadowed-text download-tickets-header">DOWNLOAD TICKETS</div>
+                <!-- <div class="divider-bottom"> </div> -->
+            </div>
+            <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 divider-bottom">
+            </div>
+            <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 shadowed-text">
+                <a href="path_to_your_file/file_name.extension" download>
+                    <i class="fas fa-download"></i> Download File
+                </a>
+            </div>
+        </div>
+
+
+    </div>
 
     <div id="footer-placeholder"></div>
 
