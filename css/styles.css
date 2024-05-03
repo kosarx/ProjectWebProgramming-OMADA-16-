@@ -564,7 +564,7 @@ footer {
     font-weight: bold;
 }
 
-.bookings-container .inter-children-cards .card:hover {
+.bookings-container .card:hover {
     box-shadow: 0 8px 20px rgba(133, 88, 111, 0.7);
     transform: translateY(-4px);
 }
@@ -583,7 +583,7 @@ footer {
     color: var(--muted-text-color);
 }
 
-.bookings-container .inter-children-cards .card {
+.bookings-container .card {
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
     /* Smooth transitions */
 }
