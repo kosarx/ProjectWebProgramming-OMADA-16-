@@ -1,0 +1,11 @@
+userID, username, password, salt, full_name, email, registration_date, profile_imageURL
+1, 'john_doe', '$2a$10$TVqHcThUKNcT6WvP5VDR7OtxV2yCdEw5WxOEP3X.5VzT.G6kFpCU6', '6WvP5VDR7OTv2yCdEw5WxOE', 'John Doe', 'john.doe@example.com', '2022-01-15', 'https://example.com/images/john_doe.png',
+2, 'jane_smith', '$2a$10$HhL7w3UkZXSD3QLeH6F9A.4kI4PCFh1MP6yH6Ld.7qG9CH0hWxY76', '3QLeH6F9A.4kI4PCFh1MP6y', 'Jane Smith', 'jane.smith@example.com', '2022-03-22', 'https://example.com/images/jane_smith.jpg',
+3, 'michael_jones', '$2a$10$J93F.s6M3b7PDGL6LxDPV7.x4M8Uj8HR3F.Fa1zK7T32M.9Jc4T3', 'M3b7PDGL6LxDPV7.x4M8Uj', 'Michael Jones', 'michael.jones@example.com', '2022-04-10', 'https://example.com/images/michael_jones.jpg',
+4, 'emily_davis', '$2a$10$Vx7RbSDn3JqI6nZ3F0kT7y5B2kDDFf43Hj4Y5K2p5Z5Fh9DK3F3xQ', '3JqI6nZ3F0kT7y5B2kDDFf', 'Emily Davis', 'emily.davis@example.com', '2022-06-30', 'https://example.com/images/emily_davis.png',
+5, 'william_brown', '$2a$10$S7vD4pF3H7bZ6qM8F4K9V7OeX4V5F3cX8H9A1v7o8H2p3G6M5Z', 'H7bZ6qM8F4K9V7OeX4V5F', 'William Brown', 'william.brown@example.com', '2022-07-15', 'https://example.com/images/william_brown.jpg',
+6, 'sophia_wilson', '$2a$10$C4V2v3F2h8J9M7Z4kS7V8K6H3P7S2J3V5N6W7H8J2C4X6H7V6M', '2h8J9M7Z4kS7V8K6H3P7S', 'Sophia Wilson', 'sophia.wilson@example.com', '2022-09-01', 'https://example.com/images/sophia_wilson.png',
+7, 'oliver_moore', '$2a$10$V9Oe5W7H9J2K4X5F7B4S7D3G6M5Z2F4X9H3V7H2C5N6W3J9M5Z', '2F4X9H3V7H2C5N6W3J9M5', 'Oliver Moore', 'oliver.moore@example.com', '2022-11-20', 'https://example.com/images/oliver_moore.jpg',
+8, 'amelia_taylor', '$2a$10$B3P7S2F4V5H8C6M5Z3H7W3K2J4V5N6W8H9M7S5X2Z4G6H7B8M', '5H8C6M5Z3H7W3K2J4V5N', 'Amelia Taylor', 'amelia.taylor@example.com', '2023-01-05', 'https://example.com/images/amelia_taylor.png',
+9, 'lucas_thompson', '$2a$10$V9H3J4V5X2Z6C7N5M7S8B6D4P3G7H2M6X3C4K9V8F3W6B7V6G', '6D4P3G7H2M6X3C4K9V8F', 'Lucas Thompson', 'lucas.thompson@example.com', '2023-02-14', 'https://example.com/images/lucas_thompson.jpg',
+10, 'mia_white', '$2a$10$H6C9M7W4X2B3S5D6F7J3V8K6H7P2N4G7M3X5C6K9V2H3F6M8W', 'H7P2N4G7M3X5C6K9V2H', 'Mia White', 'mia.white@example.com', '2023-03-20', 'https://example.com/images/mia_white.jpg'
