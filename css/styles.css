@@ -27,6 +27,7 @@
     --cancel-ticket: #E53720;
     --booked: #5DC51D;
 
+    --download-tickets-border: #e0e0e0;
 
     --footer-background-color: #F3F3F3;
     --footer-text-color: #808080;
@@ -120,7 +121,7 @@ body {
 
 
 /* -------FOOTER------- */
-body {
+/* body { */
     /* margin: 0; */
     /* Remove default margin */
     /* padding: 0; */
@@ -129,7 +130,7 @@ body {
     /* Ensure body covers viewport height */
     /* position: relative; */
     /* Required for footer positioning */
-}
+/* } */
 
 
 .col.footer-names {
@@ -307,23 +308,6 @@ footer {
     /* Set margin bottom as a percentage of the card height */
 }
 
-
-
-#cardCont .card img {
-    /* border-radius: 6px;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover; */
-
-    /* border-radius: 6px;
-    max-width: 100%;
-    width: 80%;
-    height: 16.6em;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10%; */
-}
 
 
 #cardCont .card:hover {
@@ -646,13 +630,13 @@ input[type="radio"] {
 
 }
 
-.middle-centered-container {
+/* .middle-centered-container { */
     /* display: flex;
     align-items: center;
     justify-content: center; */
     /* margin: 100px auto; */
     /* width: 70%; */
-}
+/* } */
 
 /* -------REVIEWS------- */
 
@@ -1060,7 +1044,8 @@ span.cancel-text {
     font-size: 1.3em;
 }
 
-.booking-complete .details-header, .booking-complete .download-tickets-header {
+.booking-complete .details-header,
+.booking-complete .download-tickets-header {
     font-size: 1.2em;
     letter-spacing: 0.2em;
     font-weight: 500;
@@ -1071,7 +1056,51 @@ span.cancel-text {
     /* font-size: 0.9em; */
     letter-spacing: 0.2px;
 }
+
 .booking-complete .ticket-details .index {
     font-size: 1.2em;
     font-weight: 500;
+}
+
+.booking-complete .total-amount {
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.booking-complete .download-tickets-file {
+
+    padding: 0;
+
+}
+
+.booking-complete .download-tickets-file a {
+    background-color: var(--card-background-color);
+    width: 180px;
+    border-radius: 10px;
+    border: 2px solid var(--download-tickets-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* justify-content: center; */
+    text-decoration: none;
+    margin: 8px;
+}
+
+.booking-complete .download-tickets-file i {
+    color: var(--dark);
+    font-size: 2em;
+}
+
+.booking-complete .download-tickets-file .tickets-text {
+    color: var(--muted-text-color);
+    display: inline-block;
+    margin: 4px 4px;
+
+}
+
+.booking-complete .download-tickets-file .tickets-text hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+
 }
