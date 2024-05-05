@@ -1,6 +1,6 @@
-theaterID, play_title, director, scriptwriter, lead_roles
-2, "Marx in Soho", "John Doyle", "Howard Zinn", "Bob Weick" 
-5, "Hamlet", "Robert Icke", "William Shakespeare", "Andrew Scott,Barry Aird, Elliot Barnes-Worrell, Jessica Brown Findlay, Marty Cruickshank"
-8, "A Midsummer Night's Dream", "Nicholas Hytner", "William Shakespeare", "Oliver Chris, Gwendoline Christie, David Moorst"
-11, "Don Camillo", "Manikas P.", "Sotiris Patatzis", "G. Mataragkas, P. Xekoukis, St. Tzelepis, El. Filini"
-14, "Death of a Salesman", "Miranda Cromwell", "Arthur Miller", "Wendell Pierce, Sharon D. Clarke"
+theaterID ,play_title                  ,director           ,scriptwriter          ,lead_roles
+        2 ,"Marx in Soho"              ,"John Doyle"       ,"Howard Zinn"         ,"Bob Weick"
+        5 ,"Hamlet"                    ,"Robert Icke"      ,"William Shakespeare" ,"Andrew Scott,Barry Aird, Elliot Barnes-Worrell, Jessica Brown Findlay, Marty Cruickshank"
+        8 ,"A Midsummer Night's Dream" ,"Nicholas Hytner"  ,"William Shakespeare" ,"Oliver Chris, Gwendoline Christie, David Moorst"
+       11 ,"Don Camillo"               ,"Manikas P."       ,"Sotiris Patatzis"    ,"G. Mataragkas, P. Xekoukis, St. Tzelepis, El. Filini"
+       14 ,"Death of a Salesman"       ,"Miranda Cromwell" ,"Arthur Miller"       ,"Wendell Pierce, Sharon D. Clarke"
