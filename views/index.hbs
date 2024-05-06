@@ -1,49 +1,52 @@
-  <div class="container-fluid page-container">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-lg-7 col-sm-12 mb-lg-0 mb-3">
-        <img src="images/main_menu_image.jpg" class="img-fluid" id="mainMenuImage">
-      </div>
-      <div class="col-lg-4 col-sm-12 px-5">
-        <form class="d-flex form-custom">
-          <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-custom rounded-circle" type="submit">
-            <img src="svgs/ArrowButton.svg">
-          </button>
-        </form>
+<div class="container-fluid page-container index">
+    <div class="container search-bar-container">
+      <div class="row justify-content-center">
+        <div class="col-8 main-menu-search-bar d-flex align-items-center justify-content-center">
+          <form>
+            <div class="search-container">
+              <input class="mx-2" type="search" placeholder="Search" aria-label="Search">
+              <div class="circular-div"> </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="container pt-5 mb-5" id="cardCont">
+  </div>
+  <div class="divider-bottom"></div>
+
+  <div class="container mt-5 mb-5" id="cardCont">
     <div class="row justify-content-center">
-      <div class="col-md-4">
+      <div class="col-12 col-sm-4 mb-4 text-center">
         <div class="card">
           <div class="card-body d-flex justify-content-center align-items-center ">
-            <a href="events.html" class="btn">Theater</a>
+            <a href="/navigation?navigates=theater" class="btn">
+              <span>Theater</span>
+            </a>
           </div>
-          <img src="images/theater.jpg" class="card-img-bottom" alt="...">
-
-
+          <img src="images/theater.jpg" class="card-img-bottom img-fluid" alt="...">
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-12 col-sm-4 mb-4 text-center">
         <div class="card ">
           <div class="card-body d-flex justify-content-center align-items-center">
-            <a href="events.html" class="btn">Music</a>
+            <a href="/navigation?navigates=music" class="btn">
+              <span>Music</span>
+            </a>
           </div>
-          <img src="images/music.jpg" class="card-img-bottom" alt="...">
-
+          <img src="images/music.jpg" class="card-img-bottom img-fluid" alt="...">
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-12 col-sm-4 mb-4 text-center">
         <div class="card">
           <div class="card-body d-flex justify-content-center align-items-center">
-            <a href="events.html" class="btn">Cinema</a>
+            <a href="/navigation?navigates=cinema" class="btn">
+              <span>Cinema</span>
+            </a>
           </div>
-          <img src="images/cinema.jpg" class="card-img-bottom" alt="...">
+          <img src="images/cinema.jpg" class="card-img-bottom img-fluid" alt="...">
 
         </div>
       </div>
     </div>
   </div>
-</body>

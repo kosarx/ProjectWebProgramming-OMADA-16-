@@ -1,0 +1,37 @@
+/* ------- STAR RATING SYSTEM ------- */
+.ratings-wrapper{
+    /* border: thin solid #999; */
+    display: inline-block;
+    margin-bottom: 0.25em;
+ }
+
+ .ratings{
+    display: flex;
+    flex-direction: row-reverse;
+ }
+
+ .ratings span{
+    color: #D9D9D9;
+    transition: color .2s;
+    font-size: 2.2em;
+ }
+
+ .ratings.ratings.ratings-interactable span{
+    cursor: pointer;
+ }
+
+ .ratings.ratings-interactable span:hover{
+    color: var(--medium-purple);
+ }
+
+ .ratings.ratings-interactable span:hover ~ span{
+    color: var(--medium-purple);
+ }
+
+ .ratings span[data-clicked]{
+    color: var(--medium-purple);
+ }
+
+ .ratings span[data-clicked] ~ span{
+    color: var(--medium-purple);
+ }	

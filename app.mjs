@@ -16,6 +16,12 @@ let eventNavigation = function (req, res) {
     if (navigateTo === 'theater'){
         res.render('events', { title: 'THEATER' });
     }
+    else if (navigateTo === 'music') {
+        res.render('events', { title: 'MUSIC' });
+    }
+    else if (navigateTo === 'cinema') {
+        res.render('events', { title: 'CINEMA' });
+    }
     else {
         res.render('events');
     }
