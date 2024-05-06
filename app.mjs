@@ -13,18 +13,23 @@ app.set('view engine', 'hbs');
 
 let eventNavigation = function (req, res) {
     const navigateTo = req.query.navigates;
+    let title = 'EVENTS';
     if (navigateTo === 'theater'){
-        res.render('events', { title: 'THEATER' });
+        title = 'THEATER';
     }
     else if (navigateTo === 'music') {
-        res.render('events', { title: 'MUSIC' });
+        title = 'MUSIC';
     }
     else if (navigateTo === 'cinema') {
-        res.render('events', { title: 'CINEMA' });
+        title = 'CINEMA';
     }
     else {
-        res.render('events');
+        
     }
+    const eventsObject = {
+        title: title,
+    };
+    res.render('events', eventsObject);
 };
 
 app.use(router);
