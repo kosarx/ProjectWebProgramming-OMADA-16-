@@ -1,0 +1,51 @@
+reviewID,score,comment,userID,date_written,eventID
+1,2,A truly outstanding experience! Everything from the lighting to the costumes to the acting was top-notch. I would highly recommend it to anyone looking for a memorable night out.,1,2024-04-26,4
+2,1,Great experience!,8,2024-04-08,10
+3,2,"The show was fantastic, with stunning visuals and amazing performances by all the actors. The storyline kept me on the edge of my seat throughout, and I can't wait to see it again!",11,2024-04-28,9
+4,4,Could be better.,2,2024-04-16,4
+5,1,Best show I've seen!,8,2024-04-25,12
+6,2,"The performance was average, and the plot was somewhat confusing. Some of the actors delivered great performances, but others seemed uninterested. The set design, however, was quite impressive.",1,2024-04-09,10
+7,1,Amazing performance!,10,2024-04-20,3
+8,5,Average experience.,3,2024-04-26,2
+9,1,Absolutely terrible.,10,2024-04-07,5
+10,1,Wouldn't recommend.,2,2024-04-14,1
+11,4,Average experience.,1,2024-04-20,16
+12,5,Average experience.,4,2024-04-29,8
+13,2,"The performance was average, and the plot was somewhat confusing. Some of the actors delivered great performances, but others seemed uninterested. The set design, however, was quite impressive.",8,2024-04-23,16
+14,4,Average experience.,1,2024-04-13,4
+15,1,"The show was fantastic, with stunning visuals and amazing performances by all the actors. The storyline kept me on the edge of my seat throughout, and I can't wait to see it again!",4,2024-04-24,15
+16,1,"The performance was average, and the plot was somewhat confusing. Some of the actors delivered great performances, but others seemed uninterested. The set design, however, was quite impressive.",9,2024-05-07,7
+17,5,Could be better.,8,2024-04-09,3
+18,5,Not what I expected.,6,2024-05-03,6
+19,3,Amazing performance!,10,2024-04-11,1
+20,1,Amazing performance!,9,2024-05-02,5
+21,1,Amazing performance!,6,2024-04-16,14
+22,2,A truly outstanding experience! Everything from the lighting to the costumes to the acting was top-notch. I would highly recommend it to anyone looking for a memorable night out.,7,2024-05-06,15
+23,2,"The show was too loud and felt a bit chaotic at times. While there were a few standout moments, overall, it didn't meet my expectations. It could be improved with better pacing and clearer narrative structure.",6,2024-04-23,10
+24,4,"The show was fantastic, with stunning visuals and amazing performances by all the actors. The storyline kept me on the edge of my seat throughout, and I can't wait to see it again!",5,2024-04-16,4
+25,2,Wouldn't recommend.,4,2024-05-06,5
+26,5,A truly outstanding experience! Everything from the lighting to the costumes to the acting was top-notch. I would highly recommend it to anyone looking for a memorable night out.,10,2024-04-16,5
+27,3,"The show was too loud and felt a bit chaotic at times. While there were a few standout moments, overall, it didn't meet my expectations. It could be improved with better pacing and clearer narrative structure.",1,2024-04-11,12
+28,3,"The show was too loud and felt a bit chaotic at times. While there were a few standout moments, overall, it didn't meet my expectations. It could be improved with better pacing and clearer narrative structure.",2,2024-04-22,7
+29,1,Amazing performance!,11,2024-04-21,9
+30,2,Absolutely terrible.,9,2024-04-20,5
+31,2,Amazing performance!,7,2024-05-01,5
+32,5,Could be better.,4,2024-04-21,14
+33,1,Could be better.,3,2024-05-03,16
+34,3,"The performance was average, and the plot was somewhat confusing. Some of the actors delivered great performances, but others seemed uninterested. The set design, however, was quite impressive.",3,2024-05-06,14
+35,5,Amazing performance!,2,2024-04-19,11
+36,4,"The show was too loud and felt a bit chaotic at times. While there were a few standout moments, overall, it didn't meet my expectations. It could be improved with better pacing and clearer narrative structure.",7,2024-04-10,3
+37,3,Not what I expected.,10,2024-04-13,7
+38,4,Absolutely terrible.,4,2024-04-07,12
+39,5,A truly outstanding experience! Everything from the lighting to the costumes to the acting was top-notch. I would highly recommend it to anyone looking for a memorable night out.,1,2024-04-29,14
+40,5,"The performance was average, and the plot was somewhat confusing. Some of the actors delivered great performances, but others seemed uninterested. The set design, however, was quite impressive.",5,2024-04-12,13
+41,1,Not what I expected.,5,2024-04-29,14
+42,3,"The show was too loud and felt a bit chaotic at times. While there were a few standout moments, overall, it didn't meet my expectations. It could be improved with better pacing and clearer narrative structure.",4,2024-04-07,1
+43,4,Best show I've seen!,9,2024-04-07,1
+44,5,Could be better.,7,2024-04-07,12
+45,2,"The show was fantastic, with stunning visuals and amazing performances by all the actors. The storyline kept me on the edge of my seat throughout, and I can't wait to see it again!",11,2024-05-03,6
+46,1,A truly outstanding experience! Everything from the lighting to the costumes to the acting was top-notch. I would highly recommend it to anyone looking for a memorable night out.,2,2024-04-11,10
+47,2,"The show was fantastic, with stunning visuals and amazing performances by all the actors. The storyline kept me on the edge of my seat throughout, and I can't wait to see it again!",3,2024-04-16,13
+48,3,Great experience!,4,2024-04-10,13
+49,4,Not what I expected.,3,2024-04-22,14
+50,5,Great experience!,9,2024-04-20,9
