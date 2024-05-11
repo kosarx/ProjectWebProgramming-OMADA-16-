@@ -24,9 +24,9 @@ def generate_random_discount_id():
 
 # Function to generate random booking date
 def generate_random_date_booked():
-    today = datetime.date.today()
-    offset_days = random.randint(-40, 0) # Random date within the last 40 days
-    return today + datetime.timedelta(days=offset_days)
+    today = datetime.datetime.now()
+    offset_seconds = random.randint(-40*24*60*60, 0) # Random timestamp within the last 40 days
+    return (today + datetime.timedelta(seconds=offset_seconds)).strftime("%Y-%m-%d %H:%M:%S")
 
 # CSV file containing showID values
 input_csv_file = 'eventShows60.csv'
