@@ -51,13 +51,12 @@ CREATE TABLE IF NOT EXISTS "THEATER" (
 );
 
 CREATE TABLE IF NOT EXISTS "EVENT_SHOW" (
-    "showID" SERIAL,
+    "showID" SERIAL PRIMARY KEY,
     "eventID" INTEGER,
     "show_date" DATE,
     "show_time" TIME,
     "status" VARCHAR(50),
     "venueID" INTEGER,
-    PRIMARY KEY ("showID", "eventID", "venueID"),
     FOREIGN KEY ("eventID") REFERENCES "EVENT" ("eventID")
         ON UPDATE CASCADE
         ON DELETE SET NULL,
