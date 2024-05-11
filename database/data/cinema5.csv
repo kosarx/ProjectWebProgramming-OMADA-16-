@@ -1,0 +1,6 @@
+cinemaID, movie_title, director, lead_roles, rating
+1, "The Matrix", "The Wachowski Brothers", "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss", "R – Restricted"
+4, "12 Angry Men", "Sidney Lumet", "Henry Fonda, Lee J. Cobb, Martin Balsam", "NR – Not Rated"
+7, "The Great Gatsby", "Baz Luhrmann", "Leonardo DiCaprio, Tobey Maguire, Carey Mulligan", "PG-13"
+10, "The Godfather", "Francis Ford Coppola", "Marlon Brando, Al Pacino, James Caan", "R – Restricted"
+13, "The Shawshank Redemption", "Frank Darabont", "Tim Robbins, Morgan Freeman, Bob Gunton", "R – Restricted"
