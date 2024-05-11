@@ -84,4 +84,16 @@ async function getAllCinema(callback) {
     }
 }
 
-export { getAllTheater, getAllMusic, getAllCinema}
+async function getEventShows(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getEventShows, [eventID])
+        await client.release()
+        callback(null, res.rows)
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+export { getAllTheater, getAllMusic, getAllCinema, getEventShows}

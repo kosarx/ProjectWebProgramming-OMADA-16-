@@ -12,23 +12,23 @@ let eventNavigation = async function (req, res) {
         model.getAllTheater((err, data) =>{        
             const theaterEvents = {};
             data.forEach(event => {
-                const { theaterID, title, ...otherDetails } = event;
-                if (!theaterEvents[theaterID]) {
-                    theaterEvents[theaterID] = {
-                    theaterID,
+                const { theaterID:eventID, title, ...otherDetails } = event;
+                if (!theaterEvents[eventID]) {
+                    theaterEvents[eventID] = {
+                    eventID,
                     title,
                     cities: [],
                     ...otherDetails,
                   };
                 }
-                let early_date = new Date(theaterEvents[theaterID].earliest_date);
+                let early_date = new Date(theaterEvents[eventID].earliest_date);
                 let formattedDate = early_date.toISOString().split('T')[0];
-                theaterEvents[theaterID].earliest_date = formattedDate;
-                let late_date = new Date(theaterEvents[theaterID].latest_date);
+                theaterEvents[eventID].earliest_date = formattedDate;
+                let late_date = new Date(theaterEvents[eventID].latest_date);
                 formattedDate = late_date.toISOString().split('T')[0];
-                theaterEvents[theaterID].latest_date = formattedDate;
+                theaterEvents[eventID].latest_date = formattedDate;
                 
-                theaterEvents[theaterID].cities.push(event.city);
+                theaterEvents[eventID].cities.push(event.city);
               });
             
             for (let key in theaterEvents) {
@@ -44,23 +44,23 @@ let eventNavigation = async function (req, res) {
         model.getAllMusic((err, data) =>{            
             const musicEvents = {};
             data.forEach(event => {
-                const { musicID, title, ...otherDetails } = event;
-                if (!musicEvents[musicID]) {
-                    musicEvents[musicID] = {
-                    musicID,
+                const { musicID:eventID, title, ...otherDetails } = event;
+                if (!musicEvents[eventID]) {
+                    musicEvents[eventID] = {
+                    eventID,
                     title,
                     cities: [],
                     ...otherDetails,
                   };
                 }
-                let early_date = new Date(musicEvents[musicID].earliest_date);
+                let early_date = new Date(musicEvents[eventID].earliest_date);
                 let formattedDate = early_date.toISOString().split('T')[0];
-                musicEvents[musicID].earliest_date = formattedDate;
-                let late_date = new Date(musicEvents[musicID].latest_date);
+                musicEvents[eventID].earliest_date = formattedDate;
+                let late_date = new Date(musicEvents[eventID].latest_date);
                 formattedDate = late_date.toISOString().split('T')[0];
-                musicEvents[musicID].latest_date = formattedDate;
+                musicEvents[eventID].latest_date = formattedDate;
 
-                musicEvents[musicID].cities.push(event.city);
+                musicEvents[eventID].cities.push(event.city);
               });
             
             for (let key in musicEvents) {
@@ -77,23 +77,23 @@ let eventNavigation = async function (req, res) {
         model.getAllCinema((err, data) =>{
             const cinemaEvents = {};
             data.forEach(event => {
-                const { cinemaID, title, ...otherDetails } = event;
-                if (!cinemaEvents[cinemaID]) {
-                    cinemaEvents[cinemaID] = {
-                    cinemaID,
+                const { cinemaID: eventID, title, ...otherDetails } = event;
+                if (!cinemaEvents[eventID]) {
+                    cinemaEvents[eventID] = {
+                    eventID,
                     title,
                     cities: [],
                     ...otherDetails,
                   };
                 }
-                let early_date = new Date(cinemaEvents[cinemaID].earliest_date);
+                let early_date = new Date(cinemaEvents[eventID].earliest_date);
                 let formattedDate = early_date.toISOString().split('T')[0];
-                cinemaEvents[cinemaID].earliest_date = formattedDate;
-                let late_date = new Date(cinemaEvents[cinemaID].latest_date);
+                cinemaEvents[eventID].earliest_date = formattedDate;
+                let late_date = new Date(cinemaEvents[eventID].latest_date);
                 formattedDate = late_date.toISOString().split('T')[0];
-                cinemaEvents[cinemaID].latest_date = formattedDate;
+                cinemaEvents[eventID].latest_date = formattedDate;
 
-                cinemaEvents[cinemaID].cities.push(event.city);
+                cinemaEvents[eventID].cities.push(event.city);
               });
 
             for (let key in cinemaEvents) {
@@ -112,5 +112,21 @@ let eventNavigation = async function (req, res) {
 };
 
 router.get('/:type/', eventNavigation);
+
+router.get('/:type/events/:id', (req, res) => {
+    const eventID = req.params.id;
+    model.getEventShows(eventID, (err, data) => {
+        if (err) {
+            res.json({error: err});
+        }
+        else {
+            const event = data[0];
+            let event_date = new Date(event.date);
+            let formattedDate = event_date.toISOString().split('T')[0];
+            event.date = formattedDate;
+            res.render('event', {event});
+        }
+    });
+});
 
 export { router as eventsRouter}

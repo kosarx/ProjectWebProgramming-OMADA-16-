@@ -62,4 +62,13 @@ GROUP BY c."cinemaID", e.title, e.description, e."imageURL", v.city
 ORDER BY earliest_date, latest_date;
 `
 
-export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas }
+const getEventShows = `
+SELECT e."eventID", e.title, e.description, e."imageURL", e.genre, e.duration, r."reviewID", r.score, r.comment, r."userID" as "userID_of_review", r.date_written, es."showID", es.show_date, es.show_time, es.status, v."venueID", v.venue_name, v.city, v.address
+FROM "EVENT" e
+JOIN "REVIEW" r ON r."eventID" = e."eventID"
+JOIN "EVENT_SHOW" es ON e."eventID" = es."eventID"
+JOIN "VENUE" v ON v."venueID" = es."venueID"
+WHERE e."eventID" = $1;
+` 
+
+export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventShows }

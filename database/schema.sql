@@ -65,6 +65,22 @@ CREATE TABLE IF NOT EXISTS "EVENT_SHOW" (
         ON DELETE NO ACTION
 );
 
+CREATE TABLE IF NOT EXISTS "REVIEW" (
+	"reviewID" SERIAL PRIMARY KEY,
+	"score" INTEGER,
+	"comment" TEXT,
+	"userID" INTEGER,
+	"date_written" TIMESTAMP,
+	"eventID" INTEGER,
+	FOREIGN KEY ("userID") REFERENCES "USER" ("userID")
+            ON UPDATE CASCADE
+            ON DELETE NO ACTION,
+	FOREIGN KEY ("eventID") REFERENCES "EVENT" ("eventID")
+            ON UPDATE CASCADE
+            ON DELETE NO ACTION
+);
+
+
 CREATE TABLE IF NOT EXISTS "VENUE" (
     "venueID" SERIAL PRIMARY KEY,
     "venue_name" VARCHAR(100),

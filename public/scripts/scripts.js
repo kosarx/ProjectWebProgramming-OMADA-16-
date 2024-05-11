@@ -12,11 +12,19 @@
 //         document.getElementById('footer-placeholder').innerHTML = data;
 //     });
 
-function ticketNavigation(link) {
-    console.log('ticketNavigation');
-    location.href = link;
-}
+// ----------------- EVENTS -----------------
 
+// function ticketNavigation(link) {
+//     console.log('ticketNavigation');
+//     location.href = link;
+// }
+
+document.querySelectorAll('.event-card').forEach(item => {
+    item.addEventListener('click', event => {
+        location.href = `events/${item.id}`;
+        
+    });
+});
 
 // ----------------- Modal - Ticket Selection -----------------
 let ticketsClicked = 0;
