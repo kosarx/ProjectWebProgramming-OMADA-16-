@@ -12,8 +12,9 @@
 //         document.getElementById('footer-placeholder').innerHTML = data;
 //     });
 
-function ticketNavigation() {
-    location.href = "booking.html"
+function ticketNavigation(link) {
+    console.log('ticketNavigation');
+    location.href = link;
 }
 
 
