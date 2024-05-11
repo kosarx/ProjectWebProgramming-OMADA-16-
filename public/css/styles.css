@@ -351,8 +351,9 @@ footer {
 
 .card.event-card .event-img {
     margin: 0% 12%;
-    width: 100%;
-    height: auto;
+    width: 100px;
+    height: 130px;
+    object-fit: contain;
     border-radius: 10px;
 
 }
