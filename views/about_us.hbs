@@ -5,42 +5,22 @@
                 <div class="divider-bottom"></div>
                 <div class="row">
                     <div class="col mx-5 about-us-description">
-                        DESCRIPTION Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Erat pellentesque adipiscing commodo elit at. Vitae
-                        suscipit tellus mauris a diam maecenas sed. At consectetur lorem donec massa sapien. Cursus
-                        euismod quis viverra nibh cras pulvinar mattis.
+                        Ticket Buddy is a platform that allows users to find and purchase tickets for various events, and also review them and read reviews from fellow users. Developed by a team of two students from the University of Patras for Web Programming course, it is a project with the purpose of implementing and showcasing the knowledge of web technologies acquired during the semester.
                     </div>
                 </div>
-                <div class="row" id="person1">
-                    <div class="col-md-4 mt-5">
-                        <img src="/svgs/profile_page_Avatar.svg" class="rounded-circle float-right img-fluid photo"
-                            alt="User Profile">
+                {{#each persons as |person|}}
+                    <div class="row" id="person{{@index}}">
+                        <div class="col-md-4 mt-5">
+                            <img src={{person.image}} class="rounded-circle float-right img-fluid photo"
+                                alt="{{person.firstname}} {{person.lastname}}">
+                        </div>
+                        <div class="col-md-8 mt-5">
+                            <div class="name">{{person.firstname}} {{person.lastname}}</div>
+                            <div class="email mt-1">{{person.email}}</div>
+                            <div class="description mt-3">DESCRIPTION: {{person.description}} </div>
+                        </div>
                     </div>
-                    <div class="col-md-8 mt-5">
-                        <div class="name">Firstname Lastname</div>
-                        <div class="email mt-1">email@domain.com</div>
-                        <div class="description mt-3">DESCRIPTION Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Erat pellentesque adipiscing commodo
-                            elit at. Vitae suscipit tellus mauris a diam maecenas sed. At consectetur lorem donec
-                            massa sapien. Cursus euismod quis viverra nibh cras pulvinar mattis. </div>
-                    </div>
-                </div>
-                <div class="row" id="person2">
-                    <div class="col-md-4 mt-5">
-                        <img src="/svgs/profile_page_Avatar.svg" class="rounded-circle float-right img-fluid photo"
-                            alt="User Profile">
-                    </div>
-                    <div class="col-md-8 mt-5">
-                        <div class="name">Firstname Lastname</div>
-                        <div class="email mt-1">email@domain.com</div>
-                        <div class="description mt-3">DESCRIPTION Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Erat pellentesque adipiscing commodo
-                            elit at. Vitae suscipit tellus mauris a diam maecenas sed. At consectetur lorem donec
-                            massa sapien. Cursus euismod quis viverra nibh cras pulvinar mattis. </div>
-                    </div>
-                </div>
+                {{/each}}
             </div>
 
         </div>

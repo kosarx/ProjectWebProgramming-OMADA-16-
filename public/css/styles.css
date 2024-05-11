@@ -976,21 +976,21 @@ span.cancel-text {
 
 }
 
-#person1 .name,
-#person2 .name {
+#person0 .name,
+#person1 .name {
     font-size: 1.2em;
     font-weight: bold;
     letter-spacing: 0.1em;
 }
 
-#person1 .email,
-#person2 .email {
+#person0 .email,
+#person1 .email {
     color: var(--muted-text-color);
     font-size: 0.9em;
 }
 
-#person1 .description,
-#person2 .description {
+#person0 .description,
+#person1 .description {
     font-size: 0.9em;
 }
 
@@ -1002,8 +1002,8 @@ span.cancel-text {
     border-radius: 50%;
 }
 
-.about-us #person1,
-.about-us #person2 {
+.about-us #person0,
+.about-us #person1 {
     /* margin: 10px 0; */
     margin-top: 20px;
     margin-bottom: 40px;
@@ -1016,20 +1016,20 @@ span.cancel-text {
 
     }
 
-    #person1 .name,
-    #person2 .name {
+    #person0 .name,
+    #person1 .name {
         font-size: 1em;
         font-weight: bold;
         letter-spacing: 0.1em;
     }
 
-    #person1 .email,
-    #person2 .email {
+    #person0 .email,
+    #person1 .email {
         font-size: 0.7em;
     }
 
-    #person1 .description,
-    #person2 .description {
+    #person0 .description,
+    #person1 .description {
         font-size: 0.7em;
     }
 
