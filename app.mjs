@@ -1,12 +1,22 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
+import path from "path";
+import session from "express-session";
 
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Create a new express application
 const app = express();
 const router = express.Router();
 const port = process.env.PORT || '3000';
 
-app.use(express.static('public'));
+// For serving static files
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: false }));
 
+// Set up the express app to use handlebars
 app.engine('hbs', engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 
