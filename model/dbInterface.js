@@ -84,16 +84,90 @@ async function getAllCinema(callback) {
     }
 }
 
-async function getEventShows(eventID, callback) {
+// async function getEventShows(eventID, callback) {
+//     try {
+//         const client = await connect();
+//         const res = await client.query(sql.getEventShows, [eventID])
+//         await client.release()
+//         callback(null, res.rows)
+//     }
+//     catch (err) {
+//         callback(err, null);
+//     }
+// }
+
+async function getEventReviews(eventID, callback) {
     try {
         const client = await connect();
-        const res = await client.query(sql.getEventShows, [eventID])
-        await client.release()
-        callback(null, res.rows)
+        const res = await client.query(sql.getEventReviews, [eventID]);
+        await client.release();
+        callback(null, res.rows);
     }
     catch (err) {
         callback(err, null);
     }
 }
 
-export { getAllTheater, getAllMusic, getAllCinema, getEventShows}
+
+async function getCinemaEventInfo(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getCinemaEventInfo, [eventID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getMusicEventInfo(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getMusicEventInfo, [eventID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getTheaterEventInfo(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getTheaterEventInfo, [eventID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getTicketInfo(showID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getTicketInfo, [showID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getModalInfo(showID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getModalInfo, [showID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+
+export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getTicketInfo, getModalInfo}

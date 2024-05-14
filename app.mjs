@@ -10,6 +10,7 @@ const __dirname = path.dirname(__filename);
 
 // connect controller with model -- interface with the database
 import * as routers from './controllers/routes/events.js';
+// import * as routers from './controllers/routes/booking.js';
 
 // Create a new express application
 const app = express();
@@ -63,6 +64,9 @@ indexRouter.get('/aboutUs',(req, res) => {
     // res.json(person);
     res.render('about_us', {persons});
 });
+
+// app.use(':type/events/:id/', routers.bookingRouter);
+
 
 const server = app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);

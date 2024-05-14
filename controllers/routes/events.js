@@ -115,18 +115,19 @@ router.get('/:type/', eventNavigation);
 
 router.get('/:type/events/:id', (req, res) => {
     const eventID = req.params.id;
-    model.getEventShows(eventID, (err, data) => {
+    let events;
+    model.getCinemaEventInfo(eventID, (err, data) => {
         if (err) {
+            console.log(data)
             res.json({error: err});
         }
         else {
-            const event = data[0];
-            let event_date = new Date(event.date);
-            let formattedDate = event_date.toISOString().split('T')[0];
-            event.date = formattedDate;
-            res.render('event', {event});
+            events = data;
+            res.send(events)
         }
+
     });
+
 });
 
 export { router as eventsRouter}
