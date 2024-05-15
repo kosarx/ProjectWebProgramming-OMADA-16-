@@ -145,10 +145,10 @@ async function getTheaterEventInfo(eventID, callback) {
     }
 }
 
-async function getTicketInfo(showID, callback) {
+async function getShowInfo(eventID, callback) {
     try {
         const client = await connect();
-        const res = await client.query(sql.getTicketInfo, [showID]);
+        const res = await client.query(sql.getShowInfo, [eventID]);
         client.release();
         callback(null, res.rows);
     }
@@ -170,4 +170,4 @@ async function getModalInfo(showID, callback) {
 }
 
 
-export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getTicketInfo, getModalInfo}
+export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo}

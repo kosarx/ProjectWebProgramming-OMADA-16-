@@ -2,23 +2,21 @@
   <div class="row">
     <div class="col event-image divider-bottom">
       <div class="image-overlay">
-        <h5 class="text-overlay"> <span class="shadowed-text">{{title}}</span></h5>
-        <p class="text-overlay">{{location}}</p>
+        <h5 class="text-overlay"> <span class="shadowed-text">{{eventInfo.title}}</span></h5>
+        <p class="text-overlay">{{eventInfo.location}}</p>
       </div>
-      <p class="date-overlay">{{date}}</p>
+      <p class="date-overlay">{{eventInfo.date}}</p>
     </div>
   </div>
 </div>
 <div class="container-fluid bookings-container divider-bottom pb-2">
   <h6> DESCRIPTION </h6>
-  <p> </p>
-  <p></p>
-  <p> </p>
-  <p> </p>
-  <p> </p>
-  <p> </p>
-  <p> </p>
-  <p> </p>
+  <p> {{eventInfo.description}} </p>
+  <p> Genre: {{eventInfo.genre}} </p>
+  <p> Duration: {{eventInfo.duration}} </p>
+  <p> Directed by {{eventInfo.director}}. </p>
+  <p> Starring {{eventInfo.lead_roles}}. </p>
+  <p> Rated: {{eventInfo.rating}}. </p>
 </div>
 <div class="container-fluid bookings-container">
   <h5 class="text-overlay">
@@ -29,12 +27,13 @@
 
 <div class="container-fluid divider-bottom inter-children-cards" id="review-row">
   <div class="row m-4">
+    {{#each reviewList as |review|}}
     <div class="col-md-4 mb-3">
       <div class="card divider-bottom">
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h5 class="card-title"><strong>5/5</strong> </h5>
+              <h5 class="card-title"><strong>{{review.score}}/5</strong> </h5>
             </div>
             <div class="col-10">
               <div class="rating">
@@ -55,85 +54,15 @@
               </div>
             </div>
           </div>
-          <h6 class="card-subtitle my-2 ">USER</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores porro accusamus ullam
-            itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum dolor sit amet...</p>
+          <h6 class="card-subtitle my-2 ">{{review.usernamw}}</h6>
+          <p class="card-text"> {{review.comment}} </p>
           <div class="d-flex justify-content-end float-right">
             <p><a href="reviews.html" class="link-dark">READ MORE</a></p>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 mb-3">
-      <div class="card divider-bottom">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <h5 class="card-title"><strong>4/5</strong> </h5>
-            </div>
-            <div class="col-10">
-              <div class="rating">
-                <input type="radio" id="star5-2" name="rating-2" value="5">
-                <label for="star5-2"><img src="svgs/ClickedStar.svg"></label>
-
-                <input type="radio" id="star4-2" name="rating-2" value="4" disabled>
-                <label for="star4-2"><img src="svgs/ClickedStar.svg"></label>
-
-                <input type="radio" id="star3-2" name="rating-2" value="3" disabled>
-                <label for="star3-2"><img src="svgs/ClickedStar.svg"></label>
-
-                <input type="radio" id="star2-2" name="rating-2" value="2" disabled>
-                <label for="star2-2"><img src="svgs/ClickedStar.svg"></label>
-
-                <input type="radio" id="star1-2" name="rating-2" value="1" disabled>
-                <label for="star1-2"><img src="svgs/Star.svg"></label>
-              </div>
-            </div>
-          </div>
-          <h6 class="card-subtitle my-2 ">USER</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores porro accusamus ullam
-            itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum dolor sit amet...</p>
-          <div class="d-flex justify-content-end float-right">
-            <p><a href="reviews.html" class="link-dark">READ MORE</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <div class="card divider-bottom">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <h5 class="card-title"><strong>2/5</strong> </h5>
-            </div>
-            <div class="col-10">
-              <div class="rating">
-                <input type="radio" id="star5-3" name="rating-3" value="5">
-                <label for="star5-3"><img src="svgs/ClickedStar.svg"></label>
-
-                <input type="radio" id="star4-3" name="rating-3" value="4" disabled>
-                <label for="star4-3"><img src="svgs/ClickedStar.svg"></label>
-
-                <input type="radio" id="star3-3" name="rating-3" value="3" disabled>
-                <label for="star3-3"><img src="svgs/Star.svg"></label>
-
-                <input type="radio" id="star2-3" name="rating-3" value="2" disabled>
-                <label for="star2-3"><img src="svgs/Star.svg"></label>
-
-                <input type="radio" id="star1-3" name="rating-3" value="1" disabled>
-                <label for="star1-3"><img src="svgs/Star.svg"></label>
-              </div>
-            </div>
-          </div>
-          <h6 class="card-subtitle my-2 ">USER</h6>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores porro accusamus ullam
-            itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum dolor sit amet...</p>
-          <div class="d-flex justify-content-end float-right">
-            <p><a href="reviews.html" class="link-dark">READ MORE</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{/each}}
   </div>
 </div>
 
@@ -145,108 +74,25 @@
   </div>
   <div class="row">
     <div class="col inter-children-cards" id="tickets-col">
+      {{#each showList as |show|}}
       <div class="card mt-3 mb-4 w-50 pt-1 pb-0">
         <div class="card-body">
           <div class="row ">
             <div class="col">
-              <h5 class="card-title">DAY, 25/08/2024</h5>
-              <h6 class="card-subtitle mt-1 mb-3 location">VENUE, ADDRESS</h6>
-              <h6 class="card-subtitle mt-2 title">TITLE - ARTIST</h6>
+              <h5 class="card-title">{{show.day}}, {{show.date}}</h5>
+              <h6 class="card-subtitle mt-1 mb-3 location">{{show.venue}}, {{show.city}} ,{{show.address}}</h6>
+              <h6 class="card-subtitle mt-2 title">{{title}} - {{artist}}</h6>
             </div>
             <div class="col d-flex justify-content-end align-items-center">
               <div class="card-title">
-                <span name="price">17.0€</span>
+                <span name="price">from {{show.minimum_price}}</span>
                 <img src="svgs/Fill5.svg" class="ms-1" alt="">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="card mt-3 mb-4 w-50 pt-1 pb-0">
-        <div class="card-body">
-          <div class="row ">
-            <div class="col">
-              <h5 class="card-title">DAY, 25/08/2024</h5>
-              <h6 class="card-subtitle mt-1 mb-3 location">VENUE, ADDRESS</h6>
-              <h6 class="card-subtitle mt-2 title">TITLE - ARTIST</h6>
-            </div>
-            <div class="col d-flex justify-content-end align-items-center">
-              <div class="card-title">
-                <span name="price">17.0€</span>
-                <img src="svgs/Fill5.svg" class="ms-1" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-3 mb-4 w-50 w-l pt-1 pb-0">
-        <div class="card-body">
-          <div class="row ">
-            <div class="col">
-              <h5 class="card-title">DAY, 25/08/2024</h5>
-              <h6 class="card-subtitle mt-1 mb-3 location location">VENUE, ADDRESS</h6>
-              <h6 class="card-subtitle mt-2 title">TITLE - ARTIST</h6>
-            </div>
-            <div class="col d-flex justify-content-end align-items-center">
-              <div class="card-title">
-                <span name="price">17.0€</span>
-                <img src="svgs/Fill5.svg" class="ms-1" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-3 mb-4 w-50 pt-1 pb-0">
-        <div class="card-body">
-          <div class="row ">
-            <div class="col">
-              <h5 class="card-title">DAY, 25/08/2024</h5>
-              <h6 class="card-subtitle mt-1 mb-3 location">VENUE, ADDRESS</h6>
-              <h6 class="card-subtitle mt-2 title">TITLE - ARTIST</h6>
-            </div>
-            <div class="col d-flex justify-content-end align-items-center">
-              <div class="card-title">
-                <span name="price">17.0€</span>
-                <img src="svgs/Fill5.svg" class="ms-1" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-3 mb-4 w-50 pt-1 pb-0">
-        <div class="card-body">
-          <div class="row ">
-            <div class="col">
-              <h5 class="card-title">DAY, 25/08/2024</h5>
-              <h6 class="card-subtitle mt-1 mb-3 location">VENUE, ADDRESS</h6>
-              <h6 class="card-subtitle mt-2 title">TITLE - ARTIST</h6>
-            </div>
-            <div class="col d-flex justify-content-end align-items-center">
-              <div class="card-title">
-                <span name="price">17.0€</span>
-                <img src="svgs/Fill5.svg" class="ms-1" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mt-3 mb-4 w-50 pt-1 pb-0">
-        <div class="card-body">
-          <div class="row ">
-            <div class="col">
-              <h5 class="card-title">DAY, 25/08/2024</h5>
-              <h6 class="card-subtitle mt-1 mb-3 location">VENUE, ADDRESS</h6>
-              <h6 class="card-subtitle mt-2 title">TITLE - ARTIST</h6>
-            </div>
-            <div class="col d-flex justify-content-end align-items-center">
-              <div class="card-title">
-                <span name="price">17.0€</span>
-                <img src="svgs/Fill5.svg" class="ms-1" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 </div>

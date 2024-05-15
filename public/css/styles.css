@@ -551,10 +551,6 @@ footer {
     font-weight: bold;
 }
 
-.bookings-container .card:hover {
-    box-shadow: 0 8px 20px rgba(133, 88, 111, 0.7);
-    transform: translateY(-4px);
-}
 
 #tickets-col .card:active {
     background-color: var(--medium-purple);
