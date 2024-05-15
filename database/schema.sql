@@ -126,7 +126,6 @@ CREATE TABLE IF NOT EXISTS "Venue_HAS_Seat_Cat" (
     "venueID" INTEGER,
     "categoryID" INTEGER,
     "seat_num" INTEGER,
-    "seat_price" FLOAT,
     PRIMARY KEY ("venueID", "categoryID"),
     FOREIGN KEY ("venueID") REFERENCES "VENUE" ("venueID")
         ON UPDATE CASCADE
@@ -136,3 +135,15 @@ CREATE TABLE IF NOT EXISTS "Venue_HAS_Seat_Cat" (
         ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS "Sets_Price" (
+    "showID" INTEGER,
+    "categoryID" INTEGER,
+    "seat_price" FLOAT,
+    PRIMARY KEY ("showID", "categoryID"),
+    FOREIGN KEY ("showID") REFERENCES "EVENT_SHOW" ("showID")
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY ("categoryID") REFERENCES "SEAT_CATEGORY" ("categoryID")
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);

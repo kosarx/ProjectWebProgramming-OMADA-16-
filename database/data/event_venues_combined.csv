@@ -1,0 +1,61 @@
+showID,eventID,show_date,show_time,status,venueID,venue_name,city,address
+1,1,2024-05-01,18:00,COMPLETED,8,Ancient Theatre of Epidaurus,Epidaurus,Ancient Theater of Epidaurus
+2,1,2024-05-02,22:00,COMPLETED,8,Ancient Theatre of Epidaurus,Epidaurus,Ancient Theater of Epidaurus
+3,1,2024-05-03,22:45,COMPLETED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+4,1,2024-05-04,17:00,COMPLETED,11,Odeon Kosmopolis,Thessaloniki,23 Dimitriou Gounari
+5,2,2024-05-22,22:45,SCHEDULED,3,Stavros Niarchos Foundation Cultural Center (SNFCC),Athens,364 Pireos Street
+6,2,2024-05-23,21:45,SCHEDULED,10,Village Cinemas Athens Mall,Athens,Kifissias Ave. 48
+7,2,2024-05-24,11:30,SCHEDULED,11,Odeon Kosmopolis,Thessaloniki,23 Dimitriou Gounari
+8,2,2024-05-25,15:30,CANCELED,1,Megaron - The Athens Concert Hall,Athens,Vasilissis Sofias Ave. & Kokkali 1
+9,3,2024-05-16,11:30,CANCELED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+10,3,2024-05-17,17:00,SCHEDULED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+11,3,2024-05-18,21:00,SCHEDULED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+12,3,2024-05-19,10:00,SCHEDULED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+13,4,2024-04-27,22:15,CANCELED,3,Stavros Niarchos Foundation Cultural Center (SNFCC),Athens,364 Pireos Street
+14,4,2024-04-28,21:00,CANCELED,10,Village Cinemas Athens Mall,Athens,Kifissias Ave. 48
+15,4,2024-04-29,16:00,CANCELED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+16,4,2024-04-30,22:00,CANCELED,7,Concert Hall of Thessaloniki,Thessaloniki,25th of March Street
+17,5,2024-04-21,22:00,CANCELED,3,Stavros Niarchos Foundation Cultural Center (SNFCC),Athens,364 Pireos Street
+18,5,2024-04-22,22:15,CANCELED,12,Ster Cinemas Vouliagmeni,Vouliagmeni (Athens Area),1 Asklipiou & Poseidonos Ave.
+19,5,2024-04-23,22:00,COMPLETED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+20,5,2024-04-24,18:15,CANCELED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+21,6,2024-04-30,14:00,COMPLETED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+22,6,2024-05-01,20:15,CANCELED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+23,6,2024-05-02,11:30,COMPLETED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+24,6,2024-05-03,12:15,COMPLETED,7,Concert Hall of Thessaloniki,Thessaloniki,25th of March Street
+25,7,2024-05-21,15:00,CANCELED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+26,7,2024-05-22,20:30,CANCELED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+27,7,2024-05-23,20:15,CANCELED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+28,7,2024-05-24,11:30,SCHEDULED,8,Ancient Theatre of Epidaurus,Epidaurus,Ancient Theater of Epidaurus
+29,8,2024-05-01,15:00,CANCELED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+30,8,2024-05-02,11:45,COMPLETED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+31,8,2024-05-03,22:00,CANCELED,12,Ster Cinemas Vouliagmeni,Vouliagmeni (Athens Area),1 Asklipiou & Poseidonos Ave.
+32,8,2024-05-04,17:00,CANCELED,9,OAKA Spyros Louis Olympic Stadium,Athens,37 Kifisias Ave.
+33,9,2024-04-06,12:30,CANCELED,7,Concert Hall of Thessaloniki,Thessaloniki,25th of March Street
+34,9,2024-04-07,13:00,CANCELED,9,OAKA Spyros Louis Olympic Stadium,Athens,37 Kifisias Ave.
+35,9,2024-04-08,12:45,COMPLETED,8,Ancient Theatre of Epidaurus,Epidaurus,Ancient Theater of Epidaurus
+36,9,2024-04-09,16:15,CANCELED,9,OAKA Spyros Louis Olympic Stadium,Athens,37 Kifisias Ave.
+37,10,2024-04-05,20:30,CANCELED,12,Ster Cinemas Vouliagmeni,Vouliagmeni (Athens Area),1 Asklipiou & Poseidonos Ave.
+38,10,2024-04-06,20:00,CANCELED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+39,10,2024-04-07,11:15,CANCELED,8,Ancient Theatre of Epidaurus,Epidaurus,Ancient Theater of Epidaurus
+40,10,2024-04-08,12:00,COMPLETED,7,Concert Hall of Thessaloniki,Thessaloniki,25th of March Street
+41,11,2024-04-29,19:15,COMPLETED,1,Megaron - The Athens Concert Hall,Athens,Vasilissis Sofias Ave. & Kokkali 1
+42,11,2024-04-30,22:45,COMPLETED,10,Village Cinemas Athens Mall,Athens,Kifissias Ave. 48
+43,11,2024-05-01,14:00,COMPLETED,10,Village Cinemas Athens Mall,Athens,Kifissias Ave. 48
+44,11,2024-05-02,14:30,COMPLETED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+45,12,2024-05-18,11:30,CANCELED,11,Odeon Kosmopolis,Thessaloniki,23 Dimitriou Gounari
+46,12,2024-05-19,17:45,CANCELED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+47,12,2024-05-20,20:30,SCHEDULED,5,Pallas Theatre,Athens,5 Boukourestiou Street
+48,12,2024-05-21,12:00,CANCELED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+49,13,2024-05-26,13:00,SCHEDULED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+50,13,2024-05-27,12:15,CANCELED,9,OAKA Spyros Louis Olympic Stadium,Athens,37 Kifisias Ave.
+51,13,2024-05-28,11:30,SCHEDULED,7,Concert Hall of Thessaloniki,Thessaloniki,25th of March Street
+52,13,2024-05-29,11:45,SCHEDULED,10,Village Cinemas Athens Mall,Athens,Kifissias Ave. 48
+53,14,2024-06-14,14:30,CANCELED,1,Megaron - The Athens Concert Hall,Athens,Vasilissis Sofias Ave. & Kokkali 1
+54,14,2024-06-15,17:15,SCHEDULED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+55,14,2024-06-16,21:15,CANCELED,6,National Theatre οf Northern Greece,Thessaloniki,2 Ethnikis Amynis St.
+56,14,2024-06-17,17:00,CANCELED,8,Ancient Theatre of Epidaurus,Epidaurus,Ancient Theater of Epidaurus
+57,15,2024-06-03,16:30,SCHEDULED,11,Odeon Kosmopolis,Thessaloniki,23 Dimitriou Gounari
+58,15,2024-06-04,17:00,SCHEDULED,3,Stavros Niarchos Foundation Cultural Center (SNFCC),Athens,364 Pireos Street
+59,15,2024-06-05,10:30,SCHEDULED,2,Odeon of Herodes Atticus,Athens,Dionysiou Areopagitou St.
+60,15,2024-06-06,20:45,CANCELED,1,Megaron - The Athens Concert Hall,Athens,Vasilissis Sofias Ave. & Kokkali 1
