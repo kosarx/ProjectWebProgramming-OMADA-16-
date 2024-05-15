@@ -86,15 +86,12 @@ let eventNavigation = async function (req, res) {
                         ...otherDetails,
                     };
                 }
-                console.log(cinemaEvents[eventID]);
                 let early_date = new Date(cinemaEvents[eventID].earliest_date);
                 let formattedDate = early_date.toISOString().split('T')[0];
                 cinemaEvents[eventID].earliest_date = formattedDate;
-                console.log("f0", formattedDate)
                 let late_date = new Date(cinemaEvents[eventID].latest_date);
                 formattedDate = late_date.toISOString().split('T')[0];
                 cinemaEvents[eventID].latest_date = formattedDate;
-                console.log("elf", early_date, late_date, formattedDate)
 
                 cinemaEvents[eventID].cities.push(event.city);
 
@@ -132,13 +129,10 @@ let bookTicketsNavigation = async function (req, res) {
                 res.json({ error: err });
             }
             else {
-                // console.log(eventInfo);
-                // console.log(Object.values(eventInfo))
-                // console.log(eventInfo[0].title)
+
                 eventInfo = eventInfo[0];
                 eventInfo.title = eventInfo.title.toUpperCase();
                 eventInfo.type = "cinema"
-                console.log(eventInfo)
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         console.log("reviews")
@@ -162,8 +156,22 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                let stars = [5, 4, 3, 2, 1];
-                                console.log(stars)
+                                // let stars = [5, 4, 3, 2, 1];
+                                let stars = [
+                                    { value: 5 },
+                                    { value: 4 },
+                                    { value: 3 },
+                                    { value: 2 },
+                                    { value: 1 }
+                                ];
+                                console.log(stars, typeof stars)
+                                console.log(reviewList, typeof reviewList)
+                                for (let i in showList) {
+                                    // console.log(typeof showList[i].seat_price, typeof parseFloat(showList[i].seat_price).toFixed(2));
+                                    showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
+                                    // console.log(showList)
+                                }
+                                
                                 res.render('temp', { eventInfo, reviewList, showList, stars });
                                 // showList = data;
                             }

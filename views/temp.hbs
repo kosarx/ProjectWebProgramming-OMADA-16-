@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/css/rating-system.css">
+
+
 <div class="container-fluid page-container">
     <div class="row">
         <div class="col event-image divider-bottom">
@@ -57,12 +60,18 @@
                         <div class="col-10">
                             <div class="ratings-wrapper">
                                 <div class="ratings">
-                                    {{!-- <div>eleosss{{stars}} {{review.score}}</div> --}}
-
-                                    {{#each stars }}
-                                    <span data-rating="{{this}}" {{#if (eq this review.score)}}data-clicked="true"
-                                        {{/if}}>★</span>
-                                    {{/each}}
+                                    <div class="ratings">
+                                        <span data-rating="5" {{#if_eq review.score 5 }}data-clicked="true"
+                                        {{/if_eq}}>★</span>
+                                        <span data-rating="4" {{#if_eq review.score 4 }}data-clicked="true"
+                                        {{/if_eq}}>★</span>
+                                        <span data-rating="3" {{#if_eq review.score 3 }}data-clicked="true"
+                                        {{/if_eq}}>★</span>
+                                        <span data-rating="2" {{#if_eq review.score 2 }}data-clicked="true"
+                                        {{/if_eq}}>★</span>
+                                        <span data-rating="1" {{#if_eq review.score 1 }}data-clicked="true"
+                                        {{/if_eq}}>★</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,11 +115,12 @@
                                 <span class="event-venue-address">{{show.address}}</span>
                             </h6>
                             <h6 class="card-subtitle mt-2 title"><span class="event-title">{{eventInfo.title}}</span> -
-                                <span class="event-artists">ARTIST</span></h6>
+                                <span class="event-artists">ARTIST</span>
+                            </h6>
                         </div>
                         <div class="col d-flex justify-content-end align-items-center">
                             <div class="card-title">
-                                <span name="price">from {{show.minimum_price}}.00€</span>
+                                <span name="price">from {{show.minimum_price}}€</span>
                                 <img src="/svgs/Fill5.svg" class="ms-1" alt="">
                             </div>
                         </div>
