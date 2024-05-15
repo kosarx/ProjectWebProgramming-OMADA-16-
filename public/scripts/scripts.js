@@ -26,6 +26,19 @@ document.querySelectorAll('.event-card').forEach(item => {
     });
 });
 
+// ----------------- BOOKING -----------------
+
+function setEventShowBackgroundImage(url) {
+    console.log(url);
+    document.querySelector('.event-image').style.backgroundImage = `url(${url})`;
+    // use fetch API
+    // fetch(url)
+    //     .then(response => response.blob())
+    //     .then(blob => {
+    //         document.querySelector('.event-image').style.backgroundImage = `url(${url})`;
+    //     });
+};
+
 // ----------------- Modal - Ticket Selection -----------------
 let ticketsClicked = 0;
 

@@ -124,18 +124,21 @@ JOIN "REVIEW" r ON e."eventID" = r."eventID"
 JOIN "USER" u ON u."userID" = r."userID"
 WHERE e."eventID" = $1;`
 
-const getShowInfo = `SELECT es."showID", v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address", MIN(seat_price) as minimum_price
+const getShowInfo = `SELECT es."showID", v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address", MIN(sp.seat_price) as minimum_price
 FROM "EVENT_SHOW" es
+JOIN "Sets_Price" sp ON es."showID" = sp."showID"
 JOIN "VENUE" v ON es."venueID" = v."venueID"
 JOIN "Venue_HAS_Seat_Cat" vsc ON vsc."venueID" = v."venueID"
 WHERE es."eventID" = $1 and es."status" = 'SCHEDULED'
-GROUP BY es."showID", v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address"`
+GROUP BY es."showID", v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address"
+`
 
-const getModalInfo = `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", vsc."seat_price", cat."category_name"
+const getModalInfo = `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", sp."seat_price", cat."category_name"
 FROM "EVENT_SHOW" es 
 JOIN "Venue_HAS_Seat_Cat" vsc ON es."venueID" = vsc."venueID"
 JOIN "SEAT_CATEGORY" cat ON cat."categoryID" = vsc."categoryID"
-WHERE es."showID" = $1 and es."status" = 'SCHEDULED'`
+JOIN "Sets_Price" sp ON es."showID" = sp."showID" --AND cat."categoryID" = sp."categoryID"
+WHERE es."showID" = 4 and es."status" = 'SCHEDULED'`
 
 
 
