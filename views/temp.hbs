@@ -4,11 +4,11 @@
 <div class="container-fluid page-container">
     <div class="row">
         <div class="col event-image divider-bottom">
-            <div class="image-overlay">
+            <div class="image-overlay ">
                 <h5 class="text-overlay"> <span class="shadowed-text">{{eventInfo.title}}</span></h5>
-                <p class="text-overlay">{{eventInfo.location}}</p>
+                <p class="text-overlay">{{eventInfo.locations}}</p>
             </div>
-            <p class="date-overlay">{{eventInfo.date}}</p>
+            <p class="date-overlay">{{eventInfo.dates}}</p>
         </div>
     </div>
 </div>
@@ -107,15 +107,28 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title"><span class="event-day">{{show.show_day}}</span>, <span
-                                    class="event-date">{{show.show_date}}</span>, 
+                                    class="event-date">{{show.show_date}}</span>,
                                 <span class="event-hour">{{show.show_time}}</span>
                             </h5>
-                            <h6 class="card-subtitle mt-1 mb-3 location"><span
-                                    class="event-venue">{{show.venue}}</span>,
+                            <h6 class="card-subtitle mt-1 mb-3 location">
+                                <span {{#if show.venue_name}} class="event-venue">{{show.venue_name}}</span>,
+                                {{/if}}
                                 <span class="event-venue-address">{{show.address}}</span>
                             </h6>
-                            <h6 class="card-subtitle mt-2 title"><span class="event-title">{{eventInfo.title}}</span> -
-                                <span class="event-artists">ARTIST</span>
+                            <h6 class="card-subtitle mt-2 title">{{../eventInfo.titleAndArtist}}
+                                {{!-- <span class="event-title">{{../eventInfo.title}}</span>
+                                -
+                                <span class="event-artists">
+                                    {{#if_eq ../eventInfo.type "music"}}
+                                    {{../eventInfo.artists}}
+                                    {{/if_eq}}
+                                    {{#if_eq ../eventInfo.type "theater"}}
+                                    {{../eventInfo.lead_roles}}
+                                    {{/if_eq}}
+                                    {{#if_eq ../eventInfo.type "cinema"}}
+                                    {{../eventInfo.lead_roles}}
+                                    {{/if_eq}}
+                                </span> --}}
                             </h6>
                         </div>
                         <div class="col d-flex justify-content-end align-items-center">
