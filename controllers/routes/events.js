@@ -1,4 +1,5 @@
 import express from 'express';
+// import moment from 'moment';
 const router = express.Router();
 
 import * as model from '../../model/dbInterface.js';
@@ -27,7 +28,7 @@ let eventNavigation = async function (req, res) {
                 let late_date = new Date(theaterEvents[eventID].latest_date);
                 formattedDate = late_date.toISOString().split('T')[0];
                 theaterEvents[eventID].latest_date = formattedDate;
-                
+
                 theaterEvents[eventID].cities.push(event.city);
             });
 
@@ -139,16 +140,11 @@ let bookTicketsNavigation = async function (req, res) {
                         res.json({ error: err });
                     }
                     else {
-                        // Assuming reviewList is an array of objects with username properties
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
                             review.username = review.username.replace(/['\s]/g, '');
                         });
 
-                        // keep the 3 first reviews
-                        // reviewList = data.slice(0, 3);
-                        // res.send(reviewList)
-                        // console.log(reviewList);
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
                                 console.log("show")
@@ -156,24 +152,52 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                // let stars = [5, 4, 3, 2, 1];
-                                let stars = [
-                                    { value: 5 },
-                                    { value: 4 },
-                                    { value: 3 },
-                                    { value: 2 },
-                                    { value: 1 }
-                                ];
-                                console.log(stars, typeof stars)
-                                console.log(reviewList, typeof reviewList)
+                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                let formattedDate;
+                                let dayName;
+                                let finalFormattedDate;
+                                let showDate;
                                 for (let i in showList) {
-                                    // console.log(typeof showList[i].seat_price, typeof parseFloat(showList[i].seat_price).toFixed(2));
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
-                                    // console.log(showList)
+
+                                    // Format the date components
+
+                                    showDate = new Date(showList[i].show_date);
+
+                                    // Format the date components
+                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
+
+                                    // Get the day name
+                                    dayName = dayNames[showDate.getDay()];
+
+                                    showList[i].show_date = formattedDate;
+                                    showList[i].show_day = dayName;
+
+                                    console.log(showList[i].show_date, showList[i].show_day)
+
+                                    let timeString = showList[i].show_time;
+
+                                    // Split the time string into hours, minutes, and seconds
+                                    let [hours, minutes, seconds] = timeString.split(':');
+
+                                    // Convert the hours to a 12-hour format with AM/PM indication
+                                    let ampm = hours >= 12 ? 'pm' : 'am';
+                                    hours = (hours % 12) || 12;
+
+                                    // Construct the formatted time string
+                                    let formattedTime = hours + ':' + minutes + ampm;
+
+                                    console.log('Formatted Time:', formattedTime);
+
+                                    showList[i].show_time = formattedTime;
+
+
+                                    // const formattedDate = moment(showList[i].show_date).format('YYYY-MM-DD');
+                                    // console.log(formattedDate)
                                 }
-                                
-                                res.render('temp', { eventInfo, reviewList, showList, stars });
-                                // showList = data;
+
+                                res.render('temp', { eventInfo, reviewList, showList });
                             }
                         })
 
