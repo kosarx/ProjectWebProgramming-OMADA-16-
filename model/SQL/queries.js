@@ -22,7 +22,7 @@ WHERE EXISTS (
     FROM "EVENT_SHOW" es
     WHERE e."eventID" = es."eventID"
       AND es.show_date >= CURRENT_DATE
-      AND es.status != 'SCHEDULED'
+      AND es.status = 'SCHEDULED'
 ) AND es.status = 'SCHEDULED'
 GROUP BY t."theaterID", e.title, e.description, e."imageURL", v.city
 ORDER BY earliest_date, latest_date;
@@ -39,7 +39,7 @@ WHERE EXISTS (
     FROM "EVENT_SHOW" es
     WHERE e."eventID" = es."eventID"
       AND es.show_date >= CURRENT_DATE
-      AND es.status != 'SCHEDULED'
+      AND es.status = 'SCHEDULED'
 ) AND es.status = 'SCHEDULED'
 GROUP BY m."musicID", e.title, e.description, e."imageURL", v.city
 ORDER BY earliest_date, latest_date;
