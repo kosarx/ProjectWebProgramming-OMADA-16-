@@ -363,6 +363,7 @@ footer {
 
 .carousel-caption p {
     font-size: 2vw;
+    transition:  color 0.3s ease;
 }
 
 
@@ -370,7 +371,7 @@ footer {
     /* Your existing styles for the caption */
     opacity: 0;
     /* Initially hide the caption */
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease
     /* Smooth transition for opacity */
 }
 
@@ -379,9 +380,13 @@ footer {
     /* Show the caption when the item is active */
 }
 
+.carousel-caption {
+    cursor: pointer;
+}
 
-.carousel-caption h3 {
-    letter-spacing: 0.3em;
+
+.carousel-caption p:hover {
+    color: var(--light-purple);
 }
 
 .event-card {
