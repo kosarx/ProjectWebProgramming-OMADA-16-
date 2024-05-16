@@ -119,9 +119,6 @@ let bookTicketsNavigation = async function (req, res) {
     const navigateTo = req.params.type;
     const eventID = req.params.id;
 
-    // let eventInfo;
-    // let reviewList;
-    let showList;
     let modalInfo;
     if (navigateTo === 'cinema') {
         model.getCinemaEventInfo(eventID, (err, eventInfo) => {
@@ -131,7 +128,7 @@ let bookTicketsNavigation = async function (req, res) {
             }
             else {
                 eventInfo = eventInfo[0];
-                eventInfo.title = eventInfo.title.toUpperCase();
+                eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
                 eventInfo.type = navigateTo;
                 eventInfo.locations = '';
                 eventInfo.dates = '';
@@ -157,7 +154,6 @@ let bookTicketsNavigation = async function (req, res) {
                                 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                                 let formattedDate;
                                 let dayName;
-                                let finalFormattedDate;
                                 let showDate;
                                 for (let i in showList) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
@@ -203,16 +199,16 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
-                                let titleAndArtist = capitalizeFirstLetter(eventInfo.title) + ' -' + eventInfo.lead_roles;
-                                console.log("before",titleAndArtist)
+                                let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
                                 if(titleAndArtist.length>58) {
                                     titleAndArtist = titleAndArtist.slice(0,40)+'...';
-                                    console.log("after",titleAndArtist)
                                 }
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                res.render('temp', { eventInfo, reviewList, showList });
+                                reviewList = reviewList.slice(0,3);
+
+                                res.render('booking', { eventInfo, reviewList, showList });
                             }
                         })
 
@@ -231,7 +227,7 @@ let bookTicketsNavigation = async function (req, res) {
             }
             else {
                 eventInfo = eventInfo[0];
-                eventInfo.title = eventInfo.title.toUpperCase();
+                eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
                 eventInfo.type = navigateTo;
                 eventInfo.locations = '';
                 eventInfo.dates = '';
@@ -303,16 +299,16 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
-                                let titleAndArtist = capitalizeFirstLetter(eventInfo.title) + ' -' + eventInfo.artists;
-                                console.log("before",titleAndArtist)
+                                let titleAndArtist = eventInfo.title + ' - ' + eventInfo.artists;
                                 if(titleAndArtist.length>58) {
                                     titleAndArtist = titleAndArtist.slice(0,40)+'...';
-                                    console.log("after",titleAndArtist)
                                 }
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                res.render('temp', { eventInfo, reviewList, showList });
+                                reviewList = reviewList.slice(0,3);
+
+                                res.render('booking', { eventInfo, reviewList, showList });
                             }
                         })
 
@@ -331,7 +327,7 @@ let bookTicketsNavigation = async function (req, res) {
             }
             else {
                 eventInfo = eventInfo[0];
-                eventInfo.title = eventInfo.title.toUpperCase();
+                eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
                 eventInfo.type = navigateTo;
                 eventInfo.locations = '';
                 eventInfo.dates = '';
@@ -403,16 +399,16 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
-                                let titleAndArtist = capitalizeFirstLetter(eventInfo.title) + ' -' + eventInfo.lead_roles;
-                                console.log("before",titleAndArtist)
+                                let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
                                 if(titleAndArtist.length>58) {
                                     titleAndArtist = titleAndArtist.slice(0,40)+'...';
-                                    console.log("after",titleAndArtist)
                                 }
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                res.render('temp', { eventInfo, reviewList, showList });
+                                reviewList = reviewList.slice(0,3);
+
+                                res.render('booking', { eventInfo, reviewList, showList });
                             }
                         })
 
@@ -423,22 +419,6 @@ let bookTicketsNavigation = async function (req, res) {
 
     }
 
-}
-
-function capitalizeFirstLetter(str) {
-    // Split the string into words
-    let words = str.split(' ');
-
-    // Capitalize the first letter of each word
-    for (let i = 0; i < words.length; i++) {
-        // Convert the word to lowercase
-        let lowercaseWord = words[i].toLowerCase();
-        // Capitalize the first letter and concatenate with the rest of the word
-        words[i] = lowercaseWord.charAt(0).toUpperCase() + lowercaseWord.slice(1);
-    }
-
-    // Join the words back into a string
-    return words.join(' ');
 }
 
 
