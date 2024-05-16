@@ -102,7 +102,8 @@
     <div class="row">
         <div class="col inter-children-cards" id="tickets-col">
             {{#each showList as |show|}}
-            <div id="event-show-1" class="card mt-3 mb-4 pt-1 pb-0" data-toggle="modal" data-target="#selectTickets">
+            <div id="event-show-{{show.showID}}" class="card mt-3 mb-4 pt-1 pb-0" data-toggle="modal"
+                data-target="#selectTickets">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -111,24 +112,9 @@
                                 <span class="event-hour">{{show.show_time}}</span>
                             </h5>
                             <h6 class="card-subtitle mt-1 mb-3 location">
-                                <span {{#if show.venue_name}} class="event-venue">{{show.venue_name}}</span>,
-                                {{/if}}
-                                <span class="event-venue-address">{{show.address}}</span>
+                                <span class="event-venue-name-address">{{show.venue_name_address}}</span>
                             </h6>
-                            <h6 class="card-subtitle mt-2 title">{{../eventInfo.titleAndArtist}}
-                                {{!-- <span class="event-title">{{../eventInfo.title}}</span>
-                                -
-                                <span class="event-artists">
-                                    {{#if_eq ../eventInfo.type "music"}}
-                                    {{../eventInfo.artists}}
-                                    {{/if_eq}}
-                                    {{#if_eq ../eventInfo.type "theater"}}
-                                    {{../eventInfo.lead_roles}}
-                                    {{/if_eq}}
-                                    {{#if_eq ../eventInfo.type "cinema"}}
-                                    {{../eventInfo.lead_roles}}
-                                    {{/if_eq}}
-                                </span> --}}
+                            <h6 class="card-subtitle mt-2 title event-title-artists">{{../eventInfo.titleAndArtist}}
                             </h6>
                         </div>
                         <div class="col d-flex justify-content-end align-items-center">
@@ -205,16 +191,15 @@
                                 </div>
                             </div>
                             <div id="modal-info" class="container-fluid">
-                                <h5 class="mt-4"><span class="event-date">22/02/2024</span>, <span
-                                        class="event-day">Thursday</span>,
+                                <h5 class="mt-4"><span class="event-day">Thursday</span>, <span
+                                        class="event-date">22/02/2024</span>,
                                     <span class="event-hour"> 18:00 </span>
                                 </h5>
                                 <h6 class="card-subtitle mt-2 mb-2 location small"> <span
-                                        class="event-venue">Venue_PH</span>,
-                                    <span class="event-venue-address">Address_PH</span>
+                                        class="event-venue-name-address">Venue_PH, Address_PH</span>
                                 </h6>
-                                <h6 class="card-subtitle mt-2 title small"> <span class="event-title">TITLE_PH</span> -
-                                    <span class="event-artists">ARTIST_PH</span>
+                                <h6 class="card-subtitle mt-2 title small"> <span class="event-title-artists">TITLE_PH -
+                                        ARTIST_PH</span>
                                 </h6>
                                 <h5 class="text-overlay"> <span class="small">FINAL PRICE:</span> <span
                                         id="final-price"> TP€</span>
@@ -231,8 +216,19 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
+
+
+{{!-- Include the scripts file to set the event image to the handlebars data--}}
+<script src="/scripts/scripts.js"></script>
+
+<!-- Call the function with the imageURL from Handlebars -->
+<script>
+    setEventImage('{{eventInfo.imageURL}}');
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

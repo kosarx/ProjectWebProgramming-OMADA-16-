@@ -22,7 +22,7 @@
 document.querySelectorAll('.event-card').forEach(item => {
     item.addEventListener('click', event => {
         location.href = `events/${item.id}`;
-        
+
     });
 });
 
@@ -126,6 +126,7 @@ function addDiscountListener(ticketElement) {
     });
 }
 
+
 // Set ticket information in the modal
 document.querySelectorAll('#tickets-col .card-body').forEach(item => {
     item.addEventListener('click', event => {
@@ -138,21 +139,16 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
         const eventDate = cardClickedElement.querySelector('.event-date').textContent;
         const eventDay = cardClickedElement.querySelector('.event-day').textContent;
         const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
-        const eventTitle = cardClickedElement.querySelector('.event-title').textContent;
-        const eventArtists = cardClickedElement.querySelector('.event-artists').textContent;
-        const eventVenue = cardClickedElement.querySelector('.event-venue').textContent;
-        const eventVenueAddress = cardClickedElement.querySelector('.event-venue-address').textContent;
-        // const eventBasePrice = parseFloat(cardClickedElement.querySelector('span[name="price"]').textContent);
-
+        const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
+        const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
+        
         // Set the information in the modal
         const modalInfoElement = document.querySelector('#modal-info');
         modalInfoElement.querySelector('.event-date').textContent = eventDate;
         modalInfoElement.querySelector('.event-day').textContent = eventDay;
         modalInfoElement.querySelector('.event-hour').textContent = eventHour;
-        modalInfoElement.querySelector('.event-title').textContent = eventTitle;
-        modalInfoElement.querySelector('.event-artists').textContent = eventArtists;
-        modalInfoElement.querySelector('.event-venue').textContent = eventVenue;
-        modalInfoElement.querySelector('.event-venue-address').textContent = eventVenueAddress;
+        modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
+        modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
 
         // Set the ticket price in the modal
         modalInfoElement.querySelector('.modal #final-price').textContent = `${Number(0).toFixed(2)}€`;
@@ -249,7 +245,6 @@ function hideMessage(row) {
 
 window.onload = function () {
     var images = document.querySelectorAll('.tickets-booked-container .cancelled-by-user img.x-cancel, .tickets-booked-container .cancelled-show img.x-cancel, .tickets-booked-container .completed img.x-cancel ');
-    console.log(images);
     images.forEach(function (img) {
         img.src = '/svgs/GrayX.svg';
     });
@@ -263,3 +258,11 @@ document.querySelector('#uploadProfilePhoto').addEventListener('change', functio
     profilePic.src = URL.createObjectURL(inputFile.files[0]);
 });
 
+// set the event image in bookings page
+function setEventImage(imageUrl) {
+    // Get the element by its class, event-image
+    const eventImageContainer = document.querySelector('.page-container .event-image');
+
+    // Set the background image style, including the gradient to make the text easier to read
+    eventImageContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('${imageUrl}')`;
+}

@@ -186,7 +186,10 @@ let bookTicketsNavigation = async function (req, res) {
                                     showList[i].show_time = formattedTime;
 
                                     if (showList[i].venue_name == showList[i].address) {
-                                        showList[i].venue_name = null;
+                                        showList[i].venue_name_address = showList[i].venue_name;
+                                    }
+                                    else {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address;
                                     }
 
                                     if (!eventInfo.locations.includes(showList[i].city)){
@@ -286,7 +289,10 @@ let bookTicketsNavigation = async function (req, res) {
                                     showList[i].show_time = formattedTime;
 
                                     if (showList[i].venue_name == showList[i].address) {
-                                        showList[i].venue_name = null;
+                                        showList[i].venue_name_address = showList[i].venue_name;
+                                    }
+                                    else {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address;
                                     }
 
                                     if (!eventInfo.locations.includes(showList[i].city)){
@@ -386,8 +392,12 @@ let bookTicketsNavigation = async function (req, res) {
                                     showList[i].show_time = formattedTime;
 
                                     if (showList[i].venue_name == showList[i].address) {
-                                        showList[i].venue_name = null;
+                                        showList[i].venue_name_address = showList[i].venue_name;
                                     }
+                                    else {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address;
+                                    }
+                                    console.log(showList[i].venue_name_address);
 
                                     if (!eventInfo.locations.includes(showList[i].city)){
                                         eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
