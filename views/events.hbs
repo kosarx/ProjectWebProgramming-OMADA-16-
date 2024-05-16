@@ -31,15 +31,14 @@
           <button type="button" data-bs-target="#carousel-slide" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active carousel-item">
-            <img src="/images/event1.jpg" class="d-block img-fluid carousel-img w-100" alt="...">
+          {{#each carouselEventList as |carouselEvent|}}
+          <div class="carousel-item {{#if_eq carouselEvent.index "0" }} active {{/if_eq}}" data-eventid = "{{carouselEvent.eventID}}" data-type="{{carouselEvent.type}}">
+            <img src={{carouselEvent.imageURL}} class="d-block img-fluid carousel-img w-100" alt="...">
+            <div class="carousel-caption">
+                <p>{{carouselEvent.titleU}}</p>
+              </div>
           </div>
-          <div class="carousel-item carousel-item">
-            <img src="/images/event2.jpg" class="d-block img-fluid carousel-img w-100" alt="...">
-          </div>
-          <div class="carousel-item carousel-item">
-            <img src="/images/event3.jpg" class="d-block img-fluid carousel-img w-100" alt="...">
-          </div>
+          {{/each}}
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carousel-slide" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -56,11 +55,11 @@
   {{#each eventList as |event|}}
   <div id={{event.eventID}} class="card mt-3 mx-auto event-card">
     <div class="row gx-2">
-      <div class="col-md-4 col-xl-3 event-img-cols">
-        <img src={{event.imageURL}} class="card-img rounded event-img" alt="...">
+      <div class="col-md-5 col-lg-4 col-xl-3 event-img-cols">
+        <img src={{event.imageURL}} class="card-img rounded event-img img-fluid" alt="...">
         {{!-- <img src="https://images.alphacoders.com/678/678289.jpg" class="card-img rounded event-img img-fluid" alt="..."> --}}
       </div>
-      <div class="col-md-8 col-xl-9">
+      <div class="col-md-7 col-lg-8 col-xl-9">
         <div class="event-card-body">
           <div class="row">
             <div class="col">

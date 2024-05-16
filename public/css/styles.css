@@ -122,14 +122,14 @@ body {
 
 /* -------FOOTER------- */
 /* body { */
-    /* margin: 0; */
-    /* Remove default margin */
-    /* padding: 0; */
-    /* Remove default padding */
-    /* min-height: 100vh; */
-    /* Ensure body covers viewport height */
-    /* position: relative; */
-    /* Required for footer positioning */
+/* margin: 0; */
+/* Remove default margin */
+/* padding: 0; */
+/* Remove default padding */
+/* min-height: 100vh; */
+/* Ensure body covers viewport height */
+/* position: relative; */
+/* Required for footer positioning */
 /* } */
 
 
@@ -340,6 +340,50 @@ footer {
     max-height: 30em;
 }
 
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2vw;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--light);
+    padding: 0px 20px;
+    letter-spacing: 0.3em;   
+}
+
+.carousel-caption p {
+    font-size: 2vw;
+}
+
+
+.carousel-caption {
+    /* Your existing styles for the caption */
+    opacity: 0;
+    /* Initially hide the caption */
+    transition: opacity 0.5s ease;
+    /* Smooth transition for opacity */
+}
+
+.carousel-item.active .carousel-caption {
+    opacity: 1;
+    /* Show the caption when the item is active */
+}
+
+
+.carousel-caption h3 {
+    letter-spacing: 0.3em;
+}
+
 .event-card {
     background-color: var(--card-background-color);
     width: 60vw;
@@ -351,9 +395,10 @@ footer {
 
 .card.event-card .event-img {
     /* width: 100px; */
-    margin: 0% 12%;
-    width: 200px;
-    height: 130px;
+    margin:  5px 10px;
+    width: 180px;
+    height: 120px;
+    /* height: auto;    */
     object-fit: contain;
     border-radius: 10px;
 
@@ -368,7 +413,7 @@ footer {
 .event-card-title {
     display: inline;
     font-size: 1.2em;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.05em;
 }
 
 
@@ -631,11 +676,11 @@ input[type="radio"] {
 }
 
 /* .middle-centered-container { */
-    /* display: flex;
+/* display: flex;
     align-items: center;
     justify-content: center; */
-    /* margin: 100px auto; */
-    /* width: 70%; */
+/* margin: 100px auto; */
+/* width: 70%; */
 /* } */
 
 /* -------REVIEWS------- */

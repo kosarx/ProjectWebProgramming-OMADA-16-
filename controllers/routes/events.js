@@ -36,8 +36,22 @@ let eventNavigation = async function (req, res) {
                 theaterEvents[key].cities = theaterEvents[key].cities.join(", ");
             }
             const eventList = Object.values(theaterEvents);
+            let carouselEventList = eventList.slice(0, 3).map(({ eventID, title, imageURL }) => ({ eventID, title, imageURL }));
+
+            if (carouselEventList.length < 3) {
+                for (let i = 0; i < 3 - carouselEventList.length; i++) {
+                    carouselEventList[2 - i] = carouselEventList[0];
+                }
+            }
+
+
+            for (let i in carouselEventList) {
+                carouselEventList[i].index = i;
+                carouselEventList[i].titleU = carouselEventList[i].title.toUpperCase();
+                carouselEventList[i].type = navigateTo;
+            }
             // res.json(eventList);
-            res.render('events', { site_header, eventList });
+            res.render('events', { site_header, eventList, carouselEventList });
         });
     }
     else if (navigateTo === 'music') {
@@ -68,8 +82,22 @@ let eventNavigation = async function (req, res) {
                 musicEvents[key].cities = musicEvents[key].cities.join(", ");
             }
             const eventList = Object.values(musicEvents);
+            let carouselEventList = eventList.slice(0, 3).map(({ eventID, title, imageURL }) => ({ eventID, title, imageURL }));
+
+            if (carouselEventList.length < 3) {
+                for (let i = 0; i < 3 - carouselEventList.length; i++) {
+                    carouselEventList[2 - i] = carouselEventList[0];
+                }
+            }
+
+
+            for (let i in carouselEventList) {
+                carouselEventList[i].index = i;
+                carouselEventList[i].titleU = carouselEventList[i].title.toUpperCase();
+                carouselEventList[i].type = navigateTo;
+            }
             // res.json(eventList);
-            res.render('events', { site_header, eventList });
+            res.render('events', { site_header, eventList, carouselEventList });
 
         });
     }
@@ -102,8 +130,23 @@ let eventNavigation = async function (req, res) {
                 cinemaEvents[key].cities = cinemaEvents[key].cities.join(", ");
             }
             const eventList = Object.values(cinemaEvents);
+            
+            let carouselEventList = eventList.slice(0, 3).map(({ eventID, title, imageURL }) => ({ eventID, title, imageURL }));
+
+            if (carouselEventList.length < 3) {
+                for (let i = 0; i < 3 - carouselEventList.length; i++) {
+                    carouselEventList[2 - i] = carouselEventList[0];
+                }
+            }
+
+
+            for (let i in carouselEventList) {
+                carouselEventList[i].index = i;
+                carouselEventList[i].titleU = carouselEventList[i].title.toUpperCase();
+                carouselEventList[i].type = navigateTo;
+            }
             // res.json(eventList);
-            res.render('events', { site_header, eventList });
+            res.render('events', { site_header, eventList, carouselEventList });
 
         });
     }
@@ -192,10 +235,10 @@ let bookTicketsNavigation = async function (req, res) {
                                         showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address;
                                     }
 
-                                    if (!eventInfo.locations.includes(showList[i].city)){
+                                    if (!eventInfo.locations.includes(showList[i].city)) {
                                         eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
                                     }
-                                    if (!eventInfo.dates.includes(showList[i].show_date)){
+                                    if (!eventInfo.dates.includes(showList[i].show_date)) {
                                         eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
                                     }
                                 }
@@ -203,13 +246,13 @@ let bookTicketsNavigation = async function (req, res) {
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
-                                if(titleAndArtist.length>58) {
-                                    titleAndArtist = titleAndArtist.slice(0,40)+'...';
+                                if (titleAndArtist.length > 58) {
+                                    titleAndArtist = titleAndArtist.slice(0, 40) + '...';
                                 }
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                reviewList = reviewList.slice(0,3);
+                                reviewList = reviewList.slice(0, 3);
 
                                 res.render('booking', { eventInfo, reviewList, showList });
                             }
@@ -295,10 +338,10 @@ let bookTicketsNavigation = async function (req, res) {
                                         showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address;
                                     }
 
-                                    if (!eventInfo.locations.includes(showList[i].city)){
+                                    if (!eventInfo.locations.includes(showList[i].city)) {
                                         eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
                                     }
-                                    if (!eventInfo.dates.includes(showList[i].show_date)){
+                                    if (!eventInfo.dates.includes(showList[i].show_date)) {
                                         eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
                                     }
                                 }
@@ -306,13 +349,13 @@ let bookTicketsNavigation = async function (req, res) {
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 let titleAndArtist = eventInfo.title + ' - ' + eventInfo.artists;
-                                if(titleAndArtist.length>58) {
-                                    titleAndArtist = titleAndArtist.slice(0,40)+'...';
+                                if (titleAndArtist.length > 58) {
+                                    titleAndArtist = titleAndArtist.slice(0, 40) + '...';
                                 }
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                reviewList = reviewList.slice(0,3);
+                                reviewList = reviewList.slice(0, 3);
 
                                 res.render('booking', { eventInfo, reviewList, showList });
                             }
@@ -397,12 +440,11 @@ let bookTicketsNavigation = async function (req, res) {
                                     else {
                                         showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address;
                                     }
-                                    console.log(showList[i].venue_name_address);
 
-                                    if (!eventInfo.locations.includes(showList[i].city)){
+                                    if (!eventInfo.locations.includes(showList[i].city)) {
                                         eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
                                     }
-                                    if (!eventInfo.dates.includes(showList[i].show_date)){
+                                    if (!eventInfo.dates.includes(showList[i].show_date)) {
                                         eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
                                     }
                                 }
@@ -410,13 +452,13 @@ let bookTicketsNavigation = async function (req, res) {
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                 let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
-                                if(titleAndArtist.length>58) {
-                                    titleAndArtist = titleAndArtist.slice(0,40)+'...';
+                                if (titleAndArtist.length > 58) {
+                                    titleAndArtist = titleAndArtist.slice(0, 40) + '...';
                                 }
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                reviewList = reviewList.slice(0,3);
+                                reviewList = reviewList.slice(0, 3);
 
                                 res.render('booking', { eventInfo, reviewList, showList });
                             }

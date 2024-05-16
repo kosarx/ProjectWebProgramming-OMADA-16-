@@ -141,7 +141,7 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
         const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
         const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
         const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
-        
+
         // Set the information in the modal
         const modalInfoElement = document.querySelector('#modal-info');
         modalInfoElement.querySelector('.event-date').textContent = eventDate;
@@ -266,3 +266,5 @@ function setEventImage(imageUrl) {
     // Set the background image style, including the gradient to make the text easier to read
     eventImageContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('${imageUrl}')`;
 }
+
+
