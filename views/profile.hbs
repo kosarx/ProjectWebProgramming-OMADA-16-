@@ -1,16 +1,655 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>
-        PROFILE PAGE
-    </h1>
-    <h2>
-        <a href="index.html">GO BACK</a>
-    </h2>
-</body>
-</html>
+<link rel="stylesheet" href="/css/rating-system.css">
+
+
+<div class="container-fluid page-container user-info">
+    <div class="row mt-5">
+        <div class="col-1 col-md-2"></div>
+        <div class="col-6 col-md-5 col-lg-3 text-center">
+            <div class="row">
+                <div class="col">
+                    <label for="uploadProfilePhoto">
+                        <img id="profilePhoto" src="svgs/profile_page_Avatar.svg"
+                            class="rounded-circle float-right img-fluid" alt="User Profile">
+                    </label>
+
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <div>
+                        <input type="file" id="uploadProfilePhoto" accept="image/*" name="profilePhoto">
+                    </div>
+                    <div>
+                        <label for="uploadProfilePhoto" class="btn">+ Upload Photo</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-5 col-lg-4">
+            <div class="row username mt-3">
+                <div class="col">
+                    <h4>Username</h4>
+                </div>
+            </div>
+            <div class="row name mt-2">
+                <div class="col">
+                    First Name Last Name
+                </div>
+            </div>
+            <div class="row email mt-2">
+                <div class="col">
+                    email@domain.com
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-end">
+                    <button type="button" class="btn btn-log-out">Edit Profile</button>
+                </div>
+            </div> <!-- MAYBE we'll add an edit profile option-->
+            <div class="row mt-2"></div>
+            <!-- <div class="row member-since mt-5"> -->
+            <div class="row member-since mt-3"> <!--If we use the edit profile button-->
+                <div class="col-6">
+                    Member since: 10/10/2024
+                </div>
+                <div class="col-6 text-end">
+                    <button type="button" class="btn btn-log-out">Sign out</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 col-md-2"></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-2"></div>
+        <div class="col divider-bottom">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-3"></div>
+        <div class="col tickets shadowed-text">
+            <div class="px-3">MY TICKETS</div>
+            <div class="divider-bottom"></div>
+        </div>
+        <div class="col-1 col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-3"></div>
+        <div class="col">
+            <div class="fixed-height-container overflow-auto">
+                <div class="container-fluid tickets-booked-container">
+                    <div class="row">
+                        <div class="col inter-children-cards" id="booked-tickets-col">
+                            <div class="row scheduled" onmouseover="showMessage(this)" onmouseout="hideMessage(this)">
+                                <div class="col-9">
+                                    <div id="event-show-1" class="card mt-3 mb-4 pt-1 pb-0"
+                                        data-target="#selectTickets">
+                                        <div class="card-body">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <h5 class="card-title"><span class="event-date">25/08/2024</span>,
+                                                        <span class="event-day">Thursday</span>,
+                                                        <span class="event-hour"> 18:00 </span>
+                                                    </h5>
+                                                    <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                            class="event-venue">VENUE</span>,
+                                                        <span class="event-venue-address">ADDRESS</span>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mt-2 title"><span
+                                                            class="event-title">TITLE</span> - <span
+                                                            class="event-artists">ARTIST</span>
+                                                        <!-- <span class="hover-message">This show has been
+                                                                cancelled</span> -->
+                                                        <div class="hover-message"></div>
+                                                    </h6>
+
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <div class="card-title">
+                                                        <span name="price">17.00€</span>
+                                                        <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Cancel Ticket</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row cancelled-by-user" onmouseover="showMessage(this)"
+                                onmouseout="hideMessage(this)">
+                                <div class="col-9">
+                                    <div id="event-show-2" class="card mt-3 mb-4 pt-1 pb-0"
+                                        data-target="#selectTickets">
+                                        <div class="card-body">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <h5 class="card-title"><span class="event-date">25/08/2024</span>,
+                                                        <span class="event-day">Thursday</span>,
+                                                        <span class="event-hour"> 19:00 </span>
+                                                    </h5>
+                                                    <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                            class="event-venue">VENUE</span>,
+                                                        <span class="event-venue-address">ADDRESS</span>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mt-2 title"><span
+                                                            class="event-title">TITLE</span> - <span
+                                                            class="event-artists">ARTIST</span>
+                                                        <div class="hover-message"></div>
+                                                    </h6>
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <div class="card-title">
+                                                        <span name="price">17.00€</span>
+                                                        <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Cancel Ticket</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row cancelled-show" onmouseover="showMessage(this)"
+                                onmouseout="hideMessage(this)">
+                                <div class="col-9">
+                                    <div id="event-show-3" class="card mt-3 mb-4 w-l pt-1 pb-0"
+                                        data-target="#selectTickets">
+                                        <div class="card-body">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <h5 class="card-title"><span class="event-date">25/08/2024</span>,
+                                                        <span class="event-day">Thursday</span>,
+                                                        <span class="event-hour"> 21:00 </span>
+                                                    </h5>
+                                                    <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                            class="event-venue">VENUE</span>,
+                                                        <span class="event-venue-address">ADDRESS</span>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mt-2 title"><span
+                                                            class="event-title">TITLE</span> - <span
+                                                            class="event-artists">ARTIST</span>
+                                                        <div class="hover-message"></div>
+                                                    </h6>
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <div class="card-title">
+                                                        <span name="price">17.00€</span>
+                                                        <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Cancel Ticket</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row cancelled-show" onmouseover="showMessage(this)"
+                                onmouseout="hideMessage(this)">
+                                <div class="col-9">
+                                    <div id="event-show-4" class="card mt-3 mb-4 pt-1 pb-0"
+                                        data-target="#selectTickets">
+                                        <div class="card-body">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <h5 class="card-title"><span class="event-date">26/08/2024</span>,
+                                                        <span class="event-day">Thursday</span>,
+                                                        <span class="event-hour"> 18:00 </span>
+                                                    </h5>
+                                                    <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                            class="event-venue">VENUE</span>,
+                                                        <span class="event-venue-address">ADDRESS</span>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mt-2 title"><span
+                                                            class="event-title">TITLE</span> - <span
+                                                            class="event-artists">ARTIST</span>
+                                                        <div class="hover-message"></div>
+                                                    </h6>
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <div class="card-title">
+                                                        <span name="price">17.00€</span>
+                                                        <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Cancel Ticket</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row cancelled-by-user" onmouseover="showMessage(this)"
+                                onmouseout="hideMessage(this)">
+                                <div class="col-10 col-md-9">
+                                    <div id="event-show-5" class="card mt-3 mb-4 pt-1 pb-0"
+                                        data-target="#selectTickets">
+                                        <div class="card-body">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <h5 class="card-title"><span class="event-date">27/08/2024</span>,
+                                                        <span class="event-day">Thursday</span>,
+                                                        <span class="event-hour"> 18:00 </span>
+                                                    </h5>
+                                                    <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                            class="event-venue">VENUE</span>,
+                                                        <span class="event-venue-address">ADDRESS</span>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mt-2 title"><span
+                                                            class="event-title">TITLE</span> - <span
+                                                            class="event-artists">ARTIST</span>
+                                                        <div class="hover-message"></div>
+                                                    </h6>
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <div class="card-title">
+                                                        <span name="price">17.00€</span>
+                                                        <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-md-3  d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Cancel Ticket</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row completed" onmouseover="showMessage(this)" onmouseout="hideMessage(this)">
+                                <div class="col-9">
+                                    <div id="event-show-6" class="card mt-3 mb-4 pt-1 pb-0"
+                                        data-target="#selectTickets">
+                                        <div class="card-body">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <h5 class="card-title"><span class="event-date">29/08/2024</span>,
+                                                        <span class="event-day">Thursday</span>,
+                                                        <span class="event-hour"> 18:00 </span>
+                                                    </h5>
+                                                    <h6 class="card-subtitle mt-1 mb-3 location"><span
+                                                            class="event-venue">VENUE</span>,
+                                                        <span class="event-venue-address">ADDRESS</span>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mt-2 title"><span
+                                                            class="event-title">TITLE</span> - <span
+                                                            class="event-artists">ARTIST</span>
+                                                        <div class="hover-message"></div>
+                                                    </h6>
+                                                </div>
+                                                <div class="col d-flex justify-content-end align-items-center">
+                                                    <div class="card-title">
+                                                        <span name="price">17.00€</span>
+                                                        <img src="svgs/Fill5.svg" class="ms-1" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Cancel Ticket</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1 col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-3"></div>
+        <div class="col-10 col-md-6 divider-bottom">
+        </div>
+        <div class="col-1 col-md-3"></div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-2"></div>
+        <div class="col divider-bottom">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-3"></div>
+        <div class="col reviews shadowed-text">
+            <div class="px-3">MY REVIEWS</div>
+            <div class="divider-bottom"></div>
+        </div>
+        <div class="col-1 col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-3"></div>
+        <div class="col">
+            <div class="fixed-height-container overflow-auto">
+                <div class="container-fluid reviews-by-user-container">
+                    <div class="row">
+                        <!-- <div class="col-md-8 offset-md-0 mb-3 mx-auto" id="user-reviews-col"> -->
+                        <div class="col inter-children-cards" id="user-reviews-col">
+                            <div class="highligthed-card"><!-- {{selected_review}}--></div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="card divider-bottom">
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <!-- <div class="col text-center pt-3"> -->
+                                                <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                    <h5 class="card-title"><strong>3/5</strong> </h5>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="ratings-wrapper">
+                                                        <div class="ratings">
+                                                            <span data-rating="5">★</span>
+                                                            <span data-rating="4">★</span>
+                                                            <span data-rating="3" data-clicked="true">★</span>
+                                                            <span data-rating="2">★</span>
+                                                            <span data-rating="1">★</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- <div class="col-sm-1 text-left"> -->
+                                                <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                    <h6 class="card-subtitle my-2">USER</h6>
+                                                </div>
+                                                <!-- <div class="col-md-auto text-left"> -->
+                                                <div class="col text-left">
+                                                    <h6 class="card-subtitle my-2">
+                                                        <date class="small">2024-02-22</date>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <p class="card-text card-description">Lorem ipsum dolor sit amet
+                                                consectetur,
+                                                adipisicing elit. Maiores
+                                                porro
+                                                accusamus ullam
+                                                itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum
+                                                dolor sit
+                                                amet.
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fuga
+                                                impedit
+                                                soluta
+                                                architecto voluptate officia quod quisquam libero laudantium
+                                                tempore!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Delete Review</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="card divider-bottom">
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <!-- <div class="col text-center pt-3"> -->
+                                                <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                    <h5 class="card-title"><strong>5/5</strong> </h5>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="ratings-wrapper">
+                                                        <div class="ratings">
+                                                            <span data-rating="5" data-clicked="true">★</span>
+                                                            <span data-rating="4">★</span>
+                                                            <span data-rating="3">★</span>
+                                                            <span data-rating="2">★</span>
+                                                            <span data-rating="1">★</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                    <h6 class="card-subtitle my-2">USER</h6>
+                                                </div>
+                                                <!-- <div class="col-md-auto text-left"> -->
+                                                <div class="col text-left">
+                                                    <h6 class="card-subtitle my-2">
+                                                        <date class="small">2024-02-22</date>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                elit.
+                                                Maiores
+                                                porro
+                                                accusamus ullam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Delete Review</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="card divider-bottom">
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <!-- <div class="col text-center pt-3"> -->
+                                                <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                    <h5 class="card-title"><strong>4/5</strong> </h5>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="ratings-wrapper">
+                                                        <div class="ratings">
+                                                            <span data-rating="5">★</span>
+                                                            <span data-rating="4" data-clicked="true">★</span>
+                                                            <span data-rating="3">★</span>
+                                                            <span data-rating="2">★</span>
+                                                            <span data-rating="1">★</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- <div class="col-sm-1 text-left"> -->
+                                                <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                    <h6 class="card-subtitle my-2">USER</h6>
+                                                </div>
+                                                <div class="col text-left">
+                                                    <h6 class="card-subtitle my-2">
+                                                        <date class="small">2024-02-22</date>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                elit.
+                                                Laborum
+                                                eius
+                                                esse ea, maxime facere vitae voluptates voluptas quibusdam explicabo
+                                                nobis
+                                                cum!
+                                                Quisquam, reiciendis ea explicabo cumque laboriosam illum voluptate
+                                                fugit
+                                                molestias
+                                                aspernatur dignissimos tempore tempora maiores, minus, praesentium
+                                                optio
+                                                quibusdam
+                                                quasi
+                                                quis amet! Voluptatibus, eaque! Eius vitae sapiente similique quae
+                                                expedita
+                                                illum
+                                                labore
+                                                animi, veritatis nemo autem sint necessitatibus nihil perspiciatis,
+                                                vero
+                                                placeat
+                                                optio
+                                                corrupti iure magni? Delectus nulla autem quae nisi quasi corrupti
+                                                ad, ipsum
+                                                et
+                                                expedita, quod odio itaque vero quos suscipit vitae a doloremque
+                                                distinctio
+                                                ipsam.
+                                                Harum
+                                                molestiae quo ex voluptas id nam libero eius, quasi accusantium?
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Delete Review</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="card divider-bottom">
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <!-- <div class="col text-center pt-3"> -->
+                                                <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                    <h5 class="card-title"><strong>4/5</strong> </h5>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="ratings-wrapper">
+                                                        <div class="ratings">
+                                                            <span data-rating="5">★</span>
+                                                            <span data-rating="4" data-clicked="true">★</span>
+                                                            <span data-rating="3">★</span>
+                                                            <span data-rating="2">★</span>
+                                                            <span data-rating="1">★</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                    <h6 class="card-subtitle my-2">USER</h6>
+                                                </div>
+                                                <div class="col text-left">
+                                                    <h6 class="card-subtitle my-2">
+                                                        <date class="small">2024-02-22</date>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                elit.
+                                                Maiores
+                                                porro
+                                                accusamus ullam
+                                                itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum
+                                                dolor sit
+                                                amet...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Delete Review</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">
+                                    <div class="card divider-bottom">
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
+                                                    <h5 class="card-title"><strong>3/5</strong> </h5>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="ratings-wrapper">
+                                                        <div class="ratings">
+                                                            <span data-rating="5">★</span>
+                                                            <span data-rating="4">★</span>
+                                                            <span data-rating="3" data-clicked="true">★</span>
+                                                            <span data-rating="2">★</span>
+                                                            <span data-rating="1">★</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- <div class="col-sm-1 text-left"> -->
+                                                <div class="col-6 col-md-4 col-xxl-3 text-left">
+                                                    <h6 class="card-subtitle my-2">USER</h6>
+                                                </div>
+                                                <!-- <div class="col-md-auto text-left"> -->
+                                                <div class="col text-left">
+                                                    <h6 class="card-subtitle my-2">
+                                                        <date class="small">2024-02-22</date>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing
+                                                elit.
+                                                Maiores
+                                                porro
+                                                accusamus ullam
+                                                itaque eos esse voluptas at. In, dolor consequuntur?Lorem ipsum
+                                                dolor sit
+                                                amet...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center text-center cancel-col">
+                                    <a href="#" class="btn btn-primary">
+                                        <img src="svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
+                                        <span class="cancel-text">Delete Review</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-1 col-md-3"></div>
+        <div class="col-10 col-md-6 divider-bottom">
+        </div>
+        <div class="col-1 col-md-3"></div>
+    </div>
+</div>
+
+
+
+
+<script src="scripts/scripts.js"> </script>
+<script src="scripts/ratingSystem.js"></script>
