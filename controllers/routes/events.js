@@ -34,6 +34,9 @@ let eventNavigation = async function (req, res) {
 
             for (let key in theaterEvents) {
                 theaterEvents[key].cities = theaterEvents[key].cities.join(", ");
+                if (theaterEvents[key].description.length > 190) {
+                    theaterEvents[key].description = theaterEvents[key].description.slice(0, 190) + ' . . .';
+                }
             }
             const eventList = Object.values(theaterEvents);
             let carouselEventList = eventList.slice(0, 3).map(({ eventID, title, imageURL }) => ({ eventID, title, imageURL }));
@@ -80,6 +83,10 @@ let eventNavigation = async function (req, res) {
 
             for (let key in musicEvents) {
                 musicEvents[key].cities = musicEvents[key].cities.join(", ");
+
+                if (musicEvents[key].description.length > 190) {
+                    musicEvents[key].description = musicEvents[key].description.slice(0, 190) + ' . . .';
+                }
             }
             const eventList = Object.values(musicEvents);
             let carouselEventList = eventList.slice(0, 3).map(({ eventID, title, imageURL }) => ({ eventID, title, imageURL }));
@@ -128,9 +135,14 @@ let eventNavigation = async function (req, res) {
 
             for (let key in cinemaEvents) {
                 cinemaEvents[key].cities = cinemaEvents[key].cities.join(", ");
+
+                if (cinemaEvents[key].description.length > 190) {
+                    cinemaEvents[key].description = cinemaEvents[key].description.slice(0, 190) + ' . . .';
+                }
+
             }
             const eventList = Object.values(cinemaEvents);
-            
+
             let carouselEventList = eventList.slice(0, 3).map(({ eventID, title, imageURL }) => ({ eventID, title, imageURL }));
 
             if (carouselEventList.length < 3) {
@@ -138,7 +150,6 @@ let eventNavigation = async function (req, res) {
                     carouselEventList[2 - i] = carouselEventList[0];
                 }
             }
-
 
             for (let i in carouselEventList) {
                 carouselEventList[i].index = i;
@@ -161,7 +172,6 @@ router.get('/:type/', eventNavigation);
 let bookTicketsNavigation = async function (req, res) {
     const navigateTo = req.params.type;
     const eventID = req.params.id;
-
     let modalInfo;
     if (navigateTo === 'cinema') {
         model.getCinemaEventInfo(eventID, (err, eventInfo) => {
@@ -181,9 +191,14 @@ let bookTicketsNavigation = async function (req, res) {
                         res.json({ error: err });
                     }
                     else {
+                        reviewList = reviewList.slice(0, 3);
+
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
                             review.username = review.username.replace(/['\s]/g, '');
+                            if (review.comment.length>210) {
+                                review.comment = review.comment.slice(0,210) + ' . . .';
+                            }
                         });
 
                         model.getShowInfo(eventID, (err, showList) => {
@@ -252,7 +267,6 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                reviewList = reviewList.slice(0, 3);
 
                                 res.render('booking', { eventInfo, reviewList, showList });
                             }
@@ -283,9 +297,15 @@ let bookTicketsNavigation = async function (req, res) {
                         res.json({ error: err });
                     }
                     else {
+                        reviewList = reviewList.slice(0, 3);
+
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
                             review.username = review.username.replace(/['\s]/g, '');
+
+                            if (review.comment.length>210) {
+                                review.comment = review.comment.slice(0,210) + ' . . .';
+                            }
                         });
 
                         model.getShowInfo(eventID, (err, showList) => {
@@ -355,7 +375,6 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                reviewList = reviewList.slice(0, 3);
 
                                 res.render('booking', { eventInfo, reviewList, showList });
                             }
@@ -386,9 +405,15 @@ let bookTicketsNavigation = async function (req, res) {
                         res.json({ error: err });
                     }
                     else {
+                        reviewList = reviewList.slice(0, 3);
+                        console.log(reviewList)
+
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
                             review.username = review.username.replace(/['\s]/g, '');
+                            if (review.comment.length>210) {
+                                review.comment = review.comment.slice(0,210) + ' . . .';
+                            }
                         });
 
                         model.getShowInfo(eventID, (err, showList) => {
@@ -447,6 +472,7 @@ let bookTicketsNavigation = async function (req, res) {
                                     if (!eventInfo.dates.includes(showList[i].show_date)) {
                                         eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
                                     }
+
                                 }
 
                                 eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
@@ -458,7 +484,6 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 eventInfo.titleAndArtist = titleAndArtist;
 
-                                reviewList = reviewList.slice(0, 3);
 
                                 res.render('booking', { eventInfo, reviewList, showList });
                             }
