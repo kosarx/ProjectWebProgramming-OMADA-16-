@@ -1,4 +1,36 @@
 <link rel="stylesheet" href="/css/rating-system.css">
+<div id={{event.eventID}} class="card mt-3 mx-auto event-card">
+    <div class="row gx-2">
+        <div class="col-md-5 col-lg-4 col-xl-3 event-img-cols">
+            <img src={{event.imageURL}} class="card-img rounded event-img img-fluid" alt="...">
+        </div>
+        <div class="col-md-7 col-lg-8 col-xl-9">
+            <div class="event-card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="event-card-title">{{event.title}}</h5>
+                        <p class="event-card-date">{{#if_eq event.earliest_date event.latest_date}}
+                            {{event.earliest_date}}
+                            {{else}}
+                            {{event.earliest_date}} - {{event.latest_date}}
+                            {{/if_eq}}</p>
+                        <p class="event-card-location  ">{{event.cities}}</p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-11">
+                        <p class="event-card-description">DESCRIPTION: {{event.description}} </p>
+                    </div>
+                    <div class="col-1 arrow-container ">
+                        <img src="/svgs/dark_arrow.svg" class="dark-arrow img-fluid" alt="">
+                        <img src="/svgs/light_arrow.svg" class="light-arrow img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid page-container reviews">
     <div class="middle-centered-container">
@@ -15,33 +47,25 @@
                 </form>
             </div>
             <div class="card mt-3 mx-auto event-card divider-bottom">
-                <div class="row gx-0">
-                    <div class="col-md-3 event-img-cols">
-                        <img src="https://picsum.photos/seed/e1/200/100" class="card-img event-img"
-                            id="review-of-event-img" alt="...">
+                <div class="row gx-2">
+                    <div class="col-md-5 col-lg-4 col-xl-3 event-img-cols">
+                        <img src="{{eventInfo.imageURL}}" class="card-img event-img img-fluid" id="review-of-event-img"
+                            alt="...">
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-7 col-lg-8 col-xl-9">
                         <div class="event-card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="event-card-title">TITLE</h5>
-                                    <p class="event-card-date">DATE(S)</p>
-                                    <p class="event-card-location ">CITY</p>
+                                    <h5 class="event-card-title">{{eventInfo.title}}</h5>
+                                    <p class="event-card-date">{{eventInfo.dates}}</p>
+                                    <p class="event-card-location ">{{eventInfo.locations}}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-11">
-                                    <p class="event-card-description">DESCRIPTION Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit, sed
-                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat
-                                        pellentesque
-                                        adipiscing commodo elit
-                                        at. Vitae suscipit tellus mauris a diam maecenas sed. At consectetur lorem
-                                        donec
-                                        massa sapien. Cursus
-                                        euismod quis viverra nibh cras pulvinar mattis. </p>
+                                    <p class="event-card-description">{{eventInfo.description}} </p>
                                 </div>
-                                <div class="col-1 image-container ">
+                                <div class="col-1 arrow-container ">
                                     <img src="/svgs/dark_arrow.svg" class="dark-arrow img-fluid" alt="">
                                     <img src="/svgs/light_arrow.svg" class="light-arrow img-fluid" alt="">
                                 </div>
@@ -49,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>           
         </div>
     </div>
     <div class="divider divider-bottom"></div>

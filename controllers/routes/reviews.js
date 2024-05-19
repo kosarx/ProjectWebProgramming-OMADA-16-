@@ -42,37 +42,39 @@ let reviewsNavigation = async function (req, res) {
                 else {
                     let eventDate;
                     let formattedDate;
-                    let eventInfo;
+                    let eventInfo= {};
+                    let earliestDate;
+                    let latestDate;
+                    eventInfo.locations = eventShowsInfo[0].city;
+                    eventInfo.dates ='';
 
                     for (let i in eventShowsInfo) {
-                        console.log("before",eventShowsInfo[i].show_date)
-
                         eventDate = new Date(eventShowsInfo[i].show_date);
                         formattedDate = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear().toString();
                         eventShowsInfo[i].show_date = formattedDate;
-                        console.log("after",eventShowsInfo[i].show_date)
                     }
-                    console.log("before earliest")
-                    // console.log(eventShowsInfo);
-                    // let earliestDate = eventShowsInfo[1].show_date;
 
-                    // let latestDate = eventShowsInfo[1].show_date;
-                    // // console.log(eventInfo);
-                    // for (let i in eventShowsInfo) {
-                    //     if (eventShowsInfo[i].show_date < earliestDate) {
-                    //         earliestDate = eventShowsInfo[i].show_date;
-                    //     }
-                    //     if (eventShowsInfo[i].show_date > latestDate) {
-                    //         latestDate = eventShowsInfo[i].show_date;
-                    //     }
-                    //     if (!eventInfo.locations.includes(eventShowsInfo[i].city)) {
-                    //         eventInfo.locations = eventInfo.locations + ', ' + eventShowsInfo[i].city;
-                    //     }
-                    // }
-                    // eventInfo.earliestDate = earliestDate;
-                    // eventInfo.latestDate = latestDate;
+                    earliestDate = eventShowsInfo[0].show_date;
+                    latestDate = eventShowsInfo[eventShowsInfo.length-1].show_date;
+                    if (earliestDate != latestDate) {
+                        eventInfo.dates = earliestDate + ' - ' + latestDate;
+                    }
+                    else {
+                        eventInfo.dates = earliestDate
+                    }
+                    eventInfo.title = eventShowsInfo[0].title;
+                    eventInfo.description = eventShowsInfo[0].description;
+                    eventInfo.imageURL = eventShowsInfo[0].imageURL;
+
                     
-                    res.render('reviews', { reviewList });
+                    for (let i in eventShowsInfo) {
+                        if (!eventInfo.locations.includes(eventShowsInfo[i].city)) {
+                            eventInfo.locations = eventInfo.locations + ', ' + eventShowsInfo[i].city;
+                        }
+                    }
+
+                    console.log(eventInfo);
+                    res.render('reviews', { reviewList, eventInfo });
                 }
             }
             )
