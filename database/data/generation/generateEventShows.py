@@ -46,7 +46,7 @@ with open(input_csv_file, 'r', newline='') as infile:
             show_id = generate_show_id(event_id, i)
             show_date = generate_date_sequence(base_date, i - 1)  # Incremental dates
             show_time = generate_random_time()  # Random times within a day
-            if show_date < base_date: #datetime.date.today():
+            if show_date < datetime.date.today():
                 status_options = ["CANCELED", "COMPLETED"]
             elif show_date == base_date: #datetime.date.today():
                 status_options = ["SCHEDULED", "CANCELED", "COMPLETED"]

@@ -138,7 +138,8 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
         // const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
 
         // // Set the information in the modal
-        const modalInfoElement = document.querySelector('#modal-info');
+        // TODO
+        const modalInfoElement = document.querySelector('#modal-info'); // modal-info-{{showID}}!
         // modalInfoElement.querySelector('.event-date').textContent = eventDate;
         // modalInfoElement.querySelector('.event-day').textContent = eventDay;
         // modalInfoElement.querySelector('.event-hour').textContent = eventHour;
