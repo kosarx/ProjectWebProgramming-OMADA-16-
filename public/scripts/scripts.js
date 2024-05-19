@@ -24,7 +24,14 @@
 
 document.querySelectorAll('.event-card').forEach(item => {
     item.addEventListener('click', event => {
-        location.href = `events/${item.id}`;
+        if (window.location.href.includes('reviews')) {
+            // location.href
+            const navigateTo = location.href.split('type/')[1].split('/')[0];
+            location.href = `/type/${navigateTo}/events/${item.id}`;
+        }
+        else {
+            location.href = `events/${item.id}`;
+        }
 
     });
 });
@@ -32,7 +39,7 @@ document.querySelectorAll('.event-card').forEach(item => {
 
 
 
-const carouselItems = document.querySelectorAll('.carousel-item');
+var carouselItems = document.querySelectorAll('.carousel-item');
 
 // Add click event listener to each carousel item
 carouselItems.forEach(item => {
@@ -75,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ----------------- Modal - Ticket Selection -----------------
-let ticketsClicked = 0;
+var ticketsClicked = 0;
 
 // Fix the ticket numbers when a ticket is removed
 function rewriteTicketNumbers() {
@@ -139,7 +146,7 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
 
         // // Set the information in the modal
         // TODO
-        const modalInfoElement = document.querySelector('#modal-info'); // modal-info-{{showID}}!
+        const modalInfoElement = document.querySelectorAll('#modal-info-1'); // modal-info-{{showID}}!
         // modalInfoElement.querySelector('.event-date').textContent = eventDate;
         // modalInfoElement.querySelector('.event-day').textContent = eventDay;
         // modalInfoElement.querySelector('.event-hour').textContent = eventHour;
@@ -317,11 +324,13 @@ window.onload = function () {
 }
 
 // change the profile picture when user uploads one
-document.querySelector('#uploadProfilePhoto').addEventListener('change', function () {
+document.querySelectorAll('#uploadProfilePhoto').forEach(item => {
+    item.addEventListener('change', function () {
     let profilePic = document.querySelector('#profilePhoto');
     let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
 
     profilePic.src = URL.createObjectURL(inputFile.files[0]);
+    });
 });
 
 // set the event image in bookings page

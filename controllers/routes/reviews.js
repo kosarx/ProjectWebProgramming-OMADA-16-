@@ -7,8 +7,9 @@ import * as model from '../../model/dbInterface.js';
 
 let reviewsNavigation = async function (req, res) {
 
-    const eventID = req.params.id;
-    const navigateTo = req.params.type;
+    // split the req.originalURL to get the navigateTo and eventID
+    const eventID = req.originalUrl.split('/')[4];
+    const navigateTo = req.originalUrl.split('/')[2];
 
     model.getEventReviews(eventID, (err, reviewList) => {
         if (err) {
@@ -74,7 +75,7 @@ let reviewsNavigation = async function (req, res) {
                     }
 
                     console.log(eventInfo);
-                    res.render('reviews', { reviewList, eventInfo });
+                    res.render('reviews', {reviewList, eventID, eventInfo });
                 }
             }
             )
@@ -85,7 +86,7 @@ let reviewsNavigation = async function (req, res) {
 
 }
 
-router.get('/:type/events/:id/reviews', reviewsNavigation);
+router.get('/reviews/', reviewsNavigation);
 
-export { router as reviews }
+export { router as reviewRouter}
 

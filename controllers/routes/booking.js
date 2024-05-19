@@ -421,5 +421,8 @@ function groupDataByShow(data) {
 
 router.get('/:type/events/:id', bookTicketsNavigation);
 
+import * as reviewsRouter from './reviews.js';
+router.use('/:type/events/:id/', reviewsRouter.reviewRouter);
+
 export { router as bookings }
 

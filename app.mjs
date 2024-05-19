@@ -13,7 +13,7 @@ import * as routers from './controllers/routes/events.js';
 // import * as routers from './controllers/routes/booking.js';
 
 // import * as profilerouter from './controllers/routes/profile.js';
-import * as bookingRouters from './controllers/routes/booking.js';
+import * as bookingRouter from './controllers/routes/booking.js';
 
 import * as reviewsRouters from './controllers/routes/reviews.js';
 
@@ -50,9 +50,9 @@ app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
 
 app.use('/type/', routers.eventsRouter);
 
-app.use('/type/', bookingRouters.bookings);
+app.use('/type/', bookingRouter.bookings);
 
-app.use('/type/', reviewsRouters.reviews);
+// app.use('/type/:type/events/:id/', reviewsRouters.reviews);
 
 
 
