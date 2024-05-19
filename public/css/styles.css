@@ -461,7 +461,7 @@ footer {
 /* .event-card:hover img.arrow {
     content: url(svgs/Fill9.svg); 
 } */
-.events .event-card-body {
+.event-card-body {
     position: relative;
 }
 
@@ -587,7 +587,7 @@ footer {
 
 .shadowed-text {
     /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     /* Shadow effect for text in span*/
 }
 

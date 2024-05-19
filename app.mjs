@@ -12,6 +12,12 @@ const __dirname = path.dirname(__filename);
 import * as routers from './controllers/routes/events.js';
 // import * as routers from './controllers/routes/booking.js';
 
+// import * as profilerouter from './controllers/routes/profile.js';
+import * as bookingRouters from './controllers/routes/booking.js';
+
+import * as reviewsRouters from './controllers/routes/reviews.js';
+
+
 // Create a new express application
 const app = express();
 const indexRouter = express.Router();
@@ -32,13 +38,26 @@ const hbs = exphbs.create({
                 return opts.fn(this);
             else
                 return opts.inverse(this);
-        }
+        },
+        // json: function(context) {
+        //     return JSON.stringify(context);
+        // }
     }
 });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
+app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
+
 app.use('/type/', routers.eventsRouter);
+
+app.use('/type/', bookingRouters.bookings);
+
+app.use('/type/', reviewsRouters.reviews);
+
+
+
+
 
 app.use('/', indexRouter);
 indexRouter.get('/',(req, res) => {

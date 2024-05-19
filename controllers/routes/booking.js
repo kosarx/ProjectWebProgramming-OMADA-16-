@@ -3,30 +3,420 @@ const router = express.Router();
 
 import * as model from '../../model/dbInterface.js';
 
-let bookingTicketNavigation = async function(req, res) {
+let bookTicketsNavigation = async function (req, res) {
+    const navigateTo = req.params.type;
     const eventID = req.params.id;
-    let events;
-    model.getCinemaEventInfo(eventID, (err, data) => {
-        if (err) {
-            console.log(data)
-            res.json({error: err});
-        }
-        else {
-            // const event = data;
-            // let event_date = new Date(event.date);
-            // let formattedDate = event_date.toISOString().split('T')[0];
-            // event.date = formattedDate;
-            // console.log(event);
-            // res.redirect('/');
-            events = data;
-            // res.send('EVENT SHOWS');
-            res.send(events)
-        }
+    if (navigateTo === 'cinema') {
+        model.getCinemaEventInfo(eventID, (err, eventInfo) => {
+            if (err) {
+                console.log("event")
+                res.json({ error: err });
+            }
+            else {
+                eventInfo = eventInfo[0];
+                eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
+                eventInfo.type = navigateTo;
+                eventInfo.locations = '';
+                eventInfo.dates = '';
+                model.getEventReviews(eventID, (err, reviewList) => {
+                    if (err) {
+                        console.log("reviews")
+                        res.json({ error: err });
+                    }
+                    else {
+                        reviewList = reviewList.slice(0, 3);
 
-    });
-    
+                        reviewList.forEach(review => {
+                            review.username = '@' + review.username;
+                            review.username = review.username.replace(/['\s]/g, '');
+                            if (review.comment.length > 210) {
+                                review.comment = review.comment.slice(0, 210) + ' . . .';
+                            }
+                        });
+
+                        model.getShowInfo(eventID, (err, showList) => {
+                            if (err) {
+                                console.log("show")
+
+                                res.json({ error: err });
+                            }
+                            else {
+                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                let formattedDate;
+                                let dayName;
+                                let showDate;
+                                for (let i in showList) {
+                                    showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
+
+                                    // Format the date components
+
+                                    showDate = new Date(showList[i].show_date);
+
+                                    // Format the date components
+                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
+
+                                    // Get the day name
+                                    dayName = dayNames[showDate.getDay()];
+
+                                    showList[i].show_date = formattedDate;
+                                    showList[i].show_day = dayName;
+
+                                    let timeString = showList[i].show_time;
+
+                                    // Split the time string into hours, minutes, and seconds
+                                    let [hours, minutes, seconds] = timeString.split(':');
+
+                                    // Convert the hours to a 12-hour format with AM/PM indication
+                                    let ampm = hours >= 12 ? 'pm' : 'am';
+                                    hours = (hours % 12) || 12;
+
+                                    // Construct the formatted time string
+                                    let formattedTime = hours + ':' + minutes + ' ' + ampm;
+
+                                    showList[i].show_time = formattedTime;
+
+                                    if (showList[i].venue_name == showList[i].address) {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].city;
+                                    }
+                                    else {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address + ', ' + showList[i].city;
+                                    }
+
+                                    if (!eventInfo.locations.includes(showList[i].city)) {
+                                        eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
+                                    }
+                                    if (!eventInfo.dates.includes(showList[i].show_date)) {
+                                        eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
+                                    }
+
+
+                                }
+
+                                model.getModalInfo(eventID, (err, seatingCatList) => {
+                                    if (err) {
+                                        console.log("modal")
+                                        res.json({ error: err });
+                                    }
+                                    else {
+                                        // console.log("IN JS", showList)
+                                        // console.log("OUT OF JS")
+                                        eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
+                                        eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
+                                        let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
+                                        if (titleAndArtist.length > 58) {
+                                            titleAndArtist = titleAndArtist.slice(0, 40) + '...';
+                                        }
+
+                                        eventInfo.titleAndArtist = titleAndArtist;
+                                        let grouped = groupDataByShow(seatingCatList);
+                                        for (let i in grouped) {
+                                            for (let j in grouped[i].categories) {
+                                                grouped[i].categories[j].seat_price = parseFloat(grouped[i].categories[j].seat_price).toFixed(2);
+                                            }
+
+
+                                        }
+
+
+                                        res.render('booking', { eventInfo, reviewList, showList, grouped });
+
+                                    }
+                                }
+                                )
+                            }
+                        })
+
+                    }
+                })
+            }
+
+        });
+
+    }
+    else if (navigateTo === 'music') {
+        model.getMusicEventInfo(eventID, (err, eventInfo) => {
+            if (err) {
+                console.log("event")
+                res.json({ error: err });
+            }
+            else {
+                eventInfo = eventInfo[0];
+                eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
+                eventInfo.type = navigateTo;
+                eventInfo.locations = '';
+                eventInfo.dates = '';
+                model.getEventReviews(eventID, (err, reviewList) => {
+                    if (err) {
+                        console.log("reviews")
+                        res.json({ error: err });
+                    }
+                    else {
+                        reviewList = reviewList.slice(0, 3);
+
+                        reviewList.forEach(review => {
+                            review.username = '@' + review.username;
+                            review.username = review.username.replace(/['\s]/g, '');
+
+                            if (review.comment.length > 210) {
+                                review.comment = review.comment.slice(0, 210) + ' . . .';
+                            }
+                        });
+
+                        model.getShowInfo(eventID, (err, showList) => {
+                            if (err) {
+                                console.log("show")
+
+                                res.json({ error: err });
+                            }
+                            else {
+                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                let formattedDate;
+                                let dayName;
+                                let finalFormattedDate;
+                                let showDate;
+                                for (let i in showList) {
+                                    showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
+
+                                    // Format the date components
+
+                                    showDate = new Date(showList[i].show_date);
+
+                                    // Format the date components
+                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
+
+                                    // Get the day name
+                                    dayName = dayNames[showDate.getDay()];
+
+                                    showList[i].show_date = formattedDate;
+                                    showList[i].show_day = dayName;
+
+                                    let timeString = showList[i].show_time;
+
+                                    // Split the time string into hours, minutes, and seconds
+                                    let [hours, minutes, seconds] = timeString.split(':');
+
+                                    // Convert the hours to a 12-hour format with AM/PM indication
+                                    let ampm = hours >= 12 ? 'pm' : 'am';
+                                    hours = (hours % 12) || 12;
+
+                                    // Construct the formatted time string
+                                    let formattedTime = hours + ':' + minutes + ' ' + ampm;
+
+                                    showList[i].show_time = formattedTime;
+
+                                    if (showList[i].venue_name == showList[i].address) {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].city;
+                                    }
+                                    else {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address + ', ' + showList[i].city;
+                                    }
+
+                                    if (!eventInfo.locations.includes(showList[i].city)) {
+                                        eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
+                                    }
+                                    if (!eventInfo.dates.includes(showList[i].show_date)) {
+                                        eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
+                                    }
+                                }
+                                model.getModalInfo(eventID, (err, seatingCatList) => {
+                                    if (err) {
+                                        console.log("modal")
+                                        res.json({ error: err });
+                                    }
+                                    else {
+                                        // console.log("IN JS", showList)
+                                        // console.log("OUT OF JS")
+                                        eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
+                                        eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
+
+                                        let titleAndArtist = eventInfo.title + ' - ' + eventInfo.artists;
+                                        if (titleAndArtist.length > 58) {
+                                            titleAndArtist = titleAndArtist.slice(0, 40) + '...';
+                                        }
+
+                                        eventInfo.titleAndArtist = titleAndArtist;
+
+                                        let grouped = groupDataByShow(seatingCatList);
+                                        for (let i in grouped) {
+                                            for (let j in grouped[i].categories) {
+                                                grouped[i].categories[j].seat_price = parseFloat(grouped[i].categories[j].seat_price).toFixed(2);
+                                            }
+
+
+                                        }
+
+
+                                        res.render('booking', { eventInfo, reviewList, showList, grouped });
+
+                                    }
+                                }
+                                )
+                            }
+                        })
+
+                    }
+                })
+            }
+
+        });
+
+    }
+    else if (navigateTo === 'theater') {
+        model.getTheaterEventInfo(eventID, (err, eventInfo) => {
+            if (err) {
+                console.log("event")
+                res.json({ error: err });
+            }
+            else {
+                eventInfo = eventInfo[0];
+                eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
+                eventInfo.type = navigateTo;
+                eventInfo.locations = '';
+                eventInfo.dates = '';
+                model.getEventReviews(eventID, (err, reviewList) => {
+                    if (err) {
+                        console.log("reviews")
+                        res.json({ error: err });
+                    }
+                    else {
+                        reviewList = reviewList.slice(0, 3);
+                        // console.log(reviewList)
+
+                        reviewList.forEach(review => {
+                            review.username = '@' + review.username;
+                            review.username = review.username.replace(/['\s]/g, '');
+                            if (review.comment.length > 210) {
+                                review.comment = review.comment.slice(0, 210) + ' . . .';
+                            }
+                        });
+
+                        model.getShowInfo(eventID, (err, showList) => {
+                            if (err) {
+                                console.log("show")
+
+                                res.json({ error: err });
+                            }
+                            else {
+                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                let formattedDate;
+                                let dayName;
+                                let showDate;
+                                for (let i in showList) {
+                                    showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
+
+                                    // Format the date components
+
+                                    showDate = new Date(showList[i].show_date);
+
+                                    // Format the date components
+                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
+
+                                    // Get the day name
+                                    dayName = dayNames[showDate.getDay()];
+
+                                    showList[i].show_date = formattedDate;
+                                    showList[i].show_day = dayName;
+
+                                    let timeString = showList[i].show_time;
+
+                                    // Split the time string into hours, minutes, and seconds
+                                    let [hours, minutes, seconds] = timeString.split(':');
+
+                                    // Convert the hours to a 12-hour format with AM/PM indication
+                                    let ampm = hours >= 12 ? 'pm' : 'am';
+                                    hours = (hours % 12) || 12;
+
+                                    // Construct the formatted time string
+                                    let formattedTime = hours + ':' + minutes + ' ' + ampm;
+
+                                    showList[i].show_time = formattedTime;
+
+                                    if (showList[i].venue_name == showList[i].address) {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].city;
+                                    }
+                                    else {
+                                        showList[i].venue_name_address = showList[i].venue_name + ', ' + showList[i].address + ', ' + showList[i].city;
+                                    }
+
+                                    if (!eventInfo.locations.includes(showList[i].city)) {
+                                        eventInfo.locations = eventInfo.locations + ', ' + showList[i].city;
+                                    }
+                                    if (!eventInfo.dates.includes(showList[i].show_date)) {
+                                        eventInfo.dates = eventInfo.dates + ', ' + showList[i].show_date;
+                                    }
+
+
+                                }
+
+                                model.getModalInfo(eventID, (err, seatingCatList) => {
+                                    if (err) {
+                                        console.log("modal")
+                                        res.json({ error: err });
+                                    }
+                                    else {
+                                        // console.log("IN JS", showList)
+                                        // console.log("OUT OF JS")
+                                        eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
+                                        eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
+                                        let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
+                                        if (titleAndArtist.length > 58) {
+                                            titleAndArtist = titleAndArtist.slice(0, 40) + '...';
+                                        }
+
+                                        eventInfo.titleAndArtist = titleAndArtist;
+                                        let grouped = groupDataByShow(seatingCatList);
+                                        for (let i in grouped) {
+                                            for (let j in grouped[i].categories) {
+                                                grouped[i].categories[j].seat_price = parseFloat(grouped[i].categories[j].seat_price).toFixed(2);
+                                            }
+
+
+                                        }
+
+
+                                        res.render('booking', { eventInfo, reviewList, showList, grouped });
+
+                                    }
+                                }
+                                )
+                            }
+                        })
+
+                    }
+                })
+            }
+
+        });
+
+    }
+
 }
-// router.get('/:type/', bookingTicketNavigation);
-// router.get('/:type/events/:id');
 
-// export { router as bookingRouter}
+function groupDataByShow(data) {
+    return data.reduce((acc, item) => {
+        let show = acc.find(show => show.showID === item.showID);
+        if (!show) {
+            show = {
+                showID: item.showID,
+                venueID: item.venueID,
+                categories: []
+            };
+            acc.push(show);
+        }
+        show.categories.push({
+            categoryID: item.categoryID,
+            seat_price: item.seat_price,
+            category_name: item.category_name
+        });
+        return acc;
+    }, []);
+}
+
+
+router.get('/:type/events/:id', bookTicketsNavigation);
+
+export { router as bookings }
+

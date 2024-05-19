@@ -78,13 +78,12 @@ FROM "EVENT" e
 JOIN "THEATER" t ON t."theaterID" = e."eventID"
 WHERE e."eventID" = $1`
 
-const getEventReviews = `SELECT r."reviewID", r."score", r."comment", r."date_written", u."username"
-FROM "EVENT" e
-JOIN "REVIEW" r ON e."eventID" = r."eventID"
-JOIN "USER" u ON u."userID" = r."userID"
-WHERE e."eventID" = $1;`
+const getEventReviews = `SELECT r."reviewID", u."userID", r."eventID", r."score", r."comment", r."date_written", u."username"
+FROM "REVIEW" r
+JOIN "USER" u ON r."userID" = u."userID"
+WHERE r."eventID" = $1`
 
-const getShowInfo = `SELECT es."showID", v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address", MIN(sp.seat_price) as minimum_price
+const getShowInfo = `SELECT es."showID", es."eventID" ,v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address", MIN(sp.seat_price) as minimum_price
 FROM "EVENT_SHOW" es
 JOIN "Sets_Price" sp ON es."showID" = sp."showID"
 JOIN "VENUE" v ON es."venueID" = v."venueID"
@@ -94,13 +93,18 @@ GROUP BY es."showID", v."venueID", es."show_date", es."show_time", es."status", 
 ORDER BY es."show_date"
 `
 
-const getModalInfo = `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", sp."seat_price", cat."category_name"
+const getModalInfo = `SELECT es."eventID", es."showID", es."venueID", sp."categoryID", sp."seat_price", sc."category_name"
 FROM "EVENT_SHOW" es 
-JOIN "Venue_HAS_Seat_Cat" vsc ON es."venueID" = vsc."venueID"
-JOIN "SEAT_CATEGORY" cat ON cat."categoryID" = vsc."categoryID"
-JOIN "Sets_Price" sp ON es."showID" = sp."showID" --AND cat."categoryID" = sp."categoryID"
-WHERE es."showID" = 4 and es."status" = 'SCHEDULED'`
+JOIN "Sets_Price" sp ON sp."showID" = es."showID"
+JOIN "SEAT_CATEGORY" sc ON sc."categoryID" = sp."categoryID"
+WHERE es."eventID" = $1 AND es."status" = 'SCHEDULED'`
 
+// `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", sp."seat_price", cat."category_name"
+// FROM "EVENT_SHOW" es 
+// JOIN "Venue_HAS_Seat_Cat" vsc ON es."venueID" = vsc."venueID"
+// JOIN "SEAT_CATEGORY" cat ON cat."categoryID" = vsc."categoryID"
+// JOIN "Sets_Price" sp ON es."showID" = sp."showID" --AND cat."categoryID" = sp."categoryID"
+// WHERE es."showID" = 4 and es."status" = 'SCHEDULED'`
 
 
 export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo }

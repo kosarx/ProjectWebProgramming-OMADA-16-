@@ -157,10 +157,10 @@ async function getShowInfo(eventID, callback) {
     }
 }
 
-async function getModalInfo(showID, callback) {
+async function getModalInfo(eventID, callback) {
     try {
         const client = await connect();
-        const res = await client.query(sql.getModalInfo, [showID]);
+        const res = await client.query(sql.getModalInfo, [eventID]);
         client.release();
         callback(null, res.rows);
     }
@@ -170,4 +170,4 @@ async function getModalInfo(showID, callback) {
 }
 
 
-export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo}
+export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo }

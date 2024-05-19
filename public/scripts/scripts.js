@@ -19,6 +19,9 @@
 //     location.href = link;
 // }
 
+
+
+
 document.querySelectorAll('.event-card').forEach(item => {
     item.addEventListener('click', event => {
         location.href = `events/${item.id}`;
@@ -55,6 +58,22 @@ function setEventShowBackgroundImage(url) {
     //     });
 };
 
+// add event listener to review cards in bookings page
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the current URL
+    const currentUrl = window.location.href;
+    // Construct the new URL for the reviews page
+    const newUrl = `${currentUrl}/reviews`;
+    // Set the href attribute of the link
+    // document.getElementById('reviews-link').href = newUrl;
+    document.querySelectorAll('#review-row a, .bookings-reviews-title a').forEach(item => {
+        item.href = newUrl;
+
+    });
+});
+
+
+
 // ----------------- Modal - Ticket Selection -----------------
 let ticketsClicked = 0;
 
@@ -69,47 +88,7 @@ function rewriteTicketNumbers() {
     ticketsClicked = ticketNumber - 1;
 }
 
-// Add a ticket when the plus icon is clicked
-document.querySelectorAll('.seating-category-row .plus-icon').forEach(item => {
-    item.addEventListener('click', async event => {
-        const categoryRow = item.parentElement.parentElement;
-        ticketsClicked++;
 
-        // Load the content of the modal
-        const content = await fetch('ticketsModal.html').then(response => response.text())
-            .then(data => { return data; });
-        // Add it to the category row              
-        categoryRow.insertAdjacentHTML('beforeend', content);
-
-        // Set the ticket id, ticket number and price
-        categoryRow.querySelector('.tickets-selected:last-child').id = `ticket${ticketsClicked}`;
-        const ticketElement = document.querySelector(`#ticket${ticketsClicked}`);
-        ticketElement.querySelector('.ticket-number').textContent = `TICKET #${ticketsClicked}`;
-        ticketElement.querySelector('.ticket-price').textContent = `${parseFloat(categoryRow.querySelector('.base-category-price').textContent).toFixed(2)}€`;
-
-        // Add the event listener for the close button
-        document.querySelectorAll('.tickets-selected .close-encaps .x-close0').forEach(item => {
-            item.addEventListener('click', event => {
-                item.parentElement.parentElement.parentElement.remove();
-                rewriteTicketNumbers();
-                calculateFinalPrice();
-            });
-            // Change the color of the close button when hovered
-            item.addEventListener('mouseover', event => {
-                item.src = "svgs/BlackX.svg";
-            });
-            item.addEventListener('mouseout', event => {
-                item.src = "svgs/GrayX.svg";
-            });
-        });
-
-        // Add the event listener for the discount selector
-        addDiscountListener(ticketElement);
-
-        // Recalculate the final price
-        calculateFinalPrice();
-    });
-});
 
 // Reset the content of the modal by removing all the selected tickets when closed
 document.querySelectorAll('.close-encaps>.p-1>.x-close1').forEach(item => {
@@ -152,25 +131,95 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
         }
 
         // Get the information from the card
-        const eventDate = cardClickedElement.querySelector('.event-date').textContent;
-        const eventDay = cardClickedElement.querySelector('.event-day').textContent;
-        const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
-        const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
-        const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
+        // const eventDate = cardClickedElement.querySelector('.event-date').textContent;
+        // const eventDay = cardClickedElement.querySelector('.event-day').textContent;
+        // const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
+        // const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
+        // const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
 
-        // Set the information in the modal
+        // // Set the information in the modal
         const modalInfoElement = document.querySelector('#modal-info');
-        modalInfoElement.querySelector('.event-date').textContent = eventDate;
-        modalInfoElement.querySelector('.event-day').textContent = eventDay;
-        modalInfoElement.querySelector('.event-hour').textContent = eventHour;
-        modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
-        modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
+        // modalInfoElement.querySelector('.event-date').textContent = eventDate;
+        // modalInfoElement.querySelector('.event-day').textContent = eventDay;
+        // modalInfoElement.querySelector('.event-hour').textContent = eventHour;
+        // modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
+        // modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
+        // const showCategories = JSON.parse(cardClickedElement.getAttribute('data-show-seat-categories'));
+        // console.log("showcategoris", showCategories)
+        // const categoriesContainer = document.querySelector('.seating-category-select-rows');
+        // categoriesContainer.innerHTML = ''; // Clear existing categories
+        // showCategories.forEach(category => {
+        //     console.log("category",category)
+        //     const categoryRow = document.createElement('div');
+        //     categoryRow.classList.add('row', 'seating-category-row', 'py-2');
+        //     categoryRow.innerHTML = `
+        //         <div class="col-md-9 text-overlay mb-2">
+        //             ${category.category_name.toUpperCase()}
+        //         </div>
+        //         <div class="col-2 text-overlay mt-1">
+        //             <p class="base-category-price text-end">${Number(category.seat_price).toFixed(2)}€</p>
+        //         </div>
+        //         <div class="col-auto">
+        //             <img src="/svgs/Plus.svg" class="plus-icon" alt="+">
+        //         </div>
+        //     `;
+        //     categoriesContainer.appendChild(categoryRow);
+        // });
+
+        
+
 
         // Set the ticket price in the modal
         modalInfoElement.querySelector('.modal #final-price').textContent = `${Number(0).toFixed(2)}€`;
     });
 
 });
+
+
+
+
+// Add a ticket when the plus icon is clicked
+document.querySelectorAll('.seating-category-row .plus-icon').forEach(item => {
+    item.addEventListener('click', async event => {
+        const categoryRow = item.parentElement.parentElement;
+        ticketsClicked++;
+
+        // Load the content of the modal
+        const content = await fetch('/partials/ticketsModal.hbs').then(response => response.text())
+            .then(data => { return data; });
+        // Add it to the category row              
+        categoryRow.insertAdjacentHTML('beforeend', content);
+
+        // Set the ticket id, ticket number and price
+        categoryRow.querySelector('.tickets-selected:last-child').id = `ticket${ticketsClicked}`;
+        const ticketElement = document.querySelector(`#ticket${ticketsClicked}`);
+        ticketElement.querySelector('.ticket-number').textContent = `TICKET #${ticketsClicked}`;
+        ticketElement.querySelector('.ticket-price').textContent = `${parseFloat(categoryRow.querySelector('.base-category-price').textContent).toFixed(2)}€`;
+
+        // Add the event listener for the close button
+        document.querySelectorAll('.tickets-selected .close-encaps .x-close0').forEach(item => {
+            item.addEventListener('click', event => {
+                item.parentElement.parentElement.parentElement.remove();
+                rewriteTicketNumbers();
+                calculateFinalPrice();
+            });
+            // Change the color of the close button when hovered
+            item.addEventListener('mouseover', event => {
+                item.src = "/svgs/BlackX.svg";
+            });
+            item.addEventListener('mouseout', event => {
+                item.src = "/svgs/GrayX.svg";
+            });
+        });
+
+        // Add the event listener for the discount selector
+        addDiscountListener(ticketElement);
+
+        // Recalculate the final price
+        calculateFinalPrice();
+    });
+});
+
 
 function calculateFinalPrice() {
     let finalPrice = 0;
@@ -231,10 +280,10 @@ document.querySelectorAll('.ratings-wrapper .close-encaps .x-close0').forEach(it
     });
     // Change the color of the close button when hovered
     item.addEventListener('mouseover', event => {
-        item.src = "svgs/BlackX.svg";
+        item.src = "/svgs/BlackX.svg";
     });
     item.addEventListener('mouseout', event => {
-        item.src = "svgs/GrayX.svg";
+        item.src = "/svgs/GrayX.svg";
     });
 });
 

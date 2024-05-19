@@ -38,7 +38,7 @@
 </div>
 <div class="container-fluid bookings-container">
     <h5 class="bookings-reviews-title text-overlay">
-        <a href="reviews.html" class="link link-dark">
+        <a href="reviews" class="link link-dark">
             <span class="shadowed-text">REVIEWS</span>
             <span class="">
                 <image src="/svgs/Fill5.svg" class="mb-1" style="height: 15px;"></image>
@@ -79,7 +79,7 @@
                     <h6 class="card-subtitle my-2 ">{{review.username}}</h6>
                     <p class="card-text">{{review.comment}}</p>
                     <div class="d-flex justify-content-end float-right">
-                        <p><a href="reviews.html" class="link-dark">READ MORE</a></p>
+                        <p><a href="reviews" class="link-dark">READ MORE</a></p>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
         {{/each}}
         <div class="row">
             <div class="col text-end mb-3">
-                <a href="reviews.html" class="view-reviews-link text-overlay link link-dark"> View all</a>
+                <a href="reviews" class="view-reviews-link text-overlay link link-dark"> View all</a>
             </div>
         </div>
     </div>
@@ -101,14 +101,16 @@
     </div>
     <div class="row">
         <div class="col inter-children-cards" id="tickets-col">
+            {{!-- {{log showList}} --}}
             {{#each showList as |show|}}
             <div id="event-show-{{show.showID}}" class="card mt-3 mb-4 pt-1 pb-0" data-toggle="modal"
-                data-target="#selectTickets">
+                data-target="#selectTickets-{{show.showID}}">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title"><span class="event-day">{{show.show_day}}</span>, <span
-                                    class="event-date">{{show.show_date}}</span>,
+                            <h5 class="card-title">
+                                <span class="event-day">{{show.show_day}}</span>,
+                                <span class="event-date">{{show.show_date}}</span>,
                                 <span class="event-hour">{{show.show_time}}</span>
                             </h5>
                             <h6 class="card-subtitle mt-1 mb-3 location">
@@ -127,96 +129,62 @@
                 </div>
             </div>
             {{/each}}
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="selectTickets" tabindex="-1" role="dialog" aria-labelledby="select-tickets"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <br>
-                        <div class="close-encaps" data-dismiss="modal" aria-label="Close">
-                            <span class="p-1" aria-hidden="true">
-                                <img src="/svgs/GrayX.svg" class="x-close0" alt="">
-                                <img src="/svgs/BlackX.svg" class="x-close1" alt="">
-                            </span>
+
+            <!-- Modal for each show -->
+            {{#each grouped as |showCategories|}}
+            <div class="modal fade" id="selectTickets-{{showCategories.showID}}" tabindex="-1" role="dialog"
+                aria-labelledby="select-tickets" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <br>
+                            <div class="close-encaps" data-dismiss="modal" aria-label="Close">
+                                <span class="p-1" aria-hidden="true">
+                                    <img src="/svgs/GrayX.svg" class="x-close0" alt="">
+                                    <img src="/svgs/BlackX.svg" class="x-close1" alt="">
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-body">
-                        <form action="post">
-                            <div class="container seating-category-select-rows">
-                                <div class="row seating-category-row py-2">
-                                    <div class="col-md-9 text-overlay mb-2">
-                                        ORCHESTRA
+                        <div class="modal-body">
+                            <form action="post">
+                                <div class="container seating-category-select-rows">
+                                    {{#each showCategories.categories as |category|}}
+                                    <div class="row seating-category-row py-2">
+                                        <div class="col-md-9 text-overlay mb-2">
+                                            {{category.category_name}}
+                                        </div>
+                                        <div class="col-2 text-overlay mt-1">
+                                            <p class="base-category-price text-end">{{category.seat_price}}€</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <img src="/svgs/Plus.svg" class="plus-icon" alt="+">
+                                        </div>
                                     </div>
-                                    <div class="col-2 text-overlay mt-1">
-                                        <p class="base-category-price text-end">17.00€</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="/svgs/Plus.svg" class="plus-icon" alt="+">
-                                    </div>
+                                    {{/each}}
                                 </div>
-                                <div class="row seating-category-row py-2">
-                                    <div class="col-9 text-overlay mb-2">
-                                        MEZZANINE
-                                    </div>
-                                    <div class="col-2 text-overlay mt-1">
-                                        <p class="base-category-price text-end">15.00€</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="/svgs/Plus.svg" class="plus-icon" alt="">
-                                    </div>
+                                <div id="modal-info" class="container-fluid">
+                                    {{!-- <h5 class="mt-4"><span class="event-day">{{show.show_day}}</span>, <span
+                                            class="event-date">{{show.show_date}}</span>, <span
+                                            class="event-hour">{{show.show_time}}</span></h5>
+                                    <h6 class="card-subtitle mt-2 mb-2 location small"><span
+                                            class="event-venue-name-address">{{show.venue_name_address}}</span></h6>
+                                    <h6 class="card-subtitle mt-2 title small"> --}}
+                                        <span
+                                            class="event-title-artists">{{../eventInfo.titleAndArtist}}</span></h6>
+                                    <h5 class="text-overlay"><span class="small">FINAL PRICE:</span><span
+                                            id="final-price"> 0.00€</span></h5>
+                                    <button type="submit" class="btn buy-btn btn-small float-end"
+                                        onclick="window.location.href='booking_complete.html'">
+                                        <span class="text-overlay">Buy</span>
+                                    </button>
                                 </div>
-                                <div class="row seating-category-row py-2">
-                                    <div class="col-9 text-overlay mb-2">
-                                        BALCONY
-                                    </div>
-                                    <div class="col-2 text-overlay mt-1">
-                                        <p class="base-category-price text-end ">13.00€</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="/svgs/Plus.svg" class="plus-icon" alt="">
-                                    </div>
-                                </div>
-                                <div class="row seating-category-row py-2">
-                                    <div class="col-9 text-overlay mb-2">
-                                        BOX SEATS
-                                    </div>
-                                    <div class="col-2 text-overlay mt-1">
-                                        <p class="base-category-price text-end">8.00€</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <img src="/svgs/Plus.svg" class="plus-icon" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="modal-info" class="container-fluid">
-                                <h5 class="mt-4"><span class="event-day">Thursday</span>, <span
-                                        class="event-date">22/02/2024</span>,
-                                    <span class="event-hour"> 18:00 </span>
-                                </h5>
-                                <h6 class="card-subtitle mt-2 mb-2 location small"> <span
-                                        class="event-venue-name-address">Venue_PH, Address_PH</span>
-                                </h6>
-                                <h6 class="card-subtitle mt-2 title small"> <span class="event-title-artists">TITLE_PH -
-                                        ARTIST_PH</span>
-                                </h6>
-                                <h5 class="text-overlay"> <span class="small">FINAL PRICE:</span> <span
-                                        id="final-price"> TP€</span>
-                                </h5>
-                                <button type="submit" class="btn buy-btn btn-small float-end"
-                                    onclick="window.location.href='booking_complete.html'">
-                                    <span class="text-overlay">
-                                        Buy
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{/each}}
         </div>
-
 
     </div>
 </div>
