@@ -99,6 +99,12 @@ JOIN "Sets_Price" sp ON sp."showID" = es."showID"
 JOIN "SEAT_CATEGORY" sc ON sc."categoryID" = sp."categoryID"
 WHERE es."eventID" = $1 AND es."status" = 'SCHEDULED'`
 
+const getEventInReviewsInfo = `SELECT *
+FROM "EVENT" e
+JOIN "EVENT_SHOW" es ON es."eventID" = e."eventID"
+JOIN "VENUE" v ON v."venueID" = es."venueID"
+WHERE e."eventID" = $1 AND es."status" = 'SCHEDULED'`
+
 // `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", sp."seat_price", cat."category_name"
 // FROM "EVENT_SHOW" es 
 // JOIN "Venue_HAS_Seat_Cat" vsc ON es."venueID" = vsc."venueID"
@@ -107,4 +113,4 @@ WHERE es."eventID" = $1 AND es."status" = 'SCHEDULED'`
 // WHERE es."showID" = 4 and es."status" = 'SCHEDULED'`
 
 
-export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo }
+export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo }

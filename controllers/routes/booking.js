@@ -31,6 +31,7 @@ let bookTicketsNavigation = async function (req, res) {
                             review.username = review.username.replace(/['\s]/g, '');
                             if (review.comment.length > 210) {
                                 review.comment = review.comment.slice(0, 210) + ' . . .';
+                                review.readmore = 1;
                             }
                         });
 
@@ -160,6 +161,7 @@ let bookTicketsNavigation = async function (req, res) {
 
                             if (review.comment.length > 210) {
                                 review.comment = review.comment.slice(0, 210) + ' . . .';
+                                review.readmore = 1;
                             }
                         });
 
@@ -289,6 +291,7 @@ let bookTicketsNavigation = async function (req, res) {
                             review.username = review.username.replace(/['\s]/g, '');
                             if (review.comment.length > 210) {
                                 review.comment = review.comment.slice(0, 210) + ' . . .';
+                                review.readmore = 1;
                             }
                         });
 

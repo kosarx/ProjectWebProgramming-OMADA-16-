@@ -79,7 +79,9 @@
                     <h6 class="card-subtitle my-2 ">{{review.username}}</h6>
                     <p class="card-text">{{review.comment}}</p>
                     <div class="d-flex justify-content-end float-right">
+                        {{#if_eq review.readmore 1}}
                         <p><a href="reviews" class="link-dark">READ MORE</a></p>
+                        {{/if_eq}}
                     </div>
                 </div>
             </div>

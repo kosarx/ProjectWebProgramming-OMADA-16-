@@ -169,5 +169,16 @@ async function getModalInfo(eventID, callback) {
     }
 }
 
+async function getEventInReviewsInfo(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getEventInReviewsInfo, [eventID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
 
-export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo }
+export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo }

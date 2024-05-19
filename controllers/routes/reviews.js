@@ -31,8 +31,52 @@ let reviewsNavigation = async function (req, res) {
                 review.date_written = formattedDate;
 
 
+
             });
-            res.render('reviews', {reviewList});
+            model.getEventInReviewsInfo(eventID, (err, eventShowsInfo) => {
+
+                if (err) {
+                    console.log("reviews")
+                    res.json({ error: err });
+                }
+                else {
+                    let eventDate;
+                    let formattedDate;
+                    let eventInfo;
+
+                    for (let i in eventShowsInfo) {
+                        console.log("before",eventShowsInfo[i].show_date)
+
+                        eventDate = new Date(eventShowsInfo[i].show_date);
+                        formattedDate = eventDate.getDate().toString().padStart(2, '0') + '-' + (eventDate.getMonth() + 1).toString().padStart(2, '0') + '-' + eventDate.getFullYear().toString();
+                        eventShowsInfo[i].show_date = formattedDate;
+                        console.log("after",eventShowsInfo[i].show_date)
+                    }
+                    console.log("before earliest")
+                    // console.log(eventShowsInfo);
+                    // let earliestDate = eventShowsInfo[1].show_date;
+
+                    // let latestDate = eventShowsInfo[1].show_date;
+                    // // console.log(eventInfo);
+                    // for (let i in eventShowsInfo) {
+                    //     if (eventShowsInfo[i].show_date < earliestDate) {
+                    //         earliestDate = eventShowsInfo[i].show_date;
+                    //     }
+                    //     if (eventShowsInfo[i].show_date > latestDate) {
+                    //         latestDate = eventShowsInfo[i].show_date;
+                    //     }
+                    //     if (!eventInfo.locations.includes(eventShowsInfo[i].city)) {
+                    //         eventInfo.locations = eventInfo.locations + ', ' + eventShowsInfo[i].city;
+                    //     }
+                    // }
+                    // eventInfo.earliestDate = earliestDate;
+                    // eventInfo.latestDate = latestDate;
+                    
+                    res.render('reviews', { reviewList });
+                }
+            }
+            )
+
         }
     })
 
