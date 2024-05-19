@@ -103,7 +103,8 @@ const getEventInReviewsInfo = `SELECT *
 FROM "EVENT" e
 JOIN "EVENT_SHOW" es ON es."eventID" = e."eventID"
 JOIN "VENUE" v ON v."venueID" = es."venueID"
-WHERE e."eventID" = $1 AND es."status" = 'SCHEDULED'`
+WHERE e."eventID" = $1 AND es."status" = 'SCHEDULED'
+ORDER BY es."show_date"`
 
 // `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", sp."seat_price", cat."category_name"
 // FROM "EVENT_SHOW" es 
