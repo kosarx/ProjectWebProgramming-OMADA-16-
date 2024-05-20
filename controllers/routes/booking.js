@@ -28,7 +28,7 @@ let bookTicketsNavigation = async function (req, res) {
 
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
-                            review.username = review.username.replace(/['\s]/g, '');
+                            review.username = review.username.replace(/\s/g, '');
                             if (review.comment.length > 210) {
                                 review.comment = review.comment.slice(0, 210) + ' . . .';
                                 review.readmore = 1;
@@ -156,7 +156,7 @@ let bookTicketsNavigation = async function (req, res) {
 
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
-                            review.username = review.username.replace(/['\s]/g, '');
+                            review.username = review.username.replace(/\s/g, '');
 
                             if (review.comment.length > 210) {
                                 review.comment = review.comment.slice(0, 210) + ' . . .';
@@ -284,7 +284,7 @@ let bookTicketsNavigation = async function (req, res) {
 
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
-                            review.username = review.username.replace(/['\s]/g, '');
+                            review.username = review.username.replace(/\s/g, '');
                             if (review.comment.length > 210) {
                                 review.comment = review.comment.slice(0, 210) + ' . . .';
                                 review.readmore = 1;

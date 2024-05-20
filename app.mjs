@@ -17,6 +17,8 @@ import * as bookingRouter from './controllers/routes/booking.js';
 
 import * as reviewsRouters from './controllers/routes/reviews.js';
 
+import * as profileRouters from './controllers/routes/profile.js';
+
 
 // Create a new express application
 const app = express();
@@ -51,6 +53,8 @@ app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
 app.use('/type/', routers.eventsRouter);
 
 app.use('/type/', bookingRouter.bookings);
+
+app.use('/profile/', profileRouters.profile);
 
 // app.use('/type/:type/events/:id/', reviewsRouters.reviews);
 

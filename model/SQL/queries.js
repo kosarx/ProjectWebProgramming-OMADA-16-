@@ -114,4 +114,20 @@ ORDER BY es."show_date"`
 // WHERE es."showID" = 4 and es."status" = 'SCHEDULED'`
 
 
-export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo }
+const getUserInfo = `SELECT * FROM "USER" u
+WHERE u."userID" = $1`
+
+const getUsersReviews = `SELECT r."reviewID", e."eventID", r."score", r."comment", r."date_written", e."title"
+FROM "REVIEW" r
+JOIN "EVENT" e ON r."eventID" = e."eventID"
+WHERE r."userID" = $1
+ORDER BY r."date_written"`
+
+const getUsersTickets = `SELECT t."ticketID", t."status" as ticket_status, t."discountID", es."show_date", es."show_time", e."title", es."status" as show_status, v."venue_name" , v."address"
+FROM "TICKET" t 
+JOIN "EVENT_SHOW" es ON t."showID" = es."showID" 
+JOIN "EVENT" e ON e."eventID" = es."eventID" 
+JOIN "VENUE" v ON v."venueID" = es."venueID" 
+WHERE t."userID" = $1 `
+
+export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }

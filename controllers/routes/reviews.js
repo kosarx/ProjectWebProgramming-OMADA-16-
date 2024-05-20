@@ -21,7 +21,7 @@ let reviewsNavigation = async function (req, res) {
             let reviewDate;
             reviewList.forEach(review => {
                 review.username = '@' + review.username;
-                review.username = review.username.replace(/['\s]/g, '');
+                review.username = review.username.replace(/\s/g, '');
 
                 // Format the date components
                 reviewDate = new Date(review.date_written);

@@ -37,6 +37,13 @@ document.querySelectorAll('.event-card').forEach(item => {
 });
 
 
+document.querySelectorAll('.profile-image').forEach(item => {
+    console.log(item, )
+    item.addEventListener('click', event => {
+            window.location.href = `/profile/1`;
+
+    });
+});
 
 
 var carouselItems = document.querySelectorAll('.carousel-item');

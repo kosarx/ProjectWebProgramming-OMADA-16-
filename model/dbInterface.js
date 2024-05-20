@@ -181,4 +181,41 @@ async function getEventInReviewsInfo(eventID, callback) {
     }
 }
 
-export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo }
+async function getUserInfo(userID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getUserInfo, [userID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getUsersReviews(userID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getUsersReviews, [userID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getUsersTickets(userID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getUsersTickets, [userID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+
+export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }
