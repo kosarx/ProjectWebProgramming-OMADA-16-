@@ -172,17 +172,14 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                                 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                                 let formattedDate;
                                 let dayName;
-                                let finalFormattedDate;
                                 let showDate;
                                 for (let i in showList) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
                                     // Format the date components
-
                                     showDate = new Date(showList[i].show_date);
 
                                     // Format the date components
