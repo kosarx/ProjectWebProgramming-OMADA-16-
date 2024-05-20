@@ -9,6 +9,9 @@ import { application } from './app.mjs';
 
 const port = process.env.PORT || '3000';
 
+// Uncomment me to generate the hashes for the passwords
+// import * as passwords from './database/data/generation/passwords.mjs';
+
 const server = application.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
