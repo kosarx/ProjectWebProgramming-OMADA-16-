@@ -1,37 +1,4 @@
 <link rel="stylesheet" href="/css/rating-system.css">
-<div id={{event.eventID}} class="card mt-3 mx-auto event-card">
-    <div class="row gx-2">
-        <div class="col-md-5 col-lg-4 col-xl-3 event-img-cols">
-            <img src={{event.imageURL}} class="card-img rounded event-img img-fluid" alt="...">
-        </div>
-        <div class="col-md-7 col-lg-8 col-xl-9">
-            <div class="event-card-body">
-                <div class="row">
-                    <div class="col">
-                        <h5 class="event-card-title">{{event.title}}</h5>
-                        <p class="event-card-date">{{#if_eq event.earliest_date event.latest_date}}
-                            {{event.earliest_date}}
-                            {{else}}
-                            {{event.earliest_date}} - {{event.latest_date}}
-                            {{/if_eq}}</p>
-                        <p class="event-card-location  ">{{event.cities}}</p>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-11">
-                        <p class="event-card-description">DESCRIPTION: {{event.description}} </p>
-                    </div>
-                    <div class="col-1 arrow-container ">
-                        <img src="/svgs/dark_arrow.svg" class="dark-arrow img-fluid" alt="">
-                        <img src="/svgs/light_arrow.svg" class="light-arrow img-fluid" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="container-fluid page-container reviews">
     <div class="middle-centered-container">
         <div class="row">
