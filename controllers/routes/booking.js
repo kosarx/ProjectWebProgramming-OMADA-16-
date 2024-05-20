@@ -42,7 +42,6 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                                 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                                 let formattedDate;
                                 let dayName;
@@ -299,7 +298,6 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                                 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                                 let formattedDate;
                                 let dayName;
