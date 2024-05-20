@@ -147,3 +147,48 @@ CREATE TABLE IF NOT EXISTS "Sets_Price" (
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
+
+---- VIEWS ----
+CREATE OR REPLACE VIEW "TICKET_Final_Price" AS
+SELECT 
+    T."ticketID",
+    S.seat_price,
+    D.discount_percentage,
+    (S.seat_price * (1 - COALESCE(D.discount_percentage, 0) / 100)) AS final_price
+FROM 
+    "TICKET" T
+JOIN 
+    "Sets_Price" S ON T."showID" = S."showID" AND T."categoryID" = S."categoryID"
+LEFT JOIN 
+    "DISCOUNT_CATEGORY" D ON T."discountID" = D."discountID";
+
+CREATE VIEW "VENUE_Total_Capacity" AS
+SELECT 
+    V."venueID",
+    V.venue_name,
+    SUM(VS.seat_num) AS total_capacity
+FROM 
+    "VENUE" V
+JOIN 
+    "Venue_HAS_Seat_Cat" VS ON V."venueID" = VS."venueID"
+GROUP BY 
+    V."venueID", V.venue_name, V.city, V.address
+ORDER BY
+	V."venueID";
+
+
+CREATE VIEW "ΕVENT_SHOW_Remaining_Capacity" AS
+SELECT 
+    ES."showID",
+    ES."venueID",
+	VTC.total_capacity,
+    VTC.total_capacity - COALESCE(SUM(CASE WHEN T.status = 'BOOKED' THEN 1 ELSE 0 END), 0) AS remaining_capacity
+FROM 
+    "EVENT_SHOW" ES
+JOIN 
+    "VENUE_Total_Capacity" VTC ON ES."venueID" = VTC."venueID"
+LEFT JOIN 
+    "TICKET" T ON ES."showID" = T."showID"
+GROUP BY 
+    ES."showID", ES."eventID", ES.show_date, ES.show_time, ES.status, ES."venueID", VTC.total_capacity;
+
