@@ -164,17 +164,17 @@
                                     </div>
                                     {{/each}}
                                 </div>
-                                <div id="modal-info-{{show.showID}}" class="container-fluid">
-                                    {{!-- <h5 class="mt-4"><span class="event-day">{{show.show_day}}</span>, <span
+                                <div id="modal-info-{{showCategories.showID}}" class="container-fluid">
+                                    <h5 class="mt-4"><span class="event-day">{{show.show_day}}</span>, <span
                                             class="event-date">{{show.show_date}}</span>, <span
                                             class="event-hour">{{show.show_time}}</span></h5>
                                     <h6 class="card-subtitle mt-2 mb-2 location small"><span
                                             class="event-venue-name-address">{{show.venue_name_address}}</span></h6>
-                                    <h6 class="card-subtitle mt-2 title small"> --}}
+                                    <h6 class="card-subtitle mt-2 title small">
                                         <span
                                             class="event-title-artists">{{../eventInfo.titleAndArtist}}</span></h6>
                                     <h5 class="text-overlay"><span class="small">FINAL PRICE:</span><span
-                                            id="final-price"> 0.00€</span></h5>
+                                            id="final-price-{{showCategories.showID}}" class="final-price"> 0.00€</span></h5>
                                     <button type="submit" class="btn buy-btn btn-small float-end"
                                         onclick="window.location.href='booking_complete.html'">
                                         <span class="text-overlay">Buy</span>
@@ -193,7 +193,7 @@
 
 
 {{!-- Include the scripts file to set the event image to the handlebars data--}}
-<script src="/scripts/scripts.js"></script>
+<script src="/scripts/setEventImage.js"></script>
 
 <!-- Call the function with the imageURL from Handlebars -->
 <script>

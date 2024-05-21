@@ -137,59 +137,76 @@ function addDiscountListener(ticketElement) {
 
 
 // Set ticket information in the modal
+// document.querySelectorAll('#tickets-col .card-body').forEach(item => {
+//     item.addEventListener('click', event => {
+//         let cardClickedElement = event.target;
+//         while (!(cardClickedElement.id.includes('event-show'))) {
+//             cardClickedElement = cardClickedElement.parentElement;
+//         }
+
+//         // Get the information from the card
+//         // const eventDate = cardClickedElement.querySelector('.event-date').textContent;
+//         // const eventDay = cardClickedElement.querySelector('.event-day').textContent;
+//         // const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
+//         // const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
+//         // const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
+
+//         // // Set the information in the modal
+//         // TODO
+//         const modalInfoElement = document.querySelectorAll('#modal-info-1'); // modal-info-{{showID}}!
+//         // modalInfoElement.querySelector('.event-date').textContent = eventDate;
+//         // modalInfoElement.querySelector('.event-day').textContent = eventDay;
+//         // modalInfoElement.querySelector('.event-hour').textContent = eventHour;
+//         // modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
+//         // modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
+//         // const showCategories = JSON.parse(cardClickedElement.getAttribute('data-show-seat-categories'));
+//         // console.log("showcategoris", showCategories)
+//         // const categoriesContainer = document.querySelector('.seating-category-select-rows');
+//         // categoriesContainer.innerHTML = ''; // Clear existing categories
+//         // showCategories.forEach(category => {
+//         //     console.log("category",category)
+//         //     const categoryRow = document.createElement('div');
+//         //     categoryRow.classList.add('row', 'seating-category-row', 'py-2');
+//         //     categoryRow.innerHTML = `
+//         //         <div class="col-md-9 text-overlay mb-2">
+//         //             ${category.category_name.toUpperCase()}
+//         //         </div>
+//         //         <div class="col-2 text-overlay mt-1">
+//         //             <p class="base-category-price text-end">${Number(category.seat_price).toFixed(2)}€</p>
+//         //         </div>
+//         //         <div class="col-auto">
+//         //             <img src="/svgs/Plus.svg" class="plus-icon" alt="+">
+//         //         </div>
+//         //     `;
+//         //     categoriesContainer.appendChild(categoryRow);
+//         // });
+
 document.querySelectorAll('#tickets-col .card-body').forEach(item => {
     item.addEventListener('click', event => {
+        // Get the card clicked
         let cardClickedElement = event.target;
         while (!(cardClickedElement.id.includes('event-show'))) {
             cardClickedElement = cardClickedElement.parentElement;
         }
 
         // Get the information from the card
-        // const eventDate = cardClickedElement.querySelector('.event-date').textContent;
-        // const eventDay = cardClickedElement.querySelector('.event-day').textContent;
-        // const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
-        // const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
-        // const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
+        const eventDate = cardClickedElement.querySelector('.event-date').textContent;
+        const eventDay = cardClickedElement.querySelector('.event-day').textContent;
+        const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
+        const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
+        const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
+        // get the show id
+        const showID = cardClickedElement.id.split('-')[2];
 
-        // // Set the information in the modal
-        // TODO
-        const modalInfoElement = document.querySelectorAll('#modal-info-1'); // modal-info-{{showID}}!
-        // modalInfoElement.querySelector('.event-date').textContent = eventDate;
-        // modalInfoElement.querySelector('.event-day').textContent = eventDay;
-        // modalInfoElement.querySelector('.event-hour').textContent = eventHour;
-        // modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
-        // modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
-        // const showCategories = JSON.parse(cardClickedElement.getAttribute('data-show-seat-categories'));
-        // console.log("showcategoris", showCategories)
-        // const categoriesContainer = document.querySelector('.seating-category-select-rows');
-        // categoriesContainer.innerHTML = ''; // Clear existing categories
-        // showCategories.forEach(category => {
-        //     console.log("category",category)
-        //     const categoryRow = document.createElement('div');
-        //     categoryRow.classList.add('row', 'seating-category-row', 'py-2');
-        //     categoryRow.innerHTML = `
-        //         <div class="col-md-9 text-overlay mb-2">
-        //             ${category.category_name.toUpperCase()}
-        //         </div>
-        //         <div class="col-2 text-overlay mt-1">
-        //             <p class="base-category-price text-end">${Number(category.seat_price).toFixed(2)}€</p>
-        //         </div>
-        //         <div class="col-auto">
-        //             <img src="/svgs/Plus.svg" class="plus-icon" alt="+">
-        //         </div>
-        //     `;
-        //     categoriesContainer.appendChild(categoryRow);
-        // });
-
-        
-
-
-        // Set the ticket price in the modal
-        modalInfoElement.querySelector('.modal #final-price').textContent = `${Number(0).toFixed(2)}€`;
+        // Set the information in the modal
+        const modalInfoElement = document.querySelector(`.modal-body #modal-info-${showID}`);
+        modalInfoElement.querySelector('.event-date').textContent = eventDate;
+        modalInfoElement.querySelector('.event-day').textContent = eventDay;
+        modalInfoElement.querySelector('.event-hour').textContent = eventHour;
+        modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
+        modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
     });
-
 });
-
 
 
 
@@ -241,7 +258,12 @@ function calculateFinalPrice() {
     document.querySelectorAll('.ticket-price').forEach(item => {
         finalPrice += parseFloat(item.textContent);
     });
-    document.querySelector('#final-price').textContent = `${finalPrice.toFixed(2)}€`;
+    // for all the final price nodes, update the final price
+    const finalPriceNodes = document.querySelectorAll('.final-price');
+    finalPriceNodes.forEach(item => {
+        const showID = item.id.split('-')[2];
+        document.querySelector(`#final-price-${showID}`).textContent = `${finalPrice.toFixed(2)}€`;
+    });
 }
 
 // Add check to make sure the button is clickable only when at least one ticket is selected
@@ -339,14 +361,5 @@ document.querySelectorAll('#uploadProfilePhoto').forEach(item => {
     profilePic.src = URL.createObjectURL(inputFile.files[0]);
     });
 });
-
-// set the event image in bookings page
-function setEventImage(imageUrl) {
-    // Get the element by its class, event-image
-    const eventImageContainer = document.querySelector('.page-container .event-image');
-
-    // Set the background image style, including the gradient to make the text easier to read
-    eventImageContainer.style.backgroundImage = `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('${imageUrl}')`;
-}
 
 
