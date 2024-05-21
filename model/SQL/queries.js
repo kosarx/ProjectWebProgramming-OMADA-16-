@@ -123,11 +123,12 @@ JOIN "EVENT" e ON r."eventID" = e."eventID"
 WHERE r."userID" = $1
 ORDER BY r."date_written"`
 
-const getUsersTickets = `SELECT t."ticketID", t."status" as ticket_status, t."discountID", es."show_date", es."show_time", e."title", es."status" as show_status, v."venue_name" , v."address"
+const getUsersTickets = `SELECT t."ticketID", t."status" as ticket_status, t."discountID", es."show_date", es."show_time", e."title", es."status" as show_status, v."venue_name" , v."address", tfp."seat_price", tfp."discount_percentage", tfp."final_price"
 FROM "TICKET" t 
 JOIN "EVENT_SHOW" es ON t."showID" = es."showID" 
 JOIN "EVENT" e ON e."eventID" = es."eventID" 
 JOIN "VENUE" v ON v."venueID" = es."venueID" 
+JOIN "TICKET_Final_Price" tfp ON tfp."ticketID" = t."ticketID"
 WHERE t."userID" = $1 `
 
 export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }

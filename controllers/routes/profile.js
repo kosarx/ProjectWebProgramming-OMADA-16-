@@ -70,6 +70,8 @@ let profileNavigation = async function (req, res) {
                                     ticketList[i].venue_name_address = ticketList[i].venue_name + ', ' + ticketList[i].address;
                                 }
 
+                                ticketList[i].final_price = parseFloat(ticketList[i].final_price).toFixed(2);
+
                             }
 
                             res.render('profile', { user, reviewList, ticketList });
