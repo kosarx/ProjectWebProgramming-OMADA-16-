@@ -380,12 +380,12 @@ footer {
     /* Show the caption when the item is active */
 }
 
-.carousel-caption {
+.carousel-item.active {
     cursor: pointer;
 }
 
 
-.carousel-caption p:hover {
+.carousel-caption:hover {
     color: var(--light-purple);
 }
 

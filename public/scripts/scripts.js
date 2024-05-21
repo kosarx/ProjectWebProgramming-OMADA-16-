@@ -50,7 +50,7 @@ var carouselItems = document.querySelectorAll('.carousel-item');
 
 // Add click event listener to each carousel item
 carouselItems.forEach(item => {
-    item.querySelector('.carousel-caption').addEventListener('click', () => {
+    item.addEventListener('click', () => {
         const eventID = item.getAttribute('data-eventid');
         if (eventID) {
             location.href = 'events/' + eventID;
