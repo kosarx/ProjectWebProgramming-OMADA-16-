@@ -177,7 +177,8 @@ footer {
 .main-menu-search-bar input[type="search"] {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 30vw;
-
+    padding-left: 20px;
+    padding-right: 20px;
     height: 44px;
     border: 1px solid var(--review-card-color);
     border-radius: 50px;
@@ -187,18 +188,20 @@ footer {
 
 /* SEARCH BAR AND BUTTON CSS */
 
-.index .search-container,
-.events .search-container,
-.reviews .search-container {
+.search-container {
     display: inline-flex;
     /* Display items inline */
     align-items: center;
     /* Align items vertically */
 }
 
-.index .circular-div,
-.events .circular-div,
-.reviews .circular-div {
+.search-bar .search-container input[type="search"]{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.circular-div {
     width: 44px;
     /* Set width and height to create a circular shape */
     height: 44px;
@@ -358,12 +361,12 @@ footer {
     transform: translateX(-50%);
     color: var(--light);
     padding: 0px 20px;
-    letter-spacing: 0.3em;   
+    letter-spacing: 0.3em;
 }
 
 .carousel-caption p {
     font-size: 2vw;
-    transition:  color 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 
@@ -372,7 +375,7 @@ footer {
     opacity: 0;
     /* Initially hide the caption */
     transition: opacity 0.5s ease
-    /* Smooth transition for opacity */
+        /* Smooth transition for opacity */
 }
 
 .carousel-item.active .carousel-caption {
@@ -400,7 +403,7 @@ footer {
 
 .card.event-card .event-img {
     /* width: 100px; */
-    margin:  5px 10px;
+    margin: 5px 10px;
     width: 180px;
     height: 110px;
     /* height: auto;    */
