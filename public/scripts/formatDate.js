@@ -1,7 +1,7 @@
 
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-export function format_date(show_date) {
+export function formatDate(show_date) {
     let formattedDate;
     let dayName;
     
