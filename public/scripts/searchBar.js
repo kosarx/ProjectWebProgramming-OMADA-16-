@@ -153,6 +153,9 @@ document.getElementById('search-results').addEventListener('click', (e) => {
     });
 
     document.querySelector('#search-input').value = finalText;
+    
+    url=`/type/${hiddenEventType}/events/${hiddenEventID}`;
+    window.location.href = url;
 });
 
 document.getElementById('search-btn').addEventListener('click', (e) => {
@@ -165,4 +168,17 @@ document.getElementById('search-btn').addEventListener('click', (e) => {
 
     url=`/type/${hiddenEventType}/events/${hiddenEventID}`;
     window.location.href = url;
+});
+
+document.getElementById('search-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        if (hiddenEventID === '' || hiddenEventType === '') {
+            return;
+        }
+        const searchResults = document.getElementById('search-results');
+        searchResults.style.display = 'none';
+
+        url=`/type/${hiddenEventType}/events/${hiddenEventID}`;
+        window.location.href = url;
+    }
 });
