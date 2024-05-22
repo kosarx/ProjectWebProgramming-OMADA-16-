@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import * as model from '../../model/dbInterface.js';
-import { format_date } from '../../public/scripts/format_date.js';
+import { formatDate } from '../../public/scripts/formatDate.js';
 
 let getScheduledEvents = async function (req, res) {
     model.getAllScheduledEvents((err, data) => {
@@ -13,7 +13,7 @@ let getScheduledEvents = async function (req, res) {
 let getScheduledEventShows = async function (req, res) {
     model.getAllScheduledEventShows((err, data) => {
         data.forEach(event => {
-            const dayAndDate = format_date(event.show_date);
+            const dayAndDate = formatDate(event.show_date);
             event.show_date = dayAndDate.formattedDate;
             event.day = dayAndDate.dayName;
         });

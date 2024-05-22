@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import * as model from '../../model/dbInterface.js';
-
+import { formatDate } from '../../public/scripts/formatDate.js';
 
 let eventNavigation = async function (req, res) {
     const navigateTo = req.params.type;
@@ -18,8 +18,18 @@ let eventNavigation = async function (req, res) {
                         eventID,
                         title,
                         cities: [],
+                        earliestEventDate: '',
+                        latestEventDate: '',
                         ...otherDetails,
                     };
+                }
+                if (theaterEvents[eventID].earliestEventDate === "") {
+                    
+                    const { dayName, formattedDate } = formatDate(theaterEvents[eventID].earliest_date);
+                                    
+                    theaterEvents[eventID].earliestEventDate = formattedDate;
+                    
+
                 }
                 let early_date = new Date(theaterEvents[eventID].earliest_date);
                 let formattedDate = early_date.toISOString().split('T')[0];
@@ -27,6 +37,10 @@ let eventNavigation = async function (req, res) {
                 let late_date = new Date(theaterEvents[eventID].latest_date);
                 formattedDate = late_date.toISOString().split('T')[0];
                 theaterEvents[eventID].latest_date = formattedDate;
+                const { dayName, formattedDateLatest } = formatDate(theaterEvents[eventID].latest_date);
+                theaterEvents[eventID].latestEventDate = formattedDateLatest;
+                
+
 
                 theaterEvents[eventID].cities.push(event.city);
             });
@@ -71,6 +85,7 @@ let eventNavigation = async function (req, res) {
                     };
                 }
                 let early_date = new Date(musicEvents[eventID].earliest_date);
+                
                 let formattedDate = early_date.toISOString().split('T')[0];
                 musicEvents[eventID].earliest_date = formattedDate;
                 let late_date = new Date(musicEvents[eventID].latest_date);

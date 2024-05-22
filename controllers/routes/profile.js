@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 import * as model from '../../model/dbInterface.js';
-import { format_date } from '../../public/scripts/format_date.js';
+import { formatDate } from '../../public/scripts/formatDate.js';
 
 let profileNavigation = async function (req, res) {
 
@@ -18,9 +18,8 @@ let profileNavigation = async function (req, res) {
 
             user = userArr[0];
 
-            const { dayName, formattedDate } = format_date(user.registration_date);
+            const { dayName, formattedDate } = formatDate(user.registration_date);
             user.registration_date = formattedDate;
-            console.log(user.registration_date);
             user.username = '@' + user.username;
             user.username = user.username.replace(/\s/g, '');
 
@@ -32,7 +31,7 @@ let profileNavigation = async function (req, res) {
                 else {
 
                     for (let i in reviewList) {
-                        const { dayName, formattedDate } = format_date(reviewList[i].date_written);
+                        const { dayName, formattedDate } = formatDate(reviewList[i].date_written);
                         reviewList[i].date_written = formattedDate;
                     }
 
@@ -45,7 +44,7 @@ let profileNavigation = async function (req, res) {
 
                             for (let i in ticketList) {
 
-                                const { dayName, formattedDate } = format_date(ticketList[i].show_date);
+                                const { dayName, formattedDate } = formatDate(ticketList[i].show_date);
                                 ticketList[i].show_date = formattedDate;
                                 ticketList[i].show_day = dayName;
 

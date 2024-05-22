@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import * as model from '../../model/dbInterface.js';
+import { formatDate } from '../../public/scripts/formatDate.js';
 
 let bookTicketsNavigation = async function (req, res) {
     const navigateTo = req.params.type;
@@ -42,23 +43,10 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                                let formattedDate;
-                                let dayName;
-                                let showDate;
                                 for (let i in showList) {
-                                    showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
-                                    // Format the date components
-
-                                    showDate = new Date(showList[i].show_date);
-
-                                    // Format the date components
-                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
-
-                                    // Get the day name
-                                    dayName = dayNames[showDate.getDay()];
-
+                                    const { dayName, formattedDate } = formatDate(showList[i].show_date);
+                                    
                                     showList[i].show_date = formattedDate;
                                     showList[i].show_day = dayName;
 
@@ -99,8 +87,6 @@ let bookTicketsNavigation = async function (req, res) {
                                         res.json({ error: err });
                                     }
                                     else {
-                                        // console.log("IN JS", showList)
-                                        // console.log("OUT OF JS")
                                         eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
@@ -171,25 +157,15 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                                let formattedDate;
-                                let dayName;
-                                let showDate;
                                 for (let i in showList) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
-                                    // Format the date components
-                                    showDate = new Date(showList[i].show_date);
-
-                                    // Format the date components
-                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
-
-                                    // Get the day name
-                                    dayName = dayNames[showDate.getDay()];
-
+                                    const { dayName, formattedDate } = formatDate(showList[i].show_date);
+                                    
                                     showList[i].show_date = formattedDate;
                                     showList[i].show_day = dayName;
 
+                                    
                                     let timeString = showList[i].show_time;
 
                                     // Split the time string into hours, minutes, and seconds
@@ -224,8 +200,7 @@ let bookTicketsNavigation = async function (req, res) {
                                         res.json({ error: err });
                                     }
                                     else {
-                                        // console.log("IN JS", showList)
-                                        // console.log("OUT OF JS")
+
                                         eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
 
@@ -298,23 +273,11 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
-                                const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                                let formattedDate;
-                                let dayName;
-                                let showDate;
                                 for (let i in showList) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
-                                    // Format the date components
-
-                                    showDate = new Date(showList[i].show_date);
-
-                                    // Format the date components
-                                    formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
-
-                                    // Get the day name
-                                    dayName = dayNames[showDate.getDay()];
-
+                                    const { dayName, formattedDate } = formatDate(showList[i].show_date);
+                                    
                                     showList[i].show_date = formattedDate;
                                     showList[i].show_day = dayName;
 
@@ -355,8 +318,6 @@ let bookTicketsNavigation = async function (req, res) {
                                         res.json({ error: err });
                                     }
                                     else {
-                                        // console.log("IN JS", showList)
-                                        // console.log("OUT OF JS")
                                         eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
