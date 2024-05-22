@@ -88,5 +88,5 @@ let reviewsNavigation = async function (req, res) {
 
 router.get('/reviews/', reviewsNavigation);
 
-export { router as reviewRouter}
+export { router as reviewsRouter}
 

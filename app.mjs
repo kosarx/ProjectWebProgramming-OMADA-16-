@@ -9,15 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // connect controller with model -- interface with the database
-import * as routers from './controllers/routes/events.js';
-// import * as routers from './controllers/routes/booking.js';
-
-// import * as profilerouter from './controllers/routes/profile.js';
+import * as eventsRouter from './controllers/routes/events.js';
 import * as bookingRouter from './controllers/routes/booking.js';
-
-import * as reviewsRouters from './controllers/routes/reviews.js';
-
-import * as profileRouters from './controllers/routes/profile.js';
+import * as profileRouter from './controllers/routes/profile.js';
 
 
 // Create a new express application
@@ -50,17 +44,11 @@ app.set('view engine', 'hbs');
 
 app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
 
-app.use('/type/', routers.eventsRouter);
+app.use('/type/', eventsRouter.eventsRouter);
 
-app.use('/type/', bookingRouter.bookings);
+app.use('/type/', bookingRouter.bookingRouter);
 
-app.use('/profile/', profileRouters.profile);
-
-// app.use('/type/:type/events/:id/', reviewsRouters.reviews);
-
-
-
-
+app.use('/profile/', profileRouter.profileRouter);
 
 app.use('/', indexRouter);
 indexRouter.get('/',(req, res) => {
@@ -85,7 +73,5 @@ indexRouter.get('/aboutUs',(req, res) => {
     const persons = [person1, person2];
     res.render('about_us', {persons});
 });
-
-// app.use(':type/events/:id/', routers.bookingRouter);
 
 export {app as application};

@@ -203,25 +203,16 @@ footer {
 
 .circular-div {
     width: 44px;
-    /* Set width and height to create a circular shape */
     height: 44px;
     border-radius: 50%;
-    /* Makes the div circular */
     background-image: url('/svgs/ArrowButton.svg');
-    /* Set the background image */
+    /* ensure the background image covers the entire div */
     background-size: cover;
-    /* Ensure the background image covers the entire div */
     background-position: center;
-    /* Center the background image */
     cursor: pointer;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); */
     transition: transform 0.3s ease;
 
-    /* Change cursor to indicate interaction */
     margin-left: 10px;
-    /* Adjust spacing between search input and button */
-
-
 }
 
 .index .main-menu-search-bar form,

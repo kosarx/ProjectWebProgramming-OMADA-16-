@@ -91,4 +91,4 @@ let profileNavigation = async function (req, res) {
 router.get('/:userid', profileNavigation);
 
 
-export { router as profile }
+export { router as profileRouter }
