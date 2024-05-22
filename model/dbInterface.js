@@ -34,18 +34,29 @@ async function connect() {
     }
 }
 
-// async function getAllEvents(callback) {
-//     try {
-//         const client = await connect();
-//         const res = await client.query(sql.getAllEvents)
-//         await client.release()
-//         callback(null, res.rows)
-//     }
-//     catch (err) {
-//         callback(err, null);
-//     }
-// }
+async function getAllScheduledEvents(callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getAllScheduledEvents)
+        await client.release()
+        callback(null, res.rows)
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
 
+async function getAllScheduledEventShows(callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getAllScheduledEventShows)
+        await client.release()
+        callback(null, res.rows)
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
 
 async function getAllTheater(callback) {
     
@@ -218,4 +229,4 @@ async function getUsersTickets(userID, callback) {
 }
 
 
-export { getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }
+export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }

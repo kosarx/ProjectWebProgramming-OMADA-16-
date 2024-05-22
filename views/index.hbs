@@ -1,52 +1,56 @@
+<link rel="stylesheet" href="/css/search-bar.css">
+
 <div class="container-fluid page-container index">
-    <div class="container search-bar-container">
-      <div class="row justify-content-center">
-        <div class="col-8 main-menu-search-bar d-flex align-items-center justify-content-center">
-          <form>
-            <div class="search-container">
-              <input class="mx-2" type="search" placeholder="Search" aria-label="Search">
-              <div class="circular-div"> </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <div class="divider-bottom"></div>
-
-  <div class="container mt-5 mb-5" id="cardCont">
+  <div class="container search-bar-container">
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-4 mb-4 text-center">
-        <div class="card">
-          <div class="card-body d-flex justify-content-center align-items-center ">
-            <a href="/type/theater/" class="btn">
-              <span>Theater</span>
-            </a>
+      <div class="col-8 main-menu-search-bar d-flex align-items-center justify-content-center">
+        <div class="search-container">
+          <input id="search-input" class="mx-2" type="search" placeholder="Search" aria-label="Search">
+          <div id="search-btn" class="circular-div"> </div>
+          <div id="search-results" class="dropdown-menu">
+            <div class="dropdown-item">No results</div>
           </div>
-          <img src="/images/theater.jpg" class="card-img-bottom img-fluid" alt="...">
-        </div>
-      </div>
-      <div class="col-12 col-sm-4 mb-4 text-center">
-        <div class="card ">
-          <div class="card-body d-flex justify-content-center align-items-center">
-            <a href="/type/music/" class="btn">
-              <span>Music</span>
-            </a>
-          </div>
-          <img src="/images/music.jpg" class="card-img-bottom img-fluid" alt="...">
-        </div>
-      </div>
-      <div class="col-12 col-sm-4 mb-4 text-center">
-        <div class="card">
-          <div class="card-body d-flex justify-content-center align-items-center">
-            <a href="/type/cinema/" class="btn">
-              <span>Cinema</span>
-            </a>
-          </div>
-          <img src="/images/cinema.jpg" class="card-img-bottom img-fluid" alt="...">
-
         </div>
       </div>
     </div>
   </div>
+
+</div>
+<div class="divider-bottom"></div>
+
+<div class="container mt-5 mb-5" id="cardCont">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4 mb-4 text-center">
+      <div class="card">
+        <div class="card-body d-flex justify-content-center align-items-center ">
+          <a href="/type/theater/" class="btn">
+            <span>Theater</span>
+          </a>
+        </div>
+        <img src="/images/theater.jpg" class="card-img-bottom img-fluid" alt="...">
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 mb-4 text-center">
+      <div class="card ">
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <a href="/type/music/" class="btn">
+            <span>Music</span>
+          </a>
+        </div>
+        <img src="/images/music.jpg" class="card-img-bottom img-fluid" alt="...">
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 mb-4 text-center">
+      <div class="card">
+        <div class="card-body d-flex justify-content-center align-items-center">
+          <a href="/type/cinema/" class="btn">
+            <span>Cinema</span>
+          </a>
+        </div>
+        <img src="/images/cinema.jpg" class="card-img-bottom img-fluid" alt="...">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/scripts/searchBar.js"></script>

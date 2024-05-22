@@ -4,4 +4,40 @@
     top: 100%;
     left: 2%;
     z-index: 1;
+
+    overflow: auto;
+    max-height: 200px;
+}
+
+.main-menu-search-bar #search-results {
+    position:absolute;
+    /* background-color:brown; */
+    width: 30%;
+    top: 42%;
+    left: 33.3%;
+    z-index: 1;
+
+    overflow: auto;
+    max-height: 200px;
+}
+
+#search-results::-webkit-scrollbar{
+    width: 7px;
+  }
+
+  /* If screen size is less than 1000px, remove elements with class event-card-location */
+
+@media only screen and (max-width: 1000px) {
+    .event-card-location {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .event-card-type {
+        display: none;
+    }
+    .event-card-genre {
+        display: none;
+    }
 }

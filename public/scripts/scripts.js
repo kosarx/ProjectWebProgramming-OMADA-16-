@@ -135,52 +135,6 @@ function addDiscountListener(ticketElement) {
     });
 }
 
-
-// Set ticket information in the modal
-// document.querySelectorAll('#tickets-col .card-body').forEach(item => {
-//     item.addEventListener('click', event => {
-//         let cardClickedElement = event.target;
-//         while (!(cardClickedElement.id.includes('event-show'))) {
-//             cardClickedElement = cardClickedElement.parentElement;
-//         }
-
-//         // Get the information from the card
-//         // const eventDate = cardClickedElement.querySelector('.event-date').textContent;
-//         // const eventDay = cardClickedElement.querySelector('.event-day').textContent;
-//         // const eventHour = cardClickedElement.querySelector('.event-hour').textContent;
-//         // const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
-//         // const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
-
-//         // // Set the information in the modal
-//         // TODO
-//         const modalInfoElement = document.querySelectorAll('#modal-info-1'); // modal-info-{{showID}}!
-//         // modalInfoElement.querySelector('.event-date').textContent = eventDate;
-//         // modalInfoElement.querySelector('.event-day').textContent = eventDay;
-//         // modalInfoElement.querySelector('.event-hour').textContent = eventHour;
-//         // modalInfoElement.querySelector('.event-title-artists').textContent = eventTitleArtists;
-//         // modalInfoElement.querySelector('.event-venue-name-address').textContent = eventVenueNameAddress;
-//         // const showCategories = JSON.parse(cardClickedElement.getAttribute('data-show-seat-categories'));
-//         // console.log("showcategoris", showCategories)
-//         // const categoriesContainer = document.querySelector('.seating-category-select-rows');
-//         // categoriesContainer.innerHTML = ''; // Clear existing categories
-//         // showCategories.forEach(category => {
-//         //     console.log("category",category)
-//         //     const categoryRow = document.createElement('div');
-//         //     categoryRow.classList.add('row', 'seating-category-row', 'py-2');
-//         //     categoryRow.innerHTML = `
-//         //         <div class="col-md-9 text-overlay mb-2">
-//         //             ${category.category_name.toUpperCase()}
-//         //         </div>
-//         //         <div class="col-2 text-overlay mt-1">
-//         //             <p class="base-category-price text-end">${Number(category.seat_price).toFixed(2)}€</p>
-//         //         </div>
-//         //         <div class="col-auto">
-//         //             <img src="/svgs/Plus.svg" class="plus-icon" alt="+">
-//         //         </div>
-//         //     `;
-//         //     categoriesContainer.appendChild(categoryRow);
-//         // });
-
 document.querySelectorAll('#tickets-col .card-body').forEach(item => {
     item.addEventListener('click', event => {
         // Get the card clicked

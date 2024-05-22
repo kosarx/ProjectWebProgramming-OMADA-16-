@@ -1,4 +1,4 @@
-const getAllEvents = `
+const getAllScheduledEvents = `
 SELECT *
 FROM "EVENT" e
 WHERE EXISTS (
@@ -9,6 +9,34 @@ WHERE EXISTS (
       AND es.status != 'CANCELED'
 )
 ORDER BY e."eventID";
+`
+
+const getAllScheduledEventShows = `
+SELECT
+  ES."showID",
+  E."eventID",
+  E.title,
+  E.genre,
+  E."imageURL",
+  -- Get event type from child tables
+  CASE
+    WHEN m."musicID" IS NOT NULL THEN 'MUSIC'
+    WHEN c."cinemaID" IS NOT NULL THEN 'CINEMA'
+    WHEN t."theaterID" IS NOT NULL THEN 'THEATER'
+  END AS event_type,
+  ES.show_date,
+  ES.show_time,
+  ES.status,
+  V.venue_name,
+  V.city
+FROM "EVENT" E
+LEFT JOIN "MUSIC" m ON E."eventID" = m."musicID"
+LEFT JOIN "CINEMA" c ON E."eventID" = c."cinemaID"
+LEFT JOIN "THEATER" t ON E."eventID" = t."theaterID"
+JOIN "EVENT_SHOW" ES ON E."eventID" = ES."eventID"
+JOIN "VENUE" V ON ES."venueID" = V."venueID"
+WHERE ES.status != 'CANCELED'
+ORDER BY ES.show_date;
 `
 
 const getAllTheaters = `
@@ -131,4 +159,4 @@ JOIN "VENUE" v ON v."venueID" = es."venueID"
 JOIN "TICKET_Final_Price" tfp ON tfp."ticketID" = t."ticketID"
 WHERE t."userID" = $1 `
 
-export { getAllEvents, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }
+export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }

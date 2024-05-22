@@ -8,10 +8,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// connect controller with model -- interface with the database
+// connect view with controller with model -- interface with the database, present to the user
 import * as eventsRouter from './controllers/routes/events.js';
 import * as bookingRouter from './controllers/routes/booking.js';
 import * as profileRouter from './controllers/routes/profile.js';
+import * as apiRouter from './controllers/routes/api.js';
 
 
 // Create a new express application
@@ -45,10 +46,9 @@ app.set('view engine', 'hbs');
 app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
 
 app.use('/type/', eventsRouter.eventsRouter);
-
 app.use('/type/', bookingRouter.bookingRouter);
-
 app.use('/profile/', profileRouter.profileRouter);
+app.use('/api/', apiRouter.apiRouter);
 
 app.use('/', indexRouter);
 indexRouter.get('/',(req, res) => {
