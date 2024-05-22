@@ -38,7 +38,7 @@ async function getAllScheduledEvents(callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.getAllScheduledEvents)
-        await client.release()
+        client.release()
         callback(null, res.rows)
     }
     catch (err) {
@@ -50,7 +50,7 @@ async function getAllScheduledEventShows(callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.getAllScheduledEventShows)
-        await client.release()
+        client.release()
         callback(null, res.rows)
     }
     catch (err) {
@@ -63,7 +63,7 @@ async function getAllTheater(callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.getAllTheaters)
-        await client.release()
+        client.release()
         callback(null, res.rows)
     }
     catch (err) {
@@ -75,7 +75,7 @@ async function getAllMusic(callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.getAllMusics)
-        await client.release()
+        client.release()
         callback(null, res.rows)
     }
     catch (err) {
@@ -87,7 +87,7 @@ async function getAllCinema(callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.getAllCinemas)
-        await client.release()
+        client.release()
         callback(null, res.rows)
     }
     catch (err) {
@@ -111,7 +111,7 @@ async function getEventReviews(eventID, callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.getEventReviews, [eventID]);
-        await client.release();
+        client.release();
         callback(null, res.rows);
     }
     catch (err) {
@@ -228,5 +228,18 @@ async function getUsersTickets(userID, callback) {
     }
 }
 
+async function getEventAverageScore(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getEventAverageScore, [eventID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
 
-export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }
+export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, 
+    getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
+     getUsersReviews, getUsersTickets, getEventAverageScore }

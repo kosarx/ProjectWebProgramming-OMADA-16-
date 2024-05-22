@@ -177,7 +177,7 @@ ORDER BY
 	V."venueID";
 
 
-CREATE VIEW "ΕVENT_SHOW_Remaining_Capacity" AS
+CREATE VIEW "EVENT_SHOW_Remaining_Capacity" AS
 SELECT 
     ES."showID",
     ES."venueID",
@@ -191,4 +191,20 @@ LEFT JOIN
     "TICKET" T ON ES."showID" = T."showID"
 GROUP BY 
     ES."showID", ES."eventID", ES.show_date, ES.show_time, ES.status, ES."venueID", VTC.total_capacity;
+
+CREATE VIEW "EVENT_Average_Review_Score" AS
+SELECT 
+    E."eventID",
+    E.title,
+    AVG(R.score) AS average_score
+FROM 
+    "EVENT" E
+LEFT JOIN 
+    "REVIEW" R ON E."eventID" = R."eventID"
+GROUP BY 
+    E."eventID", E.title
+ORDER BY
+	E."eventID";
+
+
 

@@ -716,6 +716,12 @@ input[type="radio"] {
     right: 23%;
 }
 
+#avrgScore[data-average-score] {
+    font-size: 1.7em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
 /* -------MODALs------- */
 .seating-category-select-rows .seating-category-row {
     background-color: var(--main-page-color);

@@ -159,4 +159,15 @@ JOIN "VENUE" v ON v."venueID" = es."venueID"
 JOIN "TICKET_Final_Price" tfp ON tfp."ticketID" = t."ticketID"
 WHERE t."userID" = $1 `
 
-export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo, getUsersReviews, getUsersTickets }
+const getEventAverageScore = `
+SELECT 
+	evav."eventID",
+	evav."average_score"
+FROM
+ 	"EVENT_Average_Review_Score" evav
+WHERE evav."eventID" = $1;
+`
+
+export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
+  getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
+   getUsersReviews, getUsersTickets, getEventAverageScore }

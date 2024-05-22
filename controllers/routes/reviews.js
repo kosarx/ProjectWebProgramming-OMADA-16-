@@ -11,6 +11,16 @@ let reviewsNavigation = async function (req, res) {
     const eventID = req.originalUrl.split('/')[4];
     const navigateTo = req.originalUrl.split('/')[2];
 
+    // const avrgScore = model.getEventAverageScore(eventID, (err, avrgScore) => {
+    //     if (err) {
+    //         console.log("Failed to get average score from the database");
+    //         res.json({ error: err });
+    //     }
+    //     else {
+    //         console.log("Average score: ", avrgScore[0].average_score);
+    //         return avrgScore;
+    //     }
+    // });
     model.getEventReviews(eventID, (err, reviewList) => {
         if (err) {
             console.log("reviews")
@@ -43,11 +53,11 @@ let reviewsNavigation = async function (req, res) {
                 else {
                     let eventDate;
                     let formattedDate;
-                    let eventInfo= {};
+                    let eventInfo = {};
                     let earliestDate;
                     let latestDate;
                     eventInfo.locations = eventShowsInfo[0].city;
-                    eventInfo.dates ='';
+                    eventInfo.dates = '';
 
                     for (let i in eventShowsInfo) {
                         eventDate = new Date(eventShowsInfo[i].show_date);
@@ -56,7 +66,7 @@ let reviewsNavigation = async function (req, res) {
                     }
 
                     earliestDate = eventShowsInfo[0].show_date;
-                    latestDate = eventShowsInfo[eventShowsInfo.length-1].show_date;
+                    latestDate = eventShowsInfo[eventShowsInfo.length - 1].show_date;
                     if (earliestDate != latestDate) {
                         eventInfo.dates = earliestDate + ' - ' + latestDate;
                     }
@@ -67,26 +77,31 @@ let reviewsNavigation = async function (req, res) {
                     eventInfo.description = eventShowsInfo[0].description;
                     eventInfo.imageURL = eventShowsInfo[0].imageURL;
 
-                    
+
                     for (let i in eventShowsInfo) {
                         if (!eventInfo.locations.includes(eventShowsInfo[i].city)) {
                             eventInfo.locations = eventInfo.locations + ', ' + eventShowsInfo[i].city;
                         }
                     }
-
-                    console.log(eventInfo);
-                    res.render('reviews', {reviewList, eventID, eventInfo });
+                    model.getEventAverageScore(eventID, (err, avrgScore) => {
+                        if (err) {
+                            console.log("Failed to get average score from the database");
+                            res.json({ error: err });
+                        }
+                        else {
+                            const averageScore = Number(avrgScore[0].average_score).toFixed(2);                  
+                            res.render('reviews', { averageScore, reviewList, eventID, eventInfo });
+                        }
+                    });
                 }
-            }
-            )
+            });
 
         }
-    })
-
+    });
 
 }
 
 router.get('/reviews/', reviewsNavigation);
 
-export { router as reviewsRouter}
+export { router as reviewsRouter }
 
