@@ -289,17 +289,12 @@ footer {
     border-radius: 8px;
     object-fit: cover;
     width: 70%;
-    /* Set image width as a percentage of the card width */
     max-width: 260px;
-    /* Limit maximum image width */
     height: 80%;
-    /* Set image height as a percentage of the card height */
     max-height: 260px;
-    /* Limit maximum image height */
     display: block;
     margin: 0 auto;
     margin-bottom: 10%;
-    /* Set margin bottom as a percentage of the card height */
 }
 
 
@@ -331,7 +326,7 @@ footer {
 }
 
 .carousel-img {
-    max-height: 30em;
+    max-height: 32em;
 }
 
 .carousel-item::before {
@@ -362,16 +357,13 @@ footer {
 
 
 .carousel-caption {
-    /* Your existing styles for the caption */
     opacity: 0;
-    /* Initially hide the caption */
     transition: opacity 0.5s ease
-        /* Smooth transition for opacity */
 }
 
 .carousel-item.active .carousel-caption {
     opacity: 1;
-    /* Show the caption when the item is active */
+    /* show the caption when the item is active */
 }
 
 .carousel-item.active {
@@ -717,9 +709,13 @@ input[type="radio"] {
 }
 
 #avrgScore[data-average-score] {
-    font-size: 1.7em;
-    font-weight: 700;
+    font-size: 1.25em;
+    font-weight: 600;
     letter-spacing: 0.1em;
+}
+
+.ratings-wrapper .ratings .average-star {
+    font-size:1.60em;
 }
 
 /* -------MODALs------- */

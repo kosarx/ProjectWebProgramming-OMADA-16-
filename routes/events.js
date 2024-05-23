@@ -21,8 +21,6 @@ let eventNavigation = async function (req, res, next) {
         }
     }
     catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
         console.error(error);
         res.json({ error: 'An error occurred' });
     }

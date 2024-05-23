@@ -17,8 +17,6 @@ let bookTicketsNavigation = async function (req, res) {
                 eventInfo = eventInfo[0];
                 eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
                 eventInfo.type = navigateTo;
-                eventInfo.locations = '';
-                eventInfo.dates = '';
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         console.log("reviews")
@@ -43,6 +41,9 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
+                                eventInfo.locations = showList[0].city;
+                                const { dayName, formattedDate } = formatDate(showList[0].show_date);
+                                eventInfo.dates = formattedDate;
                                 for (let i in showList) {
 
                                     const { dayName, formattedDate } = formatDate(showList[i].show_date);
@@ -87,25 +88,20 @@ let bookTicketsNavigation = async function (req, res) {
                                         res.json({ error: err });
                                     }
                                     else {
-                                        eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
-                                        eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
                                         if (titleAndArtist.length > 58) {
                                             titleAndArtist = titleAndArtist.slice(0, 40) + '...';
                                         }
 
                                         eventInfo.titleAndArtist = titleAndArtist;
-                                        let grouped = groupDataByShow(seatingCatList);
-                                        for (let i in grouped) {
-                                            for (let j in grouped[i].categories) {
-                                                grouped[i].categories[j].seat_price = parseFloat(grouped[i].categories[j].seat_price).toFixed(2);
+                                        let showCategoryList = groupDataByShow(seatingCatList);
+                                        for (let i in showCategoryList) {
+                                            for (let j in showCategoryList[i].categories) {
+                                                showCategoryList[i].categories[j].seat_price = parseFloat(showCategoryList[i].categories[j].seat_price).toFixed(2);
                                             }
-
-
                                         }
 
-
-                                        res.render('booking', { eventInfo, reviewList, showList, grouped });
+                                        res.render('booking', { eventInfo, reviewList, showList, showCategoryList });
 
                                     }
                                 }
@@ -130,8 +126,6 @@ let bookTicketsNavigation = async function (req, res) {
                 eventInfo = eventInfo[0];
                 eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
                 eventInfo.type = navigateTo;
-                eventInfo.locations = '';
-                eventInfo.dates = '';
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         console.log("reviews")
@@ -157,6 +151,9 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
+                                eventInfo.locations = showList[0].city;
+                                const { dayName, formattedDate } = formatDate(showList[0].show_date);
+                                eventInfo.dates = formattedDate;
                                 for (let i in showList) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
@@ -200,10 +197,6 @@ let bookTicketsNavigation = async function (req, res) {
                                         res.json({ error: err });
                                     }
                                     else {
-
-                                        eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
-                                        eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
-
                                         let titleAndArtist = eventInfo.title + ' - ' + eventInfo.artists;
                                         if (titleAndArtist.length > 58) {
                                             titleAndArtist = titleAndArtist.slice(0, 40) + '...';
@@ -211,17 +204,13 @@ let bookTicketsNavigation = async function (req, res) {
 
                                         eventInfo.titleAndArtist = titleAndArtist;
 
-                                        let grouped = groupDataByShow(seatingCatList);
-                                        for (let i in grouped) {
-                                            for (let j in grouped[i].categories) {
-                                                grouped[i].categories[j].seat_price = parseFloat(grouped[i].categories[j].seat_price).toFixed(2);
+                                        let showCategoryList = groupDataByShow(seatingCatList);
+                                        for (let i in showCategoryList) {
+                                            for (let j in showCategoryList[i].categories) {
+                                                showCategoryList[i].categories[j].seat_price = parseFloat(showCategoryList[i].categories[j].seat_price).toFixed(2);
                                             }
-
-
                                         }
-
-
-                                        res.render('booking', { eventInfo, reviewList, showList, grouped });
+                                        res.render('booking', { eventInfo, reviewList, showList, showCategoryList });
 
                                     }
                                 }
@@ -246,8 +235,6 @@ let bookTicketsNavigation = async function (req, res) {
                 eventInfo = eventInfo[0];
                 eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
                 eventInfo.type = navigateTo;
-                eventInfo.locations = '';
-                eventInfo.dates = '';
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         console.log("reviews")
@@ -255,8 +242,6 @@ let bookTicketsNavigation = async function (req, res) {
                     }
                     else {
                         reviewList = reviewList.slice(0, 3);
-                        // console.log(reviewList)
-
                         reviewList.forEach(review => {
                             review.username = '@' + review.username;
                             review.username = review.username.replace(/\s/g, '');
@@ -273,11 +258,13 @@ let bookTicketsNavigation = async function (req, res) {
                                 res.json({ error: err });
                             }
                             else {
+                                eventInfo.locations = showList[0].city;
+                                const { dayName, formattedDate } = formatDate(showList[0].show_date);
+                                eventInfo.dates = formattedDate;
                                 for (let i in showList) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
                                     const { dayName, formattedDate } = formatDate(showList[i].show_date);
-                                    
                                     showList[i].show_date = formattedDate;
                                     showList[i].show_day = dayName;
 
@@ -314,38 +301,33 @@ let bookTicketsNavigation = async function (req, res) {
 
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
-                                        console.log("modal")
+                                        console.log("error when getting modal info");
                                         res.json({ error: err });
                                     }
                                     else {
-                                        eventInfo.locations = eventInfo.locations.replace(/^, /, ''); // remove ", " from the beginning of the string
-                                        eventInfo.dates = eventInfo.dates.replace(/^, /, ''); // remove ", " from the beginning of the string
                                         let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
                                         if (titleAndArtist.length > 58) {
                                             titleAndArtist = titleAndArtist.slice(0, 40) + '...';
                                         }
 
                                         eventInfo.titleAndArtist = titleAndArtist;
-                                        let grouped = groupDataByShow(seatingCatList);
-                                        for (let i in grouped) {
-                                            for (let j in grouped[i].categories) {
-                                                grouped[i].categories[j].seat_price = parseFloat(grouped[i].categories[j].seat_price).toFixed(2);
+                                        let showCategoryList = groupDataByShow(seatingCatList);
+                                        for (let i in showCategoryList) {
+                                            for (let j in showCategoryList[i].categories) {
+                                                showCategoryList[i].categories[j].seat_price = parseFloat(showCategoryList[i].categories[j].seat_price).toFixed(2);
                                             }
 
 
                                         }
-
-
-                                        res.render('booking', { eventInfo, reviewList, showList, grouped });
+                                        res.render('booking', { eventInfo, reviewList, showList, showCategoryList });
 
                                     }
-                                }
-                                )
+                                });
                             }
-                        })
+                        });
 
                     }
-                })
+                });
             }
 
         });
