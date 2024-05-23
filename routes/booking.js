@@ -47,7 +47,6 @@ let bookTicketsNavigation = async function (req, res) {
                                 for (let i in showList) {
 
                                     const { dayName, formattedDate } = formatDate(showList[i].show_date);
-                                    
                                     showList[i].show_date = formattedDate;
                                     showList[i].show_day = dayName;
 
@@ -265,6 +264,7 @@ let bookTicketsNavigation = async function (req, res) {
                                     showList[i].minimum_price = parseFloat(showList[i].minimum_price).toFixed(2);
 
                                     const { dayName, formattedDate } = formatDate(showList[i].show_date);
+
                                     showList[i].show_date = formattedDate;
                                     showList[i].show_day = dayName;
 
