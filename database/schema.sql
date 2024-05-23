@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS "USER" (
     "userID" SERIAL PRIMARY KEY,
     "username" VARCHAR(50),
     "password" VARCHAR(255),
-    "salt" VARCHAR(255),
     "full_name" VARCHAR(100),
     "email" VARCHAR(255),
     "registration_date" DATE,
@@ -17,6 +16,21 @@ CREATE TABLE IF NOT EXISTS "EVENT" (
     "imageURL" VARCHAR(255),
     "genre" VARCHAR(50),
     "duration" INTERVAL
+);
+
+CREATE TABLE IF NOT EXISTS "REVIEW" (
+	"reviewID" SERIAL PRIMARY KEY,
+	"score" INTEGER,
+	"comment" TEXT,
+	"userID" INTEGER,
+	"date_written" TIMESTAMP,
+	"eventID" INTEGER,
+	FOREIGN KEY ("userID") REFERENCES "USER" ("userID")
+            ON UPDATE CASCADE
+            ON DELETE NO ACTION,
+	FOREIGN KEY ("eventID") REFERENCES "EVENT" ("eventID")
+            ON UPDATE CASCADE
+            ON DELETE NO ACTION
 );
 
 CREATE TABLE IF NOT EXISTS "MUSIC" (
@@ -50,6 +64,13 @@ CREATE TABLE IF NOT EXISTS "THEATER" (
         ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS "VENUE" (
+    "venueID" SERIAL PRIMARY KEY,
+    "venue_name" VARCHAR(100),
+    "city" VARCHAR(50),
+    "address" VARCHAR(255)
+);
+
 CREATE TABLE IF NOT EXISTS "EVENT_SHOW" (
     "showID" SERIAL PRIMARY KEY,
     "eventID" INTEGER,
@@ -65,27 +86,15 @@ CREATE TABLE IF NOT EXISTS "EVENT_SHOW" (
         ON DELETE NO ACTION
 );
 
-CREATE TABLE IF NOT EXISTS "REVIEW" (
-	"reviewID" SERIAL PRIMARY KEY,
-	"score" INTEGER,
-	"comment" TEXT,
-	"userID" INTEGER,
-	"date_written" TIMESTAMP,
-	"eventID" INTEGER,
-	FOREIGN KEY ("userID") REFERENCES "USER" ("userID")
-            ON UPDATE CASCADE
-            ON DELETE NO ACTION,
-	FOREIGN KEY ("eventID") REFERENCES "EVENT" ("eventID")
-            ON UPDATE CASCADE
-            ON DELETE NO ACTION
+CREATE TABLE IF NOT EXISTS "SEAT_CATEGORY" (
+    "categoryID" SERIAL PRIMARY KEY,
+    "category_name" VARCHAR(50)
 );
 
-
-CREATE TABLE IF NOT EXISTS "VENUE" (
-    "venueID" SERIAL PRIMARY KEY,
-    "venue_name" VARCHAR(100),
-    "city" VARCHAR(50),
-    "address" VARCHAR(255)
+CREATE TABLE IF NOT EXISTS "DISCOUNT_CATEGORY" (
+    "discountID" SERIAL PRIMARY KEY,
+    "discount_type" VARCHAR(50),
+    "discount_percentage" FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS "TICKET" (
@@ -109,17 +118,6 @@ CREATE TABLE IF NOT EXISTS "TICKET" (
     FOREIGN KEY ("showID") REFERENCES "EVENT_SHOW"("showID")
         ON UPDATE CASCADE
         ON DELETE NO ACTION
-);
-
-CREATE TABLE IF NOT EXISTS "SEAT_CATEGORY" (
-    "categoryID" SERIAL PRIMARY KEY,
-    "category_name" VARCHAR(50)
-);
-
-CREATE TABLE IF NOT EXISTS "DISCOUNT_CATEGORY" (
-    "discountID" SERIAL PRIMARY KEY,
-    "discount_type" VARCHAR(50),
-    "discount_percentage" FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS "Venue_HAS_Seat_Cat" (
@@ -205,6 +203,3 @@ GROUP BY
     E."eventID", E.title
 ORDER BY
 	E."eventID";
-
-
-

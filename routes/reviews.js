@@ -11,6 +11,10 @@ let reviewsNavigation = async function (req, res) {
     const eventID = req.originalUrl.split('/')[4];
     const navigateTo = req.originalUrl.split('/')[2];
 
+    // check the query string to see if we have a highlighted review
+    const highlightedReview = req.query.hr;
+    console.log("highlightedReview: ", highlightedReview);
+
     model.getEventReviews(eventID, (err, reviewList) => {
         if (err) {
             console.log("reviews")
@@ -79,8 +83,20 @@ let reviewsNavigation = async function (req, res) {
                             res.json({ error: err });
                         }
                         else {
-                            const averageScore = Number(avrgScore[0].average_score).toFixed(2);                  
-                            res.render('reviews', { averageScore, reviewList, eventID, eventInfo });
+                            const averageScore = Number(avrgScore[0].average_score).toFixed(2);
+                            
+                            // if we have a highlighted review, we need to find the review object
+                            // otherwise, we will just pass the first review object
+                            let selected_review = { ...reviewList[0] };
+                            if (highlightedReview) {
+                                reviewList.forEach(review => {
+                                    if (review.reviewID == highlightedReview) {
+                                        // copy the review object to a new object
+                                        selected_review = { ...review };
+                                    }
+                                });
+                            }
+                            res.render('reviews', { averageScore, selected_review, reviewList, eventID, eventInfo });
                         }
                     });
                 }

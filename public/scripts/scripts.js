@@ -262,7 +262,6 @@ document.querySelectorAll('.buy-btn').forEach(item => {
 
 // ----------------- REVIEWS -----------------
 // Make the Post button unclickable if the textarea is empty
-// console.log(document.querySelectorAll('textarea'));
 document.querySelectorAll('#review-input').forEach(item => {
     item.addEventListener('input', event => {
         const postButton = document.querySelector('.post-review-btn-pos');
@@ -325,14 +324,27 @@ function showMessage(row) {
 
 // Function to hide the message
 function hideMessage(row) {
-    let hoverMessage = element.querySelector('.hover-message');
+    let hoverMessage = document.querySelector('.hover-message');
     hoverMessage.textContent = "";
 }
 
 window.onload = function () {
-    var images = document.querySelectorAll('.tickets-booked-container .cancelled-by-user img.x-cancel, .tickets-booked-container .cancelled-show img.x-cancel, .tickets-booked-container .completed img.x-cancel ');
+    const images = document.querySelectorAll('.tickets-booked-container .cancelled-by-user img.x-cancel, .tickets-booked-container .cancelled-show img.x-cancel, .tickets-booked-container .completed img.x-cancel ');
     images.forEach(function (img) {
         img.src = '/svgs/GrayX.svg';
+    });
+    const buttons = document.querySelectorAll('.tickets-booked-container .cancelled-by-user .cancel-col .btn, tickets-booked-container .cancelled-show .cancel-col .btn, tickets-booked-container .completed .cancel-col .btn');
+    // make the link unclickable
+    buttons.forEach(function (button) {
+        button.classList.remove('btn');
+        button.classList.remove('btn-primary');
+
+        // remove the underline
+        button.style.textDecoration = 'none';
+        // remove the href
+        button.removeAttribute('href');
+        // remove the hover effect
+        // button.style.cursor = 'default';
     });
 }
 
@@ -346,4 +358,17 @@ document.querySelectorAll('#uploadProfilePhoto').forEach(item => {
     });
 });
 
-
+// review card is clicked, navigate to the reviews page, passing the review id
+console.log('user-reviews-col .card', document.querySelectorAll('.user-reviews-col .card'));
+document.querySelectorAll('#user-reviews-col .card').forEach(item => {
+    item.addEventListener('click', event => {
+        const reviewID = item.id.split('-')[1];
+        // get the event type and event id from the card attributes data-event-type and data-eventid
+        const type = item.getAttribute('data-event-type').toLowerCase();
+        const eventID = item.getAttribute('data-eventid');
+        location.href = `/type/${type}/events/${eventID}/reviews?hr=${reviewID}`;
+    });
+    item.addEventListener('mouseover', event => {
+        item.style.cursor = 'pointer';
+    });
+});
