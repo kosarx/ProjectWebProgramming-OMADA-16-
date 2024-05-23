@@ -8,7 +8,6 @@ let bookTicketsNavigation = async function (req, res, next) {
     try {
         const navigateTo = req.params.type;
         const eventID = req.params.id;
-        console.log(eventID, navigateTo)
         if (navigateTo === 'theater') {
             bookingController.bookingTheater(req, res, eventID);
         }

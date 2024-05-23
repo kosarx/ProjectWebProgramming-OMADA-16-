@@ -168,6 +168,9 @@ FROM
 WHERE evav."eventID" = $1;
 `
 
+const deleteReview = `DELETE FROM "REVIEW" r
+WHERE r."reviewID" = $1 AND r."userID" = $2`
+
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-   getUsersReviews, getUsersTickets, getEventAverageScore }
+   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview }

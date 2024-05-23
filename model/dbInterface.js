@@ -240,6 +240,19 @@ async function getEventAverageScore(eventID, callback) {
     }
 }
 
+async function deleteReview(reviewID, userID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.deleteReview, [reviewID, userID]);
+        client.release();
+        let message = `Review ${reviewID} by User ${userID} deleted succesfully`;
+        callback(null, message);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, 
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-     getUsersReviews, getUsersTickets, getEventAverageScore }
+     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview }

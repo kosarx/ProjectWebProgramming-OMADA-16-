@@ -141,46 +141,6 @@
                                         </div>
                                     </div>
                                     {{/each}}
-                                    <div class="row completed" onmouseover="showMessage(this)"
-                                        onmouseout="hideMessage(this)">
-                                        <div class="col-9">
-                                            <div id="event-show-6" class="card mt-3 mb-4 pt-1 pb-0"
-                                                data-target="#selectTickets">
-                                                <div class="card-body">
-                                                    <div class="row ">
-                                                        <div class="col">
-                                                            <h5 class="card-title"><span
-                                                                    class="event-date">29/08/2024</span>,
-                                                                <span class="event-day">Thursday</span>,
-                                                                <span class="event-hour"> 18:00 </span>
-                                                            </h5>
-                                                            <h6 class="card-subtitle mt-1 mb-3 location"><span
-                                                                    class="event-venue">VENUE</span>,
-                                                                <span class="event-venue-address">ADDRESS</span>
-                                                            </h6>
-                                                            <h6 class="card-subtitle mt-2 title"><span
-                                                                    class="event-title">TITLE</span> - <span
-                                                                    class="event-artists">ARTIST</span>
-                                                                <div class="hover-message"></div>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="col d-flex justify-content-end align-items-center">
-                                                            <div class="card-title">
-                                                                <span name="price">17.00€</span>
-                                                                <img src="/svgs/Fill5.svg" class="ms-1" alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                            <a href="#" class="btn btn-primary">
-                                                <img src="/svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
-                                                <span class="cancel-text">Cancel Ticket</span>
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -219,7 +179,7 @@
                                 <div class="col inter-children-cards" id="user-reviews-col">
                                     <div class="highligthed-card"><!-- {{selected_review}}--></div>
                                     {{#each reviewList as |review|}}
-                                    <div class="row">
+                                    <div class="row" id="review-id-{{review.reviewID}}">
                                         <div class="col-9">
                                             <div class="card divider-bottom">
                                                 <div class="card-body pt-0">
@@ -265,7 +225,7 @@
                                             </div>
                                         </div>
                                         <div class="col-3 d-flex align-items-center text-center cancel-col">
-                                            <a href="#" class="btn btn-primary">
+                                            <a class="btn btn-primary">
                                                 <img src="/svgs/RedX.svg" alt="Image" class="mx-1 img-fluid x-cancel">
                                                 <span class="cancel-text">Delete Review</span>
                                             </a>
@@ -288,4 +248,25 @@
         </div>
     </div>
 </div>
-</div>
+<script>
+    async function deleteReview(userID, reviewID) {
+        try {
+            const response = await fetch(`/${userID}/delete-review/${reviewID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                // Reload the window to show the updated reviews
+                window.location.reload();
+            } else {
+                console.error('Failed to delete review:', result.error);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+</script>
