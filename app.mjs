@@ -67,7 +67,7 @@ indexRouter.get('/aboutUs',(req, res) => {
         firstname: 'Μαρία',
         lastname: 'Ασπιώτη',
         email: 'up1083881@ac.upatras.gr',
-        image: 'https://scontent.fath4-2.fna.fbcdn.net/v/t39.30808-6/306479751_3162069207456588_8761988868333755129_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEdHZeVeIW3OEO2DZ5BxnGVFAy9fOK8WWAUDL184rxZYIE1AMKxNPLAo1ln_aSlNZAG8eSkh43K_EfnC-0zSRzf&_nc_ohc=L1jQv1n1V3gQ7kNvgGLnqx3&_nc_ht=scontent.fath4-2.fna&oh=00_AYC84Xo9ISov9zuZ1yUzUhAgEBGjrKzoD7kbN3Szp--sDw&oe=6645A13E',	
+        image: 'https://scontent.fath3-4.fna.fbcdn.net/v/t39.30808-6/306479751_3162069207456588_8761988868333755129_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEcJq7fTfCEcRRuYhq8S8xuFAy9fOK8WWAUDL184rxZYHuDn9WusTEbHvcC5xVq-1MnyOWCNPgFzL1Pp-u3F5O0&_nc_ohc=wJOyid9AttAQ7kNvgHXDQxi&_nc_ht=scontent.fath3-4.fna&oh=00_AYAty5GGVfB0Xsgfu5B8TIskSoLhFo2bHoAIiQm8QFFGPw&oe=66553AFE',	
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Erat pellentesque adipiscing commodo elit at. Vitae suscipit tellus mauris a diam maecenas sed. At consectetur lorem donec massa sapien. Cursus euismod quis viverra nibh cras pulvinar mattis.'
     };
     const persons = [person1, person2];

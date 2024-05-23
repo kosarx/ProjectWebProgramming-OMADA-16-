@@ -10,7 +10,6 @@ export function formatDate(show_date) {
 
     // Format the date components
     formattedDate = showDate.getDate().toString().padStart(2, '0') + '-' + (showDate.getMonth() + 1).toString().padStart(2, '0') + '-' + showDate.getFullYear().toString();
-
     // Get the day name
     dayName = dayNames[showDate.getDay()];
 

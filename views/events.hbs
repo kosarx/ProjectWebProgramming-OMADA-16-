@@ -56,10 +56,10 @@
           <div class="row">
             <div class="col">
               <h5 class="event-card-title">{{event.title}}</h5>
-              <p class="event-card-date">{{#if_eq event.earliest_date event.latest_date}}
-                {{event.earliest_date}}
+              <p class="event-card-date">{{#if_eq event.earliestDate event.latestDate}}
+                {{event.earliestDate}}
                 {{else}}
-                {{event.earliest_date}} - {{event.latest_date}}
+                {{event.earliestDate}} - {{event.latestDate}}
                 {{/if_eq}}</p>
               <p class="event-card-location  ">{{event.cities}}</p>
 
