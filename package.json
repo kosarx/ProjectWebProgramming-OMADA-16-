@@ -11,7 +11,7 @@
     "path": "^0.12.7",
     "pg": "^8.11.5"
   },
-  "name": "application",
+  "name": "ticketbuddy",
   "description": "Αρχοντής Κοσμάς",
   "version": "1.0.0",
   "main": "index.mjs",

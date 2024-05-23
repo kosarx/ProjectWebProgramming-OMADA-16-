@@ -6,7 +6,6 @@ import * as eventsController from '../controllers/eventsController.mjs';
 let eventNavigation = async function (req, res, next) {
     try {
         const navigateTo = req.params.type;
-        let site_header = 'EVENTS';
         if (navigateTo === 'theater') {
             eventsController.theaterEvents(req, res, navigateTo);
         }
