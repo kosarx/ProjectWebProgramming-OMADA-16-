@@ -2,7 +2,7 @@ import express from 'express';
 // import moment from 'moment';
 const router = express.Router();
 
-import * as model from '../../model/dbInterface.js';
+import * as model from '../model/dbInterface.js';
 
 
 let reviewsNavigation = async function (req, res) {
@@ -11,16 +11,6 @@ let reviewsNavigation = async function (req, res) {
     const eventID = req.originalUrl.split('/')[4];
     const navigateTo = req.originalUrl.split('/')[2];
 
-    // const avrgScore = model.getEventAverageScore(eventID, (err, avrgScore) => {
-    //     if (err) {
-    //         console.log("Failed to get average score from the database");
-    //         res.json({ error: err });
-    //     }
-    //     else {
-    //         console.log("Average score: ", avrgScore[0].average_score);
-    //         return avrgScore;
-    //     }
-    // });
     model.getEventReviews(eventID, (err, reviewList) => {
         if (err) {
             console.log("reviews")

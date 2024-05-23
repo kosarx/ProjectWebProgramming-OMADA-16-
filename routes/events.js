@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
-import * as model from '../../model/dbInterface.js';
-import { formatDate } from '../../public/scripts/formatDate.js';
+import * as model from '../model/dbInterface.js';
+import { formatDate } from '../public/scripts/formatDate.js';
 
 let eventNavigation = async function (req, res) {
     const navigateTo = req.params.type;

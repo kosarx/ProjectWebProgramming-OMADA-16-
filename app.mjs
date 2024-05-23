@@ -9,10 +9,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // connect view with controller with model -- interface with the database, present to the user
-import * as eventsRouter from './controllers/routes/events.js';
-import * as bookingRouter from './controllers/routes/booking.js';
-import * as profileRouter from './controllers/routes/profile.js';
-import * as apiRouter from './controllers/routes/api.js';
+import * as eventsRouter from './routes/events.js';
+import * as bookingRouter from './routes/booking.js';
+import * as profileRouter from './routes/profile.js';
+import * as apiRouter from './routes/api.js';
 
 
 // Create a new express application
