@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
     <div class="divider divider-bottom"></div>
@@ -41,8 +41,9 @@
         <div class="row">
             <div class="col-md-5 offset-md-2">
                 <div class="text-overlay">
-                    <h5 class="shadowed-text ps-4">AVERAGE SCORE: 
-                        <span id="avrgScore" data-average-score="{{averageScore}}" class="shadowed-text ps-2">{{averageScore}}</span>
+                    <h5 class="shadowed-text ps-4">AVERAGE SCORE:
+                        <span id="avrgScore" data-average-score="{{averageScore}}"
+                            class="shadowed-text ps-2">{{averageScore}}</span>
                         <div class="ratings-wrapper">
                             <div class="ratings">
                                 <span data-clicked="true" class="p-0 average-star">★</span>
@@ -112,8 +113,53 @@
         <div class="container-fluid inter-children-cards">
             <div class="row">
                 <div class="col-md-8 offset-md-0 mb-3 mx-auto" id="reviews-column">
-                    <div class="highligthed-card"><!-- {{selected_review}}--></div>
+                    {{#if selected_review}}
+                    <div class="highligthed-card">
+                        <div class="card divider-bottom">
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-4 col-sm-2 col-xl-1 text-center pt-3">
+                                        <h5 class="card-title"><strong>{{selected_review.score}}/5</strong> </h5>
+                                    </div>
+                                    <div class="col-11">
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                                <span data-rating="5" {{#if_eq selected_review.score 5
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="4" {{#if_eq selected_review.score 4
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="3" {{#if_eq selected_review.score 3
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="2" {{#if_eq selected_review.score 2
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="1" {{#if_eq selected_review.score 1
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col-sm-1 text-left"> -->
+                                    <div class="col-sm text-start">
+                                        <h6 class="card-subtitle my-2">{{selected_review.username}}</h6>
+                                    </div>
+                                    <!-- <div class="col-md-auto text-left"> -->
+                                    <div class="col-sm text-sm-end">
+                                        <h6 class="card-subtitle my-2">
+                                            <date class="small">{{selected_review.date_written}}</date>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <p class="card-text card-description">{{selected_review.comment}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
                     {{#each reviewList as |review|}}
+                    {{#if_eq review.reviewID selected_review.reviewID}} {{!-- be wary of selected_review existing --}}
+                        {{!-- this is the selected review, so we skip it --}}
+                    {{else}}
                     <div class="card divider-bottom">
                         <div class="card-body pt-0">
                             <div class="row">
@@ -153,6 +199,7 @@
                             </p>
                         </div>
                     </div>
+                    {{/if_eq}}
                     {{/each}}
                 </div>
             </div>
@@ -164,6 +211,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <!-- Script to load the navbar and footer -->
-{{!-- <script src="/scripts/scripts.js"> </script> --}}
+{{!--
+<script src="/scripts/scripts.js"> </script> --}}
 <!-- Script to load the rating system -->
 <script src="/scripts/ratingSystem.js"></script>

@@ -145,9 +145,17 @@ ORDER BY es."show_date"`
 const getUserInfo = `SELECT * FROM "USER" u
 WHERE u."userID" = $1`
 
-const getUsersReviews = `SELECT r."reviewID", e."eventID", r."score", r."comment", r."date_written", e."title"
+const getUsersReviews = `SELECT r."reviewID", e."eventID", r."score", r."comment", r."date_written", e."title",
+CASE
+    WHEN m."musicID" IS NOT NULL THEN 'MUSIC'
+    WHEN c."cinemaID" IS NOT NULL THEN 'CINEMA'
+    WHEN t."theaterID" IS NOT NULL THEN 'THEATER'
+END AS event_type
 FROM "REVIEW" r
 JOIN "EVENT" e ON r."eventID" = e."eventID"
+LEFT JOIN "MUSIC" m ON e."eventID" = m."musicID"
+LEFT JOIN "CINEMA" c ON e."eventID" = c."cinemaID"
+LEFT JOIN "THEATER" t ON e."eventID" = t."theaterID"
 WHERE r."userID" = $1
 ORDER BY r."date_written"`
 
