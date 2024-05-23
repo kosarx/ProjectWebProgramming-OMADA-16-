@@ -20,7 +20,6 @@ async function theaterEvents(req, res, navigateTo) {
                 
                 if (theaterEvents[eventID].earliestDate === '') {
                     const { dayName, formattedDate } = formatDate(event.earliest_date);
-                    console.log(formattedDate, event.earliest_date)
                     theaterEvents[eventID].earliestDate = formattedDate;
                 }
                 
@@ -81,15 +80,12 @@ async function musicEvents(req, res, navigateTo) {
                 
                 if (musicEvents[eventID].earliestDate === '') {
                     const { dayName, formattedDate } = formatDate(event.earliest_date);
-                    console.log(formattedDate, event.earliest_date)
                     musicEvents[eventID].earliestDate = formattedDate;
                 }
                 
                 musicEvents[eventID].cities.push(event.city);
                 const { dayName, formattedDate } = formatDate(event.latest_date);
                 musicEvents[eventID].latestDate = formattedDate;
-
-                musicEvents[eventID].cities.push(event.city);
             });
 
             for (let key in musicEvents) {
@@ -146,7 +142,6 @@ async function cinemaEvents(req, res, navigateTo) {
                 
                 if (cinemaEvents[eventID].earliestDate === '') {
                     const { dayName, formattedDate } = formatDate(event.earliest_date);
-                    console.log(formattedDate, event.earliest_date)
                     cinemaEvents[eventID].earliestDate = formattedDate;
                 }
                 
@@ -154,7 +149,6 @@ async function cinemaEvents(req, res, navigateTo) {
                 const { dayName, formattedDate } = formatDate(event.latest_date);
                 cinemaEvents[eventID].latestDate = formattedDate;
 
-                cinemaEvents[eventID].cities.push(event.city);
 
             });
 
