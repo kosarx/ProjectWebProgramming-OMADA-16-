@@ -12,8 +12,10 @@ const __dirname = path.dirname(__filename);
 import * as eventsRouter from './routes/events.js';
 import * as bookingRouter from './routes/booking.js';
 import * as profileRouter from './routes/profile.js';
+import * as logInController from './controllers/logInController.mjs';
 import * as apiRouter from './routes/api.js';
 
+import appSession from './app-setup/app-setup-session.mjs'; 
 
 // Create a new express application
 const app = express();
@@ -23,7 +25,8 @@ const indexRouter = express.Router();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 
-
+// register the appSession middleware to be executed for every incoming request
+app.use(appSession)
 
 // Set up the express app to use handlebars
 const hbs = exphbs.create({
@@ -42,10 +45,34 @@ app.set('view engine', 'hbs');
 
 app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
 
+app.use((req, res, next) => {
+    if (req.session) {
+       res.locals.userId = req.session.loggedUserId;
+    } else {
+       res.locals.userId = 'guest';
+    }
+    next();
+ });
+
 app.use('/type/', eventsRouter.eventsRouter);
 app.use('/type/', bookingRouter.bookingRouter);
-app.use('/profile/', profileRouter.profileRouter);
+app.use('/profile/', logInController.checkAuthenticated, profileRouter.profileRouter);
 app.use('/api/', apiRouter.apiRouter);
+
+app.route('/login').get(logInController.showLogInForm);
+
+// // //Αυτή η διαδρομή καλείται όταν η φόρμα φτάσει στον εξυπηρετητή με POST στο /login. Διεκπεραιώνει τη σύνδεση (login) του χρήστη
+app.route('/login').post(logInController.doLogin);
+
+// //Αποσυνδέει το χρήστη
+app.route('/logout').get(logInController.doLogout);
+
+// //Εγγραφή νέου χρήστη
+app.route('/signup').get(logInController.showSignUpForm);
+
+
+app.post('/signup', logInController.doSignUp);
+
 
 app.use('/', indexRouter);
 
