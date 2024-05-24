@@ -4,25 +4,32 @@ import dotenv from "dotenv";
 import * as sql from "./SQL/queries.js";
 
 dotenv.config();
-// console.log(process.env)
-console.log('database..', process.env.DATABASE_URL)
 
-// const pool = new pg.Pool({
-//     connectionString: process.env.DATABASE_URL, //μεταβλητή περιβάλλοντος
-//     // ssl: {
-//     //     rejectUnauthorized: false
-//     // }
-//     ssl: process.env.DATABASE_URL ? true : false
-// });
+const pool_url_string = new pg.Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
-
-const pool = new pg.Pool({
-    user: process.env.DB_USER, ///username,
-    host: process.env.DB_HOST, ///localhost,
-    database: process.env.DB_NAME, ///database name
-    password: process.env.DB_PASSWORD, /// password,
-    port: process.env.DB_PORT, ///port
+const pool_local = new pg.Pool({
+    user: process.env.LOCAL_DB_USER, ///username,
+    host: process.env.LOCAL_DB_HOST, ///localhost,
+    database: process.env.LOCAL_DB_NAME, ///database name
+    password: process.env.LOCAL_DB_PASSWORD, /// password,
+    port: process.env.LOCAL_DB_PORT, ///port
 })
+
+let pool = null;
+let other_pool = null;
+if (process.env.LOCAL === 'true') {
+    pool = pool_local;
+    other_pool = pool_url_string;
+}
+else {
+    pool = pool_url_string;
+    other_pool = pool_local;
+}
 
 async function connect() {
     try {
@@ -31,6 +38,15 @@ async function connect() {
     }
     catch (e) {
         console.error(`Failed to connect ${e}`)
+        console.log("Trying to connect to the other pool")
+        try {
+            const client = await other_pool.connect();
+            return client
+        }
+        catch (e) {
+            console.error(`Failed to connect ${e}, with the second pool`);
+        }
+
     }
 }
 
@@ -240,6 +256,19 @@ async function getEventAverageScore(eventID, callback) {
     }
 }
 
+async function deleteReview(reviewID, userID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.deleteReview, [reviewID, userID]);
+        client.release();
+        let message = `Review ${reviewID} by User ${userID} deleted succesfully`;
+        callback(null, message);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, 
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-     getUsersReviews, getUsersTickets, getEventAverageScore }
+     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview }
