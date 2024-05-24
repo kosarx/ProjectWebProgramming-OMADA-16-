@@ -9,18 +9,21 @@ let bookTicketsNavigation = async function (req, res, next) {
         const navigateTo = req.params.type;
         const eventID = req.params.id;
         if (navigateTo === 'theater') {
-            bookingController.bookingTheater(req, res, eventID);
+            bookingController.bookingTheater(eventID, req, res, next);
         }
         else if (navigateTo === 'music') {
-            bookingController.bookingMusic(req, res, eventID);
+            bookingController.bookingMusic(eventID, req, res, next);
         }
         else if (navigateTo === 'cinema') {
-            bookingController.bookingCinema(req, res, eventID);
+            bookingController.bookingCinema(eventID, req, res, next);
+        }
+        else {
+            throw new Error('Invalid event type to navigate to.');
         }
     }
     catch (error) {
         console.error(error);
-        res.json({ error: 'An error occurred' });
+        next(error);
     }
 
 }

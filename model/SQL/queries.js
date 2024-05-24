@@ -95,7 +95,6 @@ FROM "EVENT" e
 JOIN "CINEMA" c ON c."cinemaID" = e."eventID"
 WHERE e."eventID" = $1`
 
-
 const getMusicEventInfo = `SELECT e."eventID", e."title", e."imageURL", e."description", e."genre", e."duration", m."artists", m."opening_act"
 FROM "EVENT" e
 JOIN "MUSIC" m ON m."musicID" = e."eventID"

@@ -92,13 +92,12 @@
                                     onmouseout="hideMessage(this)">
 
                                     {{else}}
-                                    <div class="row scheduled" id="ticket-{{ticket.ticketID}}" onmouseover="showMessage(this)"
-                                        onmouseout="hideMessage(this)">
+                                    <div class="row scheduled" id="ticket-{{ticket.ticketID}}"
+                                        onmouseover="showMessage(this)" onmouseout="hideMessage(this)">
                                         {{/if_eq}}
                                         {{/if_eq}}
                                         <div class="col-9">
-                                            <div class="card mt-3 mb-4 pt-1 pb-0"
-                                                data-target="#selectTickets">
+                                            <div class="card mt-3 mb-4 pt-1 pb-0" data-target="#selectTickets">
                                                 <div class="card-body">
                                                     <div class="row ">
                                                         <div class="col">
@@ -181,8 +180,8 @@
                                     {{#each reviewList as |review|}}
                                     <div class="row" id="review-{{review.reviewID}}">
                                         <div class="col-9">
-                                            <div class="card divider-bottom"
-                                                data-event-type={{review.event_type}} data-eventid={{review.eventID}}>
+                                            <div class="card divider-bottom" data-event-type={{review.event_type}}
+                                                data-eventid={{review.eventID}}>
                                                 <div class="card-body pt-0">
                                                     <div class="row">
                                                         <!-- <div class="col text-center pt-3"> -->

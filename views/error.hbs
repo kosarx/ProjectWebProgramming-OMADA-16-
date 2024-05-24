@@ -1,0 +1,36 @@
+<div class="container-fluid page-container index">
+  <div class="container search-bar-container">
+    <div class="row justify-content-center">
+      <div class="col-8 main-menu-search-bar d-flex align-items-center justify-content-center">
+        <div class="search-container">
+          <input id="search-input" class="mx-2" type="search" placeholder="Search title, type, city,..."
+            aria-label="Search">
+          <div id="search-btn" class="circular-div"> </div>
+          <div id="search-results" class="dropdown-menu">
+            <div class="dropdown-item">No results</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider-bottom"></div>
+
+<div class="container mt-5 mb-5">
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+            <h1 class="text-center">Oops! Something went wrong.</h1>
+            <div class="row">
+                    <i class="col-12 text-center pt-4">For your dev:</i>
+            </div>
+            <div class="alert alert-danger" role="alert">
+                <div class="row">
+                    {{comment}} Generic error message
+                </div>
+                <div class="row">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

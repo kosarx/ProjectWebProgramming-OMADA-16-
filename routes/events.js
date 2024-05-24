@@ -7,21 +7,22 @@ let eventNavigation = async function (req, res, next) {
     try {
         const navigateTo = req.params.type;
         if (navigateTo === 'theater') {
-            eventsController.theaterEvents(req, res, navigateTo);
+            eventsController.theaterEvents(navigateTo, req, res);
         }
         else if (navigateTo === 'music') {
-            eventsController.musicEvents(req, res, navigateTo);
+            eventsController.musicEvents(navigateTo, req, res);
         }
         else if (navigateTo === 'cinema') {
-            eventsController.cinemaEvents(req, res, navigateTo);
+            eventsController.cinemaEvents(navigateTo, req, res);
         }
         else {
-            res.json({ error: 'Invalid navigation' });
+            throw new Error('Invalid event type to navigate to.');
         }
     }
     catch (error) {
         console.error(error);
-        res.json({ error: 'An error occurred' });
+        // res.json({ error: 'An error occurred' });
+        next(error);
     }
 };
 

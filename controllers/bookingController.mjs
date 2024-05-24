@@ -3,12 +3,14 @@ import { formatDate } from '../public/scripts/formatDate.js';
 import { formatTime } from '../public/scripts/formatTime.js';
 import { groupDataByShow } from '../public/scripts/groupDataByShow.js';
 
-async function bookingTheater(req, res, eventID) {
+async function bookingTheater(eventID, req, res, next) {
     try {
         model.getTheaterEventInfo(eventID, (err, eventInfo) => {
             if (err) {
-                console.log("event")
-                res.json({ error: err });
+                const error_comment = "Could not get theater event info from the database";
+                // pass the comment to the session?
+                console.error(error_comment);
+                next(err);
             }
             else {
 
@@ -24,8 +26,10 @@ async function bookingTheater(req, res, eventID) {
                
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
-                        console.log("reviews")
-                        res.json({ error: err });
+                        const error_comment = "Could not get reviews from the database"
+                        // pass the comment to the session?
+                        console.error(error_comment);
+                        next(err);
                     }
                     else {
                         reviewList = reviewList.slice(0, 3);
@@ -40,9 +44,10 @@ async function bookingTheater(req, res, eventID) {
 
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
-                                console.log("show")
-
-                                res.json({ error: err });
+                                const error_comment = "Could not get show info from the database";
+                                // pass the comment to the session?
+                                console.error(error_comment);
+                                next(err);
                             }
                             else {
                                 eventInfo.locationsArr = [];
@@ -93,8 +98,10 @@ async function bookingTheater(req, res, eventID) {
 
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
-                                        console.log("error when getting modal info");
-                                        res.json({ error: err });
+                                        const error_comment = "Could not get modal info from the database";
+                                        // pass the comment to the session?
+                                        console.error(error_comment);
+                                        next(err);
                                     }
                                     else {
 
@@ -107,7 +114,6 @@ async function bookingTheater(req, res, eventID) {
 
                                         }
                                         res.render('booking', { eventInfo, reviewList, showList, showCategoryList });
-
                                     }
                                 });
                             }
@@ -120,19 +126,20 @@ async function bookingTheater(req, res, eventID) {
         });
 
     } catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
-        console.error(error);
-        res.json({ error: 'An error occurred when fetching theater booking' });
+        // handle error
+        next(error);
     }
 }
 
-async function bookingMusic(req, res, eventID) {
+async function bookingMusic(eventID, req, res, next) {
     try {
+        console.log("booking_music", eventID.url);
         model.getMusicEventInfo(eventID, (err, eventInfo) => {
             if (err) {
-                console.log("event")
-                res.json({ error: err });
+                const error_comment = "Could not get music event info from the database";
+                // pass the comment to the session?
+                console.error(error_comment);
+                next(err);
             }
             else {
                 eventInfo = eventInfo[0];
@@ -147,8 +154,10 @@ async function bookingMusic(req, res, eventID) {
 
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
-                        console.log("reviews")
-                        res.json({ error: err });
+                        const error_comment = "Could not get reviews from the database"
+                        // pass the comment to the session?
+                        console.error(error_comment);
+                        next(err);
                     }
                     else {
                         reviewList = reviewList.slice(0, 3);
@@ -165,9 +174,10 @@ async function bookingMusic(req, res, eventID) {
 
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
-                                console.log("show")
-
-                                res.json({ error: err });
+                                const error_comment = "Could not get show info from the database";
+                                // pass the comment to the session?
+                                console.error(error_comment);
+                                next(err);
                             }
                             else {
                                 eventInfo.locationsArr = [];
@@ -219,8 +229,10 @@ async function bookingMusic(req, res, eventID) {
 
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
-                                        console.log("modal")
-                                        res.json({ error: err });
+                                        const error_comment = "Could not get modal info from the database";
+                                        // pass the comment to the session?
+                                        console.error(error_comment);
+                                        next(err);
                                     }
                                     else {
 
@@ -245,20 +257,19 @@ async function bookingMusic(req, res, eventID) {
 
         });
     } catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
-        console.error(error);
-        res.json({ error: 'An error occurred when fetching music booking' });
+        // handle error
+        next(error);
     }
 }
 
-async function bookingCinema(req, res, eventID) {
-
+async function bookingCinema(eventID, req, res, next) {
     try {
         model.getCinemaEventInfo(eventID, (err, eventInfo) => {
             if (err) {
-                console.log("event")
-                res.json({ error: err });
+                const error_comment = "Could not get cinema event info from the database";
+                // pass the comment to the session?
+                console.error(error_comment);
+                next(err);
             }
             else {
                 eventInfo = eventInfo[0];
@@ -273,8 +284,10 @@ async function bookingCinema(req, res, eventID) {
 
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
-                        console.log("reviews")
-                        res.json({ error: err });
+                        const error_comment = "Could not get reviews from the database"
+                        // pass the comment to the session?
+                        console.error(error_comment);
+                        next(err);
                     }
                     else {
                         reviewList = reviewList.slice(0, 3);
@@ -290,9 +303,10 @@ async function bookingCinema(req, res, eventID) {
 
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
-                                console.log("show")
-
-                                res.json({ error: err });
+                                const error_comment = "Could not get show info from the database";
+                                // pass the comment to the session?
+                                console.error(error_comment);
+                                next(err);
                             }
                             else {
                                 eventInfo.locationsArr = [];
@@ -345,8 +359,10 @@ async function bookingCinema(req, res, eventID) {
 
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
-                                        console.log("modal")
-                                        res.json({ error: err });
+                                        const error_comment = "Could not get modal info from the database";
+                                        // pass the comment to the session?
+                                        console.error(error_comment);
+                                        next(err);
                                     }
                                     else {
 
@@ -372,10 +388,8 @@ async function bookingCinema(req, res, eventID) {
         });
 
     } catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
-        console.error(error);
-        res.json({ error: 'An error occurred when fetching cinema booking' });
+        // handle error
+        next(error);
     }
 }
 
