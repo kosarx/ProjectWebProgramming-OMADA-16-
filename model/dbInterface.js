@@ -284,8 +284,32 @@ async function cancelTicket( userID, ticketID, callback) {
     }
 }
 
+async function getEventShowWithEventAndVenueDetails(showID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getEventShowWithEventAndVenueDetails, [showID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+async function getDiscountFromType(discountType, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getDiscountFromType, [discountType]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
 
 
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, 
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket }
+     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails as getES_E_V,
+     getDiscountFromType };

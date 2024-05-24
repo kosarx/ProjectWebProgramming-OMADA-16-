@@ -180,8 +180,34 @@ WHERE r."userID" = $1 AND r."reviewID" = $2;`
 
 const cancelTicket = `UPDATE "TICKET" 
 SET status='CANCELED'
-WHERE "userID" = $1  AND "ticketID" = $2;` 
+WHERE "userID" = $1  AND "ticketID" = $2;`
+
+const getEventShowWithEventAndVenueDetails =
+`SELECT 
+    es."showID",
+    e."eventID",
+    e."imageURL",
+    e."title",
+    e."description",
+    v."venue_name",
+    v."city",
+    v."address",
+    es."show_date",
+    es."show_time"
+FROM 
+    "EVENT_SHOW" es
+JOIN 
+    "EVENT" e ON es."eventID" = e."eventID"
+JOIN 
+    "VENUE" v ON es."venueID" = v."venueID"
+WHERE 
+    es."showID" = $1;
+
+`
+
+const getDiscountFromType = `SELECT * FROM "DISCOUNT_CATEGORY" d
+WHERE d."discount_type" = $1`
 
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket }
+   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, getDiscountFromType }

@@ -1087,6 +1087,12 @@ span.cancel-text {
     font-size: 1.3em;
 }
 
+.booking-complete .booked-failed {
+    font-weight: 700;
+    color: var(--cancel-ticket);
+    font-size: 1.3em;
+}
+
 .booking-complete .details-header,
 .booking-complete .download-tickets-header {
     font-size: 1.2em;

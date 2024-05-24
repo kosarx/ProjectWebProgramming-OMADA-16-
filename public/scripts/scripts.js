@@ -19,9 +19,6 @@
 //     location.href = link;
 // }
 
-
-
-
 document.querySelectorAll('.event-card').forEach(item => {
     item.addEventListener('click', event => {
         if (window.location.href.includes('reviews')) {
@@ -93,7 +90,7 @@ document.querySelectorAll('#booked-tickets-col>.row.scheduled').forEach(item => 
         ticketID = item.id.split("ticket-")[1];
 
         cancelCol = item.querySelector(".cancel-col>a")
-        
+
         cancelCol.addEventListener('click', async event => {
             let cancelClickedElement = event.target
 
@@ -145,7 +142,6 @@ carouselItems.forEach(item => {
 // ----------------- BOOKING -----------------
 
 function setEventShowBackgroundImage(url) {
-    console.log(url);
     document.querySelector('.event-image').style.backgroundImage = `url(${url})`;
     // use fetch API
     // fetch(url)
@@ -173,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ----------------- Modal - Ticket Selection -----------------
 var ticketsClicked = 0;
+var showID = -1;
 
 // Fix the ticket numbers when a ticket is removed
 function rewriteTicketNumbers() {
@@ -185,15 +182,17 @@ function rewriteTicketNumbers() {
     ticketsClicked = ticketNumber - 1;
 }
 
-
-
 // Reset the content of the modal by removing all the selected tickets when closed
 document.querySelectorAll('.close-encaps>.p-1>.x-close1').forEach(item => {
     item.addEventListener('click', event => {
         document.querySelectorAll('.tickets-selected').forEach(item => {
             item.remove();
         });
+        document.querySelectorAll('.final-price').forEach(item => {
+            item.textContent = '0.00€';
+        });
         ticketsClicked = 0;
+        showID = -1;
     });
 });
 
@@ -233,7 +232,7 @@ document.querySelectorAll('#tickets-col .card-body').forEach(item => {
         const eventTitleArtists = cardClickedElement.querySelector('.event-title-artists').textContent;
         const eventVenueNameAddress = cardClickedElement.querySelector('.event-venue-name-address').textContent;
         // get the show id
-        const showID = cardClickedElement.id.split('-')[2];
+        showID = cardClickedElement.id.split('-')[2];
 
         // Set the information in the modal
         const modalInfoElement = document.querySelector(`.modal-body #modal-info-${showID}`);
@@ -306,10 +305,33 @@ function calculateFinalPrice() {
 // Add check to make sure the button is clickable only when at least one ticket is selected
 document.querySelectorAll('.buy-btn').forEach(item => {
     item.addEventListener('click', event => {
+        event.preventDefault();
         if (ticketsClicked == 0) {
-            event.preventDefault();
+            return false;
             // alert('Please select at least one ticket to proceed');
         }
+        console.log('ticketsClicked:', ticketsClicked);
+
+        // construct the ticket object with an increasing number, the category and the discount
+        let tickets = [];
+        for (let i = 1; i <= ticketsClicked; i++) {
+            const ticketElement = document.querySelector(`#ticket${i}`);
+            const category = ticketElement.parentNode.querySelector('.category-name').textContent.trim();
+            const discount = ticketElement.querySelector('.tickets-selected .form-control').value;
+            const finalPrice = ticketElement.querySelector('.ticket-price').textContent;
+            console.log('category:', category, 'discount:', discount, 'finalPrice:', finalPrice);
+            tickets.push({ 'category': category, 'discount': discount, 'finalPrice': finalPrice});
+        }
+        // Construct query string
+
+        // Serialize tickets data
+        const serializedTickets = encodeURIComponent(JSON.stringify(tickets));
+
+        // Construct query string
+        const queryString = new URLSearchParams({ showID, tickets: serializedTickets }).toString();
+        console.log('queryString:', queryString);
+        // Redirect to booking-complete page with query parameters
+        window.location.href = `/booking-complete?${queryString}`;
     });
 });
 
