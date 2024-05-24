@@ -38,12 +38,42 @@ document.querySelectorAll('.event-card').forEach(item => {
 
 
 document.querySelectorAll('.profile-image').forEach(item => {
-    console.log(item, )
     item.addEventListener('click', event => {
-            window.location.href = `/profile/1`;
+        window.location.href = `/profile/1`;
 
     });
 });
+
+document.querySelectorAll('#user-reviews-col>.row').forEach(item => {
+    let reviewID;
+    if (item.id.includes("review-id-")) {
+        reviewID = item.id.split("review-id-")[1];
+    }
+
+    item.querySelector(".cancel-col a").addEventListener('click', async event => {
+        event.preventDefault(); // Prevent the default link behavior
+
+        try {
+            const response = await fetch(window.location.pathname + '/delete-review/' + reviewID, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                // Reload the window to show the updated reviews
+                window.location.reload();
+            } else {
+                console.error('Failed to delete review:', result.error);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+});
+
 
 
 var carouselItems = document.querySelectorAll('.carousel-item');
@@ -321,10 +351,10 @@ window.onload = function () {
 // change the profile picture when user uploads one
 document.querySelectorAll('#uploadProfilePhoto').forEach(item => {
     item.addEventListener('change', function () {
-    let profilePic = document.querySelector('#profilePhoto');
-    let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
+        let profilePic = document.querySelector('#profilePhoto');
+        let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
 
-    profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
     });
 });
 

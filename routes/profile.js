@@ -87,7 +87,21 @@ let profileNavigation = async function (req, res) {
 
 }
 
-router.get('/:userid', profileNavigation);
+let deleteUsersReview = async function (req, res) {
+    const userID = req.params.userid;
+    const reviewID = req.params.reviewid;
+    model.deleteReview(reviewID, userID, (err, msg) => {
+        if (err) {
+            console.log("Error deleting ");
+            return res.json({ error: err });
+        }
+        console.log(msg);
+        res.json({ success: true });
+    })
 
+}
+
+router.get('/:userid', profileNavigation);
+router.get('/:userid/delete-review/:reviewid', deleteUsersReview);
 
 export { router as profileRouter }
