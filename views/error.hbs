@@ -24,12 +24,21 @@
                     <i class="col-12 text-center pt-4">For your dev:</i>
             </div>
             <div class="alert alert-danger" role="alert">
-                <div class="row">
-                    Comment: {{comment}}
-                </div>
-                <div class="row">
-                    {{message}}
-                </div>
+                {{#if status}}
+                    <div class="row text-center">
+                        <h4>{{status}}</h4>
+                    </div>
+                {{/if}}
+                {{#if comment}}
+                    <div class="row">
+                        Comment: {{comment}}
+                    </div>
+                {{/if}}
+                {{#if message}}
+                    <div class="row">
+                        Message: {{message}}
+                    </div>
+                {{/if}}
             </div>
         </div>
     </div>

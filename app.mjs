@@ -53,7 +53,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500);
     // get comment var from session?
-    res.render('error', { message: err.message });
+    res.render('error', { message : err.message, status : 500});
  });
 
 indexRouter.get('/',(req, res) => {
@@ -77,6 +77,11 @@ indexRouter.get('/aboutUs',(req, res) => {
     };
     const persons = [person1, person2];
     res.render('about_us', {persons});
+});
+
+app.use('*', (req, res) => {
+    res.status(404);
+    res.render('error', { message : 'Page not found', status : 404});
 });
 
 export {app as application};

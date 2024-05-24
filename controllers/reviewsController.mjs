@@ -4,7 +4,6 @@ import * as model from '../model/dbInterface.js';
 // import { groupDataByShow } from '../public/scripts/groupDataByShow.js';
 
 let reviewsNavigation = async function (req, res, next) {
-
     try {
         // split the req.originalURL to get the navigateTo and eventID
         const eventID = req.originalUrl.split('/')[4];
