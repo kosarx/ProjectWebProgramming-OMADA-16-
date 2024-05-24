@@ -208,6 +208,17 @@ WHERE
 const getDiscountFromType = `SELECT * FROM "DISCOUNT_CATEGORY" d
 WHERE d."discount_type" = $1`
 
+
+const registerUser = `INSERT INTO "USER"(
+	username, password, full_name, email, registration_date)
+	VALUES ( $1, $2, $3, $4, $5 );`
+
+const findUserByUsernameOrEmail = `SELECT u."userID", u."username", u."email", u."password"
+FROM "USER" u
+WHERE (u."username" = $1 OR u."email" = $2)
+LIMIT 1;`
+
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, getDiscountFromType }
+   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, getDiscountFromType,
+  registerUser, findUserByUsernameOrEmail }

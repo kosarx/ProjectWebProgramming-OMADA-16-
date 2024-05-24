@@ -2,6 +2,7 @@ import pg from "pg";
 import dotenv from "dotenv";
 
 import * as sql from "./SQL/queries.js";
+import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -75,7 +76,7 @@ async function getAllScheduledEventShows(callback) {
 }
 
 async function getAllTheater(callback) {
-    
+
     try {
         const client = await connect();
         const res = await client.query(sql.getAllTheaters)
@@ -271,7 +272,7 @@ async function deleteReview(userID, reviewID, callback) {
 }
 
 
-async function cancelTicket( userID, ticketID, callback) {
+async function cancelTicket(userID, ticketID, callback) {
     try {
         const client = await connect();
         const res = await client.query(sql.cancelTicket, [userID, ticketID]);
@@ -308,8 +309,44 @@ async function getDiscountFromType(discountType, callback) {
     }
 }
 
+async function signUpUser(username, password, fullName, email, registrationDate) {
 
-export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, 
+    const user = await findUserByUsernameOrEmail(username, null);
+    if (user != undefined) {
+        return { message: "Username is taken." }
+    }
+    else {
+        try {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const client = await connect();
+            const res = await client.query(sql.signUpUser, [username, hashedPassword, fullName, email, registrationDate]);
+            client.release();
+            let message = `User ${username} created succesfully`;
+            return res.rows;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
+
+}
+
+async function findUserByUsernameOrEmail(username, email) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.findUserByUsernameOrEmail, [username, email]);
+        client.release();
+        return res.rows;
+    }
+    catch (error) {
+        console.error('Error retrieving user:', error.message);
+        throw error;
+    }
+}
+
+export {
+    getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews,
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails as getES_E_V,
-     getDiscountFromType };
+    getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, signUpUser, findUserByUsernameOrEmail, 
+    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType };

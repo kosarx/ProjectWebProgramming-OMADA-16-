@@ -36,7 +36,9 @@ document.querySelectorAll('.event-card').forEach(item => {
 
 document.querySelectorAll('.profile-image').forEach(item => {
     item.addEventListener('click', event => {
+        // window.location.href = `/profile/1`;
         window.location.href = `/profile/1`;
+
 
     });
 });
