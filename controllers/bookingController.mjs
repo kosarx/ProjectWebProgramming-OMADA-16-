@@ -133,7 +133,6 @@ async function bookingTheater(eventID, req, res, next) {
 
 async function bookingMusic(eventID, req, res, next) {
     try {
-        console.log("booking_music", eventID.url);
         model.getMusicEventInfo(eventID, (err, eventInfo) => {
             if (err) {
                 const error_comment = "Could not get music event info from the database";

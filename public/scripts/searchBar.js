@@ -137,11 +137,6 @@ document.getElementById('search-results').addEventListener('click', (e) => {
             hiddenEventType = eventType;
         }
     });
-
-    // const formElement = document.querySelector('#search-form');    
-    // formElement.action=`/type/${eventType}/events/${eventID}/`;
-    // formElement.submit();
-    // window.location.href = `/type/${eventType}/events/${eventID}`;
     
     let finalText = '';
     const selectedResult = document.querySelector(`[data-event-id="${eventID}"]`);

@@ -12,7 +12,6 @@ let reviewsNavigation = async function (req, res, next) {
 
         // check the query string to see if we have a highlighted review
         const highlightedReview = req.query.hr;
-        console.log("highlightedReview: ", highlightedReview);
 
         model.getEventReviews(eventID, (err, reviewList) => {
             if (err) {
@@ -120,4 +119,4 @@ let reviewsNavigation = async function (req, res, next) {
 
 }
 
-export { reviewsNavigation }
+export { reviewsNavigation };
