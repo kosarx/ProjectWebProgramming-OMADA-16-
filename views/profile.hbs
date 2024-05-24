@@ -83,12 +83,12 @@
                         <div class="col inter-children-cards" id="booked-tickets-col">
                             {{#each ticketList as |ticket|}}
                             {{#if_eq ticket.show_status "CANCELED"}}
-                            <div class="row cancelled-show" onmouseover="showMessage(this)"
+                            <div class="row cancelled-show" id="ticket-{{ticket.ticketID}}" onmouseover="showMessage(this)"
                                 onmouseout="hideMessage(this)">
 
                                 {{else}}
                                 {{#if_eq ticket.ticket_status "CANCELED"}}
-                                <div class="row cancelled-by-user" onmouseover="showMessage(this)"
+                                <div class="row cancelled-by-user" id="ticket-{{ticket.ticketID}}" onmouseover="showMessage(this)"
                                     onmouseout="hideMessage(this)">
 
                                     {{else}}

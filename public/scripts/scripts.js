@@ -46,75 +46,85 @@ document.querySelectorAll('.profile-image').forEach(item => {
 
 // add event listener on delete review button, where a get request /delete-review/:reviewID is made to the server and if it is successful the page is reloaded
 
-document.querySelectorAll('#user-reviews-col row').forEach(item => {
+document.querySelectorAll('#user-reviews-col>.row').forEach(item => {
     let reviewID;
+
     if (item.id.includes("review-")) {
         reviewID = item.id.split("review-")[1];
-        item.qu
-    }
 
-    item.querySelector(".cancel-col a").addEventListener('click', async event => {
-        event.preventDefault();  // prevents the default behavior (navigation to another page when clicked ) 
+        cancelCol = item.querySelector(".cancel-col>a")
 
-        try {
-            userID = window.location.href.split('/')[4];
-            const response = await fetch(`/api/${userID}/delete-review/${reviewID}/`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const result = await response.json();
+        cancelCol.addEventListener('click', async event => {
+            let cancelClickedElement = event.target
 
-            if (result.success) {
-                // Reload the window to show the updated reviews
-                window.location.reload();
-            } else {
-                console.error('Failed to delete review:', result.error);
+            while (!(cancelClickedElement.classList.contains('btn-primary'))) {
+                cancelClickedElement = cancelClickedElement.parentElement;
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    });
+            event.preventDefault();  // prevents the default behavior (navigation to another page when clicked ) 
+
+            try {
+                userID = window.location.href.split('/')[4];
+                const response = await fetch(`/api/${userID}/delete-review/${reviewID}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    // Reload the window to show the updated reviews
+                    window.location.reload();
+                } else {
+                    console.error('Failed to delete review:', result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    }
 });
 
 
-document.querySelectorAll('#booked-tickets-col>.row').forEach(item => {
+document.querySelectorAll('#booked-tickets-col>.row.scheduled').forEach(item => {
     let ticketID;
+
     if (item.id.includes("ticket-")) {
         ticketID = item.id.split("ticket-")[1];
-    }
 
-    cancelCol = item.querySelector(".cancel-col a")
-    cancelCol.addEventListener('click', async event => {
-        cancelClickedElement = event.target
+        cancelCol = item.querySelector(".cancel-col>a")
         
-        while (!(cancelClickedElement.classList.contains('btn-primary'))) {
-            cancelClickedElement = cancelClickedElement.parentElement;
-        }
-        event.preventDefault();  // prevents the default behavior (navigation to another page when clicked ) 
+        cancelCol.addEventListener('click', async event => {
+            let cancelClickedElement = event.target
 
-        try {
-            userID = window.location.href.split('/')[4];
-            console.log(userID, `/api/${userID}/cancel-ticket/${ticketID}`)
-            const response = await fetch(`/api/${userID}/cancel-ticket/${ticketID}/`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const result = await response.json();
-
-            if (result.success) {
-                // Reload the window to show the updated tickets
-                window.location.reload();
-            } else {
-                console.error('Failed to cancel ticket:', result.error);
+            while (!(cancelClickedElement.classList.contains('btn-primary'))) {
+                cancelClickedElement = cancelClickedElement.parentElement;
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    });
+            event.preventDefault();  // prevents the default behavior (navigation to another page when clicked ) 
+
+            try {
+
+                userID = window.location.href.split('/')[4];
+
+                const response = await fetch(`/api/${userID}/cancel-ticket/${ticketID}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    // Reload the window to show the updated reviews
+                    window.location.reload();
+                } else {
+                    console.error('Failed to cancel ticket:', result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    }
 });
 
 

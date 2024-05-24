@@ -273,11 +273,10 @@ async function deleteReview(userID, reviewID, callback) {
 
 async function cancelTicket( userID, ticketID, callback) {
     try {
-        console.log("cancelticket")
         const client = await connect();
         const res = await client.query(sql.cancelTicket, [userID, ticketID]);
         client.release();
-        let message = `Ticket ${reviewID} of User ${userID} canceled succesfully`;
+        let message = `Ticket ${ticketID} of User ${userID} canceled succesfully`;
         callback(null, message);
     }
     catch (err) {
