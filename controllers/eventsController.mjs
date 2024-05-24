@@ -1,7 +1,7 @@
 import * as model from '../model/dbInterface.js';
 import { formatDate } from '../public/scripts/formatDate.js';
 
-async function theaterEvents(req, res, navigateTo) {
+async function theaterEvents(navigateTo, req, res, next) {
     try {
         const site_header = 'THEATER';
         model.getAllTheater((err, data) => {
@@ -54,14 +54,12 @@ async function theaterEvents(req, res, navigateTo) {
         });
     }
     catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
-        console.error(error);
-        res.json({ error: 'An error occurred when fetching theater events' });
+        // handle error
+        next(error);
     }
 }
 
-async function musicEvents(req, res, navigateTo) {
+async function musicEvents(navigateTo, req, res, next) {
     try {
         const site_header = 'MUSIC';
         model.getAllMusic((err, data) => {
@@ -116,14 +114,12 @@ async function musicEvents(req, res, navigateTo) {
         });
     }
     catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
-        console.error(error);
-        res.json({ error: 'An error occurred when fetching music events' });
+        // handle error
+        next(error);
     }
 }
 
-async function cinemaEvents(req, res, navigateTo) {
+async function cinemaEvents(navigateTo, req, res, next) {
     try {
         const site_header = 'CINEMA';
         model.getAllCinema((err, data) => {
@@ -181,10 +177,8 @@ async function cinemaEvents(req, res, navigateTo) {
         });
     }
     catch (error) {
-        // when error is thrown, the next middleware is called
-        // next(new Error('Invalid navigation'));
-        console.error(error);
-        res.json({ error: 'An error occurred when fetching cinema events' });
+        // handle error
+        next(error);
     }
 
 }

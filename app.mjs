@@ -35,9 +35,6 @@ const hbs = exphbs.create({
             else
                 return opts.inverse(this);
         },
-        // json: function(context) {
-        //     return JSON.stringify(context);
-        // }
     }
 });
 app.engine('hbs', hbs.engine);
@@ -51,6 +48,14 @@ app.use('/profile/', profileRouter.profileRouter);
 app.use('/api/', apiRouter.apiRouter);
 
 app.use('/', indexRouter);
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500);
+    // get comment var from session?
+    res.render('error', { message: err.message });
+ });
+
 indexRouter.get('/',(req, res) => {
     res.render('index');
 });
