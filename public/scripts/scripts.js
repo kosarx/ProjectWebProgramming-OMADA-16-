@@ -44,17 +44,21 @@ document.querySelectorAll('.profile-image').forEach(item => {
     });
 });
 
-document.querySelectorAll('#user-reviews-col>.row').forEach(item => {
+// add event listener on delete review button, where a get request /delete-review/:reviewID is made to the server and if it is successful the page is reloaded
+
+document.querySelectorAll('#user-reviews-col row').forEach(item => {
     let reviewID;
-    if (item.id.includes("review-id-")) {
-        reviewID = item.id.split("review-id-")[1];
+    if (item.id.includes("review-")) {
+        reviewID = item.id.split("review-")[1];
+        item.qu
     }
 
     item.querySelector(".cancel-col a").addEventListener('click', async event => {
-        event.preventDefault(); // Prevent the default link behavior
+        event.preventDefault();  // prevents the default behavior (navigation to another page when clicked ) 
 
         try {
-            const response = await fetch(window.location.pathname + '/delete-review/' + reviewID, {
+            userID = window.location.href.split('/')[4];
+            const response = await fetch(`/api/${userID}/delete-review/${reviewID}/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -67,6 +71,45 @@ document.querySelectorAll('#user-reviews-col>.row').forEach(item => {
                 window.location.reload();
             } else {
                 console.error('Failed to delete review:', result.error);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+});
+
+
+document.querySelectorAll('#booked-tickets-col>.row').forEach(item => {
+    let ticketID;
+    if (item.id.includes("ticket-")) {
+        ticketID = item.id.split("ticket-")[1];
+    }
+
+    cancelCol = item.querySelector(".cancel-col a")
+    cancelCol.addEventListener('click', async event => {
+        cancelClickedElement = event.target
+        
+        while (!(cancelClickedElement.classList.contains('btn-primary'))) {
+            cancelClickedElement = cancelClickedElement.parentElement;
+        }
+        event.preventDefault();  // prevents the default behavior (navigation to another page when clicked ) 
+
+        try {
+            userID = window.location.href.split('/')[4];
+            console.log(userID, `/api/${userID}/cancel-ticket/${ticketID}`)
+            const response = await fetch(`/api/${userID}/cancel-ticket/${ticketID}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                // Reload the window to show the updated tickets
+                window.location.reload();
+            } else {
+                console.error('Failed to cancel ticket:', result.error);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -359,16 +402,16 @@ document.querySelectorAll('#uploadProfilePhoto').forEach(item => {
 });
 
 // review card is clicked, navigate to the reviews page, passing the review id
-console.log('user-reviews-col .card', document.querySelectorAll('.user-reviews-col .card'));
-document.querySelectorAll('#user-reviews-col .card').forEach(item => {
-    item.addEventListener('click', event => {
-        const reviewID = item.id.split('-')[1];
+document.querySelectorAll('#user-reviews-col>.row').forEach(item => {
+    const reviewID = item.id.split('-')[1];
+    const cardElement = item.querySelector('.card');
+    cardElement.addEventListener('click', event => {
         // get the event type and event id from the card attributes data-event-type and data-eventid
-        const type = item.getAttribute('data-event-type').toLowerCase();
-        const eventID = item.getAttribute('data-eventid');
+        const type = cardElement.getAttribute('data-event-type').toLowerCase();
+        const eventID = cardElement.getAttribute('data-eventid');
         location.href = `/type/${type}/events/${eventID}/reviews?hr=${reviewID}`;
     });
-    item.addEventListener('mouseover', event => {
+    cardElement.addEventListener('mouseover', event => {
         item.style.cursor = 'pointer';
     });
 });

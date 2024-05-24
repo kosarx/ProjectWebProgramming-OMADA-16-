@@ -21,7 +21,36 @@ let getScheduledEventShows = async function (req, res) {
     });
 }
 
+
+let deleteUsersReview = async function (req, res) {
+    const userID = req.params.userid;
+    const reviewID = req.params.reviewid;
+    model.deleteReview(userID, reviewID, (err, msg) => {
+        if (err) {
+            console.log("Error deleting ");
+            return res.json({ error: err });
+        }
+        console.log(msg);
+        res.json({ success: true });
+    });
+
+}
+
+let cancelUsersTicket = async function (req, res) {
+    const userID = req.params.userid;
+    const ticketID = req.params.ticketid;
+    model.cancelTicket(userID, ticketID, (err, msg) => {
+        if (err) {
+            console.log("Error deleting ");
+            return res.json({ error: err });
+        }
+        console.log(msg);
+        res.json({ success: true });
+    });
+}
+
 router.get('/getScheduledEvents', getScheduledEvents);
 router.get('/getScheduledEventShows', getScheduledEventShows);
-
+router.get('/:userid/delete-review/:reviewid', deleteUsersReview);
+router.get('/:userid/cancel-ticket/:ticketid', cancelUsersTicket);
 export { router as apiRouter};

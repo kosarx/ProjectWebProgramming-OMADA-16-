@@ -1,0 +1,71 @@
+[33m111f0a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mserver_branch[m[33m)[m HEAD@{0}: reset: moving to 111f0a1bfa12bef302cd22d4d932dc0f995ee992
+[33m111f0a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mserver_branch[m[33m)[m HEAD@{1}: reset: moving to 111f0a1bfa12bef302cd22d4d932dc0f995ee992
+[33m111f0a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mserver_branch[m[33m)[m HEAD@{2}: reset: moving to 111f0a1bfa12bef302cd22d4d932dc0f995ee992
+[33m3396583[m HEAD@{3}: reset: moving to 33965830c982f0f4e011f2b85987ac77a4b6f5af
+[33meb0722d[m[33m ([m[1;31morigin/server_branch[m[33m, [m[1;32m33965830c982f0f4e011f2b85987ac77a4b6f5af[m[33m)[m HEAD@{4}: checkout: moving from 33965830c982f0f4e011f2b85987ac77a4b6f5af to server_branch
+[33meb0722d[m[33m ([m[1;31morigin/server_branch[m[33m, [m[1;32m33965830c982f0f4e011f2b85987ac77a4b6f5af[m[33m)[m HEAD@{5}: checkout: moving from server_branch to 33965830c982f0f4e011f2b85987ac77a4b6f5af
+[33meb0722d[m[33m ([m[1;31morigin/server_branch[m[33m, [m[1;32m33965830c982f0f4e011f2b85987ac77a4b6f5af[m[33m)[m HEAD@{6}: checkout: moving from server_branch to server_branch
+[33meb0722d[m[33m ([m[1;31morigin/server_branch[m[33m, [m[1;32m33965830c982f0f4e011f2b85987ac77a4b6f5af[m[33m)[m HEAD@{7}: pull --tags origin server_branch: Merge made by the 'ort' strategy.
+[33mf150702[m HEAD@{8}: commit: made delete review button functional
+[33m111f0a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mserver_branch[m[33m)[m HEAD@{9}: commit: separated booking controller from booking router
+[33m988249d[m HEAD@{10}: commit: cleaned up eventsControler, created function to format time, separated function groupDataByShow from booking.js and made sure that at most two cities and the earliest and latest date show up at the top of the bookings page
+[33m7f36b43[m HEAD@{11}: commit: fixed event dates in events.js, removed "DESCRIPTION" from about us, added new link for my photo, added space after final price in modal
+[33m65ac8de[m HEAD@{12}: pull --tags origin server_branch: Fast-forward
+[33mb312a6f[m HEAD@{13}: pull --tags origin server_branch: Fast-forward
+[33mc2fccf5[m HEAD@{14}: pull --tags origin server_branch: Merge made by the 'ort' strategy.
+[33m4f7360b[m HEAD@{15}: commit: changed format_date to formatDate, starting changing the format date code in events.js to be the formatDate function
+[33m228486a[m HEAD@{16}: pull --tags origin server_branch: Fast-forward
+[33m07f2c5d[m HEAD@{17}: pull --tags origin server_branch: Fast-forward
+[33m04613aa[m HEAD@{18}: commit: removed search icon and added padding to search bar
+[33mf370175[m HEAD@{19}: commit: made whole carousel clickable instead of just the caption
+[33m0f4b536[m HEAD@{20}: pull --tags origin server_branch: Merge made by the 'ort' strategy.
+[33mb9099a1[m HEAD@{21}: commit: fixed ticket status in user's profile and added final price of ticket
+[33m81656f4[m HEAD@{22}: pull --tags origin server_branch: Merge made by the 'ort' strategy.
+[33md133e20[m HEAD@{23}: commit: created profile route, finished user details and reviews, need to work on tickets statuses, added format date to format dates and get day
+[33m1f14c5c[m HEAD@{24}: pull --tags origin server_branch: Fast-forward
+[33m01bdcf1[m HEAD@{25}: pull --tags origin server_branch: Fast-forward
+[33mb3c855b[m HEAD@{26}: pull --tags origin server_branch: Fast-forward
+[33m7b4a3c9[m HEAD@{27}: commit: removed extra code from reviews and script element from event.hbs
+[33m1683586[m HEAD@{28}: pull --tags origin server_branch: Fast-forward
+[33m92457ef[m HEAD@{29}: commit: worked more on reviews, almost done
+[33m3ab58d9[m HEAD@{30}: commit: working on event card in reviews
+[33m6b8d083[m HEAD@{31}: pull --tags origin server_branch: Merge made by the 'ort' strategy.
+[33m8047fc3[m HEAD@{32}: commit: finished modal, started working on reviews page, separated booking router from events router
+[33m2cd2a8e[m HEAD@{33}: commit: added code to shorten event description and review comment if its too long
+[33mfeb7f5c[m HEAD@{34}: commit: made carousel clickable and added routing
+[33m12f0a13[m HEAD@{35}: commit: added real event images to carousel and title, fixed responsiveness of event page event cards
+[33m65731d2[m HEAD@{36}: commit: added venue and show details to modal, cleaned up queries and sorted shows by date, added code to set the event image in bookings page
+[33m4b50595[m HEAD@{37}: checkout: moving from main to server_branch
+[33m1aa6adc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Data-Generation[m[33m, [m[1;32mmain[m[33m, [m[1;32mData-Generation[m[33m)[m HEAD@{38}: checkout: moving from server_branch to main
+[33m4b50595[m HEAD@{39}: commit: minor changes to booking route, removedtemp.hbs and copied the code over to booking.hbs
+[33ma7055a9[m HEAD@{40}: pull --tags origin server_branch: Fast-forward
+[33m5ecf23e[m HEAD@{41}: pull --tags origin server_branch: Merge made by the 'ort' strategy.
+[33m818b8ba[m HEAD@{42}: commit: finished booking except for modal, made booking available to all events and added gradient to event image
+[33m43980c1[m HEAD@{43}: commit: fixed date and time format, added new event image for testing purposes
+[33m141b8fa[m HEAD@{44}: commit: fixed issue in queries
+[33m4f583c6[m HEAD@{45}: checkout: moving from main to server_branch
+[33m1aa6adc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Data-Generation[m[33m, [m[1;32mmain[m[33m, [m[1;32mData-Generation[m[33m)[m HEAD@{46}: checkout: moving from server_branch to main
+[33m4f583c6[m HEAD@{47}: commit: worked more on booking, fixed review stars
+[33m1b5a342[m HEAD@{48}: commit: worked on booking page
+[33mc90c5fe[m HEAD@{49}: commit: working on booking template
+[33m7cf47c1[m HEAD@{50}: commit: added missing /div in events.hbs
+[33me946240[m HEAD@{51}: pull --tags origin server_branch: Fast-forward
+[33m960b285[m HEAD@{52}: pull --tags origin server_branch: Fast-forward
+[33m20d7547[m HEAD@{53}: pull --tags origin server_branch: Fast-forward
+[33m12bd884[m HEAD@{54}: checkout: moving from main to server_branch
+[33m1aa6adc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Data-Generation[m[33m, [m[1;32mmain[m[33m, [m[1;32mData-Generation[m[33m)[m HEAD@{55}: checkout: moving from server_branch to main
+[33m12bd884[m HEAD@{56}: pull --tags origin server_branch: Fast-forward
+[33m150d2bc[m HEAD@{57}: checkout: moving from Data-Generation to server_branch
+[33m1aa6adc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Data-Generation[m[33m, [m[1;32mmain[m[33m, [m[1;32mData-Generation[m[33m)[m HEAD@{58}: checkout: moving from main to Data-Generation
+[33m1aa6adc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Data-Generation[m[33m, [m[1;32mmain[m[33m, [m[1;32mData-Generation[m[33m)[m HEAD@{59}: pull --tags origin main: Fast-forward
+[33me8a7509[m HEAD@{60}: pull --tags origin main: Merge made by the 'ort' strategy.
+[33m6d66cc3[m HEAD@{61}: commit: finished booking_complete
+[33mde5f150[m HEAD@{62}: pull --tags origin main: Merge made by the 'ort' strategy.
+[33m525e4bd[m HEAD@{63}: commit: worked on booking complete, renamed fill7 and fill9 svgs to dark and light arrow
+[33mab1aff4[m HEAD@{64}: commit: fixed animation of review cards in booking, created booking_complete page and added green chackmark svg
+[33m32ea881[m HEAD@{65}: commit: created about us page, cleaned up a bit the html in profile page
+[33mfea79cd[m HEAD@{66}: commit: made the event show tickets in bookings more responsive
+[33m42e4c7b[m HEAD@{67}: commit: made the event cards responsive
+[33m237154c[m HEAD@{68}: commit: made the index page cards responsive
+[33m377fde0[m HEAD@{69}: commit: changed search bar button to circular div, worked on profile my reviews, cahnged search bar in reviews page, added js code to scripts (message on ticket in profile page, grey X instead of red on shows that you cant cancel)
+

@@ -111,6 +111,7 @@ async function getAllCinema(callback) {
     }
 }
 
+
 // async function getEventShows(eventID, callback) {
 //     try {
 //         const client = await connect();
@@ -256,10 +257,10 @@ async function getEventAverageScore(eventID, callback) {
     }
 }
 
-async function deleteReview(reviewID, userID, callback) {
+async function deleteReview(userID, reviewID, callback) {
     try {
         const client = await connect();
-        const res = await client.query(sql.deleteReview, [reviewID, userID]);
+        const res = await client.query(sql.deleteReview, [userID, reviewID]);
         client.release();
         let message = `Review ${reviewID} by User ${userID} deleted succesfully`;
         callback(null, message);
@@ -269,6 +270,23 @@ async function deleteReview(reviewID, userID, callback) {
     }
 }
 
+
+async function cancelTicket( userID, ticketID, callback) {
+    try {
+        console.log("cancelticket")
+        const client = await connect();
+        const res = await client.query(sql.cancelTicket, [userID, ticketID]);
+        client.release();
+        let message = `Ticket ${reviewID} of User ${userID} canceled succesfully`;
+        callback(null, message);
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
+
+
+
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews, 
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview }
+     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket }

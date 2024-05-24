@@ -177,8 +177,12 @@ WHERE evav."eventID" = $1;
 `
 
 const deleteReview = `DELETE FROM "REVIEW" r
-WHERE r."reviewID" = $1 AND r."userID" = $2`
+WHERE r."userID" = $1 AND r."reviewID" = $2;`
+
+const cancelTicket = `UPDATE "TICKET" 
+SET status='CANCELED'
+WHERE "userID" = $1  AND "ticketID" = $2;` 
 
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview }
+   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket }
