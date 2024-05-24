@@ -5,7 +5,7 @@ const router = express.Router();
 import * as model from '../model/dbInterface.js';
 
 
-let reviewsNavigation = async function (req, res) {
+let reviewsNavigation = async function (req, res, next) {
 
     // split the req.originalURL to get the navigateTo and eventID
     const eventID = req.originalUrl.split('/')[4];
@@ -17,8 +17,10 @@ let reviewsNavigation = async function (req, res) {
 
     model.getEventReviews(eventID, (err, reviewList) => {
         if (err) {
-            console.log("reviews")
-            res.json({ error: err });
+            const error_comment = "Could not get reviews from the database"
+            // pass the comment to the session?
+            console.error(error_comment);
+            next(err);
         }
         else {
             let formattedDate;
@@ -41,8 +43,10 @@ let reviewsNavigation = async function (req, res) {
             model.getEventInReviewsInfo(eventID, (err, eventShowsInfo) => {
 
                 if (err) {
-                    console.log("reviews")
-                    res.json({ error: err });
+                    const error_comment = "Could not get event info from the database";
+                    // pass the comment to the session?
+                    console.error(error_comment);
+                    next(err);
                 }
                 else {
                     let eventDate;
@@ -79,8 +83,9 @@ let reviewsNavigation = async function (req, res) {
                     }
                     model.getEventAverageScore(eventID, (err, avrgScore) => {
                         if (err) {
-                            console.log("Failed to get average score from the database");
-                            res.json({ error: err });
+                            const comment_error = "Failed to get average score from the database";
+                            // pass the comment to the session?
+                            next(err);
                         }
                         else {
                             const averageScore = Number(avrgScore[0].average_score).toFixed(2);
@@ -88,13 +93,16 @@ let reviewsNavigation = async function (req, res) {
                             // if we have a highlighted review, we need to find the review object
                             // otherwise, we will just pass the first review object
                             let selected_review = { ...reviewList[0] };
+                            
                             if (highlightedReview) {
-                                reviewList.forEach(review => {
-                                    if (review.reviewID == highlightedReview) {
-                                        // copy the review object to a new object
-                                        selected_review = { ...review };
+                                for (let i in reviewList) {
+                                    if (reviewList[i].reviewID == highlightedReview) {
+                                        selected_review = { ...reviewList[i] };
+                                        // remove the highlighted review from the reviewList
+                                        reviewList.splice(i, 1);
+                                        break;
                                     }
-                                });
+                                }
                             }
                             res.render('reviews', { averageScore, selected_review, reviewList, eventID, eventInfo });
                         }
