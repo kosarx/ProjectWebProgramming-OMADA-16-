@@ -3,9 +3,14 @@
         <div class="card-body">
             <h5 class="card-title">Log in to your account</h5>
             {{#if message}}
-            <div class="alert alert-danger" role="alert">
-                {{message}}
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="alert alert-primary" role="alert">
+                        {{message}}
+                    </div>
+                </div>
             </div>
+
             {{/if}}
             <form action="/login" method="post">
                 <div class="form-group row mb-2">

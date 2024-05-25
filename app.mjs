@@ -12,10 +12,13 @@ const __dirname = path.dirname(__filename);
 import * as eventsRouter from './routes/events.js';
 import * as bookingRouter from './routes/booking.js';
 import * as profileRouter from './routes/profile.js';
-import * as logInController from './controllers/logInController.mjs';
 import * as apiRouter from './routes/api.js';
+import { logInSignUpRouter } from './routes/logInSignUp.js';
+
+import * as logInController from './controllers/logInController.mjs';
 
 import appSession from './app-setup/app-setup-session.mjs'; 
+
 
 // Create a new express application
 const app = express();
@@ -59,19 +62,7 @@ app.use('/type/', bookingRouter.bookingRouter);
 app.use('/profile/', logInController.checkAuthenticated, profileRouter.profileRouter);
 app.use('/api/', apiRouter.apiRouter);
 
-app.route('/login').get(logInController.showLogInForm);
-
-// // //Αυτή η διαδρομή καλείται όταν η φόρμα φτάσει στον εξυπηρετητή με POST στο /login. Διεκπεραιώνει τη σύνδεση (login) του χρήστη
-app.route('/login').post(logInController.doLogin);
-
-// //Αποσυνδέει το χρήστη
-app.route('/logout').get(logInController.doLogout);
-
-// //Εγγραφή νέου χρήστη
-app.route('/signup').get(logInController.showSignUpForm);
-
-
-app.post('/signup', logInController.doSignUp);
+app.use('/', logInSignUpRouter);
 
 
 app.use('/', indexRouter);

@@ -314,7 +314,7 @@ async function findUserByUsernameOrEmail(username, email) {
         const client = await connect();
         const res = await client.query(sql.findUserByUsernameOrEmail, [username, email]);
         client.release();
-        return res.rows;
+        return res.rows[0];
     }
     catch (error) {
         console.error('Error retrieving user:', error.message);

@@ -12,15 +12,15 @@ let showSignUpForm = function (req, res) {
 
 let doSignUp = async function (req, res) {
     try {
-        let fullName = `${req.body.fname} ${lname}`;
+        let fullName = `${req.body.fname} ${req.body.lname}`;
         console.log(fullName)
         
-        const registrationResult = await model.signUpUser(req.body.username, req.body.password, fullName, req.body.email, null);
+        const registrationResult = await model.signUpUser(req.body.username, req.body.password, fullName, req.body.email);
         if (registrationResult.message) {
             res.render('sign_up', { message: registrationResult.message })
         }
         else {
-            res.redirect('/log_in');
+            res.redirect('/login');
         }
     } catch (error) {
         console.error('registration error: ' + error);
@@ -31,21 +31,32 @@ let doSignUp = async function (req, res) {
 let doLogin = async function (req, res) {
     //Ελέγχει αν το username και το password είναι σωστά και εκτελεί την
     //συνάρτηση επιστροφής authenticated
-
+    
     let user = await model.findUserByUsernameOrEmail(req.body.usernameOrEmail, req.body.usernameOrEmail);
-    if (user == undefined || !user.password || !user.id) {
+    
+    if (user == undefined || !user.password || !user.userID) {
         res.render('log_in', { message: 'User not found' });
     }
     else {
         const match = await bcrypt.compare(req.body.password, user.password);
+        
         if (match) {
             //Θέτουμε τη μεταβλητή συνεδρίας "loggedUserId"
             req.session.loggedUserId = user.userID;
             //Αν έχει τιμή η μεταβλητή req.session.originalUrl, αλλιώς όρισέ τη σε "/" 
-            // res.redirect("/");            
-            const redirectTo = req.session.originalUrl || "/";
+            // res.redirect("/");    
+            // console.log( req.session.originalUrl)        
+            // const redirectTo = req.session.originalUrl || "/";
+
+            // res.redirect(redirectTo);
+            const redirectTo = req.session.redirectTo || '/';
+            console.log( req.session.redirectTo, redirectTo)        
+
+            delete req.session.redirectTo; // Clear the redirectTo after using it
+            console.log( req.session.redirectTo, redirectTo)        
 
             res.redirect(redirectTo);
+
         }
         else {
             res.render("log_in", { message: 'Wrong Password' })
@@ -71,7 +82,8 @@ let checkAuthenticated = function (req, res, next) {
             next()
         }
         else {
-
+            req.session.redirectTo = req.originalUrl;
+            console.log(req.session.redirectTo, req.originalUrl)
             console.log("not authenticated, redirecting to /login")
             res.redirect('/login');
         }
