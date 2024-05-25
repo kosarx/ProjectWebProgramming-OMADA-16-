@@ -103,12 +103,14 @@ async function getBookingComplete(req, res, next) {
                         // get current timestamp
                         const date_booked = new Date().toISOString().slice(0, 19).replace('T', ' ');
                         // console.log("discountID", discountID, "categoryID", categoryID, "showID", showID, "date_booked", date_booked, "userID", req.session.loggedUserId);
-            
-                        const lastInsertedTicketID = await model.insertTicket(ticket.ticketNumber, 'BOOKED', categoryID, req.session.loggedUserId, date_booked, discountID, showID);
-                        // destroy the booking token
-                        req.session.bookingToken = null;
-                        ticket.ticketID = lastInsertedTicketID;
-                        console.log("Ticket stored in the database", ticket.ticketID);
+                        
+                        if (req.session.bookingToken) {
+                            const lastInsertedTicketID = await model.insertTicket(ticket.ticketNumber, 'BOOKED', categoryID, req.session.loggedUserId, date_booked, discountID, showID);
+                            // destroy the booking token
+                            req.session.bookingToken = null;
+                            ticket.ticketID = lastInsertedTicketID;
+                            console.log("Ticket stored in the database", ticket.ticketID);
+                        }
                     } catch (err) {
                         const error_comment = "Failed to store ticket in the database";
                         console.error(error_comment);
