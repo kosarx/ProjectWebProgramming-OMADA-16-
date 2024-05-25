@@ -43,17 +43,14 @@ let doLogin = async function (req, res) {
         if (match) {
             //Θέτουμε τη μεταβλητή συνεδρίας "loggedUserId"
             req.session.loggedUserId = user.userID;
-            //Αν έχει τιμή η μεταβλητή req.session.originalUrl, αλλιώς όρισέ τη σε "/" 
-            // res.redirect("/");    
-            // console.log( req.session.originalUrl)        
-            // const redirectTo = req.session.originalUrl || "/";
 
-            // res.redirect(redirectTo);
-            const redirectTo = req.session.redirectTo || '/';
-            console.log( req.session.redirectTo, redirectTo)        
+            let redirectTo = req.session.redirectTo || '/';       
 
             delete req.session.redirectTo; // Clear the redirectTo after using it
-            console.log( req.session.redirectTo, redirectTo)        
+            console.log( req.session.redirectTo, redirectTo) 
+            if (redirectTo == '/profile/') {
+                redirectTo =  redirectTo + req.session.loggedUserId;
+            }
 
             res.redirect(redirectTo);
 
@@ -83,7 +80,6 @@ let checkAuthenticated = function (req, res, next) {
         }
         else {
             req.session.redirectTo = req.originalUrl;
-            console.log(req.session.redirectTo, req.originalUrl)
             console.log("not authenticated, redirecting to /login")
             res.redirect('/login');
         }
