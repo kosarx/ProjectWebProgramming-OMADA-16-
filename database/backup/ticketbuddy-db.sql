@@ -1507,7 +1507,7 @@ INSERT INTO public."Venue_HAS_Seat_Cat" VALUES (12, 3, 30);
 -- Name: CINEMA_cinemaID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."CINEMA_cinemaID_seq"', 1, false);
+SELECT pg_catalog.setval('public."CINEMA_cinemaID_seq"', 16, false);
 
 
 --
@@ -1516,7 +1516,7 @@ SELECT pg_catalog.setval('public."CINEMA_cinemaID_seq"', 1, false);
 -- Name: DISCOUNT_CATEGORY_discountID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."DISCOUNT_CATEGORY_discountID_seq"', 1, false);
+SELECT pg_catalog.setval('public."DISCOUNT_CATEGORY_discountID_seq"', 5, false);
 
 
 --
@@ -1525,7 +1525,7 @@ SELECT pg_catalog.setval('public."DISCOUNT_CATEGORY_discountID_seq"', 1, false);
 -- Name: EVENT_SHOW_showID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."EVENT_SHOW_showID_seq"', 1, false);
+SELECT pg_catalog.setval('public."EVENT_SHOW_showID_seq"', 61, false);
 
 
 --
@@ -1534,7 +1534,7 @@ SELECT pg_catalog.setval('public."EVENT_SHOW_showID_seq"', 1, false);
 -- Name: EVENT_eventID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."EVENT_eventID_seq"', 1, false);
+SELECT pg_catalog.setval('public."EVENT_eventID_seq"', 16, false);
 
 
 --
@@ -1543,7 +1543,7 @@ SELECT pg_catalog.setval('public."EVENT_eventID_seq"', 1, false);
 -- Name: MUSIC_musicID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."MUSIC_musicID_seq"', 1, false);
+SELECT pg_catalog.setval('public."MUSIC_musicID_seq"', 16, false);
 
 
 --
@@ -1552,7 +1552,7 @@ SELECT pg_catalog.setval('public."MUSIC_musicID_seq"', 1, false);
 -- Name: REVIEW_reviewID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."REVIEW_reviewID_seq"', 1, false);
+SELECT pg_catalog.setval('public."REVIEW_reviewID_seq"', 51, false);
 
 
 --
@@ -1561,7 +1561,7 @@ SELECT pg_catalog.setval('public."REVIEW_reviewID_seq"', 1, false);
 -- Name: SEAT_CATEGORY_categoryID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."SEAT_CATEGORY_categoryID_seq"', 1, false);
+SELECT pg_catalog.setval('public."SEAT_CATEGORY_categoryID_seq"', 11, false);
 
 
 --
@@ -1570,7 +1570,7 @@ SELECT pg_catalog.setval('public."SEAT_CATEGORY_categoryID_seq"', 1, false);
 -- Name: THEATER_theaterID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."THEATER_theaterID_seq"', 1, false);
+SELECT pg_catalog.setval('public."THEATER_theaterID_seq"', 16, false);
 
 
 --
@@ -1579,7 +1579,7 @@ SELECT pg_catalog.setval('public."THEATER_theaterID_seq"', 1, false);
 -- Name: TICKET_ticketID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."TICKET_ticketID_seq"', 1, false);
+SELECT pg_catalog.setval('public."TICKET_ticketID_seq"', 328, false);
 
 
 --
@@ -1588,7 +1588,7 @@ SELECT pg_catalog.setval('public."TICKET_ticketID_seq"', 1, false);
 -- Name: USER_userID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."USER_userID_seq"', 1, false);
+SELECT pg_catalog.setval('public."USER_userID_seq"', 11, false);
 
 
 --
@@ -1597,7 +1597,7 @@ SELECT pg_catalog.setval('public."USER_userID_seq"', 1, false);
 -- Name: VENUE_venueID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."VENUE_venueID_seq"', 1, false);
+SELECT pg_catalog.setval('public."VENUE_venueID_seq"', 13, false);
 
 
 --
