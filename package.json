@@ -5,12 +5,14 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
     "hbs": "^4.2.0",
     "node": "^18.20.2",
     "nodemon": "^3.1.0",
     "path": "^0.12.7",
     "pdfkit": "^0.15.0",
-    "pg": "^8.11.5"
+    "pg": "^8.11.5",
+    "qrcode": "^1.5.3"
   },
   "name": "ticketbuddy",
   "description": "Αρχοντής Κοσμάς",

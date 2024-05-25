@@ -43,6 +43,9 @@ const hbs = exphbs.create({
             else
                 return opts.inverse(this);
         },
+        incr: function(value, options) {
+            return parseInt(value) + 1;
+        },
     }
 });
 app.engine('hbs', hbs.engine);
