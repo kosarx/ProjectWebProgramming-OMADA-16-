@@ -86,7 +86,7 @@ async function getBookingComplete(req, res, next) {
 
 async function downloadTickets(req, res, next) {
     const bookingInfo = JSON.parse(decodeURIComponent(req.query.bookingInfo));
-    res.render('download_tickets', {bookingInfo});
+    // res.render('download_tickets', {bookingInfo});
 }
 
 export { getBookingComplete };
