@@ -39,13 +39,13 @@ async function connect() {
     }
     catch (e) {
         console.error(`Failed to connect ${e}`)
-        console.log("Trying to connect to the other pool")
+        // console.log("Trying to connect to the other pool")
         try {
             const client = await other_pool.connect();
             return client
         }
         catch (e) {
-            console.error(`Failed to connect ${e}, with the second pool`);
+            // console.error(`Failed to connect ${e}, with the second pool`);
         }
 
     }
