@@ -50,10 +50,6 @@ app.set('view engine', 'hbs');
 
 app.use('/partials', express.static(path.join(__dirname, 'views/partials')));
 
-
-
-
-
 app.use((req, res, next) => {
     if (req.session) {
        res.locals.userId = req.session.loggedUserId;

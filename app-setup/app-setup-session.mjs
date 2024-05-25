@@ -8,7 +8,7 @@ let appSession;
 
 const sessionName = process.env.SESSION_NAME;
 const sessionSecret = process.env.SESSION_SECRET;
-const sessionLifetime = Number(process.env.SESSION_LIFETIME);
+const sessionLifetime = parseInt(process.env.SESSION_LIFETIME);
 
 let sessionConf = {
   name: sessionName,

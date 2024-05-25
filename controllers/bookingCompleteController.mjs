@@ -1,10 +1,12 @@
 import e from 'express';
 import * as model from '../model/dbInterface.js';
 import { formatDate } from '../public/scripts/formatDate.js';
+import { error } from 'console';
 
 function processPayment(req, res, next) {
     // this is a dummy function for
     // the payment processing
+    // return false;
     return true;
 }
 
@@ -41,12 +43,26 @@ async function getBookingComplete(req, res, next) {
             });
 
             const success = processPayment(req, res, next); // dummy function
-
+            let bookingInfo = {};
             if (success) {
                 // store the tickets in the database
                 tickets.forEach(ticket => {
                     console.log("Storing ticket in the database", ticket);
                 });
+
+                bookingInfo = {
+                    success: success,
+                    eventID: eventShowInfo.eventID,
+                    imageURL: eventShowInfo.imageURL,
+                    title: eventShowInfo.title,
+                    showDate: eventShowInfo.show_date,
+                    showTime: eventShowInfo.show_time,
+                    venueName: eventShowInfo.venue_name,
+                    venueCity: eventShowInfo.city,
+                    venueCountry: eventShowInfo.country,
+                    description: eventShowInfo.description,
+                    tickets: tickets, //for each, ticketNumber, seatingCategory, discountCategory, finalPrice, downloadLink
+                };
 
                 // URL enconde the bookingInfo object
                 const bookingInfoEncoded = encodeURIComponent(JSON.stringify(bookingInfo));
@@ -56,22 +72,14 @@ async function getBookingComplete(req, res, next) {
                     ticket.downloadLink = downloadLink;
                 });
             }
+            let error_comment;
+            let error_message;
+            if (!success) {
+                error_comment = "Network error while processing payment."; // generic dummy comment
+                error_message = "Payment processing failed. Please try again."; // generic dummy message
+            }
 
-            const bookingInfo = {
-                success: success,
-                eventID: eventShowInfo.eventID,
-                imageURL: eventShowInfo.imageURL,
-                title: eventShowInfo.title,
-                showDate: eventShowInfo.show_date,
-                showTime: eventShowInfo.show_time,
-                venueName: eventShowInfo.venue_name,
-                venueCity: eventShowInfo.city,
-                venueCountry: eventShowInfo.country,
-                description: eventShowInfo.description,
-                tickets: tickets, //for each, ticketNumber, seatingCategory, discountCategory, finalPrice, downloadLink
-            };
-
-            res.render('booking_complete', {success: bookingInfo.success, eventInfo: eventShowInfo, tickets: tickets, totalAmount})
+            res.render('booking_complete', {success: bookingInfo.success, eventInfo: eventShowInfo, tickets: tickets, totalAmount, error_comment, error_message});
         }
     });
 }
