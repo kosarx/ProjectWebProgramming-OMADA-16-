@@ -3,7 +3,7 @@
     width: 86%;
     top: 100%;
     left: 2%;
-    z-index: 1;
+    z-index: 10;
 
     overflow: auto;
     max-height: 200px;
@@ -15,7 +15,6 @@
     width: 30%;
     top: 42%;
     left: 33.3%;
-    z-index: 1;
 
     overflow: auto;
     max-height: 200px;

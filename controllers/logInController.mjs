@@ -99,6 +99,11 @@ let checkAuthenticated = function (req, res, next) {
             next();
         }
         else {
+            if (req.body['review-rating'] && req.body['review-comment']) {
+                req.session.score = req.body['review-rating'];
+                req.session.comment = req.body['review-comment'];
+                console.log(req.session.comment, req.session.score)
+            }
             req.session.redirectTo = req.originalUrl;
             console.log("not authenticated, redirecting to /login")
             res.redirect('/login');
