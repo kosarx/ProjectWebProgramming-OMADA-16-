@@ -119,7 +119,7 @@ let postReview = async function (req, res, next) {
 
     try {
         const eventID = req.originalUrl.split('/')[4];
-
+        
         let score = req.body['review-rating'];
 
         let comment = req.body['review-comment'];
