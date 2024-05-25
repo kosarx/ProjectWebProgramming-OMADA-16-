@@ -26,22 +26,23 @@ document.querySelectorAll('.event-card').forEach(item => {
             const navigateTo = location.href.split('type/')[1].split('/')[0];
             location.href = `/type/${navigateTo}/events/${item.id}`;
         }
+        else if (window.location.href.includes('booking')) {
+            // make a fetch request to the server to get the event type of the event
+            fetch(`/api/${item.id}/getEventType`)
+                .then(response => response.json())
+                .then(data => {
+                    location.href = `/type/${data[0].event_type.toLowerCase()}/events/${item.id}`;
+                })
+                .catch(error => {
+                    console.error('Failed to get event type:', error);
+                });
+        }
         else {
             location.href = `events/${item.id}`;
         }
 
     });
 });
-
-
-// document.querySelectorAll('.profile-image').forEach(item => {
-//     item.addEventListener('click', event => {
-
-//         window.location.href = `/profile/`;
-
-
-//     });
-// });
 
 // add event listener on delete review button, where a get request /delete-review/:reviewID is made to the server and if it is successful the page is reloaded
 
@@ -142,16 +143,6 @@ carouselItems.forEach(item => {
 
 
 // ----------------- BOOKING -----------------
-
-function setEventShowBackgroundImage(url) {
-    document.querySelector('.event-image').style.backgroundImage = `url(${url})`;
-    // use fetch API
-    // fetch(url)
-    //     .then(response => response.blob())
-    //     .then(blob => {
-    //         document.querySelector('.event-image').style.backgroundImage = `url(${url})`;
-    //     });
-};
 
 // add event listener to review cards in bookings page
 document.addEventListener("DOMContentLoaded", function () {
@@ -305,6 +296,7 @@ function calculateFinalPrice() {
 }
 
 // Add check to make sure the button is clickable only when at least one ticket is selected
+// Move to the booking-complete page with the selected tickets
 document.querySelectorAll('.buy-btn').forEach(item => {
     item.addEventListener('click', event => {
         event.preventDefault();
@@ -324,16 +316,13 @@ document.querySelectorAll('.buy-btn').forEach(item => {
             console.log('category:', category, 'discount:', discount, 'finalPrice:', finalPrice);
             tickets.push({ 'category': category, 'discount': discount, 'finalPrice': finalPrice});
         }
-        // Construct query string
-
         // Serialize tickets data
         const serializedTickets = encodeURIComponent(JSON.stringify(tickets));
 
         // Construct query string
         const queryString = new URLSearchParams({ showID, tickets: serializedTickets }).toString();
-        console.log('queryString:', queryString);
         // Redirect to booking-complete page with query parameters
-        window.location.href = `/booking-complete?${queryString}`;
+        window.location.href = `/booking/init?${queryString}`;
     });
 });
 
@@ -429,11 +418,80 @@ window.onload = function () {
 document.querySelectorAll('#uploadProfilePhoto').forEach(item => {
     item.addEventListener('change', function () {
         let profilePic = document.querySelector('#profilePhoto');
-        let inputFile = this; // 'this' refers to the element that triggered the event, which is the file input in this case
+        let inputFile = this.files[0]; // 'this' refers to the element that triggered the event, which is the file input in this case
 
-        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+        profilePic.src = URL.createObjectURL(inputFile);
+
+        // Create a FormData object to send the file to the server
+        const formData = new FormData();
+        formData.append('profilePhoto', inputFile);
+        // console.log("inputFile:", formData);
+
+        // get the userID of the current logged-in user
+        let loggedIn;
+        let userID;
+        fetch('/api/user/loggedIn')
+            .then(response => response.json())
+            .then(data => {
+                loggedIn = data.loggedIn;
+                if (loggedIn) {
+                    userID = data.userID;
+                    if (loggedIn && userID) {
+                        // Send the image file to the server using fetch
+                        console.log("sending file to server", formData, userID)
+                        fetch(`/api/${userID}/uploadProfileImage`, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to upload profile photo');
+                            }
+                            // refresh
+                            location.reload();
+                        })
+                        .catch(error => {
+                            console.error('Error uploading profile photo:', error);
+                        });
+                    }
+
+                }
+            })
+            .catch(error => {
+                console.error('Failed to get userID:', error);
+            });
     });
 });
+
+// show the profile picture of the signed-in user
+document.querySelectorAll('.profile-image').forEach(item => {
+    let loggedIn;
+    let userID;
+    // make a fetch request to the api to get the current logged-in userID
+    fetch('/api/user/loggedIn')
+        .then(response => response.json())
+        .then(data => {
+            loggedIn = data.loggedIn;
+            if (loggedIn) {
+                userID = data.userID;
+                if (loggedIn && userID) {
+                    // make a fetch request to the api to get the profile image of the user
+                    fetch(`/api/${userID}/getUserProfileImage`)
+                        .then(response => response.json())
+                        .then(data => {
+                            item.querySelector('.rounded-circle').src = data.profile_imageURL;
+                        })
+                        .catch(error => {
+                            console.error('Failed to load profile image:', error);
+                        });
+                    }
+            }
+        })
+        .catch(error => {
+            console.error('Failed to get userID:', error);
+        });
+    });
+// });
 
 // review card is clicked, navigate to the reviews page, passing the review id
 document.querySelectorAll('#user-reviews-col>.row').forEach(item => {

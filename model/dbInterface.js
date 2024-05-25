@@ -383,8 +383,45 @@ async function getUserFromTicketID(ticketID) {
     }
 }
 
+async function getUserProfileImage(userID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getUserProfileImage, [userID]);
+        client.release();
+        callback(null, res.rows[0]);
+    }
+    catch (error) {
+        callback(error, null);
+    }
+}
+
+async function uploadProfileImage(userID, profile_imageURL, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.updateProfileImage, [userID, profile_imageURL]);
+        client.release();
+        callback(null, res.rows[0]);
+    }
+    catch (error) {
+        callback(error, null);
+    }
+}
+
+async function getEventTypeFromEventID(eventID, callback) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getEventTypeFromEventID, [eventID]);
+        client.release();
+        callback(null, res.rows);
+    }
+    catch (error) {
+        callback(error, null);
+    }
+}
+
 export {
     getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews,
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, signUpUser, findUserByUsernameOrEmail, 
-    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType, getSeatCategoryFromName, insertTicket, getUserFromTicketID };
+    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType, getSeatCategoryFromName, insertTicket, getUserFromTicketID,
+    getUserProfileImage, uploadProfileImage, getEventTypeFromEventID};

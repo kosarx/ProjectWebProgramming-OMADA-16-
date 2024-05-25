@@ -1,7 +1,6 @@
-import e from 'express';
+import multer from 'multer';
 import * as model from '../model/dbInterface.js';
 import { formatDate } from '../public/scripts/formatDate.js';
-
 
 let getScheduledEvents = async function (req, res, next) {
     model.getAllScheduledEvents((err, data) => {
@@ -69,4 +68,71 @@ let cancelUsersTicket = async function (req, res, next) {
     }
 }
 
-export { getScheduledEvents, getScheduledEventShows, deleteUsersReview, cancelUsersTicket }
+let getLoggedInUser = async function (req, res, next) {
+    try {
+        if (req.session.loggedUserId) {
+            res.json({ userID: req.session.loggedUserId, loggedIn: true});
+        } else {
+            res.json({ userID: req.session.loggedUserId, loggedIn: false});
+        }
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+}
+
+let getUserProfileImage = async function (req, res, next) {
+    try {
+        const userID = req.params.userid;
+        model.getUserProfileImage(userID, (err, data) => {
+            if (err) {
+                const error_comment = "Could not get profile image from the database";
+                console.error(error_comment);
+                next(err);
+            }
+            res.json(data);
+        });
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+}
+
+let uploadProfileImage = async function (req, res, next) {
+    try {
+        const userID = req.params.userid;
+        const profileImageURL = req.file.path.split('public')[1];
+        model.uploadProfileImage(userID, profileImageURL, (err, msg) => {
+            if (err) {
+                const error_comment = "Could not upload profile image to the database";
+                console.error(error_comment);
+                next(err);
+            }
+            console.log(msg);
+            res.json({ success: true });
+        });
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+}
+
+let getEventTypeFromEventID = async function (req, res, next) {
+    try {
+        const eventID = req.params.eventid;
+        model.getEventTypeFromEventID(eventID, (err, data) => {
+            if (err) {
+                const error_comment = "Could not get event type from the database";
+                console.error(error_comment);
+                next(err);
+            }
+            res.json(data);
+        });
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+}
+
+export { getScheduledEvents, getScheduledEventShows, deleteUsersReview, cancelUsersTicket, getUserProfileImage, getLoggedInUser, 
+    uploadProfileImage, getEventTypeFromEventID }
