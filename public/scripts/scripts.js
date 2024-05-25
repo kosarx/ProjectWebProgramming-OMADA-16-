@@ -343,6 +343,7 @@ document.querySelectorAll('#review-input').forEach(item => {
         }
 
         rating = localStorage.getItem('ratings');
+        
         // rating is a string, so we need to convert it
         if (rating === 'undefined') {
             rating = undefined;
@@ -363,6 +364,7 @@ document.querySelectorAll('.ratings-wrapper .close-encaps .x-close0').forEach(it
             star.removeAttribute('data-clicked');
             document.querySelector('.post-review-btn-pos').disabled = true;
         }
+        document.getElementById('review-rating').value = '';
     });
     // Change the color of the close button when hovered
     item.addEventListener('mouseover', event => {

@@ -1,5 +1,7 @@
 ratingSystem();
 
+let rating = null;
+
 function ratingSystem() {
     let stars = document.querySelector("#userRating").childNodes;
 	// let products = document.querySelectorAll(".ratings");
@@ -9,15 +11,16 @@ function ratingSystem() {
         star.addEventListener("click", function(){
 	      
             let children = 	star.parentElement.children;
+            
             for (let child of children ) {
                 if (child.getAttribute("data-clicked")){
                     // return false; // This will stop the function from executing further, remove to be able to adjust the rating
                     child.removeAttribute("data-clicked");
                 }
             }
-            
+
             this.setAttribute("data-clicked", "true");
-            let rating = this.dataset.rating;
+            rating = this.dataset.rating;
             localStorage.setItem("ratings", rating);
 
             const button = document.querySelector('.post-review-btn-pos');
@@ -36,6 +39,7 @@ function ratingSystem() {
                     button.disabled = true;
                 }
             }
+            document.querySelector('#review-rating').value = rating;
         });       
     }
 }

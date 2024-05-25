@@ -1,7 +1,5 @@
 import * as model from '../model/dbInterface.js';
-// import { formatDate } from '../public/scripts/formatDate.js';
-// import { formatTime } from '../public/scripts/formatTime.js';
-// import { groupDataByShow } from '../public/scripts/groupDataByShow.js';
+
 
 let reviewsNavigation = async function (req, res, next) {
     try {
@@ -87,7 +85,7 @@ let reviewsNavigation = async function (req, res, next) {
                             }
                             else {
                                 const averageScore = Number(avrgScore[0].average_score).toFixed(2);
-                                
+
                                 // if we have a highlighted review, we need to find the review object
                                 // otherwise, we will just pass the first review object
                                 let selected_review;
@@ -117,4 +115,34 @@ let reviewsNavigation = async function (req, res, next) {
 
 }
 
-export { reviewsNavigation };
+let postReview = async function (req, res, next) {
+
+    try {
+        const eventID = req.originalUrl.split('/')[4];
+
+        let score = req.body['review-rating'];
+
+        let comment = req.body['review-comment'];
+
+        const userID = req.session.loggedUserId;
+
+        const event = new Date();
+        const year = event.getFullYear();
+        const month = String(event.getMonth() + 1).padStart(2, '0');
+        const day = String(event.getDate()).padStart(2, '0');
+
+        const date_written = `${year}-${month}-${day}`;
+
+        await model.addReview(score, comment, userID, date_written, eventID);
+
+        res.redirect(req.originalUrl);
+
+    } catch (error) {
+        console.error(error);
+        next(error);
+    }
+
+
+}
+
+export { reviewsNavigation, postReview };
