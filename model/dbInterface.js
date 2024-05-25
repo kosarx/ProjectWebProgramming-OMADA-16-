@@ -309,7 +309,7 @@ async function getDiscountFromType(discountType, callback) {
     }
 }
 
-async function signUpUser(username, password, fullName, email, registrationDate) {
+async function signUpUser(username, password, fullName, email, registrationDate, profile_imageURL) {
 
     const user = await findUserByUsernameOrEmail(username, null);
     if (user != undefined) {
@@ -319,7 +319,7 @@ async function signUpUser(username, password, fullName, email, registrationDate)
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
             const client = await connect();
-            const res = await client.query(sql.signUpUser, [username, hashedPassword, fullName, email, registrationDate]);
+            const res = await client.query(sql.signUpUser, [username, hashedPassword, fullName, email, registrationDate, profile_imageURL]);
             client.release();
             let message = `User ${username} created succesfully`;
             return res.rows;

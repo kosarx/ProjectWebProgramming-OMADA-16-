@@ -34,14 +34,14 @@ document.querySelectorAll('.event-card').forEach(item => {
 });
 
 
-document.querySelectorAll('.profile-image').forEach(item => {
-    item.addEventListener('click', event => {
+// document.querySelectorAll('.profile-image').forEach(item => {
+//     item.addEventListener('click', event => {
 
-        window.location.href = `/profile/`;
+//         window.location.href = `/profile/`;
 
 
-    });
-});
+//     });
+// });
 
 // add event listener on delete review button, where a get request /delete-review/:reviewID is made to the server and if it is successful the page is reloaded
 
