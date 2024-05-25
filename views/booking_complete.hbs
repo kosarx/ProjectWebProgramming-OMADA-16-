@@ -54,18 +54,18 @@
         <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3">
             {{#each tickets as |ticket|}}
             <div class="ticket-details mt-3">
-                <div class="index"><span class="">Ticket</span> #{{@index}} </div>
-                <div class="number"><span class="me-2">Ticket Number:</span>{{ticket.ticketNumber}}</div>
-                <div class="location"><span class="me-2">Location:</span>{{../eventInfo.venue_name}}, {{../eventInfo.city}}, {{../eventInfo.address}}</div>
-                <div class="date"><span class="me-2">Date:</span>{{../eventInfo.show_date}}</div>
-                <div class="time"><span class="me-2">Time:</span>{{../eventInfo.show_time}}</div>
-                <div class="seating-zone"><span class="me-2">Seating Zone:</span>{{ticket.seatingCategory}}</div>
-                <div class="discount"><span class="me-2">Applied Discount:</span>{{ticket.discountCategory}}</div>
-                <div class="final-ticket-price"><span class="me-2">Final Price:</span>{{ticket.finalPrice}}</div>
+                <div class="index"><i class="">Ticket</i> #{{@index}} </div>
+                <div class="number"><i class="me-2">Ticket Number:</i>{{ticket.ticketNumber}}</div>
+                <div class="location"><span class="text-overlay me-2">Location:</span>{{../eventInfo.venue_name}}, {{../eventInfo.city}}, {{../eventInfo.address}}</div>
+                <div class="date"><span class="text-overlay me-2">Date:</span>{{../eventInfo.show_date}}</div>
+                <div class="time"><span class="text-overlay me-2">Time:</span>{{../eventInfo.show_time}}</div>
+                <div class="seating-zone"><span class="text-overlay me-2">Seating Zone:</span>{{ticket.seatingCategory}}</div>
+                <div class="discount"><span class="text-overlay me-2">Applied Discount:</span>{{ticket.discountCategory}}</div>
+                <div class="final-ticket-price"><span class="text-overlay me-2">Final Price:</span>{{ticket.finalPrice}}€</div>
             </div>
             {{/each}}
             <div class="total-amount mt-4">
-                Total Amount: {{totalAmount}}
+                Total Amount: {{totalAmount}}€
             </div>
         </div>
         <div class="col-10 col-md-8 my-5 offset-1 offset-md-2 divider-bottom">
@@ -80,7 +80,7 @@
         </div>
         <div class="col-10 col-sm-8 col-md-6 offset-1 offset-sm-2 offset-md-3 download-tickets-file">
             {{#each tickets as |ticket|}}
-            <a href="{{ticket.downloadURL}}" download>
+            <a href="{{ticket.downloadLink}}" download>
                 <i class="far fa-file-alt file-icon"></i>
                 <div class="tickets-text">
                     <div class="file-name">

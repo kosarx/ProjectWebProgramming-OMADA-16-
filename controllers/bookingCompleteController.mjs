@@ -8,6 +8,8 @@ function processPayment(req, res, next) {
     return true;
 }
 
+
+
 async function getBookingComplete(req, res, next) {
     const showID = req.query.showID;
     const tickets = JSON.parse(decodeURIComponent(req.query.tickets));
@@ -40,9 +42,43 @@ async function getBookingComplete(req, res, next) {
 
             const success = processPayment(req, res, next); // dummy function
 
-            res.render('booking_complete', {success, eventInfo: eventShowInfo, tickets: tickets, totalAmount})
+            if (success) {
+                // store the tickets in the database
+                tickets.forEach(ticket => {
+                    console.log("Storing ticket in the database", ticket);
+                });
+
+                // URL enconde the bookingInfo object
+                const bookingInfoEncoded = encodeURIComponent(JSON.stringify(bookingInfo));
+                // create a download link for the tickets
+                const downloadLink = `/booking-complete/download?bookingInfo=${bookingInfoEncoded}`;
+                tickets.forEach(ticket => {
+                    ticket.downloadLink = downloadLink;
+                });
+            }
+
+            const bookingInfo = {
+                success: success,
+                eventID: eventShowInfo.eventID,
+                imageURL: eventShowInfo.imageURL,
+                title: eventShowInfo.title,
+                showDate: eventShowInfo.show_date,
+                showTime: eventShowInfo.show_time,
+                venueName: eventShowInfo.venue_name,
+                venueCity: eventShowInfo.city,
+                venueCountry: eventShowInfo.country,
+                description: eventShowInfo.description,
+                tickets: tickets, //for each, ticketNumber, seatingCategory, discountCategory, finalPrice, downloadLink
+            };
+
+            res.render('booking_complete', {success: bookingInfo.success, eventInfo: eventShowInfo, tickets: tickets, totalAmount})
         }
     });
+}
+
+async function downloadTickets(req, res, next) {
+    const bookingInfo = JSON.parse(decodeURIComponent(req.query.bookingInfo));
+    res.render('download_tickets', {bookingInfo});
 }
 
 export { getBookingComplete };

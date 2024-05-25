@@ -1,11 +1,11 @@
-categoryID, category_name
-1, Standard Seating
-2, VIP Seating
-3, Love Seats
-4, General Admission (GA)
-5, Seated Admission
-6, Box Seats
-7, Pit Seating
-8, Orchestra
-9, Mezzanine
-10, Balcony
+categoryID,category_name
+1,"Standard Seating"
+2,"VIP Seating"
+3,"Love Seats"
+4,"General Admission (GA)"
+5,"Seated Admission"
+6,"Box Seats"
+7,"Pit Seating"
+8,"Orchestra"
+9,"Mezzanine"
+10,"Balcony"
