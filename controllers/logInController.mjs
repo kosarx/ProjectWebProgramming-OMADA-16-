@@ -52,7 +52,6 @@ let doLogin = async function (req, res) {
                 let redirectTo = req.session.redirectTo || '/';
 
                 delete req.session.redirectTo; // Clear the redirectTo after using it
-                console.log(req.session.redirectTo, redirectTo)
                 if (redirectTo == '/profile/') {
                     redirectTo = redirectTo + req.session.loggedUserId;
                 }
@@ -85,7 +84,6 @@ let resetPassword = (req, res) => {
 let checkAuthenticated = function (req, res, next) {
     try {
         if (req.session.loggedUserId) {
-            console.log("user is authenticated", req.originalUrl);
             if (req.originalUrl == '/profile/') {
                 res.redirect(`/profile/${req.session.loggedUserId}`)
 
@@ -101,7 +99,6 @@ let checkAuthenticated = function (req, res, next) {
             else {
                 
                 req.session.redirectTo = req.originalUrl;
-                console.log("not authenticated, redirecting to /login")
                 res.redirect('/login');
             }
         }
