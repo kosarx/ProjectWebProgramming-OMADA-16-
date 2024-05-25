@@ -14,8 +14,16 @@ let doSignUp = async function (req, res) {
     try {
         let fullName = `${req.body.fname} ${req.body.lname}`;
         console.log(fullName)
-        
-        const registrationResult = await model.signUpUser(req.body.username, req.body.password, fullName, req.body.email);
+
+        const event = new Date();
+        const year = event.getFullYear();
+        const month = String(event.getMonth() + 1).padStart(2, '0');
+        const day = String(event.getDate()).padStart(2, '0');
+
+        const registration_date = `${year}-${month}-${day}`;
+        console.log(registration_date);
+        let defaultProfileImgURL = "/svgs/profile_page_Avatar.svg";
+        const registrationResult = await model.signUpUser(req.body.username, req.body.password, fullName, req.body.email, registration_date, defaultProfileImgURL);
         if (registrationResult.message) {
             res.render('sign_up', { message: registrationResult.message })
         }
@@ -31,25 +39,25 @@ let doSignUp = async function (req, res) {
 let doLogin = async function (req, res) {
     //Ελέγχει αν το username και το password είναι σωστά και εκτελεί την
     //συνάρτηση επιστροφής authenticated
-    
+
     let user = await model.findUserByUsernameOrEmail(req.body.usernameOrEmail, req.body.usernameOrEmail);
-    
+
     if (user == undefined || !user.password || !user.userID) {
         res.render('log_in', { message: 'User not found' });
     }
     else {
         const match = await bcrypt.compare(req.body.password, user.password);
-        
+
         if (match) {
             //Θέτουμε τη μεταβλητή συνεδρίας "loggedUserId"
             req.session.loggedUserId = user.userID;
 
-            let redirectTo = req.session.redirectTo || '/';       
+            let redirectTo = req.session.redirectTo || '/';
 
             delete req.session.redirectTo; // Clear the redirectTo after using it
-            console.log( req.session.redirectTo, redirectTo) 
+            console.log(req.session.redirectTo, redirectTo)
             if (redirectTo == '/profile/') {
-                redirectTo =  redirectTo + req.session.loggedUserId;
+                redirectTo = redirectTo + req.session.loggedUserId;
             }
 
             res.redirect(redirectTo);
@@ -68,15 +76,20 @@ let doLogout = (req, res) => {
 }
 
 let checkAuthenticated = function (req, res, next) {
-    
+
     if (req.session.loggedUserId) {
         console.log("user is authenticated", req.originalUrl);
-        
-        next();
+        if (req.originalUrl == '/profile/') {
+            res.redirect(`/profile/${req.session.loggedUserId}`)
+
+        }
+        else {
+            next();
+        }
     }
     else {
         if ((req.originalUrl === "/login") || (req.originalUrl === "/signup")) {
-            next()
+            next();
         }
         else {
             req.session.redirectTo = req.originalUrl;

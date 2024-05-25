@@ -3,7 +3,7 @@ import { formatDate } from '../public/scripts/formatDate.js';
 
 let profileNavigation = async function (req, res, next) {
 
-    const userID = req.params.userid;
+    const userID = req.session.loggedUserId;
     model.getUserInfo(userID, (err, userArr) => {
         if (err) {
             const error_comment = "Could not get user info from the database";

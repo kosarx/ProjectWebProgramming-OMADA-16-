@@ -212,8 +212,8 @@ const getSeatCategoryFromName = `SELECT * FROM "SEAT_CATEGORY" sc
 WHERE sc."category_name" = $1;`
 
 const signUpUser = `INSERT INTO "USER"(
-	username, password, full_name, email, registration_date)
-	VALUES ( $1, $2, $3, $4, $5 );`
+	username, password, full_name, email, registration_date, "profile_imageURL")
+	VALUES ( $1, $2, $3, $4, $5, $6 );`
 
 const findUserByUsernameOrEmail = `SELECT u."userID", u."username", u."email", u."password"
 FROM "USER" u

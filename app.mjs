@@ -1,8 +1,8 @@
 import express from 'express';
+// import { engine } from 'express-handlebars';
 import exphbs from 'express-handlebars';
 import path from "path";
 import session from "express-session";
-// import bodyParser from 'body-parser';
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -12,10 +12,10 @@ const __dirname = path.dirname(__filename);
 import * as eventsRouter from './routes/events.js';
 import * as bookingRouter from './routes/booking.js';
 import * as profileRouter from './routes/profile.js';
+
 import * as apiRouter from './routes/api.js';
 import { logInSignUpRouter } from './routes/logInSignUp.js';
 
-import * as bookingCompleteRouter from './routes/booking-complete.js';
 import * as logInController from './controllers/logInController.mjs';
 
 import appSession from './app-setup/app-setup-session.mjs'; 
@@ -31,7 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // register the appSession middleware to be executed for every incoming request
 app.use(appSession)
-// app.use(bodyParser.json());
 
 // Set up the express app to use handlebars
 const hbs = exphbs.create({
@@ -65,7 +64,6 @@ app.use((req, res, next) => {
 app.use('/type/', eventsRouter.eventsRouter);
 app.use('/type/', bookingRouter.bookingRouter);
 app.use('/profile/', logInController.checkAuthenticated, profileRouter.profileRouter);
-app.use('/booking-complete/', bookingCompleteRouter.bookingCompleteRouter);
 app.use('/api/', apiRouter.apiRouter);
 
 app.use('/', logInSignUpRouter);
