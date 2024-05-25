@@ -1,0 +1,1169 @@
+/* -------COLOR PALETTE------- */
+:root {
+    --dark-purple: #643843;
+    --medium-purple: #85586F;
+    --light-purple: #AC7D88;
+
+    --card-background-color: #F9F9F9;
+
+    --main-page-color: #D9D9D9;
+
+    --review-card-and-divider-shadow: #afb1b6;
+
+    --muted-text-color: #666;
+
+    --review-card-color: #EFEFF0;
+
+    --hover-event-card: #b58ea3;
+
+    --light: #fff;
+    --dark: #000;
+
+    --scheduled: #5DC51D;
+    --completed: #000;
+    --cancelled-show: #E53720;
+    --cancelled-by-user: #1E88E5;
+
+    --cancel-ticket: #E53720;
+    --booked: #5DC51D;
+
+    --download-tickets-border: #e0e0e0;
+
+    --footer-background-color: #F3F3F3;
+    --footer-text-color: #808080;
+}
+
+/* -------NAVBAR------- */
+
+body {
+    background-color: var(--light);
+    z-index: 1;
+}
+
+.navbar {
+    background-color: var(--main-page-color);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-light .navbar-brand {
+    color: var(--medium-purple);
+    margin-left: 3em;
+    font-size: 1.8rem;
+    /* font-weight: 550; */
+    padding-top: 0;
+    padding-bottom: 0;
+    
+}
+
+.navbar-light .navbar-brand {
+    /* font-family: Verdana; */
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    font-family: 'Wix Madefor Display', sans-serif;
+}
+
+.navbar-light .navbar-brand:visited {
+    color: var(--medium-purple);
+
+}
+
+.navbar-light .navbar-brand:hover {
+    color: var(--dark-purple);
+
+}
+
+#navbarNav {
+    justify-content: right;
+}
+
+#navbarHeader {
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item {
+    margin-right: 3em;
+}
+
+.nav-item .nav-link {
+    color: var(--light-purple);
+}
+
+.profile-image {
+    margin-right: 3em;
+}
+
+.profile-image a {
+    display: inline-block;
+    position: relative;
+}
+
+.profile-image a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    /* box-shadow: 0 0 5px 3px var(--medium-purple); */
+    box-shadow: 0 0 10px rgba(133, 88, 111, 0.8);
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image a:hover::after {
+    opacity: 1;
+}
+
+.profile-image img {
+    width: 40px;
+    height: 40px;
+}
+
+.page-container {
+    padding-top: 4em;
+}
+
+
+/* -------FOOTER------- */
+/* body { */
+/* margin: 0; */
+/* Remove default margin */
+/* padding: 0; */
+/* Remove default padding */
+/* min-height: 100vh; */
+/* Ensure body covers viewport height */
+/* position: relative; */
+/* Required for footer positioning */
+/* } */
+
+
+.col.footer-names {
+    text-align: center;
+}
+
+.col.copyrights {
+    text-align: end;
+}
+
+footer {
+    /* position: absolute; */
+    /* Position the footer relative to the body */
+    /* bottom: 0; */
+    /* Align the footer to the bottom */
+    /* width: 100%; */
+    /* Full width */
+    padding: 1% 1%;
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+}
+
+/* -------INDEX------- */
+
+.page-container.index {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/images/main_menu_image.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+
+}
+
+
+.search-bar-container {
+    border-radius: 10px;
+    /* position: relative; */
+    margin: 0 auto;
+}
+
+.main-menu-search-bar input[type="search"] {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 44px;
+    border: 1px solid var(--review-card-color);
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+
+/* SEARCH BAR AND BUTTON CSS */
+
+.search-container {
+    display: inline-flex;
+    /* Display items inline */
+    align-items: center;
+    /* Align items vertically */
+}
+
+.search-bar .search-container input[type="search"]{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.circular-div {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-image: url('/svgs/ArrowButton.svg');
+    /* ensure the background image covers the entire div */
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    margin-left: 10px;
+}
+
+.index .main-menu-search-bar form,
+.events .search-bar form,
+.reviews .search-bar form {
+    display: flex;
+    /* Ensure form elements are displayed inline */
+    align-items: center;
+    /* Align form elements vertically */
+}
+
+
+.index .circular-div:active,
+.events .circular-div:active,
+.reviews .circular-div:active {
+    /* box-shadow: 4px 10px 8px rgba(0, 0, 0, 0.2); */
+    transform: translateX(10px);
+    /* box-shadow: 0 0 10px var(--dark-purple); */
+}
+
+#cardCont .col {
+    margin-bottom: 10px;
+}
+
+#cardCont .card {
+    max-width: 360px;
+    background-color: var(--main-page-color);
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    aspect-ratio: 9 / 10;
+    /* Set aspect ratio to 9:10 */
+}
+
+#cardCont .card .btn {
+    border-radius: 10px;
+    width: 70%;
+    /* Set button width as a percentage of the card width */
+    max-width: 260px;
+    /* Limit maximum button width */
+    height: 45%;
+    /* Set button height as a percentage of the card height */
+    max-height: 60px;
+    /* Limit maximum button height */
+    color: var(--light);
+    background-color: var(--dark-purple);
+    margin-top: 7%;
+    /* Set margin top as a percentage of the card height */
+    margin-bottom: 7%;
+    /* Set margin bottom as a percentage of the card height */
+    padding: 0;
+    display: flex;
+    /* Use flexbox */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+}
+
+#cardCont .card-body {
+    padding: 0;
+
+}
+
+#cardCont a span {
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    /* margin: 0; */
+    padding: 10% 18%;
+}
+
+#cardCont .card img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 70%;
+    max-width: 260px;
+    height: 80%;
+    max-height: 260px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10%;
+}
+
+
+
+#cardCont .card:hover {
+    box-shadow: 4px 10px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+
+/* -------EVENTS------- */
+
+.event-header {
+    color: var(--medium-purple);
+    letter-spacing: 0.2rem;
+}
+
+.search-bar input[type="search"] {
+    width: 30vw;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+
+#carousel-slide {
+    margin: 0% 10%;
+}
+
+.carousel-img {
+    max-height: 32em;
+    aspect-ratio: 16 / 9;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2vw;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--light);
+    padding: 0px 20px;
+    letter-spacing: 0.3em;
+}
+
+.carousel-caption p {
+    font-size: 2vw;
+    transition: color 0.3s ease;
+}
+
+
+.carousel-caption {
+    opacity: 0;
+    transition: opacity 0.5s ease
+}
+
+.carousel-item.active .carousel-caption {
+    opacity: 1;
+    /* show the caption when the item is active */
+}
+
+.carousel-item.active {
+    cursor: pointer;
+}
+
+
+.carousel-caption:hover {
+    color: var(--light-purple);
+}
+
+.event-card {
+    background-color: var(--card-background-color);
+    width: 60vw;
+    height: 40%;
+    margin: 0% 10%;
+    color: var(--dark);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.card.event-card .event-img {
+    /* width: 100px; */
+    margin: 5px 10px;
+    width: 180px;
+    height: 110px;
+    /* height: auto;    */
+    object-fit: fill;
+    border-radius: 10px;
+
+}
+
+.event-img-cols {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-card-title {
+    display: inline;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+}
+
+
+.event-card-date {
+    display: inline;
+    float: right;
+    font-size: 0.7em;
+    padding-right: 2%;
+    padding-top: 2%;
+    color: var(--muted-text-color);
+}
+
+.event-card-location {
+    padding-top: 1%;
+    font-size: 0.7em;
+    color: var(--muted-text-color);
+}
+
+
+.event-card-description {
+    font-size: 0.8em;
+}
+
+.event-card:hover * {
+    color: var(--light);
+
+}
+
+
+.event-card:hover {
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+    /* transform: translate(4px, -4px); */
+    transform: translateY(-4px);
+    background-color: var(--hover-event-card);
+    cursor: pointer;
+
+
+}
+
+/* .event-card:hover img.arrow {
+    content: url(svgs/Fill9.svg); 
+} */
+.event-card-body {
+    position: relative;
+}
+
+.event-card .dark-arrow,
+.event-card .light-arrow {
+    position: absolute;
+    top: 50%;
+    /* Align the top edge of the arrows at the center */
+    transform: translateY(-50%);
+    /* Move the arrows up by half of their own height */
+    right: 10px;
+    /* Adjust the distance from the right edge of the card */
+    transition: opacity 0.3s ease;
+}
+
+.event-card .light-arrow {
+    opacity: 0;
+
+}
+
+.event-card:hover .dark-arrow {
+    opacity: 0;
+    /* Make the first image transparent when hovering over the card */
+}
+
+.event-card:hover .light-arrow {
+    opacity: 1;
+    /* Make the second image opaque when hovering over the card */
+}
+
+
+/* img:hover {
+    content: url(svgs/Fill8.svg); 
+} */
+.event-card-body {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.event-card:hover .event-card-body {
+    opacity: 0.9;
+}
+
+.event-card:last-of-type {
+    margin-bottom: 2%;
+}
+
+
+
+/* -------BOOKING------- */
+
+.event-image {
+    /* background-image: url('https://picsum.photos/seed/12/1500/550'); */
+    /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('/images/event1.jpg'); */
+    /* Specify the path */
+    background-size: cover;
+    /* Cover the entire container */
+    background-position: center;
+    /* Center the image */
+    width: 100%;
+    height: 70vh;
+    color: white;
+    position: relative;
+}
+
+
+.divider {
+    margin: 0 16em;
+}
+
+.divider-bottom {
+    box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
+    /* Shadow-dividing effect */
+    margin-bottom: 20px;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 1em;
+    /* Stick the title to the bottom */
+    left: 3em;
+    /* Align the title to the left */
+}
+
+.text-overlay {
+    margin-top: 1em;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.date-overlay {
+    position: absolute;
+    bottom: 0.5em;
+    right: 3em;
+
+    font-weight: 600;
+}
+
+.bookings-container {
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.bookings-reviews-title a {
+    text-decoration: none;
+}
+
+.bookings-reviews-title a:hover {
+    color: var(--medium-purple);
+}
+
+.bookings-reviews-title a {
+    text-decoration: none;
+}
+
+.bookings-reviews-title a:hover {
+    color: var(--medium-purple);
+}
+
+#review-row .card,
+#reviews-column .card {
+    background-color: var(--review-card-color);
+}
+
+.shadowed-text {
+    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    /* Shadow effect for text in span*/
+}
+
+.shadowed-review-card {
+    box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
+}
+
+.view-reviews-link {
+    transition: color 0.2s ease;
+}
+
+.view-reviews-link:hover {
+    color: var(--medium-purple);
+    font-weight: bold;
+}
+
+
+#tickets-col .card:active {
+    background-color: var(--medium-purple);
+    color: var(--light);
+}
+
+#tickets-col .card:active * {
+    color: var(--light);
+}
+
+.card-subtitle.location,
+.card-subtitle.title {
+    color: var(--muted-text-color);
+}
+
+.bookings-container .card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    /* Smooth transitions */
+}
+
+/* Hide the default radio button */
+input[type="radio"] {
+    display: none;
+}
+
+.review-star {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    cursor: pointer;
+}
+
+/* input[type="radio"]:checked + .review-star {
+
+} */
+
+#tickets-col .card {
+    background-color: var(--card-background-color);
+    cursor: pointer;
+}
+
+#tickets-col .card-title {
+    font-size: large;
+    font-weight: 550;
+    letter-spacing: 1px;
+}
+
+/* TESTING */
+#tickets-col .card {
+    width: 50%;
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    #tickets-col .card {
+        width: 70%;
+        /* Set width to 70% for medium-sized screens */
+    }
+}
+
+@media (max-width: 575.98px) {
+    #tickets-col .card {
+        width: 100%;
+        /* Set width to 100% for smaller screens */
+    }
+}
+
+#review-of-event-img {
+    border-radius: 5px;
+    /* Need to fix the rounded corners */
+
+}
+
+/* .middle-centered-container { */
+/* display: flex;
+    align-items: center;
+    justify-content: center; */
+/* margin: 100px auto; */
+/* width: 70%; */
+/* } */
+
+/* -------REVIEWS------- */
+
+.ratings-wrapper .close-encaps .x-close0 {
+    margin-top: 1.4em;
+}
+
+#review-input {
+    /* width: auto; */
+    width: 56vw;
+    height: 25vh;
+    padding: 12px 20px;
+    /* margin: 8px 0; */
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    /* This makes the corners rounded */
+    resize: none;
+}
+
+#review-input:focus {
+    outline: none;
+    border: 2px solid var(--dark-purple);
+    box-shadow: 0 0 6px var(--dark-purple);
+}
+
+.btn-small {
+    background-color: var(--dark-purple);
+    color: var(--light);
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.post-review-btn-pos {
+    position: absolute;
+    right: 23%;
+}
+
+#avrgScore[data-average-score] {
+    font-size: 1.25em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.ratings-wrapper .ratings .average-star {
+    font-size:1.60em;
+}
+
+/* -------MODALs------- */
+.seating-category-select-rows .seating-category-row {
+    background-color: var(--main-page-color);
+    border-radius: 3px;
+    padding: 0.5em;
+    margin: 0.5em 0;
+}
+
+.close-encaps {
+    cursor: pointer;
+}
+
+/* === To make X interactable in modal */
+.x-close0,
+.x-close1 {
+    position: absolute;
+    top: 17px;
+    right: 16px;
+    transition: opacity 0.3s ease;
+}
+
+.x-close0 {
+    opacity: 1;
+}
+
+.x-close1 {
+    opacity: 0;
+}
+
+.close-encaps:hover .x-close1 {
+    opacity: 1;
+}
+
+/* === End */
+
+.no-fixed-position {
+    position: static;
+    top: auto;
+    right: auto;
+}
+
+.x-small {
+    width: 1em;
+    height: 1em;
+
+    margin-top: 1.1em;
+
+    /* padding-right: 0;     */
+}
+
+.plus-icon {
+    cursor: pointer;
+}
+
+.seating-category-row div {
+    margin-top: 0;
+}
+
+.tickets-selected {
+    background-color: var(--card-background-color);
+}
+
+
+/* -------LOG IN SIGN UP------- */
+
+.auth-container {
+    padding-top: 4em;
+    background-image: url('/images/main_menu_image.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    /* filter: blur(5px); */
+    display: flex;
+    /* Use flexbox layout */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    text-align: center;
+    /* Center text horizontally */
+}
+
+.auth-container .card {
+    width: 350px;
+}
+
+.auth-container .card {
+
+    /* position: absolute; */
+    /* make the card a bit higher than the middle of the screen */
+    /* top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    background-color: rgba(243, 243, 243, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.auth-container .row .col,
+.auth-container .row .col * {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.auth-container .row .col a {
+    color: var(--medium-purple);
+    text-decoration: none;
+}
+
+.auth-container .row .col .btn {
+    background-color: var(--dark-purple);
+    border-radius: 8px;
+    color: var(--light);
+    letter-spacing: 0.2em;
+}
+
+.auth-container .card-title {
+    font-size: 1.2em;
+    /* letter-spacing: 0.1em; */
+    color: var(--medium-purple);
+    font-weight: 700;
+}
+
+.auth-container .row:has(small):last-of-type {
+    text-align: end;
+}
+
+.auth-container .card-footer a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.auth-container.reset-pwd a {
+    font-size: 1.1em;
+}
+
+/* Add separator in the "OR" text*/
+.or-separator .col::before,
+.or-separator .col::after {
+    content: '';
+    display: inline-block;
+    width: 32%;
+    border-top: 0.05em solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.25em;
+}
+
+
+
+
+/* -------PROFILE------- */
+
+.user-info .fixed-height-container {
+    height: 500px;
+}
+
+.user-info .btn-log-out,
+.user-info label.btn {
+    background-color: var(--dark-purple);
+    border-radius: 8px;
+    color: var(--light);
+}
+
+.user-info .btn-log-out:hover {
+    color: var(--dark);
+}
+
+.user-info .btn-log-out:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-info #uploadProfilePhoto {
+    opacity: 0%;
+}
+
+.user-info #profilePhoto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.user-info .member-since,
+.user-info .email {
+    color: var(--muted-text-color);
+}
+
+.user-info .reviews,
+.user-info .tickets {
+    letter-spacing: 0.2rem;
+}
+
+
+.tickets-booked-container {
+    /* width: 90%; */
+    align-items: start;
+    padding: 0 1em;
+}
+
+.tickets-booked-container .card-title,
+.reviews-by-user-container .card-title {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    font-weight: 550;
+
+}
+
+.tickets-booked-container .card-subtitle {
+    font-size: 0.7em;
+}
+
+.tickets-booked-container .card {
+    border-radius: 0 8px 8px 0;
+    background-color: var(--card-background-color);
+}
+
+.tickets-booked-container .cancelled-by-user span.cancel-text,
+.tickets-booked-container .cancelled-show span.cancel-text,
+.tickets-booked-container .completed span.cancel-text {
+    color: var(--muted-text-color);
+}
+
+.tickets-booked-container .scheduled span.cancel-text,
+span.cancel-text {
+    color: var(--cancel-ticket);
+}
+
+.tickets-booked-container .completed .card {
+    border-right: 0.5em solid var(--completed);
+}
+
+.tickets-booked-container .cancelled-show .card {
+    border-right: 0.5em solid var(--cancelled-show);
+}
+
+.tickets-booked-container .cancelled-by-user .card {
+    border-right: 0.5em solid var(--cancelled-by-user);
+}
+
+.tickets-booked-container .scheduled .card {
+    border-right: 0.5em solid var(--scheduled);
+}
+
+.tickets-booked-container .scheduled .cancel-col .x-cancel,
+.tickets-booked-container .scheduled .cancel-col span.cancel-text {
+    cursor: pointer;
+}
+
+
+.tickets-booked-container .scheduled .cancel-col .x-cancel:hover,
+.tickets-booked-container .scheduled .cancel-col span.cancel-text:hover,
+.reviews-by-user-container .cancel-col span.cancel-text:hover {
+    color: darkred;
+}
+
+
+.hover-message {
+    display: none;
+}
+
+/* Show the message when hovering over the card */
+.card:hover .hover-message {
+    display: block;
+}
+
+
+.tickets-booked-container .cancel-col a,
+.reviews-by-user-container .cancel-col a {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.user-info #profilePhoto {
+    cursor: pointer;
+}
+
+.user-info .reviews-by-user-container .card {
+    background-color: var(--review-card-color);
+}
+
+
+.reviews-by-user-container .card-subtitle {
+    font-size: 0.8em;
+}
+
+.reviews-by-user-container .card-text {
+    font-size: 0.8em;
+}
+
+.reviews-by-user-container .ratings {
+    font-size: 0.8em;
+}
+
+
+/* -------ABOUT US------- */
+
+.about-us .about-us-description {
+    font-size: 0.9em;
+
+}
+
+#person0 .name,
+#person1 .name {
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+#person0 .email,
+#person1 .email {
+    color: var(--muted-text-color);
+    font-size: 0.9em;
+}
+
+#person0 .description,
+#person1 .description {
+    font-size: 0.9em;
+}
+
+.about-us .photo {
+    max-width: 200px;
+    width: 100%;
+    max-height: 200px;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.about-us #person0,
+.about-us #person1 {
+    /* margin: 10px 0; */
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 991.98px) {
+
+    .about-us .about-us-description {
+        font-size: 0.8em;
+
+    }
+
+    #person0 .name,
+    #person1 .name {
+        font-size: 1em;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+    }
+
+    #person0 .email,
+    #person1 .email {
+        font-size: 0.7em;
+    }
+
+    #person0 .description,
+    #person1 .description {
+        font-size: 0.7em;
+    }
+
+
+}
+
+
+/* ------- BOOKING COMPLETE ------- */
+
+.booking-complete .booked-successfully {
+    font-weight: 700;
+    color: var(--booked);
+    font-size: 1.3em;
+}
+
+.booking-complete .booked-failed {
+    font-weight: 700;
+    color: var(--cancel-ticket);
+    font-size: 1.3em;
+}
+
+.booking-complete .details-header,
+.booking-complete .download-tickets-header {
+    font-size: 1.2em;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+}
+
+
+.booking-complete .ticket-details {
+    /* font-size: 0.9em; */
+    letter-spacing: 0.2px;
+}
+
+.booking-complete .ticket-details .index {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.booking-complete .total-amount {
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.booking-complete .download-tickets-file {
+
+    padding: 0;
+
+}
+
+
+
+.booking-complete .download-tickets-file a {
+    background-color: var(--card-background-color);
+    width: 180px;
+    border-radius: 10px;
+    border: 2px solid var(--download-tickets-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* justify-content: center; */
+    text-decoration: none;
+    margin: 8px;
+    padding: 0px 15px;
+}
+
+.booking-complete .download-tickets-file i {
+    color: var(--dark);
+    font-size: 2em;
+    padding-right: 4px;
+}
+
+.booking-complete .download-tickets-file .tickets-text {
+    color: var(--muted-text-color);
+    display: inline-block;
+    margin: 4px 4px;
+
+}
+
+.booking-complete .download-tickets-file .tickets-text hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+}

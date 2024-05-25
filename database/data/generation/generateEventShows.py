@@ -4,7 +4,7 @@ import datetime
 
 input_csv_file = 'event15.csv'
 
-output_csv_file = 'eventShows60.csv'
+output_csv_file = 'eventShows60_4.csv'
 
 # List of headers for the output CSV
 output_headers = ['showID', 'eventID', 'show_date', 'show_time', 'status', 'venueID']
@@ -25,7 +25,7 @@ def generate_date_sequence(start_date, offset):
 venue_options = [i for i in range(1, 13)]  # 12 venues, should be length of venues table (or venues12.csv)
 
 # Start date for generating sequential dates
-base_date = datetime.date(2024, 5, 1)
+base_date = datetime.date(2024, 5, 26)
 
 # Read the event IDs from the input CSV
 with open(input_csv_file, 'r', newline='') as infile:
@@ -48,7 +48,7 @@ with open(input_csv_file, 'r', newline='') as infile:
             show_time = generate_random_time()  # Random times within a day
             if show_date < datetime.date.today():
                 status_options = ["CANCELED", "COMPLETED"]
-            elif show_date == datetime.date.today():
+            elif show_date == base_date: #datetime.date.today():
                 status_options = ["SCHEDULED", "CANCELED", "COMPLETED"]
             else:
                 status_options = ["SCHEDULED", "CANCELED"]
@@ -65,7 +65,7 @@ with open(input_csv_file, 'r', newline='') as infile:
                 'venueID': venueID
             }
             output_rows.append(new_row)
-        base_date = generate_date_sequence(base_date, random.randint(-25, 25))
+        base_date = generate_date_sequence(base_date, random.randint(-5, 20))
 
 # Write the output rows to the output CSV with the specified headers
 with open(output_csv_file, 'w', newline='') as outfile:

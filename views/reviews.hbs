@@ -1,0 +1,219 @@
+<link rel="stylesheet" href="/css/rating-system.css">
+<div class="container-fluid page-container reviews">
+    <div class="middle-centered-container">
+        <div class="row">
+            <div class="col offset-1 mt-4 text-center text-sm-start">
+                <h5 class="event-header">REVIEWS</h5>
+            </div>
+            {{> searchBar}}
+            <div id={{eventID}} class="card mt-3 mx-auto event-card divider-bottom">
+                <div class="row gx-2">
+                    <div class="col-md-5 col-lg-4 col-xl-3 event-img-cols">
+                        <img src="{{eventInfo.imageURL}}" class="card-img event-img img-fluid" id="review-of-event-img"
+                            alt="...">
+                    </div>
+                    <div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="event-card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="event-card-title">{{eventInfo.title}}</h5>
+                                    <p class="event-card-date">{{eventInfo.dates}}</p>
+                                    <p class="event-card-location ">{{eventInfo.locations}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-11">
+                                    <p class="event-card-description">{{eventInfo.description}} </p>
+                                </div>
+                                <div class="col-1 arrow-container ">
+                                    <img src="/svgs/dark_arrow.svg" class="dark-arrow img-fluid" alt="">
+                                    <img src="/svgs/light_arrow.svg" class="light-arrow img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider divider-bottom"></div>
+    <div class="px-5">
+        <div class="row">
+            <div class="col-md-5 offset-md-2">
+                <div class="text-overlay">
+                    <h5 class="shadowed-text ps-4">AVERAGE SCORE:
+                        <span id="avrgScore" data-average-score="{{averageScore}}"
+                            class="shadowed-text ps-2">{{averageScore}}</span>
+                        <div class="ratings-wrapper">
+                            <div class="ratings">
+                                <span data-clicked="true" class="p-0 average-star">★</span>
+                            </div>
+                        </div>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 offset-md-2">
+                <div class="text-overlay">
+                    <span class="shadowed-text ps-4">LEAVE A REVIEW</span>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-bottom"></div>
+        <div class="row">
+            <div class="col-md-5 offset-md-2 d-flex align-items-center">
+                <div class="text-overlay ps-4">Score:</div>
+                <div class="mt-3 ms-md-3">
+                    <div class="ratings-wrapper">
+                        <div id="userRating" class="ratings ratings-interactable">
+                            <div class="close-encaps">
+                                <img src="/svgs/GrayX.svg" class="x-close0 no-fixed-position x-small ms-md-3" alt="X">
+                            </div>
+                            <span data-rating="5">★</span>
+                            <span data-rating="4">★</span>
+                            <span data-rating="3">★</span>
+                            <span data-rating="2">★</span>
+                            <span data-rating="1">★</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-md-5 offset-md-2 mt-md-4">
+                    <div class="px-4">
+                        <textarea name="review-comment" id="review-input"
+                            placeholder="Write your review here..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb-5">
+                <div class="col-md-5 offset-md-2 mt-md-4">
+                    <button class="btn btn-small post-review-btn-pos" disabled>
+                        <span class="text-overlay">
+                            Post
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <!-- Hidden input to store the rating -->
+            <input type="hidden" name="review-rating" id="review-rating">
+        </form>
+    </div>
+    <div class="divider divider-bottom"></div>
+    <div class="px-5">
+        <div class="row">
+            <div class="col-md-5 offset-md-2">
+                <div class="text-overlay">
+                    <span class="shadowed-text ps-4">REVIEWS</span>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-bottom"></div>
+        <div class="container-fluid inter-children-cards">
+            <div class="row">
+                <div class="col-md-8 offset-md-0 mb-3 mx-auto" id="reviews-column">
+                    {{#if selected_review}}
+                    <div class="highligthed-card">
+                        <div class="card divider-bottom">
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-4 col-sm-2 col-xl-1 text-center pt-3">
+                                        <h5 class="card-title"><strong>{{selected_review.score}}/5</strong> </h5>
+                                    </div>
+                                    <div class="col-11">
+                                        <div class="ratings-wrapper">
+                                            <div class="ratings">
+                                                <span data-rating="5" {{#if_eq selected_review.score 5
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="4" {{#if_eq selected_review.score 4
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="3" {{#if_eq selected_review.score 3
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="2" {{#if_eq selected_review.score 2
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                                <span data-rating="1" {{#if_eq selected_review.score 1
+                                                    }}data-clicked="true" {{/if_eq}}>★</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- <div class="col-sm-1 text-left"> -->
+                                    <div class="col-sm text-start">
+                                        <h6 class="card-subtitle my-2">{{selected_review.username}}</h6>
+                                    </div>
+                                    <!-- <div class="col-md-auto text-left"> -->
+                                    <div class="col-sm text-sm-end">
+                                        <h6 class="card-subtitle my-2">
+                                            <date class="small">{{selected_review.date_written}}</date>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <p class="card-text card-description">{{selected_review.comment}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{#each reviewList as |review|}}
+                    {{#if_eq review.reviewID selected_review.reviewID}} {{!-- be wary of selected_review existing --}}
+                    {{!-- this is the selected review, so we skip it --}}
+                    {{else}}
+                    <div class="card divider-bottom">
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-4 col-sm-2 col-xl-1 text-center pt-3">
+                                    <h5 class="card-title"><strong>{{review.score}}/5</strong> </h5>
+                                </div>
+                                <div class="col-11">
+                                    <div class="ratings-wrapper">
+                                        <div class="ratings">
+                                            <span data-rating="5" {{#if_eq review.score 5 }}data-clicked="true"
+                                                {{/if_eq}}>★</span>
+                                            <span data-rating="4" {{#if_eq review.score 4 }}data-clicked="true"
+                                                {{/if_eq}}>★</span>
+                                            <span data-rating="3" {{#if_eq review.score 3 }}data-clicked="true"
+                                                {{/if_eq}}>★</span>
+                                            <span data-rating="2" {{#if_eq review.score 2 }}data-clicked="true"
+                                                {{/if_eq}}>★</span>
+                                            <span data-rating="1" {{#if_eq review.score 1 }}data-clicked="true"
+                                                {{/if_eq}}>★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <div class="col-sm-1 text-left"> -->
+                                <div class="col-sm text-start">
+                                    <h6 class="card-subtitle my-2">{{review.username}}</h6>
+                                </div>
+                                <!-- <div class="col-md-auto text-left"> -->
+                                <div class="col-sm text-sm-end">
+                                    <h6 class="card-subtitle my-2">
+                                        <date class="small">{{review.date_written}}</date>
+                                    </h6>
+                                </div>
+                            </div>
+                            <p class="card-text card-description">{{review.comment}}
+                            </p>
+                        </div>
+                    </div>
+                    {{/if_eq}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<!-- Script to load the navbar and footer -->
+{{!--
+<script src="/scripts/scripts.js"> </script> --}}
+<!-- Script to load the rating system -->
+<script src="/scripts/ratingSystem.js"></script>

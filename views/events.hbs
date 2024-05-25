@@ -1,0 +1,87 @@
+<div class="container-fluid page-container events">
+  <div class="row">
+    <div class="col mt-4 d-block d-sm-none"></div>
+  </div>
+  <div class="row">
+    <div class="col offset-1 mt-4 text-center text-sm-start">
+      <h5 class="event-header">
+        {{#if site_header}}
+        {{site_header}}
+        {{else}}
+        EVENT
+        {{/if}}
+      </h5>
+    </div>
+    {{> searchBar}}
+  </div>
+  <div class="row">
+    <div class="col-md-12 mt-md-3">
+      <div id="carousel-slide" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carousel-slide" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carousel-slide" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carousel-slide" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          {{#each carouselEventList as |carouselEvent|}}
+          <div class="carousel-item {{#if_eq carouselEvent.index "0" }} active {{/if_eq}}" data-eventid = "{{carouselEvent.eventID}}" data-type="{{carouselEvent.type}}">
+            <img src={{carouselEvent.imageURL}} class="d-block img-fluid carousel-img w-100" alt="...">
+            <div class="carousel-caption">
+                <p>{{carouselEvent.titleU}}</p>
+              </div>
+          </div>
+          {{/each}}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-slide" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-slide" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{#each eventList as |event|}}
+  <div id={{event.eventID}} class="card mt-3 mx-auto event-card">
+    <div class="row gx-2">
+      <div class="col-md-5 col-lg-4 col-xl-3 event-img-cols">
+        <img src={{event.imageURL}} class="card-img rounded event-img img-fluid" alt="...">
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+        <div class="event-card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="event-card-title">{{event.title}}</h5>
+              <p class="event-card-date">{{#if_eq event.earliestDate event.latestDate}}
+                {{event.earliestDate}}
+                {{else}}
+                {{event.earliestDate}} - {{event.latestDate}}
+                {{/if_eq}}</p>
+              <p class="event-card-location  ">{{event.cities}}</p>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-11">
+              <p class="event-card-description">{{event.description}} </p>
+            </div>
+            <div class="col-1 arrow-container ">
+              <img src="/svgs/dark_arrow.svg" class="dark-arrow img-fluid" alt="">
+              <img src="/svgs/light_arrow.svg" class="light-arrow img-fluid" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  {{!-- Bootstrap js for the Carousel --}}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    
+</div>
