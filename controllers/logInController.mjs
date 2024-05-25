@@ -36,40 +36,50 @@ let doSignUp = async function (req, res) {
 }
 
 let doLogin = async function (req, res) {
+    try {
+        let user = await model.findUserByUsernameOrEmail(req.body.usernameOrEmail, req.body.usernameOrEmail);
 
-    let user = await model.findUserByUsernameOrEmail(req.body.usernameOrEmail, req.body.usernameOrEmail);
-
-    if (user == undefined || !user.password || !user.userID) {
-        res.render('log_in', { message: 'User not found' });
-    }
-    else {
-        const match = await bcrypt.compare(req.body.password, user.password);
-
-        if (match) {
-            
-            req.session.loggedUserId = user.userID;
-
-            let redirectTo = req.session.redirectTo || '/';
-
-            delete req.session.redirectTo; // Clear the redirectTo after using it
-            console.log(req.session.redirectTo, redirectTo)
-            if (redirectTo == '/profile/') {
-                redirectTo = redirectTo + req.session.loggedUserId;
-            }
-
-            res.redirect(redirectTo);
-
+        if (user == undefined || !user.password || !user.userID) {
+            res.render('log_in', { message: 'User not found' });
         }
         else {
-            res.render("log_in", { message: 'Wrong Password' })
+            const match = await bcrypt.compare(req.body.password, user.password);
+
+            if (match) {
+
+                req.session.loggedUserId = user.userID;
+
+                let redirectTo = req.session.redirectTo || '/';
+
+                delete req.session.redirectTo; // Clear the redirectTo after using it
+                console.log(req.session.redirectTo, redirectTo)
+                if (redirectTo == '/profile/') {
+                    redirectTo = redirectTo + req.session.loggedUserId;
+                }
+
+                res.redirect(redirectTo);
+
+            }
+            else {
+                res.render("log_in", { message: 'Wrong Password' })
+            }
         }
+    } catch (error) {
+        console.error('log in error: ' + error);
+        res.render('log_in', { message: error });
     }
 }
 
 let doLogout = (req, res) => {
-    
+
     req.session.destroy();
     res.redirect('/');
+}
+
+let resetPassword = (req, res) => {
+
+    res.render('reset_password');
+
 }
 
 let checkAuthenticated = function (req, res, next) {
@@ -96,4 +106,6 @@ let checkAuthenticated = function (req, res, next) {
     }
 }
 
-export { showLogInForm, showSignUpForm, doSignUp, doLogin, doLogout, checkAuthenticated }
+
+
+export { showLogInForm, showSignUpForm, doSignUp, doLogin, doLogout, checkAuthenticated, resetPassword }

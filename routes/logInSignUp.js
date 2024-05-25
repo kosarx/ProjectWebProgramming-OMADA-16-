@@ -8,5 +8,5 @@ router.post('/login', logInController.doLogin);
 router.get('/logout', logInController.doLogout);
 router.get('/signup', logInController.showSignUpForm);
 router.post('/signup', logInController.doSignUp);
-
+router.get('/reset-password', logInController.resetPassword);
 export { router as logInSignUpRouter };
