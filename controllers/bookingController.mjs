@@ -15,6 +15,7 @@ async function bookingTheater(eventID, req, res, next) {
             else {
 
                 eventInfo = eventInfo[0];
+                eventInfo.type = "theater";
                 eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
 
                 let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
@@ -142,6 +143,7 @@ async function bookingMusic(eventID, req, res, next) {
             }
             else {
                 eventInfo = eventInfo[0];
+                eventInfo.type = "music";
                 eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
 
                 let titleAndArtist = eventInfo.title + ' - ' + eventInfo.artists;
@@ -272,6 +274,7 @@ async function bookingCinema(eventID, req, res, next) {
             }
             else {
                 eventInfo = eventInfo[0];
+                eventInfo.type = "cinema";
                 eventInfo.titleUpperCase = eventInfo.title.toUpperCase();
 
                 let titleAndArtist = eventInfo.title + ' - ' + eventInfo.lead_roles;
