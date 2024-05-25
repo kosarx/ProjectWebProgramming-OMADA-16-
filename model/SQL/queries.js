@@ -208,7 +208,6 @@ WHERE
 const getDiscountFromType = `SELECT * FROM "DISCOUNT_CATEGORY" d
 WHERE d."discount_type" = $1`
 
-
 const signUpUser = `INSERT INTO "USER"(
 	username, password, full_name, email, registration_date, "profile_imageURL")
 	VALUES ( $1, $2, $3, $4, $5, $6 );`
