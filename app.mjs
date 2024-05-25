@@ -71,8 +71,9 @@ app.use('/', indexRouter);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500);
-    // get comment var from session?
-    res.render('error', { message : err.message, status : 500});
+    // get comment var from session
+    const error_comment = req.session.error_comment;
+    res.render('error', { status : 500, message : err.message, comment : error_comment});
  });
 
 indexRouter.get('/',(req, res) => {

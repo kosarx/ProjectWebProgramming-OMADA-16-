@@ -7,6 +7,7 @@ let profileNavigation = async function (req, res, next) {
     model.getUserInfo(userID, (err, userArr) => {
         if (err) {
             const error_comment = "Could not get user info from the database";
+            req.session.error_comment = error_comment;
             console.error(error_comment);
             next(err);
         }
@@ -36,6 +37,7 @@ let profileNavigation = async function (req, res, next) {
                     model.getUsersTickets(userID, (err, ticketList) => {
                         if (err) {
                             const error_comment = "Could not get tickets from the database";
+                            req.session.error_comment = error_comment;
                             console.error(error_comment);
                             next(err);
                         }
