@@ -35,6 +35,7 @@ async function getBookingInit(req, res, next) {
     }
     catch (err) {
         const error_comment = "Failed to initialize booking";
+        req.session.error_comment = error_comment;
         console.error(error_comment);
         next(err);
     }
@@ -54,6 +55,7 @@ async function getBookingComplete(req, res, next) {
     model.getES_E_V(showID, async (err, result) => {
         if (err) {
             const error_comment = "Failed to get show details";
+            req.session.error_comment = error_comment;
             console.error(error_comment);
             next(err);
         }
@@ -213,6 +215,7 @@ const generateTicketPDF = async (ticket, res, req, next) => {
         // doc.pipe(fs.createWriteStream(path.join(directoryPath, `ticket-${ticket.ticketID}-${ticket.ticketNumber}.pdf`)));
     } catch (err) {
         const error_comment = "Failed to generate ticket PDF";
+        req.session.error_comment = error_comment;
         console.error(error_comment);
         next(err);
     }
@@ -227,6 +230,7 @@ async function downloadTickets(req, res, next) {
         generateTicketPDF(bookingInfo, res, req, next);
     } catch (err) {
         const error_comment = "Failed to download tickets";
+        req.session.error_comment = error_comment;
         console.error(error_comment);
         next(err);
     }

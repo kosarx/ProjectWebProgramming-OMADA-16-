@@ -266,7 +266,7 @@ async function bookingCinema(eventID, req, res, next) {
         model.getCinemaEventInfo(eventID, (err, eventInfo) => {
             if (err) {
                 const error_comment = "Could not get cinema event info from the database";
-                // pass the comment to the session?
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -284,7 +284,7 @@ async function bookingCinema(eventID, req, res, next) {
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         const error_comment = "Could not get reviews from the database"
-                        // pass the comment to the session?
+                        req.session.error_comment = error_comment;
                         console.error(error_comment);
                         next(err);
                     }
@@ -303,7 +303,7 @@ async function bookingCinema(eventID, req, res, next) {
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
                                 const error_comment = "Could not get show info from the database";
-                                // pass the comment to the session?
+                                req.session.error_comment = error_comment;
                                 console.error(error_comment);
                                 next(err);
                             }
@@ -359,7 +359,7 @@ async function bookingCinema(eventID, req, res, next) {
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
                                         const error_comment = "Could not get modal info from the database";
-                                        // pass the comment to the session?
+                                        req.session.error_comment = error_comment;
                                         console.error(error_comment);
                                         next(err);
                                     }

@@ -6,6 +6,7 @@ let getScheduledEvents = async function (req, res, next) {
     model.getAllScheduledEvents((err, data) => {
         if (err) {
             const error_comment = "Could not get scheduled events from the database";
+            req.session.error_comment = error_comment;
             console.error(error_comment);
             next(err);
         }
@@ -17,6 +18,7 @@ let getScheduledEventShows = async function (req, res, next) {
     model.getAllScheduledEventShows((err, data) => {
         if (err) {
             const error_comment = "Could not get scheduled event shows from the database";
+            req.session.error_comment = error_comment;
             console.error(error_comment);
             next(err);
         }
@@ -37,6 +39,7 @@ let deleteUsersReview = async function (req, res, next) {
         model.deleteReview(userID, reviewID, (err, msg) => {
             if (err) {
                 const error_comment = "Could not delete review from the database";
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -56,6 +59,7 @@ let cancelUsersTicket = async function (req, res, next) {
         model.cancelTicket(userID, ticketID, (err, msg) => {
             if (err) {
                 const error_comment = "Could not cancel ticket from the database";
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -87,6 +91,7 @@ let getUserProfileImage = async function (req, res, next) {
         model.getUserProfileImage(userID, (err, data) => {
             if (err) {
                 const error_comment = "Could not get profile image from the database";
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -105,6 +110,7 @@ let uploadProfileImage = async function (req, res, next) {
         model.uploadProfileImage(userID, profileImageURL, (err, msg) => {
             if (err) {
                 const error_comment = "Could not upload profile image to the database";
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -124,6 +130,7 @@ let getEventTypeFromEventID = async function (req, res, next) {
             if (err) {
                 const error_comment = "Could not get event type from the database";
                 console.error(error_comment);
+                req.session.error_comment = error_comment;
                 next(err);
             }
             res.json(data);

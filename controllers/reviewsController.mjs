@@ -13,7 +13,7 @@ let reviewsNavigation = async function (req, res, next) {
         model.getEventReviews(eventID, (err, reviewList) => {
             if (err) {
                 const error_comment = "Could not get reviews from the database"
-                // pass the comment to the session?
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -39,7 +39,7 @@ let reviewsNavigation = async function (req, res, next) {
 
                     if (err) {
                         const error_comment = "Could not get event info from the database";
-                        // pass the comment to the session?
+                        req.session.error_comment = error_comment;
                         console.error(error_comment);
                         next(err);
                     }
@@ -79,7 +79,7 @@ let reviewsNavigation = async function (req, res, next) {
                         model.getEventAverageScore(eventID, (err, avrgScore) => {
                             if (err) {
                                 const comment_error = "Failed to get average score from the database";
-                                // pass the comment to the session?
+                                req.session.error_comment = error_comment;
                                 console.error(comment_error);
                                 next(err);
                             }
