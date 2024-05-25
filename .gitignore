@@ -8,7 +8,6 @@ Thumbs.db
 # Ignore dependencies and package managers
 /node_modules/
 /yarn.lock
-/package-lock.json
 
 # Ignore build artifacts
 /build/
