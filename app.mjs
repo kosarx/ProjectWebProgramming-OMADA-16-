@@ -12,12 +12,10 @@ const __dirname = path.dirname(__filename);
 import * as eventsRouter from './routes/events.js';
 import * as bookingRouter from './routes/booking.js';
 import * as profileRouter from './routes/profile.js';
-
+import * as bookingCompleteRouter from './routes/booking-complete.js';
 import * as apiRouter from './routes/api.js';
 import { logInSignUpRouter } from './routes/logInSignUp.js';
-
 import * as logInController from './controllers/logInController.mjs';
-
 import appSession from './app-setup/app-setup-session.mjs'; 
 
 
@@ -65,7 +63,7 @@ app.use('/type/', eventsRouter.eventsRouter);
 app.use('/type/', bookingRouter.bookingRouter);
 app.use('/profile/', logInController.checkAuthenticated, profileRouter.profileRouter);
 app.use('/api/', apiRouter.apiRouter);
-
+app.use('/booking-complete/', bookingCompleteRouter.bookingCompleteRouter);
 app.use('/', logInSignUpRouter);
 
 

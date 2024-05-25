@@ -1123,6 +1123,8 @@ span.cancel-text {
 
 }
 
+
+
 .booking-complete .download-tickets-file a {
     background-color: var(--card-background-color);
     width: 180px;
@@ -1134,11 +1136,13 @@ span.cancel-text {
     /* justify-content: center; */
     text-decoration: none;
     margin: 8px;
+    padding: 0px 15px;
 }
 
 .booking-complete .download-tickets-file i {
     color: var(--dark);
     font-size: 2em;
+    padding-right: 4px;
 }
 
 .booking-complete .download-tickets-file .tickets-text {
