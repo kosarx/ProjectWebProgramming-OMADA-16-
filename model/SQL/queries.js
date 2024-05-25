@@ -217,7 +217,11 @@ FROM "USER" u
 WHERE (u."username" = $1 OR u."email" = $2)
 LIMIT 1;`
 
+const addReview = `INSERT INTO "REVIEW"(
+	score, comment, "userID", date_written, "eventID")
+	VALUES ( $1, $2, $3, $4, $5);`
+
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
    getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, getDiscountFromType,
-   signUpUser, findUserByUsernameOrEmail }
+   signUpUser, findUserByUsernameOrEmail, addReview }

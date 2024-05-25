@@ -1,5 +1,5 @@
 import * as model from '../model/dbInterface.js';
-// import { formatDate } from '../public/scripts/formatDate.js';
+
 import bcrypt from 'bcrypt'
 
 let showLogInForm = function (req, res) {
@@ -13,7 +13,6 @@ let showSignUpForm = function (req, res) {
 let doSignUp = async function (req, res) {
     try {
         let fullName = `${req.body.fname} ${req.body.lname}`;
-        console.log(fullName)
 
         const event = new Date();
         const year = event.getFullYear();
@@ -21,7 +20,7 @@ let doSignUp = async function (req, res) {
         const day = String(event.getDate()).padStart(2, '0');
 
         const registration_date = `${year}-${month}-${day}`;
-        console.log(registration_date);
+
         let defaultProfileImgURL = "/svgs/profile_page_Avatar.svg";
         const registrationResult = await model.signUpUser(req.body.username, req.body.password, fullName, req.body.email, registration_date, defaultProfileImgURL);
         if (registrationResult.message) {
@@ -37,8 +36,6 @@ let doSignUp = async function (req, res) {
 }
 
 let doLogin = async function (req, res) {
-    //Ελέγχει αν το username και το password είναι σωστά και εκτελεί την
-    //συνάρτηση επιστροφής authenticated
 
     let user = await model.findUserByUsernameOrEmail(req.body.usernameOrEmail, req.body.usernameOrEmail);
 
@@ -49,7 +46,7 @@ let doLogin = async function (req, res) {
         const match = await bcrypt.compare(req.body.password, user.password);
 
         if (match) {
-            //Θέτουμε τη μεταβλητή συνεδρίας "loggedUserId"
+            
             req.session.loggedUserId = user.userID;
 
             let redirectTo = req.session.redirectTo || '/';
@@ -70,7 +67,7 @@ let doLogin = async function (req, res) {
 }
 
 let doLogout = (req, res) => {
-    //Σημειώνουμε πως ο χρήστης δεν είναι πια συνδεδεμένος
+    
     req.session.destroy();
     res.redirect('/');
 }

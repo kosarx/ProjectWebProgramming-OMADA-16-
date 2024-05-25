@@ -311,18 +311,23 @@ async function getDiscountFromType(discountType, callback) {
 
 async function signUpUser(username, password, fullName, email, registrationDate, profile_imageURL) {
 
-    const user = await findUserByUsernameOrEmail(username, null);
-    if (user != undefined) {
-        return { message: "Username is taken." }
+    const userByUsername = await findUserByUsernameOrEmail(username, null);
+    const userByEmail = await findUserByUsernameOrEmail(null, email);
+    
+    if (userByEmail != undefined) {
+        return { message: "An account with this email already exists." }
+    }
+    else if (userByUsername != undefined) {
+        return { message: "This username is taken." }
     }
     else {
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
             const client = await connect();
-            const res = await client.query(sql.signUpUser, [username, hashedPassword, fullName, email, registrationDate, profile_imageURL]);
+            await client.query(sql.signUpUser, [username, hashedPassword, fullName, email, registrationDate, profile_imageURL]);
             client.release();
-            let message = `User ${username} created succesfully`;
-            return res.rows;
+            // let message = `User ${username} created succesfully`;
+            return { message: `User ${username} created succesfully!` };
         }
         catch (error) {
             throw error;
@@ -345,8 +350,25 @@ async function findUserByUsernameOrEmail(username, email) {
     }
 }
 
+
+async function addReview(score, comment, userID, date_written, eventID) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.addReview, [ score, comment, userID, date_written, eventID ]);
+        client.release();
+        return res.rows[0];
+    }
+    catch (error) {
+        console.error('Error retrieving user:', error.message);
+        throw error;
+    }
+}
+
+
+
+
 export {
     getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews,
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, signUpUser, findUserByUsernameOrEmail, 
-    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType };
+    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType, addReview };

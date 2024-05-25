@@ -2,6 +2,16 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Create an account to secure your tickets today!</h5>
+            {{#if message}}
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+
+            {{/if}}
             <form action="/signup" method="post">
                 <div class="form-group row mb-2">
                     <div class="col">
@@ -34,7 +44,7 @@
                 </div>
                 <div class="form-group row mb-1">
                     <div class="col">
-                         <button type="submit" class="btn">SIGN UP</button> 
+                        <button type="submit" class="btn">SIGN UP</button>
                         {{!-- <a href="profile.html" class="btn">SIGN UP</a> --}}
                     </div>
                 </div>
