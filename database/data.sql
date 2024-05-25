@@ -1,47 +1,53 @@
-INSERT INTO public."CINEMA" VALUES (1, ' The Matrix', ' The Wachowski Brothers', ' Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss', ' R – Restricted');
-INSERT INTO public."CINEMA" VALUES (4, ' 12 Angry Men', ' Sidney Lumet', ' Henry Fonda, Lee J. Cobb, Martin Balsam', ' NR – Not Rated');
-INSERT INTO public."CINEMA" VALUES (7, ' The Great Gatsby', ' Baz Luhrmann', ' Leonardo DiCaprio, Tobey Maguire, Carey Mulligan', ' PG-13');
-INSERT INTO public."CINEMA" VALUES (10, ' The Godfather', ' Francis Ford Coppola', ' Marlon Brando, Al Pacino, James Caan', ' R – Restricted');
-INSERT INTO public."CINEMA" VALUES (13, ' The Shawshank Redemption', ' Frank Darabont', ' Tim Robbins, Morgan Freeman, Bob Gunton', ' R – Restricted');
+--
+-- TOC entry 4916 (class 0 OID 17431)
+-- Dependencies: 224
+-- Data for Name: CINEMA; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."CINEMA" VALUES (1, 'The Matrix', 'The Wachowski Brothers', 'Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss', 'R – Restricted');
+INSERT INTO public."CINEMA" VALUES (4, '12 Angry Men', 'Sidney Lumet', 'Henry Fonda, Lee J. Cobb, Martin Balsam', 'NR – Not Rated');
+INSERT INTO public."CINEMA" VALUES (7, 'The Great Gatsby', 'Baz Luhrmann', 'Leonardo DiCaprio, Tobey Maguire, Carey Mulligan', 'PG-13');
+INSERT INTO public."CINEMA" VALUES (10, 'The Godfather', 'Francis Ford Coppola', 'Marlon Brando, Al Pacino, James Caan', 'R – Restricted');
+INSERT INTO public."CINEMA" VALUES (13, 'The Shawshank Redemption', 'Frank Darabont', 'Tim Robbins, Morgan Freeman, Bob Gunton', 'R – Restricted');
 
 
 --
--- TOC entry 4926 (class 0 OID 17297)
+-- TOC entry 4926 (class 0 OID 17490)
 -- Dependencies: 234
 -- Data for Name: DISCOUNT_CATEGORY; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (1, ' Regular', 0);
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (2, ' Student', 25);
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (3, ' Senior (>65)', 25);
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (4, ' Child (<12)', 50);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (1, 'Regular', 0);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (2, 'Student', 25);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (3, 'Senior (>65)', 25);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (4, 'Child (<12)', 50);
 
 
 --
--- TOC entry 4910 (class 0 OID 17196)
+-- TOC entry 4910 (class 0 OID 17389)
 -- Dependencies: 218
 -- Data for Name: EVENT; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."EVENT" VALUES (1, ' The Matrix', ' A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', ' /images/events/the_matrix.jpg', ' Action', '02:30:00');
-INSERT INTO public."EVENT" VALUES (2, ' Marx in Soho', ' Marx in Soho is a play on the life of Karl Marx, written by Howard Zinn. The play revolves around Marx''s return to Earth, where he confronts the consequences of his ideas.', ' /images/events/marx_in_soho.jpg', ' Drama', '02:16:00');
-INSERT INTO public."EVENT" VALUES (3, ' The Eras Tour', '  The Eras Tour is a concert tour by Taylor Swift. It began on March 17, 2023, in Arizona, USA, and is set to conclude on December 8, 2024, in Vancouver, Canada.', ' /images/events/the_eras_tour.webp', ' Pop Country Folk', '02:30:00');
-INSERT INTO public."EVENT" VALUES (4, ' 12 Angry Men', ' The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.', ' /images/events/12_angry_men.jpg', ' Drama', '01:36:00');
-INSERT INTO public."EVENT" VALUES (5, ' Hamlet', 'Hamlet, prince of Denmark, returns home to learn that his father, the king, has died under mysterious circumstances. The ghost of his father appears to Hamlet, revealing that he was murdered by his brother, Claudius, who has since seized the throne and married Hamlet''s mother.', '/images/events/hamlet.jpg', 'Drama', '03:00:00');
-INSERT INTO public."EVENT" VALUES (6, ' Coldplay: Music of the Spheres World Tour', 'Coldplay takes their latest album, Music of the Spheres, on a global tour filled with dazzling visuals, singalong anthems, and a focus on sustainability.', '/images/events/coldplay_music_of_the_spheres.jpeg', 'Rock', '02:30:00');
-INSERT INTO public."EVENT" VALUES (7, ' The Great Gatsby', 'A Midwestern war veteran finds himself drawn to the past and lifestyle of his millionaire neighbor.', '/images/events/the_great_gatsby.jpg', 'Drama', '02:24:00');
-INSERT INTO public."EVENT" VALUES (8, ' A Midsummer Night''s Dream', 'Shakespeare''s beloved comedy about four young Athenian lovers and a group of mischievous fairies who entangle them in a web of love and illusion.', '/images/events/a_midsummers_night_dream.webp', 'Comedy', '02:15:00');
-INSERT INTO public."EVENT" VALUES (9, ' Carmen', 'Georges Bizet''s passionate opera tells the story of Carmen, a fiery gypsy woman who captivates the heart of Don José, a soldier. Their love is ultimately destructive, leading to tragic consequences.', '/images/events/carmen.jpg', 'Opera', '03:15:00');
-INSERT INTO public."EVENT" VALUES (10, ' The Godfather', 'The Godfather is a 1972 American crime film directed by Francis Ford Coppola, who co-wrote the screenplay with Mario Puzo, based on Puzo''s 1969 novel of the same name.', '/images/events/the_godfather.jpg', 'Crime Drama', '02:55:00');
-INSERT INTO public."EVENT" VALUES (11, ' Don Camillo', 'Don Camillo is a theatrical adaptation of the stories by Giovannino Guareschi. The play follows the humorous and heartwarming interactions between a Catholic priest and the upcoming leftist mayor in a small Italian village.', '/images/events/don_camillo.jpg', 'Comedy', '02:30:00');
-INSERT INTO public."EVENT" VALUES (12, ' The Phantom of the Opera', 'Andrew Lloyd Webber''s iconic musical follows the story of a disfigured musical genius who haunts the Paris Opera House. When he falls in love with a young soprano, he devotes himself to nurturing her talent, but his obsession leads to tragedy.', '/images/events/phantom_of_the_opera.jpg', 'Musical', '02:30:00');
-INSERT INTO public."EVENT" VALUES (13, ' The Shawshank Redemption', 'The Shawshank Redemption is a 1994 American drama film directed and written by Frank Darabont, based on the 1982 Stephen King novella of the same name.', '/images/events/the_shawshank_redemption.jpg', 'Drama', '02:00:00');
-INSERT INTO public."EVENT" VALUES (14, ' Death of a Salesman', 'Arthur Miller''s Pulitzer Prize-winning drama tells the story of Willy Loman, a failing salesman who grapples with his fading relevance and shattered dreams.', '/images/events/death_of_a_salesman.jpg', 'Drama', '02:00:00');
-INSERT INTO public."EVENT" VALUES (15, ' The Nutcracker', 'The Nutcracker is a two-act ballet, originally choreographed by Marius Petipa and Lev Ivanov with a score by Pyotr Ilyich Tchaikovsky. The ballet is based on the story ''The Nutcracker and the Mouse King'' by E. T. A. Hoffmann.', '/images/events/the_nutcracker.webp', 'Ballet', '02:15:00');
+INSERT INTO public."EVENT" VALUES (1, 'The Matrix', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', '/images/events/the_matrix.jpg', 'Action', '02:30:00');
+INSERT INTO public."EVENT" VALUES (2, 'Marx in Soho', 'Marx in Soho is a play on the life of Karl Marx, written by Howard Zinn. The play revolves around Marx''s return to Earth, where he confronts the consequences of his ideas.', '/images/events/marx_in_soho.jpg', 'Drama', '02:16:00');
+INSERT INTO public."EVENT" VALUES (3, 'The Eras Tour', ' The Eras Tour is a concert tour by Taylor Swift. It began on March 17, 2023, in Arizona, USA, and is set to conclude on December 8, 2024, in Vancouver, Canada.', '/images/events/the_eras_tour.webp', 'Pop Country Folk', '02:30:00');
+INSERT INTO public."EVENT" VALUES (4, '12 Angry Men', 'The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.', '/images/events/12_angry_men.jpg', 'Drama', '01:36:00');
+INSERT INTO public."EVENT" VALUES (5, 'Hamlet', 'Hamlet, prince of Denmark, returns home to learn that his father, the king, has died under mysterious circumstances. The ghost of his father appears to Hamlet, revealing that he was murdered by his brother, Claudius, who has since seized the throne and married Hamlet''s mother.', '/images/events/hamlet.jpg', 'Drama', '03:00:00');
+INSERT INTO public."EVENT" VALUES (6, 'Coldplay: Music of the Spheres World Tour', 'Coldplay takes their latest album, Music of the Spheres, on a global tour filled with dazzling visuals, singalong anthems, and a focus on sustainability.', '/images/events/coldplay_music_of_the_spheres.jpeg', 'Rock', '02:30:00');
+INSERT INTO public."EVENT" VALUES (7, 'The Great Gatsby', 'A Midwestern war veteran finds himself drawn to the past and lifestyle of his millionaire neighbor.', '/images/events/the_great_gatsby.jpg', 'Drama', '02:24:00');
+INSERT INTO public."EVENT" VALUES (8, 'A Midsummer Night''s Dream', 'Shakespeare''s beloved comedy about four young Athenian lovers and a group of mischievous fairies who entangle them in a web of love and illusion.', '/images/events/a_midsummers_night_dream.webp', 'Comedy', '02:15:00');
+INSERT INTO public."EVENT" VALUES (9, 'Carmen', 'Georges Bizet''s passionate opera tells the story of Carmen, a fiery gypsy woman who captivates the heart of Don José, a soldier. Their love is ultimately destructive, leading to tragic consequences.', '/images/events/carmen.jpg', 'Opera', '03:15:00');
+INSERT INTO public."EVENT" VALUES (10, 'The Godfather', 'The Godfather is a 1972 American crime film directed by Francis Ford Coppola, who co-wrote the screenplay with Mario Puzo, based on Puzo''s 1969 novel of the same name.', '/images/events/the_godfather.jpg', 'Crime Drama', '02:55:00');
+INSERT INTO public."EVENT" VALUES (11, 'Don Camillo', 'Don Camillo is a theatrical adaptation of the stories by Giovannino Guareschi. The play follows the humorous and heartwarming interactions between a Catholic priest and the upcoming leftist mayor in a small Italian village.', '/images/events/don_camillo.jpg', 'Comedy', '02:30:00');
+INSERT INTO public."EVENT" VALUES (12, 'The Phantom of the Opera', 'Andrew Lloyd Webber''s iconic musical follows the story of a disfigured musical genius who haunts the Paris Opera House. When he falls in love with a young soprano, he devotes himself to nurturing her talent, but his obsession leads to tragedy.', '/images/events/phantom_of_the_opera.jpg', 'Musical', '02:30:00');
+INSERT INTO public."EVENT" VALUES (13, 'The Shawshank Redemption', 'The Shawshank Redemption is a 1994 American drama film directed and written by Frank Darabont, based on the 1982 Stephen King novella of the same name.', '/images/events/the_shawshank_redemption.jpg', 'Drama', '02:00:00');
+INSERT INTO public."EVENT" VALUES (14, 'Death of a Salesman', 'Arthur Miller''s Pulitzer Prize-winning drama tells the story of Willy Loman, a failing salesman who grapples with his fading relevance and shattered dreams.', '/images/events/death_of_a_salesman.jpg', 'Drama', '02:00:00');
+INSERT INTO public."EVENT" VALUES (15, 'The Nutcracker', 'The Nutcracker is a two-act ballet, originally choreographed by Marius Petipa and Lev Ivanov with a score by Pyotr Ilyich Tchaikovsky. The ballet is based on the story ''The Nutcracker and the Mouse King'' by E. T. A. Hoffmann.', '/images/events/the_nutcracker.webp', 'Ballet', '02:15:00');
 
 
 --
--- TOC entry 4922 (class 0 OID 17273)
+-- TOC entry 4922 (class 0 OID 17466)
 -- Dependencies: 230
 -- Data for Name: EVENT_SHOW; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -109,20 +115,20 @@ INSERT INTO public."EVENT_SHOW" VALUES (60, 15, '2024-09-06', '16:00:00', 'CANCE
 
 
 --
--- TOC entry 4914 (class 0 OID 17224)
+-- TOC entry 4914 (class 0 OID 17417)
 -- Dependencies: 222
 -- Data for Name: MUSIC; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."MUSIC" VALUES (3, ' Taylor Swift', ' Paramore');
-INSERT INTO public."MUSIC" VALUES (6, ' Chris Martin, Johnny Buckland, Guy Berryman, Will Champion', ' PinkPantheress, Emmanuel Kelly');
-INSERT INTO public."MUSIC" VALUES (9, ' Antonello Manacorda, Grisha Martirosyan, Liana Aleksanyan, Piotr Beczala, Blaise Malaba, Aigul Akhmetshina', NULL);
-INSERT INTO public."MUSIC" VALUES (12, ' Jon Robyns, Lily Kerhoas, Joe Griffiths-Brown', ' ');
-INSERT INTO public."MUSIC" VALUES (15, ' Peter Wright, Roland John Wiley, Alexander Agadzhanov, Darcey Bussell', ' ');
+INSERT INTO public."MUSIC" VALUES (3, 'Taylor Swift', 'Paramore');
+INSERT INTO public."MUSIC" VALUES (6, 'Chris Martin, Johnny Buckland, Guy Berryman, Will Champion', 'PinkPantheress, Emmanuel Kelly');
+INSERT INTO public."MUSIC" VALUES (9, 'Antonello Manacorda, Grisha Martirosyan, Liana Aleksanyan, Piotr Beczala, Blaise Malaba, Aigul Akhmetshina', NULL);
+INSERT INTO public."MUSIC" VALUES (12, 'Jon Robyns, Lily Kerhoas, Joe Griffiths-Brown', NULL);
+INSERT INTO public."MUSIC" VALUES (15, 'Peter Wright, Roland John Wiley, Alexander Agadzhanov, Darcey Bussell', NULL);
 
 
 --
--- TOC entry 4912 (class 0 OID 17205)
+-- TOC entry 4912 (class 0 OID 17398)
 -- Dependencies: 220
 -- Data for Name: REVIEW; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -180,25 +186,25 @@ INSERT INTO public."REVIEW" VALUES (50, 5, 'Great experience!', 9, '2024-04-20 0
 
 
 --
--- TOC entry 4924 (class 0 OID 17290)
+-- TOC entry 4924 (class 0 OID 17483)
 -- Dependencies: 232
 -- Data for Name: SEAT_CATEGORY; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."SEAT_CATEGORY" VALUES (1, ' Standard Seating');
-INSERT INTO public."SEAT_CATEGORY" VALUES (2, ' VIP Seating');
-INSERT INTO public."SEAT_CATEGORY" VALUES (3, ' Love Seats');
-INSERT INTO public."SEAT_CATEGORY" VALUES (4, ' General Admission (GA)');
-INSERT INTO public."SEAT_CATEGORY" VALUES (5, ' Seated Admission');
-INSERT INTO public."SEAT_CATEGORY" VALUES (6, ' Box Seats');
-INSERT INTO public."SEAT_CATEGORY" VALUES (7, ' Pit Seating');
-INSERT INTO public."SEAT_CATEGORY" VALUES (8, ' Orchestra');
-INSERT INTO public."SEAT_CATEGORY" VALUES (9, ' Mezzanine');
-INSERT INTO public."SEAT_CATEGORY" VALUES (10, ' Balcony');
+INSERT INTO public."SEAT_CATEGORY" VALUES (1, 'Standard Seating');
+INSERT INTO public."SEAT_CATEGORY" VALUES (2, 'VIP Seating');
+INSERT INTO public."SEAT_CATEGORY" VALUES (3, 'Love Seats');
+INSERT INTO public."SEAT_CATEGORY" VALUES (4, 'General Admission (GA)');
+INSERT INTO public."SEAT_CATEGORY" VALUES (5, 'Seated Admission');
+INSERT INTO public."SEAT_CATEGORY" VALUES (6, 'Box Seats');
+INSERT INTO public."SEAT_CATEGORY" VALUES (7, 'Pit Seating');
+INSERT INTO public."SEAT_CATEGORY" VALUES (8, 'Orchestra');
+INSERT INTO public."SEAT_CATEGORY" VALUES (9, 'Mezzanine');
+INSERT INTO public."SEAT_CATEGORY" VALUES (10, 'Balcony');
 
 
 --
--- TOC entry 4930 (class 0 OID 17345)
+-- TOC entry 4930 (class 0 OID 17538)
 -- Dependencies: 238
 -- Data for Name: Sets_Price; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -399,7 +405,7 @@ INSERT INTO public."Sets_Price" VALUES (60, 10, 37);
 
 
 --
--- TOC entry 4918 (class 0 OID 17252)
+-- TOC entry 4918 (class 0 OID 17445)
 -- Dependencies: 226
 -- Data for Name: THEATER; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -412,7 +418,7 @@ INSERT INTO public."THEATER" VALUES (14, 'Death of a Salesman', 'Miranda Cromwel
 
 
 --
--- TOC entry 4928 (class 0 OID 17304)
+-- TOC entry 4928 (class 0 OID 17497)
 -- Dependencies: 236
 -- Data for Name: TICKET; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -747,7 +753,7 @@ INSERT INTO public."TICKET" VALUES (327, 1557047, 'BOOKED', 10, 8, '07:56:48', 2
 
 
 --
--- TOC entry 4908 (class 0 OID 17187)
+-- TOC entry 4908 (class 0 OID 17380)
 -- Dependencies: 216
 -- Data for Name: USER; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -765,7 +771,7 @@ INSERT INTO public."USER" VALUES (10, 'mia_white', '$2b$10$B422Kqf5tLyp.RZNfu5aH
 
 
 --
--- TOC entry 4920 (class 0 OID 17266)
+-- TOC entry 4920 (class 0 OID 17459)
 -- Dependencies: 228
 -- Data for Name: VENUE; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -785,7 +791,7 @@ INSERT INTO public."VENUE" VALUES (12, 'Ster Cinemas Vouliagmeni', 'Vouliagmeni 
 
 
 --
--- TOC entry 4929 (class 0 OID 17330)
+-- TOC entry 4929 (class 0 OID 17523)
 -- Dependencies: 237
 -- Data for Name: Venue_HAS_Seat_Cat; Type: TABLE DATA; Schema: public; Owner: postgres
 --

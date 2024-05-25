@@ -5,7 +5,7 @@
 -- Dumped from database version 16.3
 -- Dumped by pg_dump version 16.3
 
--- Started on 2024-05-23 20:25:24
+-- Started on 2024-05-25 10:43:23
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,7 +23,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 224 (class 1259 OID 17238)
+-- TOC entry 224 (class 1259 OID 17431)
 -- Name: CINEMA; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -39,7 +39,7 @@ CREATE TABLE public."CINEMA" (
 ALTER TABLE public."CINEMA" OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 17237)
+-- TOC entry 223 (class 1259 OID 17430)
 -- Name: CINEMA_cinemaID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -64,7 +64,7 @@ ALTER SEQUENCE public."CINEMA_cinemaID_seq" OWNED BY public."CINEMA"."cinemaID";
 
 
 --
--- TOC entry 234 (class 1259 OID 17297)
+-- TOC entry 234 (class 1259 OID 17490)
 -- Name: DISCOUNT_CATEGORY; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -78,7 +78,7 @@ CREATE TABLE public."DISCOUNT_CATEGORY" (
 ALTER TABLE public."DISCOUNT_CATEGORY" OWNER TO postgres;
 
 --
--- TOC entry 233 (class 1259 OID 17296)
+-- TOC entry 233 (class 1259 OID 17489)
 -- Name: DISCOUNT_CATEGORY_discountID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -103,7 +103,7 @@ ALTER SEQUENCE public."DISCOUNT_CATEGORY_discountID_seq" OWNED BY public."DISCOU
 
 
 --
--- TOC entry 218 (class 1259 OID 17196)
+-- TOC entry 218 (class 1259 OID 17389)
 -- Name: EVENT; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -120,7 +120,7 @@ CREATE TABLE public."EVENT" (
 ALTER TABLE public."EVENT" OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 17205)
+-- TOC entry 220 (class 1259 OID 17398)
 -- Name: REVIEW; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -137,7 +137,7 @@ CREATE TABLE public."REVIEW" (
 ALTER TABLE public."REVIEW" OWNER TO postgres;
 
 --
--- TOC entry 242 (class 1259 OID 17374)
+-- TOC entry 242 (class 1259 OID 17567)
 -- Name: EVENT_Average_Review_Score; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -154,7 +154,7 @@ CREATE VIEW public."EVENT_Average_Review_Score" AS
 ALTER VIEW public."EVENT_Average_Review_Score" OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 17273)
+-- TOC entry 230 (class 1259 OID 17466)
 -- Name: EVENT_SHOW; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -171,7 +171,7 @@ CREATE TABLE public."EVENT_SHOW" (
 ALTER TABLE public."EVENT_SHOW" OWNER TO postgres;
 
 --
--- TOC entry 236 (class 1259 OID 17304)
+-- TOC entry 236 (class 1259 OID 17497)
 -- Name: TICKET; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -190,7 +190,7 @@ CREATE TABLE public."TICKET" (
 ALTER TABLE public."TICKET" OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 17266)
+-- TOC entry 228 (class 1259 OID 17459)
 -- Name: VENUE; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -205,7 +205,7 @@ CREATE TABLE public."VENUE" (
 ALTER TABLE public."VENUE" OWNER TO postgres;
 
 --
--- TOC entry 237 (class 1259 OID 17330)
+-- TOC entry 237 (class 1259 OID 17523)
 -- Name: Venue_HAS_Seat_Cat; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -219,7 +219,7 @@ CREATE TABLE public."Venue_HAS_Seat_Cat" (
 ALTER TABLE public."Venue_HAS_Seat_Cat" OWNER TO postgres;
 
 --
--- TOC entry 240 (class 1259 OID 17365)
+-- TOC entry 240 (class 1259 OID 17558)
 -- Name: VENUE_Total_Capacity; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -236,7 +236,7 @@ CREATE VIEW public."VENUE_Total_Capacity" AS
 ALTER VIEW public."VENUE_Total_Capacity" OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1259 OID 17369)
+-- TOC entry 241 (class 1259 OID 17562)
 -- Name: EVENT_SHOW_Remaining_Capacity; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -258,7 +258,7 @@ CREATE VIEW public."EVENT_SHOW_Remaining_Capacity" AS
 ALTER VIEW public."EVENT_SHOW_Remaining_Capacity" OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 17272)
+-- TOC entry 229 (class 1259 OID 17465)
 -- Name: EVENT_SHOW_showID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -283,7 +283,7 @@ ALTER SEQUENCE public."EVENT_SHOW_showID_seq" OWNED BY public."EVENT_SHOW"."show
 
 
 --
--- TOC entry 217 (class 1259 OID 17195)
+-- TOC entry 217 (class 1259 OID 17388)
 -- Name: EVENT_eventID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -308,7 +308,7 @@ ALTER SEQUENCE public."EVENT_eventID_seq" OWNED BY public."EVENT"."eventID";
 
 
 --
--- TOC entry 222 (class 1259 OID 17224)
+-- TOC entry 222 (class 1259 OID 17417)
 -- Name: MUSIC; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -322,7 +322,7 @@ CREATE TABLE public."MUSIC" (
 ALTER TABLE public."MUSIC" OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 17223)
+-- TOC entry 221 (class 1259 OID 17416)
 -- Name: MUSIC_musicID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -347,7 +347,7 @@ ALTER SEQUENCE public."MUSIC_musicID_seq" OWNED BY public."MUSIC"."musicID";
 
 
 --
--- TOC entry 219 (class 1259 OID 17204)
+-- TOC entry 219 (class 1259 OID 17397)
 -- Name: REVIEW_reviewID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -372,7 +372,7 @@ ALTER SEQUENCE public."REVIEW_reviewID_seq" OWNED BY public."REVIEW"."reviewID";
 
 
 --
--- TOC entry 232 (class 1259 OID 17290)
+-- TOC entry 232 (class 1259 OID 17483)
 -- Name: SEAT_CATEGORY; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -385,7 +385,7 @@ CREATE TABLE public."SEAT_CATEGORY" (
 ALTER TABLE public."SEAT_CATEGORY" OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 17289)
+-- TOC entry 231 (class 1259 OID 17482)
 -- Name: SEAT_CATEGORY_categoryID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -410,7 +410,7 @@ ALTER SEQUENCE public."SEAT_CATEGORY_categoryID_seq" OWNED BY public."SEAT_CATEG
 
 
 --
--- TOC entry 238 (class 1259 OID 17345)
+-- TOC entry 238 (class 1259 OID 17538)
 -- Name: Sets_Price; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -424,7 +424,7 @@ CREATE TABLE public."Sets_Price" (
 ALTER TABLE public."Sets_Price" OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 17252)
+-- TOC entry 226 (class 1259 OID 17445)
 -- Name: THEATER; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -440,7 +440,7 @@ CREATE TABLE public."THEATER" (
 ALTER TABLE public."THEATER" OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 17251)
+-- TOC entry 225 (class 1259 OID 17444)
 -- Name: THEATER_theaterID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -465,7 +465,7 @@ ALTER SEQUENCE public."THEATER_theaterID_seq" OWNED BY public."THEATER"."theater
 
 
 --
--- TOC entry 239 (class 1259 OID 17360)
+-- TOC entry 239 (class 1259 OID 17553)
 -- Name: TICKET_Final_Price; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -482,7 +482,7 @@ CREATE VIEW public."TICKET_Final_Price" AS
 ALTER VIEW public."TICKET_Final_Price" OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 17303)
+-- TOC entry 235 (class 1259 OID 17496)
 -- Name: TICKET_ticketID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -507,7 +507,7 @@ ALTER SEQUENCE public."TICKET_ticketID_seq" OWNED BY public."TICKET"."ticketID";
 
 
 --
--- TOC entry 216 (class 1259 OID 17187)
+-- TOC entry 216 (class 1259 OID 17380)
 -- Name: USER; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -525,7 +525,7 @@ CREATE TABLE public."USER" (
 ALTER TABLE public."USER" OWNER TO postgres;
 
 --
--- TOC entry 215 (class 1259 OID 17186)
+-- TOC entry 215 (class 1259 OID 17379)
 -- Name: USER_userID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -550,7 +550,7 @@ ALTER SEQUENCE public."USER_userID_seq" OWNED BY public."USER"."userID";
 
 
 --
--- TOC entry 227 (class 1259 OID 17265)
+-- TOC entry 227 (class 1259 OID 17458)
 -- Name: VENUE_venueID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -575,7 +575,7 @@ ALTER SEQUENCE public."VENUE_venueID_seq" OWNED BY public."VENUE"."venueID";
 
 
 --
--- TOC entry 4712 (class 2604 OID 17241)
+-- TOC entry 4712 (class 2604 OID 17434)
 -- Name: CINEMA cinemaID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -583,7 +583,7 @@ ALTER TABLE ONLY public."CINEMA" ALTER COLUMN "cinemaID" SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4717 (class 2604 OID 17300)
+-- TOC entry 4717 (class 2604 OID 17493)
 -- Name: DISCOUNT_CATEGORY discountID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -591,7 +591,7 @@ ALTER TABLE ONLY public."DISCOUNT_CATEGORY" ALTER COLUMN "discountID" SET DEFAUL
 
 
 --
--- TOC entry 4709 (class 2604 OID 17199)
+-- TOC entry 4709 (class 2604 OID 17392)
 -- Name: EVENT eventID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -599,7 +599,7 @@ ALTER TABLE ONLY public."EVENT" ALTER COLUMN "eventID" SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4715 (class 2604 OID 17276)
+-- TOC entry 4715 (class 2604 OID 17469)
 -- Name: EVENT_SHOW showID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -607,7 +607,7 @@ ALTER TABLE ONLY public."EVENT_SHOW" ALTER COLUMN "showID" SET DEFAULT nextval('
 
 
 --
--- TOC entry 4711 (class 2604 OID 17227)
+-- TOC entry 4711 (class 2604 OID 17420)
 -- Name: MUSIC musicID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -615,7 +615,7 @@ ALTER TABLE ONLY public."MUSIC" ALTER COLUMN "musicID" SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4710 (class 2604 OID 17208)
+-- TOC entry 4710 (class 2604 OID 17401)
 -- Name: REVIEW reviewID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -623,7 +623,7 @@ ALTER TABLE ONLY public."REVIEW" ALTER COLUMN "reviewID" SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4716 (class 2604 OID 17293)
+-- TOC entry 4716 (class 2604 OID 17486)
 -- Name: SEAT_CATEGORY categoryID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -631,7 +631,7 @@ ALTER TABLE ONLY public."SEAT_CATEGORY" ALTER COLUMN "categoryID" SET DEFAULT ne
 
 
 --
--- TOC entry 4713 (class 2604 OID 17255)
+-- TOC entry 4713 (class 2604 OID 17448)
 -- Name: THEATER theaterID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -639,7 +639,7 @@ ALTER TABLE ONLY public."THEATER" ALTER COLUMN "theaterID" SET DEFAULT nextval('
 
 
 --
--- TOC entry 4718 (class 2604 OID 17307)
+-- TOC entry 4718 (class 2604 OID 17500)
 -- Name: TICKET ticketID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -647,7 +647,7 @@ ALTER TABLE ONLY public."TICKET" ALTER COLUMN "ticketID" SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4708 (class 2604 OID 17190)
+-- TOC entry 4708 (class 2604 OID 17383)
 -- Name: USER userID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -655,7 +655,7 @@ ALTER TABLE ONLY public."USER" ALTER COLUMN "userID" SET DEFAULT nextval('public
 
 
 --
--- TOC entry 4714 (class 2604 OID 17269)
+-- TOC entry 4714 (class 2604 OID 17462)
 -- Name: VENUE venueID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -663,55 +663,55 @@ ALTER TABLE ONLY public."VENUE" ALTER COLUMN "venueID" SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4916 (class 0 OID 17238)
+-- TOC entry 4916 (class 0 OID 17431)
 -- Dependencies: 224
 -- Data for Name: CINEMA; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."CINEMA" VALUES (1, ' The Matrix', ' The Wachowski Brothers', ' Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss', ' R – Restricted');
-INSERT INTO public."CINEMA" VALUES (4, ' 12 Angry Men', ' Sidney Lumet', ' Henry Fonda, Lee J. Cobb, Martin Balsam', ' NR – Not Rated');
-INSERT INTO public."CINEMA" VALUES (7, ' The Great Gatsby', ' Baz Luhrmann', ' Leonardo DiCaprio, Tobey Maguire, Carey Mulligan', ' PG-13');
-INSERT INTO public."CINEMA" VALUES (10, ' The Godfather', ' Francis Ford Coppola', ' Marlon Brando, Al Pacino, James Caan', ' R – Restricted');
-INSERT INTO public."CINEMA" VALUES (13, ' The Shawshank Redemption', ' Frank Darabont', ' Tim Robbins, Morgan Freeman, Bob Gunton', ' R – Restricted');
+INSERT INTO public."CINEMA" VALUES (1, 'The Matrix', 'The Wachowski Brothers', 'Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss', 'R – Restricted');
+INSERT INTO public."CINEMA" VALUES (4, '12 Angry Men', 'Sidney Lumet', 'Henry Fonda, Lee J. Cobb, Martin Balsam', 'NR – Not Rated');
+INSERT INTO public."CINEMA" VALUES (7, 'The Great Gatsby', 'Baz Luhrmann', 'Leonardo DiCaprio, Tobey Maguire, Carey Mulligan', 'PG-13');
+INSERT INTO public."CINEMA" VALUES (10, 'The Godfather', 'Francis Ford Coppola', 'Marlon Brando, Al Pacino, James Caan', 'R – Restricted');
+INSERT INTO public."CINEMA" VALUES (13, 'The Shawshank Redemption', 'Frank Darabont', 'Tim Robbins, Morgan Freeman, Bob Gunton', 'R – Restricted');
 
 
 --
--- TOC entry 4926 (class 0 OID 17297)
+-- TOC entry 4926 (class 0 OID 17490)
 -- Dependencies: 234
 -- Data for Name: DISCOUNT_CATEGORY; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (1, ' Regular', 0);
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (2, ' Student', 25);
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (3, ' Senior (>65)', 25);
-INSERT INTO public."DISCOUNT_CATEGORY" VALUES (4, ' Child (<12)', 50);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (1, 'Regular', 0);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (2, 'Student', 25);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (3, 'Senior (>65)', 25);
+INSERT INTO public."DISCOUNT_CATEGORY" VALUES (4, 'Child (<12)', 50);
 
 
 --
--- TOC entry 4910 (class 0 OID 17196)
+-- TOC entry 4910 (class 0 OID 17389)
 -- Dependencies: 218
 -- Data for Name: EVENT; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."EVENT" VALUES (1, ' The Matrix', ' A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', ' /images/events/the_matrix.jpg', ' Action', '02:30:00');
-INSERT INTO public."EVENT" VALUES (2, ' Marx in Soho', ' Marx in Soho is a play on the life of Karl Marx, written by Howard Zinn. The play revolves around Marx''s return to Earth, where he confronts the consequences of his ideas.', ' /images/events/marx_in_soho.jpg', ' Drama', '02:16:00');
-INSERT INTO public."EVENT" VALUES (3, ' The Eras Tour', '  The Eras Tour is a concert tour by Taylor Swift. It began on March 17, 2023, in Arizona, USA, and is set to conclude on December 8, 2024, in Vancouver, Canada.', ' /images/events/the_eras_tour.webp', ' Pop Country Folk', '02:30:00');
-INSERT INTO public."EVENT" VALUES (4, ' 12 Angry Men', ' The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.', ' /images/events/12_angry_men.jpg', ' Drama', '01:36:00');
-INSERT INTO public."EVENT" VALUES (5, ' Hamlet', 'Hamlet, prince of Denmark, returns home to learn that his father, the king, has died under mysterious circumstances. The ghost of his father appears to Hamlet, revealing that he was murdered by his brother, Claudius, who has since seized the throne and married Hamlet''s mother.', '/images/events/hamlet.jpg', 'Drama', '03:00:00');
-INSERT INTO public."EVENT" VALUES (6, ' Coldplay: Music of the Spheres World Tour', 'Coldplay takes their latest album, Music of the Spheres, on a global tour filled with dazzling visuals, singalong anthems, and a focus on sustainability.', '/images/events/coldplay_music_of_the_spheres.jpeg', 'Rock', '02:30:00');
-INSERT INTO public."EVENT" VALUES (7, ' The Great Gatsby', 'A Midwestern war veteran finds himself drawn to the past and lifestyle of his millionaire neighbor.', '/images/events/the_great_gatsby.jpg', 'Drama', '02:24:00');
-INSERT INTO public."EVENT" VALUES (8, ' A Midsummer Night''s Dream', 'Shakespeare''s beloved comedy about four young Athenian lovers and a group of mischievous fairies who entangle them in a web of love and illusion.', '/images/events/a_midsummers_night_dream.webp', 'Comedy', '02:15:00');
-INSERT INTO public."EVENT" VALUES (9, ' Carmen', 'Georges Bizet''s passionate opera tells the story of Carmen, a fiery gypsy woman who captivates the heart of Don José, a soldier. Their love is ultimately destructive, leading to tragic consequences.', '/images/events/carmen.jpg', 'Opera', '03:15:00');
-INSERT INTO public."EVENT" VALUES (10, ' The Godfather', 'The Godfather is a 1972 American crime film directed by Francis Ford Coppola, who co-wrote the screenplay with Mario Puzo, based on Puzo''s 1969 novel of the same name.', '/images/events/the_godfather.jpg', 'Crime Drama', '02:55:00');
-INSERT INTO public."EVENT" VALUES (11, ' Don Camillo', 'Don Camillo is a theatrical adaptation of the stories by Giovannino Guareschi. The play follows the humorous and heartwarming interactions between a Catholic priest and the upcoming leftist mayor in a small Italian village.', '/images/events/don_camillo.jpg', 'Comedy', '02:30:00');
-INSERT INTO public."EVENT" VALUES (12, ' The Phantom of the Opera', 'Andrew Lloyd Webber''s iconic musical follows the story of a disfigured musical genius who haunts the Paris Opera House. When he falls in love with a young soprano, he devotes himself to nurturing her talent, but his obsession leads to tragedy.', '/images/events/phantom_of_the_opera.jpg', 'Musical', '02:30:00');
-INSERT INTO public."EVENT" VALUES (13, ' The Shawshank Redemption', 'The Shawshank Redemption is a 1994 American drama film directed and written by Frank Darabont, based on the 1982 Stephen King novella of the same name.', '/images/events/the_shawshank_redemption.jpg', 'Drama', '02:00:00');
-INSERT INTO public."EVENT" VALUES (14, ' Death of a Salesman', 'Arthur Miller''s Pulitzer Prize-winning drama tells the story of Willy Loman, a failing salesman who grapples with his fading relevance and shattered dreams.', '/images/events/death_of_a_salesman.jpg', 'Drama', '02:00:00');
-INSERT INTO public."EVENT" VALUES (15, ' The Nutcracker', 'The Nutcracker is a two-act ballet, originally choreographed by Marius Petipa and Lev Ivanov with a score by Pyotr Ilyich Tchaikovsky. The ballet is based on the story ''The Nutcracker and the Mouse King'' by E. T. A. Hoffmann.', '/images/events/the_nutcracker.webp', 'Ballet', '02:15:00');
+INSERT INTO public."EVENT" VALUES (1, 'The Matrix', 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', '/images/events/the_matrix.jpg', 'Action', '02:30:00');
+INSERT INTO public."EVENT" VALUES (2, 'Marx in Soho', 'Marx in Soho is a play on the life of Karl Marx, written by Howard Zinn. The play revolves around Marx''s return to Earth, where he confronts the consequences of his ideas.', '/images/events/marx_in_soho.jpg', 'Drama', '02:16:00');
+INSERT INTO public."EVENT" VALUES (3, 'The Eras Tour', ' The Eras Tour is a concert tour by Taylor Swift. It began on March 17, 2023, in Arizona, USA, and is set to conclude on December 8, 2024, in Vancouver, Canada.', '/images/events/the_eras_tour.webp', 'Pop Country Folk', '02:30:00');
+INSERT INTO public."EVENT" VALUES (4, '12 Angry Men', 'The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.', '/images/events/12_angry_men.jpg', 'Drama', '01:36:00');
+INSERT INTO public."EVENT" VALUES (5, 'Hamlet', 'Hamlet, prince of Denmark, returns home to learn that his father, the king, has died under mysterious circumstances. The ghost of his father appears to Hamlet, revealing that he was murdered by his brother, Claudius, who has since seized the throne and married Hamlet''s mother.', '/images/events/hamlet.jpg', 'Drama', '03:00:00');
+INSERT INTO public."EVENT" VALUES (6, 'Coldplay: Music of the Spheres World Tour', 'Coldplay takes their latest album, Music of the Spheres, on a global tour filled with dazzling visuals, singalong anthems, and a focus on sustainability.', '/images/events/coldplay_music_of_the_spheres.jpeg', 'Rock', '02:30:00');
+INSERT INTO public."EVENT" VALUES (7, 'The Great Gatsby', 'A Midwestern war veteran finds himself drawn to the past and lifestyle of his millionaire neighbor.', '/images/events/the_great_gatsby.jpg', 'Drama', '02:24:00');
+INSERT INTO public."EVENT" VALUES (8, 'A Midsummer Night''s Dream', 'Shakespeare''s beloved comedy about four young Athenian lovers and a group of mischievous fairies who entangle them in a web of love and illusion.', '/images/events/a_midsummers_night_dream.webp', 'Comedy', '02:15:00');
+INSERT INTO public."EVENT" VALUES (9, 'Carmen', 'Georges Bizet''s passionate opera tells the story of Carmen, a fiery gypsy woman who captivates the heart of Don José, a soldier. Their love is ultimately destructive, leading to tragic consequences.', '/images/events/carmen.jpg', 'Opera', '03:15:00');
+INSERT INTO public."EVENT" VALUES (10, 'The Godfather', 'The Godfather is a 1972 American crime film directed by Francis Ford Coppola, who co-wrote the screenplay with Mario Puzo, based on Puzo''s 1969 novel of the same name.', '/images/events/the_godfather.jpg', 'Crime Drama', '02:55:00');
+INSERT INTO public."EVENT" VALUES (11, 'Don Camillo', 'Don Camillo is a theatrical adaptation of the stories by Giovannino Guareschi. The play follows the humorous and heartwarming interactions between a Catholic priest and the upcoming leftist mayor in a small Italian village.', '/images/events/don_camillo.jpg', 'Comedy', '02:30:00');
+INSERT INTO public."EVENT" VALUES (12, 'The Phantom of the Opera', 'Andrew Lloyd Webber''s iconic musical follows the story of a disfigured musical genius who haunts the Paris Opera House. When he falls in love with a young soprano, he devotes himself to nurturing her talent, but his obsession leads to tragedy.', '/images/events/phantom_of_the_opera.jpg', 'Musical', '02:30:00');
+INSERT INTO public."EVENT" VALUES (13, 'The Shawshank Redemption', 'The Shawshank Redemption is a 1994 American drama film directed and written by Frank Darabont, based on the 1982 Stephen King novella of the same name.', '/images/events/the_shawshank_redemption.jpg', 'Drama', '02:00:00');
+INSERT INTO public."EVENT" VALUES (14, 'Death of a Salesman', 'Arthur Miller''s Pulitzer Prize-winning drama tells the story of Willy Loman, a failing salesman who grapples with his fading relevance and shattered dreams.', '/images/events/death_of_a_salesman.jpg', 'Drama', '02:00:00');
+INSERT INTO public."EVENT" VALUES (15, 'The Nutcracker', 'The Nutcracker is a two-act ballet, originally choreographed by Marius Petipa and Lev Ivanov with a score by Pyotr Ilyich Tchaikovsky. The ballet is based on the story ''The Nutcracker and the Mouse King'' by E. T. A. Hoffmann.', '/images/events/the_nutcracker.webp', 'Ballet', '02:15:00');
 
 
 --
--- TOC entry 4922 (class 0 OID 17273)
+-- TOC entry 4922 (class 0 OID 17466)
 -- Dependencies: 230
 -- Data for Name: EVENT_SHOW; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -779,20 +779,20 @@ INSERT INTO public."EVENT_SHOW" VALUES (60, 15, '2024-09-06', '16:00:00', 'CANCE
 
 
 --
--- TOC entry 4914 (class 0 OID 17224)
+-- TOC entry 4914 (class 0 OID 17417)
 -- Dependencies: 222
 -- Data for Name: MUSIC; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."MUSIC" VALUES (3, ' Taylor Swift', ' Paramore');
-INSERT INTO public."MUSIC" VALUES (6, ' Chris Martin, Johnny Buckland, Guy Berryman, Will Champion', ' PinkPantheress, Emmanuel Kelly');
-INSERT INTO public."MUSIC" VALUES (9, ' Antonello Manacorda, Grisha Martirosyan, Liana Aleksanyan, Piotr Beczala, Blaise Malaba, Aigul Akhmetshina', NULL);
-INSERT INTO public."MUSIC" VALUES (12, ' Jon Robyns, Lily Kerhoas, Joe Griffiths-Brown', ' ');
-INSERT INTO public."MUSIC" VALUES (15, ' Peter Wright, Roland John Wiley, Alexander Agadzhanov, Darcey Bussell', ' ');
+INSERT INTO public."MUSIC" VALUES (3, 'Taylor Swift', 'Paramore');
+INSERT INTO public."MUSIC" VALUES (6, 'Chris Martin, Johnny Buckland, Guy Berryman, Will Champion', 'PinkPantheress, Emmanuel Kelly');
+INSERT INTO public."MUSIC" VALUES (9, 'Antonello Manacorda, Grisha Martirosyan, Liana Aleksanyan, Piotr Beczala, Blaise Malaba, Aigul Akhmetshina', NULL);
+INSERT INTO public."MUSIC" VALUES (12, 'Jon Robyns, Lily Kerhoas, Joe Griffiths-Brown', NULL);
+INSERT INTO public."MUSIC" VALUES (15, 'Peter Wright, Roland John Wiley, Alexander Agadzhanov, Darcey Bussell', NULL);
 
 
 --
--- TOC entry 4912 (class 0 OID 17205)
+-- TOC entry 4912 (class 0 OID 17398)
 -- Dependencies: 220
 -- Data for Name: REVIEW; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -850,25 +850,25 @@ INSERT INTO public."REVIEW" VALUES (50, 5, 'Great experience!', 9, '2024-04-20 0
 
 
 --
--- TOC entry 4924 (class 0 OID 17290)
+-- TOC entry 4924 (class 0 OID 17483)
 -- Dependencies: 232
 -- Data for Name: SEAT_CATEGORY; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."SEAT_CATEGORY" VALUES (1, ' Standard Seating');
-INSERT INTO public."SEAT_CATEGORY" VALUES (2, ' VIP Seating');
-INSERT INTO public."SEAT_CATEGORY" VALUES (3, ' Love Seats');
-INSERT INTO public."SEAT_CATEGORY" VALUES (4, ' General Admission (GA)');
-INSERT INTO public."SEAT_CATEGORY" VALUES (5, ' Seated Admission');
-INSERT INTO public."SEAT_CATEGORY" VALUES (6, ' Box Seats');
-INSERT INTO public."SEAT_CATEGORY" VALUES (7, ' Pit Seating');
-INSERT INTO public."SEAT_CATEGORY" VALUES (8, ' Orchestra');
-INSERT INTO public."SEAT_CATEGORY" VALUES (9, ' Mezzanine');
-INSERT INTO public."SEAT_CATEGORY" VALUES (10, ' Balcony');
+INSERT INTO public."SEAT_CATEGORY" VALUES (1, 'Standard Seating');
+INSERT INTO public."SEAT_CATEGORY" VALUES (2, 'VIP Seating');
+INSERT INTO public."SEAT_CATEGORY" VALUES (3, 'Love Seats');
+INSERT INTO public."SEAT_CATEGORY" VALUES (4, 'General Admission (GA)');
+INSERT INTO public."SEAT_CATEGORY" VALUES (5, 'Seated Admission');
+INSERT INTO public."SEAT_CATEGORY" VALUES (6, 'Box Seats');
+INSERT INTO public."SEAT_CATEGORY" VALUES (7, 'Pit Seating');
+INSERT INTO public."SEAT_CATEGORY" VALUES (8, 'Orchestra');
+INSERT INTO public."SEAT_CATEGORY" VALUES (9, 'Mezzanine');
+INSERT INTO public."SEAT_CATEGORY" VALUES (10, 'Balcony');
 
 
 --
--- TOC entry 4930 (class 0 OID 17345)
+-- TOC entry 4930 (class 0 OID 17538)
 -- Dependencies: 238
 -- Data for Name: Sets_Price; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1069,7 +1069,7 @@ INSERT INTO public."Sets_Price" VALUES (60, 10, 37);
 
 
 --
--- TOC entry 4918 (class 0 OID 17252)
+-- TOC entry 4918 (class 0 OID 17445)
 -- Dependencies: 226
 -- Data for Name: THEATER; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1082,7 +1082,7 @@ INSERT INTO public."THEATER" VALUES (14, 'Death of a Salesman', 'Miranda Cromwel
 
 
 --
--- TOC entry 4928 (class 0 OID 17304)
+-- TOC entry 4928 (class 0 OID 17497)
 -- Dependencies: 236
 -- Data for Name: TICKET; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1417,7 +1417,7 @@ INSERT INTO public."TICKET" VALUES (327, 1557047, 'BOOKED', 10, 8, '07:56:48', 2
 
 
 --
--- TOC entry 4908 (class 0 OID 17187)
+-- TOC entry 4908 (class 0 OID 17380)
 -- Dependencies: 216
 -- Data for Name: USER; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1435,7 +1435,7 @@ INSERT INTO public."USER" VALUES (10, 'mia_white', '$2b$10$B422Kqf5tLyp.RZNfu5aH
 
 
 --
--- TOC entry 4920 (class 0 OID 17266)
+-- TOC entry 4920 (class 0 OID 17459)
 -- Dependencies: 228
 -- Data for Name: VENUE; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1455,7 +1455,7 @@ INSERT INTO public."VENUE" VALUES (12, 'Ster Cinemas Vouliagmeni', 'Vouliagmeni 
 
 
 --
--- TOC entry 4929 (class 0 OID 17330)
+-- TOC entry 4929 (class 0 OID 17523)
 -- Dependencies: 237
 -- Data for Name: Venue_HAS_Seat_Cat; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1601,7 +1601,7 @@ SELECT pg_catalog.setval('public."VENUE_venueID_seq"', 1, false);
 
 
 --
--- TOC entry 4728 (class 2606 OID 17245)
+-- TOC entry 4728 (class 2606 OID 17438)
 -- Name: CINEMA CINEMA_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1610,7 +1610,7 @@ ALTER TABLE ONLY public."CINEMA"
 
 
 --
--- TOC entry 4738 (class 2606 OID 17302)
+-- TOC entry 4738 (class 2606 OID 17495)
 -- Name: DISCOUNT_CATEGORY DISCOUNT_CATEGORY_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1619,7 +1619,7 @@ ALTER TABLE ONLY public."DISCOUNT_CATEGORY"
 
 
 --
--- TOC entry 4734 (class 2606 OID 17278)
+-- TOC entry 4734 (class 2606 OID 17471)
 -- Name: EVENT_SHOW EVENT_SHOW_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1628,7 +1628,7 @@ ALTER TABLE ONLY public."EVENT_SHOW"
 
 
 --
--- TOC entry 4722 (class 2606 OID 17203)
+-- TOC entry 4722 (class 2606 OID 17396)
 -- Name: EVENT EVENT_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1637,7 +1637,7 @@ ALTER TABLE ONLY public."EVENT"
 
 
 --
--- TOC entry 4726 (class 2606 OID 17231)
+-- TOC entry 4726 (class 2606 OID 17424)
 -- Name: MUSIC MUSIC_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1646,7 +1646,7 @@ ALTER TABLE ONLY public."MUSIC"
 
 
 --
--- TOC entry 4724 (class 2606 OID 17212)
+-- TOC entry 4724 (class 2606 OID 17405)
 -- Name: REVIEW REVIEW_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1655,7 +1655,7 @@ ALTER TABLE ONLY public."REVIEW"
 
 
 --
--- TOC entry 4736 (class 2606 OID 17295)
+-- TOC entry 4736 (class 2606 OID 17488)
 -- Name: SEAT_CATEGORY SEAT_CATEGORY_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1664,7 +1664,7 @@ ALTER TABLE ONLY public."SEAT_CATEGORY"
 
 
 --
--- TOC entry 4744 (class 2606 OID 17349)
+-- TOC entry 4744 (class 2606 OID 17542)
 -- Name: Sets_Price Sets_Price_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1673,7 +1673,7 @@ ALTER TABLE ONLY public."Sets_Price"
 
 
 --
--- TOC entry 4730 (class 2606 OID 17259)
+-- TOC entry 4730 (class 2606 OID 17452)
 -- Name: THEATER THEATER_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1682,7 +1682,7 @@ ALTER TABLE ONLY public."THEATER"
 
 
 --
--- TOC entry 4740 (class 2606 OID 17309)
+-- TOC entry 4740 (class 2606 OID 17502)
 -- Name: TICKET TICKET_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1691,7 +1691,7 @@ ALTER TABLE ONLY public."TICKET"
 
 
 --
--- TOC entry 4720 (class 2606 OID 17194)
+-- TOC entry 4720 (class 2606 OID 17387)
 -- Name: USER USER_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1700,7 +1700,7 @@ ALTER TABLE ONLY public."USER"
 
 
 --
--- TOC entry 4732 (class 2606 OID 17271)
+-- TOC entry 4732 (class 2606 OID 17464)
 -- Name: VENUE VENUE_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1709,7 +1709,7 @@ ALTER TABLE ONLY public."VENUE"
 
 
 --
--- TOC entry 4742 (class 2606 OID 17334)
+-- TOC entry 4742 (class 2606 OID 17527)
 -- Name: Venue_HAS_Seat_Cat Venue_HAS_Seat_Cat_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1718,7 +1718,7 @@ ALTER TABLE ONLY public."Venue_HAS_Seat_Cat"
 
 
 --
--- TOC entry 4748 (class 2606 OID 17246)
+-- TOC entry 4748 (class 2606 OID 17439)
 -- Name: CINEMA CINEMA_cinemaID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1727,7 +1727,7 @@ ALTER TABLE ONLY public."CINEMA"
 
 
 --
--- TOC entry 4750 (class 2606 OID 17279)
+-- TOC entry 4750 (class 2606 OID 17472)
 -- Name: EVENT_SHOW EVENT_SHOW_eventID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1736,7 +1736,7 @@ ALTER TABLE ONLY public."EVENT_SHOW"
 
 
 --
--- TOC entry 4751 (class 2606 OID 17284)
+-- TOC entry 4751 (class 2606 OID 17477)
 -- Name: EVENT_SHOW EVENT_SHOW_venueID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1745,7 +1745,7 @@ ALTER TABLE ONLY public."EVENT_SHOW"
 
 
 --
--- TOC entry 4747 (class 2606 OID 17232)
+-- TOC entry 4747 (class 2606 OID 17425)
 -- Name: MUSIC MUSIC_musicID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1754,7 +1754,7 @@ ALTER TABLE ONLY public."MUSIC"
 
 
 --
--- TOC entry 4745 (class 2606 OID 17218)
+-- TOC entry 4745 (class 2606 OID 17411)
 -- Name: REVIEW REVIEW_eventID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1763,7 +1763,7 @@ ALTER TABLE ONLY public."REVIEW"
 
 
 --
--- TOC entry 4746 (class 2606 OID 17213)
+-- TOC entry 4746 (class 2606 OID 17406)
 -- Name: REVIEW REVIEW_userID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1772,7 +1772,7 @@ ALTER TABLE ONLY public."REVIEW"
 
 
 --
--- TOC entry 4758 (class 2606 OID 17355)
+-- TOC entry 4758 (class 2606 OID 17548)
 -- Name: Sets_Price Sets_Price_categoryID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1781,7 +1781,7 @@ ALTER TABLE ONLY public."Sets_Price"
 
 
 --
--- TOC entry 4759 (class 2606 OID 17350)
+-- TOC entry 4759 (class 2606 OID 17543)
 -- Name: Sets_Price Sets_Price_showID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1790,7 +1790,7 @@ ALTER TABLE ONLY public."Sets_Price"
 
 
 --
--- TOC entry 4749 (class 2606 OID 17260)
+-- TOC entry 4749 (class 2606 OID 17453)
 -- Name: THEATER THEATER_theaterID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1799,7 +1799,7 @@ ALTER TABLE ONLY public."THEATER"
 
 
 --
--- TOC entry 4752 (class 2606 OID 17310)
+-- TOC entry 4752 (class 2606 OID 17503)
 -- Name: TICKET TICKET_categoryID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1808,7 +1808,7 @@ ALTER TABLE ONLY public."TICKET"
 
 
 --
--- TOC entry 4753 (class 2606 OID 17320)
+-- TOC entry 4753 (class 2606 OID 17513)
 -- Name: TICKET TICKET_discountID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1817,7 +1817,7 @@ ALTER TABLE ONLY public."TICKET"
 
 
 --
--- TOC entry 4754 (class 2606 OID 17325)
+-- TOC entry 4754 (class 2606 OID 17518)
 -- Name: TICKET TICKET_showID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1826,7 +1826,7 @@ ALTER TABLE ONLY public."TICKET"
 
 
 --
--- TOC entry 4755 (class 2606 OID 17315)
+-- TOC entry 4755 (class 2606 OID 17508)
 -- Name: TICKET TICKET_userID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1835,7 +1835,7 @@ ALTER TABLE ONLY public."TICKET"
 
 
 --
--- TOC entry 4756 (class 2606 OID 17340)
+-- TOC entry 4756 (class 2606 OID 17533)
 -- Name: Venue_HAS_Seat_Cat Venue_HAS_Seat_Cat_categoryID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1844,7 +1844,7 @@ ALTER TABLE ONLY public."Venue_HAS_Seat_Cat"
 
 
 --
--- TOC entry 4757 (class 2606 OID 17335)
+-- TOC entry 4757 (class 2606 OID 17528)
 -- Name: Venue_HAS_Seat_Cat Venue_HAS_Seat_Cat_venueID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1852,7 +1852,7 @@ ALTER TABLE ONLY public."Venue_HAS_Seat_Cat"
     ADD CONSTRAINT "Venue_HAS_Seat_Cat_venueID_fkey" FOREIGN KEY ("venueID") REFERENCES public."VENUE"("venueID") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2024-05-23 20:25:25
+-- Completed on 2024-05-25 10:43:23
 
 --
 -- PostgreSQL database dump complete
