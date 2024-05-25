@@ -40,7 +40,7 @@ let profileNavigation = async function (req, res, next) {
                             next(err);
                         }
                         else {
-
+                            
                             for (let i in ticketList) {
 
                                 const { dayName, formattedDate } = formatDate(ticketList[i].show_date);

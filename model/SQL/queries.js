@@ -206,7 +206,10 @@ WHERE
 `
 
 const getDiscountFromType = `SELECT * FROM "DISCOUNT_CATEGORY" d
-WHERE d."discount_type" = $1`
+WHERE d."discount_type" = $1;`
+
+const getSeatCategoryFromName = `SELECT * FROM "SEAT_CATEGORY" sc
+WHERE sc."category_name" = $1;`
 
 const signUpUser = `INSERT INTO "USER"(
 	username, password, full_name, email, registration_date, "profile_imageURL")
@@ -217,11 +220,23 @@ FROM "USER" u
 WHERE (u."username" = $1 OR u."email" = $2)
 LIMIT 1;`
 
+
+
+
+const insertTicket = `INSERT INTO "TICKET"(
+  "ticket_number", "status", "categoryID", "userID", "date_booked", "discountID", "showID")
+  VALUES ($1, $2, $3, $4, $5, $6, $7);`
+
+const getUserFromTicketID = `SELECT u.*
+FROM "USER" u
+JOIN "TICKET" t ON t."userID" = u."userID"
+WHERE t."ticketID" = $1`
+
 const addReview = `INSERT INTO "REVIEW"(
 	score, comment, "userID", date_written, "eventID")
 	VALUES ( $1, $2, $3, $4, $5);`
 
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
-   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, getDiscountFromType,
-   signUpUser, findUserByUsernameOrEmail, addReview }
+   getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, 
+   getDiscountFromType, getSeatCategoryFromName, signUpUser, findUserByUsernameOrEmail, insertTicket, getUserFromTicketID, addReview }

@@ -297,15 +297,27 @@ async function getEventShowWithEventAndVenueDetails(showID, callback) {
     }
 }
 
-async function getDiscountFromType(discountType, callback) {
+async function getDiscountFromType(discountType) {
     try {
         const client = await connect();
         const res = await client.query(sql.getDiscountFromType, [discountType]);
         client.release();
-        callback(null, res.rows);
+        return res.rows;
     }
     catch (err) {
-        callback(err, null);
+        throw err;
+    }
+}
+
+async function getSeatCategoryFromName(categoryName) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getSeatCategoryFromName, [categoryName]);
+        client.release();
+        return res.rows;
+    }
+    catch (err) {
+        throw err;
     }
 }
 
@@ -350,6 +362,32 @@ async function findUserByUsernameOrEmail(username, email) {
     }
 }
 
+async function insertTicket(ticketNumber, status, categoryID, userID, dateBooked, discountID, showID) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.insertTicket, [ticketNumber, status, categoryID, userID, dateBooked, discountID, showID]);
+        // get the last inserted ticketID
+        const ticketIDResponse = await client.query('SELECT LASTVAL() as "ticketID"');
+        client.release();
+        return ticketIDResponse.rows[0].ticketID;
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+async function getUserFromTicketID(ticketID) {
+    try {
+        const client = await connect();
+        const res = await client.query(sql.getUserFromTicketID, [ticketID]);
+        client.release();
+        return res.rows[0];
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
 
 async function addReview(score, comment, userID, date_written, eventID) {
     try {
@@ -371,4 +409,4 @@ export {
     getAllScheduledEvents, getAllScheduledEventShows, getAllTheater, getAllMusic, getAllCinema, getEventReviews,
     getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
     getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, signUpUser, findUserByUsernameOrEmail, 
-    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType, addReview };
+    getEventShowWithEventAndVenueDetails as getES_E_V, getDiscountFromType, getSeatCategoryFromName, insertTicket, getUserFromTicketID, addReview };
