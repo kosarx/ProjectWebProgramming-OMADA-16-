@@ -177,8 +177,8 @@ const generateTicketPDF = async (ticket, res, req, next) => {
         doc.end();
 
         // store the pdf in /database/ticket-pdf/
-        const directoryPath = path.join(__dirname, '..', 'database', 'ticket-pdfs');
-        doc.pipe(fs.createWriteStream(path.join(directoryPath, `ticket-${ticket.ticketID}-${ticket.ticketNumber}.pdf`)));
+        // const directoryPath = path.join(__dirname, '..', 'database', 'ticket-pdfs');
+        // doc.pipe(fs.createWriteStream(path.join(directoryPath, `ticket-${ticket.ticketID}-${ticket.ticketNumber}.pdf`)));
     } catch (err) {
         const error_comment = "Failed to generate ticket PDF";
         console.error(error_comment);
