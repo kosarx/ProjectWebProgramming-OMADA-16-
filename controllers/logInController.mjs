@@ -83,34 +83,33 @@ let resetPassword = (req, res) => {
 }
 
 let checkAuthenticated = function (req, res, next) {
+    try {
+        if (req.session.loggedUserId) {
+            console.log("user is authenticated", req.originalUrl);
+            if (req.originalUrl == '/profile/') {
+                res.redirect(`/profile/${req.session.loggedUserId}`)
 
-    if (req.session.loggedUserId) {
-        console.log("user is authenticated", req.originalUrl);
-        if (req.originalUrl == '/profile/') {
-            res.redirect(`/profile/${req.session.loggedUserId}`)
-
-        }
-        else {
-            next();
-        }
-    }
-    else {
-        if ((req.originalUrl === "/login") || (req.originalUrl === "/signup")) {
-            next();
-        }
-        else {
-            if (req.body['review-rating'] && req.body['review-comment']) {
-                req.session.score = req.body['review-rating'];
-                req.session.comment = req.body['review-comment'];
-                console.log(req.session.comment, req.session.score)
             }
-            req.session.redirectTo = req.originalUrl;
-            console.log("not authenticated, redirecting to /login")
-            res.redirect('/login');
+            else {
+                next();
+            }
         }
+        else {
+            if ((req.originalUrl === "/login") || (req.originalUrl === "/signup")) {
+                next();
+            }
+            else {
+                
+                req.session.redirectTo = req.originalUrl;
+                console.log("not authenticated, redirecting to /login")
+                res.redirect('/login');
+            }
+        }
+    } catch (error) {
+       
+        next(error);
     }
 }
-
 
 
 export { showLogInForm, showSignUpForm, doSignUp, doLogin, doLogout, checkAuthenticated, resetPassword }

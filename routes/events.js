@@ -7,13 +7,13 @@ let eventNavigation = async function (req, res, next) {
     try {
         const navigateTo = req.params.type;
         if (navigateTo === 'theater') {
-            eventsController.theaterEvents(navigateTo, req, res);
+            eventsController.theaterEvents(navigateTo, req, res, next);
         }
         else if (navigateTo === 'music') {
-            eventsController.musicEvents(navigateTo, req, res);
+            eventsController.musicEvents(navigateTo, req, res, next);
         }
         else if (navigateTo === 'cinema') {
-            eventsController.cinemaEvents(navigateTo, req, res);
+            eventsController.cinemaEvents(navigateTo, req, res, next);
         }
         else {
             throw new Error('Invalid event type to navigate to.');
