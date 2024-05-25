@@ -148,11 +148,11 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form action="post">
+                            <form action="" method="post">
                                 <div class="container seating-category-select-rows">
                                     {{#each showCategories.categories as |category|}}
                                     <div class="row seating-category-row py-2">
-                                        <div class="col-md-9 text-overlay mb-2">
+                                        <div class="col-md-9 text-overlay mb-2 category-name">
                                             {{category.category_name}}
                                         </div>
                                         <div class="col-2 text-overlay mt-1">
@@ -175,8 +175,7 @@
                                             class="event-title-artists">{{../eventInfo.titleAndArtist}}</span></h6>
                                     <h5 class="text-overlay"><span class="small">FINAL PRICE: </span><span
                                             id="final-price-{{showCategories.showID}}" class="final-price"> 0.00€</span></h5>
-                                    <button type="submit" class="btn buy-btn btn-small float-end"
-                                        onclick="window.location.href='/'">
+                                    <button type="submit" class="btn buy-btn btn-small float-end">
                                         <span class="text-overlay">Buy</span>
                                     </button>
                                 </div>

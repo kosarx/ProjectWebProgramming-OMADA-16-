@@ -90,8 +90,7 @@ let reviewsNavigation = async function (req, res, next) {
                                 
                                 // if we have a highlighted review, we need to find the review object
                                 // otherwise, we will just pass the first review object
-                                let selected_review = { ...reviewList[0] };
-                                
+                                let selected_review;
                                 if (highlightedReview) {
                                     for (let i in reviewList) {
                                         if (reviewList[i].reviewID == highlightedReview) {
