@@ -119,6 +119,11 @@ body {
     opacity: 1;
 }
 
+.profile-image img {
+    width: 40px;
+    height: 40px;
+}
+
 .page-container {
     padding-top: 4em;
 }

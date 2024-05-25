@@ -2,6 +2,8 @@ import * as model from '../model/dbInterface.js';
 import { formatDate } from '../public/scripts/formatDate.js';
 import PDFDocument from 'pdfkit';
 import QRCode from 'qrcode';
+import { v4 as uuidv4 } from 'uuid';
+
 import fs from 'fs';
 import path from 'path';
 import { dirname } from 'path';
@@ -18,10 +20,36 @@ function processPayment(req, res, next) {
     return true;
 }
 
+async function getBookingInit(req, res, next) {
+    try {
+        // retrieve the entire query string
+        const query = req.query;
+        const bookingToken = uuidv4();
+        req.session.bookingToken = bookingToken;
+
+        const newQuery = { ...query, bookingToken };
+        // URL encode the query string
+        const queryString = new URLSearchParams(newQuery).toString();
+        // Redirect to booking-complete page with query parameters
+        res.redirect(`/booking/complete?${queryString}`); 
+    }
+    catch (err) {
+        const error_comment = "Failed to initialize booking";
+        console.error(error_comment);
+        next(err);
+    }
+}
+
 async function getBookingComplete(req, res, next) {
     const showID = req.query.showID;
+    const bookingToken = req.query.bookingToken;
     const tickets = JSON.parse(decodeURIComponent(req.query.tickets));
 
+    if (req.session.bookingToken !== bookingToken) {
+        const error_comment = "Booking token mismatch, invalid or expired.";
+        console.error(error_comment);
+        next(new Error("Booking token mismatch, invalid or expired."));
+    }
     // get show details
     model.getES_E_V(showID, async (err, result) => {
         if (err) {
@@ -63,6 +91,7 @@ async function getBookingComplete(req, res, next) {
                             discountCategoryName = ticket.discountCategory.split(',')[0];
                         }
                         const discountCategory = await model.getDiscountFromType(discountCategoryName);
+                        console.log("Discount Category", discountCategory)
                         const discountID = discountCategory[0].discountID;
             
                         // get the categoryID from the seating category
@@ -74,6 +103,8 @@ async function getBookingComplete(req, res, next) {
                         // console.log("discountID", discountID, "categoryID", categoryID, "showID", showID, "date_booked", date_booked, "userID", req.session.loggedUserId);
             
                         const lastInsertedTicketID = await model.insertTicket(ticket.ticketNumber, 'BOOKED', categoryID, req.session.loggedUserId, date_booked, discountID, showID);
+                        // destroy the booking token
+                        req.session.bookingToken = null;
                         ticket.ticketID = lastInsertedTicketID;
                         console.log("Ticket stored in the database", ticket.ticketID);
                     } catch (err) {
@@ -98,6 +129,7 @@ async function getBookingComplete(req, res, next) {
                 
                 bookingInfo = tickets.map(ticket => ({
                     ticketID: ticket.ticketID,
+                    userID: req.session.loggedUserId,
                     ticketNumber: ticket.ticketNumber,
                     seatingCategory: ticket.seatingCategory,
                     discountCategory: ticket.discountCategory,
@@ -106,7 +138,7 @@ async function getBookingComplete(req, res, next) {
                     ...eventShowInfo,
                 }));
 
-                bookingInfo.forEach(async ticket => {
+                bookingInfo.forEach(ticket => {
                     // check if ticket.discountCategory contains '%' Causes problems with URL encoding
                     if (ticket.discountCategory.includes('%')) {
                         // change it to '%25'
@@ -115,7 +147,7 @@ async function getBookingComplete(req, res, next) {
                     // URL enconde the bookingInfo object
                     const bookingInfoEncoded = encodeURIComponent(JSON.stringify(ticket));
                     // create a download link for the tickets
-                    const downloadLink = `/booking-complete/download?bookingInfo=${bookingInfoEncoded}`;
+                    const downloadLink = `/booking/complete/download?bookingInfo=${bookingInfoEncoded}`;
                     ticket.downloadLink = downloadLink;
 
                     // revert the change to '%'
@@ -200,4 +232,4 @@ async function downloadTickets(req, res, next) {
     }
 }
 
-export { getBookingComplete, downloadTickets };
+export { getBookingComplete, downloadTickets, getBookingInit };

@@ -232,6 +232,34 @@ FROM "USER" u
 JOIN "TICKET" t ON t."userID" = u."userID"
 WHERE t."ticketID" = $1`
 
+const getUserProfileImage = `SELECT u."profile_imageURL"
+FROM "USER" u
+WHERE u."userID" = $1`
+
+const updateProfileImage = `UPDATE "USER"
+SET "profile_imageURL" = $2
+WHERE "userID" = $1`
+
+const getEventTypeFromEventID = `
+SELECT 
+    e."eventID",
+    e."title",
+    CASE
+        WHEN m."musicID" IS NOT NULL THEN 'MUSIC'
+        WHEN c."cinemaID" IS NOT NULL THEN 'CINEMA'
+        WHEN t."theaterID" IS NOT NULL THEN 'THEATER'
+    END AS event_type
+FROM 
+    "EVENT" e
+LEFT JOIN 
+    "MUSIC" m ON e."eventID" = m."musicID"
+LEFT JOIN 
+    "CINEMA" c ON e."eventID" = c."cinemaID"
+LEFT JOIN 
+    "THEATER" t ON e."eventID" = t."theaterID"
+WHERE 
+    e."eventID" = $1;`
+
 const addReview = `INSERT INTO "REVIEW"(
 	score, comment, "userID", date_written, "eventID")
 	VALUES ( $1, $2, $3, $4, $5);`
@@ -239,4 +267,5 @@ const addReview = `INSERT INTO "REVIEW"(
 export { getAllScheduledEvents, getAllScheduledEventShows, getAllTheaters, getAllMusics, getAllCinemas, getEventReviews, 
   getCinemaEventInfo, getMusicEventInfo, getTheaterEventInfo, getShowInfo, getModalInfo, getEventInReviewsInfo, getUserInfo,
    getUsersReviews, getUsersTickets, getEventAverageScore, deleteReview, cancelTicket, getEventShowWithEventAndVenueDetails, 
-   getDiscountFromType, getSeatCategoryFromName, signUpUser, findUserByUsernameOrEmail, insertTicket, getUserFromTicketID, addReview }
+   getDiscountFromType, getSeatCategoryFromName, signUpUser, findUserByUsernameOrEmail, insertTicket, getUserFromTicketID, addReview,
+   getUserProfileImage, updateProfileImage, getEventTypeFromEventID}

@@ -63,9 +63,8 @@ app.use('/type/', eventsRouter.eventsRouter);
 app.use('/type/', bookingRouter.bookingRouter);
 app.use('/profile/', logInController.checkAuthenticated, profileRouter.profileRouter);
 app.use('/api/', apiRouter.apiRouter);
-app.use('/booking-complete/', bookingCompleteRouter.bookingCompleteRouter);
+app.use('/booking/', bookingCompleteRouter.bookingCompleteRouter);
 app.use('/', logInSignUpRouter);
-
 
 app.use('/', indexRouter);
 
