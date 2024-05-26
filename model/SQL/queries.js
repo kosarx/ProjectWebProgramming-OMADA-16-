@@ -108,7 +108,8 @@ WHERE e."eventID" = $1`
 const getEventReviews = `SELECT r."reviewID", u."userID", r."eventID", r."score", r."comment", r."date_written", u."username"
 FROM "REVIEW" r
 JOIN "USER" u ON r."userID" = u."userID"
-WHERE r."eventID" = $1`
+WHERE r."eventID" = $1
+ORDER BY r."date_written" DESC`
 
 const getShowInfo = `SELECT es."showID", es."eventID" ,v."venueID", es."show_date", es."show_time", es."status", v."venue_name", v."city", v."address", MIN(sp.seat_price) as minimum_price
 FROM "EVENT_SHOW" es
