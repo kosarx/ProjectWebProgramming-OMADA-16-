@@ -49,7 +49,7 @@ async function getBookingComplete(req, res, next) {
     if (req.session.bookingToken !== bookingToken) {
         const error_comment = "Booking token mismatch, invalid or expired.";
         console.error(error_comment);
-        next(new Error("Booking token mismatch, invalid or expired."));
+        next(new Error(error_comment));
     }
     // get show details
     model.getES_E_V(showID, async (err, result) => {
@@ -93,7 +93,6 @@ async function getBookingComplete(req, res, next) {
                             discountCategoryName = ticket.discountCategory.split(',')[0];
                         }
                         const discountCategory = await model.getDiscountFromType(discountCategoryName);
-                        console.log("Discount Category", discountCategory)
                         const discountID = discountCategory[0].discountID;
             
                         // get the categoryID from the seating category
@@ -104,13 +103,10 @@ async function getBookingComplete(req, res, next) {
                         const date_booked = new Date().toISOString().slice(0, 19).replace('T', ' ');
                         // console.log("discountID", discountID, "categoryID", categoryID, "showID", showID, "date_booked", date_booked, "userID", req.session.loggedUserId);
                         
-                        if (req.session.bookingToken) {
-                            const lastInsertedTicketID = await model.insertTicket(ticket.ticketNumber, 'BOOKED', categoryID, req.session.loggedUserId, date_booked, discountID, showID);
-                            // destroy the booking token
-                            req.session.bookingToken = null;
-                            ticket.ticketID = lastInsertedTicketID;
-                            console.log("Ticket stored in the database", ticket.ticketID);
-                        }
+                        const lastInsertedTicketID = await model.insertTicket(ticket.ticketNumber, 'BOOKED', categoryID, req.session.loggedUserId, date_booked, discountID, showID);
+                        // destroy the booking token
+                        ticket.ticketID = lastInsertedTicketID;
+                        console.log("Ticket stored in the database", ticket.ticketID);
                     } catch (err) {
                         const error_comment = "Failed to store ticket in the database";
                         console.error(error_comment);
@@ -159,7 +155,6 @@ async function getBookingComplete(req, res, next) {
                         ticket.discountCategory = ticket.discountCategory.replace('%25', '%');
                     }
                 });
-                // console.log("Booking Info",bookingInfo);
             }
             let error_comment;
             let error_message;
@@ -167,7 +162,7 @@ async function getBookingComplete(req, res, next) {
                 error_comment = "Network error while processing payment."; // generic dummy comment
                 error_message = "Payment processing failed. Please try again."; // generic dummy message
             }
-
+            req.session.bookingToken = "Token used";
             res.render('booking_complete', {success: bookingInfo[0].success, eventInfo: eventShowInfo, tickets: bookingInfo, totalAmount, error_comment, error_message});
         }
     });
