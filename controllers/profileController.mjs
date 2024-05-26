@@ -51,14 +51,14 @@ let profileNavigation = async function (req, res, next) {
 
                                 let timeString = ticketList[i].show_time;
 
-                                // Split the time string into hours, minutes, and seconds
+                                // split the time string into hours, minutes, and seconds
                                 let [hours, minutes, seconds] = timeString.split(':');
 
-                                // Convert the hours to a 12-hour format with AM/PM indication
+                                // convert the hours to a 12-hour format with AM/PM indication
                                 let ampm = hours >= 12 ? 'pm' : 'am';
                                 hours = (hours % 12) || 12;
 
-                                // Construct the formatted time string
+                                // construct the formatted time string
                                 let formattedTime = hours + ':' + minutes + ' ' + ampm;
 
                                 ticketList[i].show_time = formattedTime;

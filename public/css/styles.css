@@ -51,14 +51,12 @@ body {
     color: var(--medium-purple);
     margin-left: 3em;
     font-size: 1.8rem;
-    /* font-weight: 550; */
     padding-top: 0;
     padding-bottom: 0;
     
 }
 
 .navbar-light .navbar-brand {
-    /* font-family: Verdana; */
     letter-spacing: 0.15em;
     font-weight: 700;
     font-family: 'Wix Madefor Display', sans-serif;
@@ -108,7 +106,6 @@ body {
     height: 100%;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0);
-    /* box-shadow: 0 0 5px 3px var(--medium-purple); */
     box-shadow: 0 0 10px rgba(133, 88, 111, 0.8);
 
     opacity: 0;
@@ -131,17 +128,6 @@ body {
 
 
 /* -------FOOTER------- */
-/* body { */
-/* margin: 0; */
-/* Remove default margin */
-/* padding: 0; */
-/* Remove default padding */
-/* min-height: 100vh; */
-/* Ensure body covers viewport height */
-/* position: relative; */
-/* Required for footer positioning */
-/* } */
-
 
 .col.footer-names {
     text-align: center;
@@ -152,12 +138,6 @@ body {
 }
 
 footer {
-    /* position: absolute; */
-    /* Position the footer relative to the body */
-    /* bottom: 0; */
-    /* Align the footer to the bottom */
-    /* width: 100%; */
-    /* Full width */
     padding: 1% 1%;
     background-color: var(--footer-background-color);
     color: var(--footer-text-color);
@@ -180,7 +160,6 @@ footer {
 
 .search-bar-container {
     border-radius: 10px;
-    /* position: relative; */
     margin: 0 auto;
 }
 
@@ -233,9 +212,7 @@ footer {
 .index .circular-div:active,
 .events .circular-div:active,
 .reviews .circular-div:active {
-    /* box-shadow: 4px 10px 8px rgba(0, 0, 0, 0.2); */
     transform: translateX(10px);
-    /* box-shadow: 0 0 10px var(--dark-purple); */
 }
 
 #cardCont .col {
@@ -251,30 +228,25 @@ footer {
     border-radius: 10px;
     transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
     aspect-ratio: 9 / 10;
-    /* Set aspect ratio to 9:10 */
 }
 
 #cardCont .card .btn {
     border-radius: 10px;
+    
     width: 70%;
-    /* Set button width as a percentage of the card width */
     max-width: 260px;
-    /* Limit maximum button width */
     height: 45%;
-    /* Set button height as a percentage of the card height */
     max-height: 60px;
-    /* Limit maximum button height */
+    
     color: var(--light);
     background-color: var(--dark-purple);
+    
     margin-top: 7%;
-    /* Set margin top as a percentage of the card height */
     margin-bottom: 7%;
-    /* Set margin bottom as a percentage of the card height */
     padding: 0;
+
     display: flex;
-    /* Use flexbox */
     align-items: center;
-    /* Center items vertically */
     justify-content: center;
 }
 
@@ -286,18 +258,20 @@ footer {
 #cardCont a span {
     font-size: 1em;
     letter-spacing: 0.2em;
-    /* margin: 0; */
     padding: 10% 18%;
 }
 
 #cardCont .card img {
     border-radius: 8px;
     object-fit: cover;
+    
     width: 70%;
     max-width: 260px;
     height: 80%;
     max-height: 260px;
+    
     display: block;
+    
     margin: 0 auto;
     margin-bottom: 10%;
 }
@@ -369,7 +343,6 @@ footer {
 
 .carousel-item.active .carousel-caption {
     opacity: 1;
-    /* show the caption when the item is active */
 }
 
 .carousel-item.active {
@@ -391,11 +364,9 @@ footer {
 }
 
 .card.event-card .event-img {
-    /* width: 100px; */
     margin: 5px 10px;
     width: 180px;
     height: 110px;
-    /* height: auto;    */
     object-fit: fill;
     border-radius: 10px;
 
@@ -439,10 +410,8 @@ footer {
 
 }
 
-
 .event-card:hover {
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-    /* transform: translate(4px, -4px); */
     transform: translateY(-4px);
     background-color: var(--hover-event-card);
     cursor: pointer;
@@ -450,9 +419,6 @@ footer {
 
 }
 
-/* .event-card:hover img.arrow {
-    content: url(svgs/Fill9.svg); 
-} */
 .event-card-body {
     position: relative;
 }
@@ -461,11 +427,8 @@ footer {
 .event-card .light-arrow {
     position: absolute;
     top: 50%;
-    /* Align the top edge of the arrows at the center */
     transform: translateY(-50%);
-    /* Move the arrows up by half of their own height */
     right: 10px;
-    /* Adjust the distance from the right edge of the card */
     transition: opacity 0.3s ease;
 }
 
@@ -475,19 +438,15 @@ footer {
 }
 
 .event-card:hover .dark-arrow {
+    /* make the first image transparent when hovering over the card */
     opacity: 0;
-    /* Make the first image transparent when hovering over the card */
 }
 
 .event-card:hover .light-arrow {
+    /* make the second image opaque when hovering over the card */
     opacity: 1;
-    /* Make the second image opaque when hovering over the card */
 }
 
-
-/* img:hover {
-    content: url(svgs/Fill8.svg); 
-} */
 .event-card-body {
     transition: opacity 0.3s ease-in-out;
 }
@@ -505,13 +464,8 @@ footer {
 /* -------BOOKING------- */
 
 .event-image {
-    /* background-image: url('https://picsum.photos/seed/12/1500/550'); */
-    /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('/images/event1.jpg'); */
-    /* Specify the path */
     background-size: cover;
-    /* Cover the entire container */
     background-position: center;
-    /* Center the image */
     width: 100%;
     height: 70vh;
     color: white;
@@ -525,16 +479,13 @@ footer {
 
 .divider-bottom {
     box-shadow: 0px 4px 2px 1px var(--review-card-and-divider-shadow);
-    /* Shadow-dividing effect */
     margin-bottom: 20px;
 }
 
 .image-overlay {
     position: absolute;
     bottom: 1em;
-    /* Stick the title to the bottom */
     left: 3em;
-    /* Align the title to the left */
 }
 
 .text-overlay {
@@ -578,9 +529,8 @@ footer {
 }
 
 .shadowed-text {
-    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     /* Shadow effect for text in span*/
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .shadowed-review-card {
@@ -612,8 +562,8 @@ footer {
 }
 
 .bookings-container .card {
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
     /* Smooth transitions */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
 /* Hide the default radio button */
@@ -628,10 +578,6 @@ input[type="radio"] {
     background-size: cover;
     cursor: pointer;
 }
-
-/* input[type="radio"]:checked + .review-star {
-
-} */
 
 #tickets-col .card {
     background-color: var(--card-background-color);
@@ -651,31 +597,23 @@ input[type="radio"] {
 
 @media (min-width: 576px) and (max-width: 991.98px) {
     #tickets-col .card {
+        /* set width to 70% for medium-sized screens */
         width: 70%;
-        /* Set width to 70% for medium-sized screens */
     }
 }
 
 @media (max-width: 575.98px) {
     #tickets-col .card {
+        /* set width to 100% for smaller screens */
         width: 100%;
-        /* Set width to 100% for smaller screens */
     }
 }
 
 #review-of-event-img {
+    /* need to fix the rounded corners */
     border-radius: 5px;
-    /* Need to fix the rounded corners */
 
 }
-
-/* .middle-centered-container { */
-/* display: flex;
-    align-items: center;
-    justify-content: center; */
-/* margin: 100px auto; */
-/* width: 70%; */
-/* } */
 
 /* -------REVIEWS------- */
 
@@ -684,15 +622,14 @@ input[type="radio"] {
 }
 
 #review-input {
-    /* width: auto; */
     width: 56vw;
     height: 25vh;
     padding: 12px 20px;
-    /* margin: 8px 0; */
+
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    /* This makes the corners rounded */
+
     resize: none;
 }
 
@@ -770,8 +707,6 @@ input[type="radio"] {
     height: 1em;
 
     margin-top: 1.1em;
-
-    /* padding-right: 0;     */
 }
 
 .plus-icon {
@@ -795,15 +730,11 @@ input[type="radio"] {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-    /* filter: blur(5px); */
+
     display: flex;
-    /* Use flexbox layout */
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     text-align: center;
-    /* Center text horizontally */
 }
 
 .auth-container .card {
@@ -811,12 +742,6 @@ input[type="radio"] {
 }
 
 .auth-container .card {
-
-    /* position: absolute; */
-    /* make the card a bit higher than the middle of the screen */
-    /* top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
     background-color: rgba(243, 243, 243, 0.8);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -842,7 +767,6 @@ input[type="radio"] {
 
 .auth-container .card-title {
     font-size: 1.2em;
-    /* letter-spacing: 0.1em; */
     color: var(--medium-purple);
     font-weight: 700;
 }
@@ -916,7 +840,6 @@ input[type="radio"] {
 
 
 .tickets-booked-container {
-    /* width: 90%; */
     align-items: start;
     padding: 0 1em;
 }
@@ -1053,7 +976,6 @@ span.cancel-text {
 
 .about-us #person0,
 .about-us #person1 {
-    /* margin: 10px 0; */
     margin-top: 20px;
     margin-bottom: 40px;
 }
@@ -1109,7 +1031,6 @@ span.cancel-text {
 
 
 .booking-complete .ticket-details {
-    /* font-size: 0.9em; */
     letter-spacing: 0.2px;
 }
 
@@ -1133,14 +1054,17 @@ span.cancel-text {
 
 .booking-complete .download-tickets-file a {
     background-color: var(--card-background-color);
+    
     width: 180px;
+    
     border-radius: 10px;
     border: 2px solid var(--download-tickets-border);
+    
     display: inline-flex;
     align-items: center;
     justify-content: space-evenly;
-    /* justify-content: center; */
     text-decoration: none;
+    
     margin: 8px;
     padding: 0px 15px;
 }

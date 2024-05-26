@@ -26,10 +26,7 @@ let reviewsNavigation = async function (req, res, next) {
 
                     // Format the date components
                     reviewDate = new Date(review.date_written);
-
-                    // Format the date components
                     formattedDate = reviewDate.getDate().toString().padStart(2, '0') + '-' + (reviewDate.getMonth() + 1).toString().padStart(2, '0') + '-' + reviewDate.getFullYear().toString();
-
                     review.date_written = formattedDate;
 
 

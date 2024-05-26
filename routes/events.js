@@ -21,7 +21,6 @@ let eventNavigation = async function (req, res, next) {
     }
     catch (error) {
         console.error(error);
-        // res.json({ error: 'An error occurred' });
         next(error);
     }
 };

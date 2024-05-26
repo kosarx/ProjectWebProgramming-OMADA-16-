@@ -46,6 +46,7 @@ async function connect() {
         }
         catch (e) {
             // console.error(`Failed to connect ${e}, with the second pool`);
+            throw e;
         }
 
     }
@@ -111,19 +112,6 @@ async function getAllCinema(callback) {
         callback(err, null);
     }
 }
-
-
-// async function getEventShows(eventID, callback) {
-//     try {
-//         const client = await connect();
-//         const res = await client.query(sql.getEventShows, [eventID])
-//         await client.release()
-//         callback(null, res.rows)
-//     }
-//     catch (err) {
-//         callback(err, null);
-//     }
-// }
 
 async function getEventReviews(eventID, callback) {
     try {
@@ -338,7 +326,6 @@ async function signUpUser(username, password, fullName, email, registrationDate,
             const client = await connect();
             await client.query(sql.signUpUser, [username, hashedPassword, fullName, email, registrationDate, profile_imageURL]);
             client.release();
-            // let message = `User ${username} created succesfully`;
             return { message: `User ${username} created succesfully!` };
         }
         catch (error) {

@@ -8,7 +8,7 @@ async function bookingTheater(eventID, req, res, next) {
         model.getTheaterEventInfo(eventID, (err, eventInfo) => {
             if (err) {
                 const error_comment = "Could not get theater event info from the database";
-                // pass the comment to the session?
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -28,7 +28,7 @@ async function bookingTheater(eventID, req, res, next) {
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         const error_comment = "Could not get reviews from the database"
-                        // pass the comment to the session?
+                        req.session.error_comment = error_comment;
                         console.error(error_comment);
                         next(err);
                     }
@@ -46,7 +46,7 @@ async function bookingTheater(eventID, req, res, next) {
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
                                 const error_comment = "Could not get show info from the database";
-                                // pass the comment to the session?
+                                req.session.error_comment = error_comment;
                                 console.error(error_comment);
                                 next(err);
                             }
@@ -100,7 +100,7 @@ async function bookingTheater(eventID, req, res, next) {
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
                                         const error_comment = "Could not get modal info from the database";
-                                        // pass the comment to the session?
+                                        req.session.error_comment = error_comment;
                                         console.error(error_comment);
                                         next(err);
                                     }
@@ -137,7 +137,7 @@ async function bookingMusic(eventID, req, res, next) {
         model.getMusicEventInfo(eventID, (err, eventInfo) => {
             if (err) {
                 const error_comment = "Could not get music event info from the database";
-                // pass the comment to the session?
+                req.session.error_comment = error_comment;
                 console.error(error_comment);
                 next(err);
             }
@@ -156,7 +156,7 @@ async function bookingMusic(eventID, req, res, next) {
                 model.getEventReviews(eventID, (err, reviewList) => {
                     if (err) {
                         const error_comment = "Could not get reviews from the database"
-                        // pass the comment to the session?
+                        req.session.error_comment = error_comment;
                         console.error(error_comment);
                         next(err);
                     }
@@ -176,7 +176,7 @@ async function bookingMusic(eventID, req, res, next) {
                         model.getShowInfo(eventID, (err, showList) => {
                             if (err) {
                                 const error_comment = "Could not get show info from the database";
-                                // pass the comment to the session?
+                                req.session.error_comment = error_comment;
                                 console.error(error_comment);
                                 next(err);
                             }
@@ -231,7 +231,7 @@ async function bookingMusic(eventID, req, res, next) {
                                 model.getModalInfo(eventID, (err, seatingCatList) => {
                                     if (err) {
                                         const error_comment = "Could not get modal info from the database";
-                                        // pass the comment to the session?
+                                        req.session.error_comment = error_comment;
                                         console.error(error_comment);
                                         next(err);
                                     }

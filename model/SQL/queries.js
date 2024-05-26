@@ -133,14 +133,6 @@ JOIN "VENUE" v ON v."venueID" = es."venueID"
 WHERE e."eventID" = $1 AND es."status" = 'SCHEDULED'
 ORDER BY es."show_date"`
 
-// `SELECT es."showID", es."venueID", cat."categoryID", es."status", vsc."seat_num", sp."seat_price", cat."category_name"
-// FROM "EVENT_SHOW" es 
-// JOIN "Venue_HAS_Seat_Cat" vsc ON es."venueID" = vsc."venueID"
-// JOIN "SEAT_CATEGORY" cat ON cat."categoryID" = vsc."categoryID"
-// JOIN "Sets_Price" sp ON es."showID" = sp."showID" --AND cat."categoryID" = sp."categoryID"
-// WHERE es."showID" = 4 and es."status" = 'SCHEDULED'`
-
-
 const getUserInfo = `SELECT * FROM "USER" u
 WHERE u."userID" = $1`
 
@@ -219,9 +211,6 @@ const findUserByUsernameOrEmail = `SELECT u."userID", u."username", u."email", u
 FROM "USER" u
 WHERE (u."username" = $1 OR u."email" = $2)
 LIMIT 1;`
-
-
-
 
 const insertTicket = `INSERT INTO "TICKET"(
   "ticket_number", "status", "categoryID", "userID", "date_booked", "discountID", "showID")

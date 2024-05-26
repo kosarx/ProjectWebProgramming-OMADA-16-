@@ -1,4 +1,3 @@
-import multer from 'multer';
 import * as model from '../model/dbInterface.js';
 import { formatDate } from '../public/scripts/formatDate.js';
 

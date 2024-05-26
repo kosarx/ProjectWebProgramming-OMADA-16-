@@ -49,7 +49,6 @@ async function theaterEvents(navigateTo, req, res, next) {
                 carouselEventList[i].titleU = carouselEventList[i].title.toUpperCase();
                 carouselEventList[i].type = navigateTo;
             }
-            // res.json(eventList);
             res.render('events', { site_header, eventList, carouselEventList });
         });
     }
@@ -108,7 +107,6 @@ async function musicEvents(navigateTo, req, res, next) {
                 carouselEventList[i].titleU = carouselEventList[i].title.toUpperCase();
                 carouselEventList[i].type = navigateTo;
             }
-            // res.json(eventList);
             res.render('events', { site_header, eventList, carouselEventList });
 
         });
@@ -171,7 +169,6 @@ async function cinemaEvents(navigateTo, req, res, next) {
                 carouselEventList[i].titleU = carouselEventList[i].title.toUpperCase();
                 carouselEventList[i].type = navigateTo;
             }
-            // res.json(eventList);
             res.render('events', { site_header, eventList, carouselEventList });
 
         });

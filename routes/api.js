@@ -10,7 +10,6 @@ const storage = multer.diskStorage({
         cb(null, path.join('public','images','users'));
     },
     filename: function (req, file, cb) {
-        // Use a custom filename here (e.g., original filename with a timestamp)
         cb(null, `user${req.params.userid}.jpg`);
     }
 });

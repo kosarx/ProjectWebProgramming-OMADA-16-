@@ -6,7 +6,6 @@ import * as logInController from '../controllers/logInController.mjs';
 
 router.get('/init', logInController.checkAuthenticated, bookingCompleteController.getBookingInit);
 router.get('/complete', logInController.checkAuthenticated, bookingCompleteController.getBookingComplete);
-// router.post('/', bookingCompleteController.getBookingComplete);
 
 router.get('/complete/download', bookingCompleteController.downloadTickets);
 

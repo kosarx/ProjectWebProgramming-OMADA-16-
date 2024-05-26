@@ -49,7 +49,6 @@
                 </div>
             </div>
             <div class="row mt-2"></div>
-            <!-- <div class="row member-since mt-5"> -->
             <div class="row member-since mt-3"> <!--If we use the edit profile button-->
                 <div class="col-6">
                     Member since: {{user.registration_date}}
@@ -117,10 +116,6 @@
                                                             </h6>
                                                             <h6 class="card-subtitle mt-2 title"><span
                                                                     class="event-title">{{ticket.title}}</span>
-                                                                {{!-- - <span class="event-artists">ARTIST</span>
-                                                                --}}
-                                                                <!-- <span class="hover-message">This show has been
-                                                                cancelled</span> -->
                                                                 <div class="hover-message"></div>
                                                             </h6>
 
@@ -128,8 +123,6 @@
                                                         <div class="col d-flex justify-content-end align-items-center">
                                                             <div class="card-title">
                                                                 <span name="price">{{ticket.final_price}}€</span>
-                                                                {{!-- <img src="/svgs/Fill5.svg" class="ms-1" alt="">
-                                                                --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -178,7 +171,6 @@
                     <div class="fixed-height-container overflow-auto">
                         <div class="container-fluid reviews-by-user-container">
                             <div class="row">
-                                <!-- <div class="col-md-8 offset-md-0 mb-3 mx-auto" id="user-reviews-col"> -->
                                 <div class="col inter-children-cards" id="user-reviews-col">
                                     <div class="highligthed-card"><!-- {{selected_review}}--></div>
                                     {{#each reviewList as |review|}}
@@ -188,7 +180,6 @@
                                                 data-eventid={{review.eventID}}>
                                                 <div class="card-body pt-0">
                                                     <div class="row">
-                                                        <!-- <div class="col text-center pt-3"> -->
                                                         <div class="col-5 col-md-3 col-xxl-2 text-center pt-3">
                                                             <h5 class="card-title">
                                                                 <strong>{{review.score}}/5</strong>
@@ -212,11 +203,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <!-- <div class="col-sm-1 text-left"> -->
                                                         <div class="col text-left">
                                                             <h6 class="card-subtitle my-2">{{review.title}}</h6>
                                                         </div>
-                                                        <!-- <div class="col-md-auto text-left"> -->
                                                         <div class="col text-left">
                                                             <h6 class="card-subtitle my-2 text-end">
                                                                 <date class="small">{{review.date_written}}</date>
