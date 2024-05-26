@@ -14,6 +14,7 @@ const port = process.env.PORT || '3000';
 
 const server = application.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
+    console.log(`Server running in ${process.env.NODE_ENV} mode`);
 });
 
 process.on('SIGTERM', () => {

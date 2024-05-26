@@ -122,6 +122,7 @@ body {
 .profile-image img {
     width: 40px;
     height: 40px;
+    object-fit: cover;
 }
 
 .page-container {
@@ -199,9 +200,7 @@ footer {
 
 .search-container {
     display: inline-flex;
-    /* Display items inline */
     align-items: center;
-    /* Align items vertically */
 }
 
 .search-bar .search-container input[type="search"]{
@@ -215,7 +214,6 @@ footer {
     height: 44px;
     border-radius: 50%;
     background-image: url('/svgs/ArrowButton.svg');
-    /* ensure the background image covers the entire div */
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -228,9 +226,7 @@ footer {
 .events .search-bar form,
 .reviews .search-bar form {
     display: flex;
-    /* Ensure form elements are displayed inline */
     align-items: center;
-    /* Align form elements vertically */
 }
 
 
@@ -1001,6 +997,7 @@ span.cancel-text {
 
 .user-info #profilePhoto {
     cursor: pointer;
+    object-fit: cover;
 }
 
 .user-info .reviews-by-user-container .card {
@@ -1128,7 +1125,6 @@ span.cancel-text {
 }
 
 .booking-complete .download-tickets-file {
-
     padding: 0;
 
 }
